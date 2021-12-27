@@ -1,2 +1,3 @@
 rootProject.name = 'Chess_LTDS_1307'
+include 'src'
 
