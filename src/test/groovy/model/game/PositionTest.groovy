@@ -19,8 +19,4 @@ class PositionTest extends Specification {
         position.getCol() == 3
     }
 
-    def "ToString"() {
-        expect:
-        position.toString() == "d3"
-    }
 }
