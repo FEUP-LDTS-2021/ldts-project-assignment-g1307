@@ -7,7 +7,7 @@ class MenuModelTest extends Specification {
         given:
         MenuModel menuModel = new MenuModel()
         when:
-        menuModel.getCurrentOption().next()
+        menuModel.setNextOption()
         then:
         menuModel.getCurrentOption() == MenuModel.Option.EXIT
     }
@@ -16,7 +16,7 @@ class MenuModelTest extends Specification {
         given:
         MenuModel menuModel = new MenuModel()
         when:
-        menuModel.getCurrentOption().previous()
+        menuModel.setPreviousOption()
         then:
         menuModel.getCurrentOption() == MenuModel.Option.EXIT
     }
@@ -28,5 +28,10 @@ class MenuModelTest extends Specification {
         int i = option.diffToOption(MenuModel.Option.EXIT)
         then:
         i == -1
+    }
+
+    def "max Option"() {
+        expect:
+        MenuModel.Option.maxLength() == 7
     }
 }

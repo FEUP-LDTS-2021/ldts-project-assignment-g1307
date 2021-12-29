@@ -7,23 +7,24 @@ public class MenuModel implements Model {
     public enum Option {NEWGAME, EXIT;
         private static final Option[] values = values();
         public Option next() {
-
-            return null;
+            return values[(this.ordinal()+1) % values.length];
         }
 
         public Option previous() {
-
-            return null;
+            return values[(this.ordinal()-1 + values.length) % values.length];
         }
 
-        public static int max() {
-
-            return 0;
+        public static int maxLength() {
+            int max = Option.NEWGAME.toString().length();
+            for (Option p: values) {
+                if (p.toString().length() > max)
+                    max = p.toString().length();
+            }
+            return max;
         }
 
         public int diffToOption(Option option) { // return the difference in index
-
-            return 0;
+            return this.ordinal() - option.ordinal();
         }
 
     } // Same question of Color enum. TODO: add more options
@@ -31,6 +32,14 @@ public class MenuModel implements Model {
 
     public MenuModel() {
         current = Option.NEWGAME;
+    }
+
+    public void setNextOption() {
+        current = current.next();
+    }
+
+    public void setPreviousOption() {
+        current = current.previous();
     }
 
     public Option getCurrentOption() {
