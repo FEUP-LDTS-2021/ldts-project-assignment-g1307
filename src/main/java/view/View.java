@@ -8,6 +8,7 @@ import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
 import com.googlecode.lanterna.terminal.Terminal;
 import com.googlecode.lanterna.terminal.swing.AWTTerminalFontConfiguration;
 import com.googlecode.lanterna.terminal.swing.AWTTerminalFrame;
+import com.googlecode.lanterna.terminal.swing.TerminalScrollController;
 import model.Model;
 import model.menu.MenuModel;
 
@@ -36,6 +37,13 @@ public abstract class View { // NOTA: a fonte só e para ser usada no gameview .
         initWindow();
     }
 
+    public View(Model model, String fontName, Screen screen, TextGraphics textGraphics) {
+        this.model = model;
+        loadFont(fontName);
+        this.screen = screen;
+        this.graphics = textGraphics;
+    }
+
     protected void initWindow() {
         try {
             TerminalSize terminalSize = new TerminalSize(width, height);
@@ -56,6 +64,7 @@ public abstract class View { // NOTA: a fonte só e para ser usada no gameview .
             });
 
             screen = new TerminalScreen(terminal);
+            screen.setCursorPosition(null);
             screen.startScreen();
             screen.doResizeIfNecessary();
             graphics = screen.newTextGraphics();
@@ -99,6 +108,6 @@ public abstract class View { // NOTA: a fonte só e para ser usada no gameview .
         }
     }
 
-    protected abstract void draw();
+    public abstract void draw() throws IOException;
 
 }
