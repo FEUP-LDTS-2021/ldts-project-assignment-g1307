@@ -3,7 +3,7 @@ package model.game.pieces.movingBehaviours;
 import model.game.BoardModel;
 import model.game.Position;
 
-import java.util.Set;
+import java.util.*;
 
 public class TwoAndOneStrategy implements MovingBehaviour{
 
@@ -20,6 +20,25 @@ public class TwoAndOneStrategy implements MovingBehaviour{
 
     @Override
     public Set<Position> getMoves(BoardModel b, Position objectPosition) {
-        return null;
+        Set<Position> possibleMoves = new HashSet<>();
+
+        int row = objectPosition.getRow();
+        int col = objectPosition.getCol();
+        List<Position> possiblePositions;
+
+        if (direction == Direction.NORTH){
+            possiblePositions = Arrays.asList(new Position(row - 1, col), new Position(row - 2, col),
+                     new Position(row -1, col - 1), new Position(row - 1, col + 1));
+        }
+        else {
+            possiblePositions = Arrays.asList(new Position(row + 1, col), new Position(row + 2, col),
+                    new Position(row + 1, col - 1), new Position(row + 1, col + 1));
+        }
+
+        for (Position position : possiblePositions){
+            if(b.positionInBoard(position)) possibleMoves.add(position);
+        }
+
+        return possibleMoves;
     }
 }
