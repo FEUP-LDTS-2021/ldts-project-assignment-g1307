@@ -10,7 +10,7 @@ import view.View;
 
 import java.io.IOException;
 
-public class MenuView extends View {
+public class MenuView extends View<MenuModel> {
 
     MenuView(MenuModel model){
         super(model, "square.ttf"); // TODO : we could pass the font as an argument too
@@ -21,7 +21,7 @@ public class MenuView extends View {
     }
 
     public static void main(String[] args) {
-        View menuView = new MenuView(new MenuModel());
+        View<?> menuView = new MenuView(new MenuModel());
         try {
             menuView.draw();
         } catch (IOException e) {
@@ -49,15 +49,21 @@ public class MenuView extends View {
         }
 
     }
-    public void drawOption() {
-        TerminalPosition terminalPosition = new TerminalPosition(getWidthCenter() - 3,getHeightCenter() + 3);
-        TerminalSize terminalSize = new TerminalSize(6, 4); // change col to opt.max.size() +2
+    public void drawOption() { // TODO: MAGIC ... and cleaning/refactoring
+        int colOfRectangle = MenuModel.Option.maxLength() + 2;
+        int rowOfRectangle = getHeightCenter() + 3;
+        TerminalPosition terminalPosition = new TerminalPosition(getWidthCenter() -colOfRectangle / 2 , rowOfRectangle);
+        TerminalSize terminalSize = new TerminalSize(colOfRectangle + 2, 5);
         graphics.drawRectangle(terminalPosition,terminalSize, '-');
-        /*
-        for ( opt : model.options) {
-            grafics.putString( model.diffToSelected(opt), opts.toString());
+
+        for ( MenuModel.Option opt : MenuModel.Option.values()) {
+            int offSetToStaticCursor =  (colOfRectangle + 2) * opt.diffToOption(model.getCurrentOption());
+            int insideBoxCol = getWidthCenter() - colOfRectangle/2;
+            int colToWrite = insideBoxCol -offSetToStaticCursor + 2;
+            TerminalPosition stringPos = new TerminalPosition(colToWrite, rowOfRectangle + 2);
+            graphics.putString(stringPos, opt.toString());
         }
-         */
+
     }
 
     @Override

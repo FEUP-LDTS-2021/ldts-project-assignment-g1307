@@ -27,7 +27,7 @@ class MenuModelTest extends Specification {
         when:
         int i = option.diffToOption(MenuModel.Option.EXIT)
         then:
-        i == -1
+        i == 1
     }
 
     def "max Option"() {

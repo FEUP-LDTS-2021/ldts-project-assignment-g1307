@@ -18,24 +18,24 @@ import java.io.IOException;
 import java.net.URISyntaxException;
 import java.net.URL;
 
-public abstract class View { // NOTA: a fonte só e para ser usada no gameview ... reposta dps ...
+public abstract class View<T extends Model> { // NOTA: a fonte só e para ser usada no gameview ... reposta dps ...
     // adicionar buttons como opções(fora daqui) para uma melhor ligação com o model e uma pre-definição melhor no output
 
     private static final int height = 25;
     private static final int width = 50;
 
-    protected Model model;
+    protected T model;
     private Screen screen;
     protected TextGraphics graphics;
     protected Font font;
 
-    protected View(Model model, String fontName) {
+    protected View(T model, String fontName) {
         this.model = model;
         loadFont(fontName);
         initWindow();
     }
 
-    public View(Model model, String fontName, Screen screen, TextGraphics textGraphics) {
+    public View(T model, String fontName, Screen screen, TextGraphics textGraphics) {
         this.model = model;
         loadFont(fontName);
         this.screen = screen;
@@ -75,7 +75,7 @@ public abstract class View { // NOTA: a fonte só e para ser usada no gameview .
         return model;
     }
 
-    public void setModel(Model model) {
+    public void setModel(T model) {
         this.model = model;
     }
 

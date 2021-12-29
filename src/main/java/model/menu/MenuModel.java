@@ -5,7 +5,7 @@ import model.Model;
 public class MenuModel implements Model {
 
     public enum Option {NEWGAME, EXIT;
-        private static final Option[] values = values();
+        static final Option[] values = values();
         public Option next() {
             return values[(this.ordinal()+1) % values.length];
         }
@@ -24,7 +24,7 @@ public class MenuModel implements Model {
         }
 
         public int diffToOption(Option option) { // return the difference in index
-            return this.ordinal() - option.ordinal();
+            return option.ordinal() - this.ordinal();
         }
 
     } // Same question of Color enum. TODO: add more options
