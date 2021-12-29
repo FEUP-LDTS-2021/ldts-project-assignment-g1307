@@ -2,7 +2,6 @@ package view.menu;
 
 import com.googlecode.lanterna.TerminalPosition;
 import com.googlecode.lanterna.TerminalSize;
-import com.googlecode.lanterna.TextCharacter;
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
 import com.googlecode.lanterna.screen.Screen;
@@ -31,7 +30,6 @@ public class MenuView extends View {
     }
 
     public void drawTitle() {
-        graphics.setBackgroundColor(TextColor.Factory.fromString("#312e2b"));
         graphics.setForegroundColor(TextColor.Factory.fromString("#4f763a"));
 
         String[] arrSTitle = {
@@ -53,8 +51,13 @@ public class MenuView extends View {
     }
     public void drawOption() {
         TerminalPosition terminalPosition = new TerminalPosition(getWidthCenter() - 3,getHeightCenter() + 3);
-        TerminalSize terminalSize = new TerminalSize(6, 4);
+        TerminalSize terminalSize = new TerminalSize(6, 4); // change col to opt.max.size() +2
         graphics.drawRectangle(terminalPosition,terminalSize, '-');
+        /*
+        for ( opt : model.options) {
+            grafics.putString( model.diffToSelected(opt), opts.toString());
+        }
+         */
     }
 
     @Override
@@ -66,5 +69,12 @@ public class MenuView extends View {
         drawTitle();
 
         refresh();
+    }
+
+    @Override
+    protected void clear() {
+        super.clear();
+        graphics.setBackgroundColor(TextColor.Factory.fromString("#312e2b"));
+        graphics.fillRectangle(new TerminalPosition(0,0), new TerminalSize(getWidth(),getHeight()),' ');
     }
 }

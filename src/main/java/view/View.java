@@ -114,6 +114,15 @@ public abstract class View { // NOTA: a fonte só e para ser usada no gameview .
         return width / 2;
     }
 
+    protected static int getHeight() {
+        return height;
+    }
+
+    protected static int getWidth() {
+        return width;
+    }
+
+
     public abstract void draw() throws IOException;
 
 }
