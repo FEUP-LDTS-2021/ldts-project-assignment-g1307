@@ -8,9 +8,7 @@ import com.googlecode.lanterna.terminal.DefaultTerminalFactory;
 import com.googlecode.lanterna.terminal.Terminal;
 import com.googlecode.lanterna.terminal.swing.AWTTerminalFontConfiguration;
 import com.googlecode.lanterna.terminal.swing.AWTTerminalFrame;
-import com.googlecode.lanterna.terminal.swing.TerminalScrollController;
 import model.Model;
-import model.menu.MenuModel;
 
 import java.awt.*;
 import java.awt.event.WindowAdapter;
@@ -23,8 +21,8 @@ import java.net.URL;
 public abstract class View { // NOTA: a fonte só e para ser usada no gameview ... reposta dps ...
     // adicionar buttons como opções(fora daqui) para uma melhor ligação com o model e uma pre-definição melhor no output
 
-    private static int height = 25;
-    private static int width = 50;
+    private static final int height = 25;
+    private static final int width = 50;
 
     protected Model model;
     private Screen screen;
@@ -106,6 +104,14 @@ public abstract class View { // NOTA: a fonte só e para ser usada no gameview .
         } catch (URISyntaxException | IOException | FontFormatException e) {
             e.printStackTrace();
         }
+    }
+
+    protected static int getHeightCenter() {
+        return height / 2;
+    }
+
+    protected static int getWidthCenter() {
+        return width / 2;
     }
 
     public abstract void draw() throws IOException;
