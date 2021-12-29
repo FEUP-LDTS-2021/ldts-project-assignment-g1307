@@ -17,7 +17,7 @@ class DistanceMoveTest<T extends MovingBehaviour> {
         def lMoves = behaviour.getMoves(board, position)
 
         for (def l : lMoves) {
-            if (distance(position,l) != minDistance) // TODO : THE DISTANCE SHOULD BE PASSED AS A MEMBER ATTRIBUTE
+            if (distance(position,l) != minDistance)
                 return false
         }
         return true
