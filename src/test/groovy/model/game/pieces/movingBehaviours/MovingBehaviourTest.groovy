@@ -1,6 +1,6 @@
 package model.game.pieces.movingBehaviours
 
-import model.game.BoardModel
+import model.game.SquareBoard
 import model.game.Position
 import spock.lang.Specification
 
@@ -10,7 +10,7 @@ abstract class MovingBehaviourTest extends Specification{
     def resultsB;
     def resultsC;
     def resultsD;
-    def board = new BoardModel(8,8)
+    def board = new SquareBoard(8,8)
 
 
     def "Position of object is d4"() {

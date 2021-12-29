@@ -9,9 +9,10 @@ import java.util.Set;
 public class MovingBehaviourGroup implements MovingBehaviour{
     Set<MovingBehaviour> movingBehaviours;
 
-    MovingBehaviourGroup(Set<MovingBehaviour> movingBehaviours) {
+    public MovingBehaviourGroup(Set<MovingBehaviour> movingBehaviours) {
         this.movingBehaviours = movingBehaviours;
     }
+    public MovingBehaviourGroup() {movingBehaviours = new HashSet<>();}
 
     @Override
     public Set<Position> getMoves(BoardModel b, Position objectPosition) {
@@ -22,12 +23,14 @@ public class MovingBehaviourGroup implements MovingBehaviour{
         return onBoardMoves;
     }
 
-    public void add(MovingBehaviour movingBehaviour) {
+    public MovingBehaviourGroup add(MovingBehaviour movingBehaviour) {
         movingBehaviours.add(movingBehaviour);
+        return this;
     }
 
-    public void remove(MovingBehaviour movingBehaviour) {
+    public MovingBehaviourGroup remove(MovingBehaviour movingBehaviour) {
         movingBehaviours.remove(movingBehaviour);
+        return this;
     }
 
     public Set<MovingBehaviour> getMovingBehaviours(){

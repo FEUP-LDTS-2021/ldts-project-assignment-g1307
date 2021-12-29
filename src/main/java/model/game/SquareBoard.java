@@ -19,6 +19,6 @@ public class SquareBoard implements BoardModel {
 
     @Override
     public boolean positionInBoard(Position position) {
-        return false;
+        return position.getCol() > 0 && position.getCol() <= columns && position.getRow() > 0 && position.getRow() <= rows;
     }
 }
