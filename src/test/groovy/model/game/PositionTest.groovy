@@ -29,4 +29,14 @@ class PositionTest extends Specification {
         added == new Position(2,5)
     }
 
+    def "mull"() {
+        given:
+        def pos = new Position(1,2)
+        def toAdd = new Position(1,3)
+        when:
+        def added = pos.mull(toAdd)
+        then:
+        added == new Position(1,6)
+    }
+
 }

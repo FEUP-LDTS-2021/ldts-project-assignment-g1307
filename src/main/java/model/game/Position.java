@@ -32,4 +32,12 @@ public class Position {
     public int hashCode() {
         return Objects.hash(row, col);
     }
+
+    public Position add(Position position) {
+        return new Position(this.row + position.getRow(),this.col + position.getCol());
+    }
+
+    public Position mull(Position position) {
+        return null;
+    }
 }
