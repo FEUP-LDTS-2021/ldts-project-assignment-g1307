@@ -1,5 +1,7 @@
 package model.game.pieces.movingBehaviours
 
+import model.game.Position
+
 class DiagonalStrategyTest extends MovingBehaviourTest {
     def setup(){
         def diagonalStrategy = new DiagonalStrategy()
@@ -21,5 +23,16 @@ class DiagonalStrategyTest extends MovingBehaviourTest {
 
         resultsD = 7
 
+    }
+
+    def "Checking if some positions are in the possible ones"() {
+        given:
+        def diagonalStrategy = new DiagonalStrategy()
+        def p = new Position(1,1)
+        when:
+        def r = diagonalStrategy.getMoves(board, p)
+        then:
+        r.contains(new Position(8,8))
+        !r.contains(new Position(1,2))
     }
 }

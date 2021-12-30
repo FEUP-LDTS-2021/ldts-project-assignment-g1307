@@ -1,11 +1,12 @@
 package model.game.pieces.movingBehaviours
 
+import model.game.BoardModel
 import model.game.Position
 
 import java.util.stream.Collectors
 import java.util.stream.IntStream
 
-class MovingBehaviourGroupTest extends MovingBehaviourTest {
+class MovingBehaviourGroupTest extends MovingBehaviourTest { // TODO: CLEAN THIS
     def setup(){
         'Giving a Strategy that corresponds to the queen type of movement'
         Set<MovingBehaviour> set = new HashSet<>()
@@ -62,5 +63,30 @@ class MovingBehaviourGroupTest extends MovingBehaviourTest {
         'number of positions of result of Test a8, a5, a1 -- moves count'
 
         resultsB = resultsC = resultsD = 21
+    }
+
+    def "adding and removing behaviours and overlapping moves"() {
+        given:
+        def m = new MovingBehaviourGroup()
+        def stubBehaviour = Stub(MovingBehaviour)
+        def stubBehaviour2 = Stub(MovingBehaviour)
+        Set<Position> p2 = new HashSet<> (), p1 = new HashSet<>()
+        def pos = new Position(1,1)
+        p1.add(pos)
+        def pos2 = new Position(1,2)
+        p2.add(pos)
+        p2.add(pos2)
+        stubBehaviour.getMoves(_ as BoardModel, _ as Position) >>  p1
+        stubBehaviour2.getMoves(_ as BoardModel, _ as Position) >> p2
+        when:
+        m.add(stubBehaviour)
+        m.add(stubBehaviour2)
+        def res = m.getMoves(board, new Position(1,1))
+        then:
+        m.getMovingBehaviours().size() == 2
+        res == p2
+        m.remove(stubBehaviour)
+        m.remove(stubBehaviour2)
+        m.getMovingBehaviours().size() == 0
     }
 }

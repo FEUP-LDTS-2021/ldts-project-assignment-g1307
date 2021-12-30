@@ -1,5 +1,7 @@
 package model.game.pieces.movingBehaviours
 
+import model.game.Position
+
 class SideStrategyTest extends MovingBehaviourTest{
     def setup(){
         def sizeStrategy = new SideStrategy()
@@ -9,5 +11,17 @@ class SideStrategyTest extends MovingBehaviourTest{
 
         resultsA = resultsB = resultsC = resultsD = 14
 
+    }
+
+    def "Checking if some positions are in the possible ones"() {
+        given:
+        def sideStrategy = new SideStrategy()
+        def p = new Position(1,1)
+        when:
+        def r = sideStrategy.getMoves(board, p)
+        then:
+        !r.contains(new Position(2,2))
+        r.contains(new Position(1,8))
+        r.contains(new Position(8,1))
     }
 }
