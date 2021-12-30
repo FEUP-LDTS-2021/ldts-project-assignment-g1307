@@ -11,10 +11,12 @@ public class StandardChessGame implements GameBuilder {
 
     private Set<Piece> piecesArrangementWhite;
     private Set<Piece> piecesArrangementBlack;
+    private final SquareBoard squareBoard;
 
     public StandardChessGame(){
         piecesArrangementWhite = new HashSet<>();
         piecesArrangementBlack = new HashSet<>();
+        squareBoard = new SquareBoard(8,8);
     }
 
     @Override
@@ -22,32 +24,26 @@ public class StandardChessGame implements GameBuilder {
 
     }
 
-    @Override
     public void buildPawns() {
 
     }
 
-    @Override
     public void buildKings() {
 
     }
 
-    @Override
     public void buildQueens() {
 
     }
 
-    @Override
     public void buildRooks() {
 
     }
 
-    @Override
     public void buildKnights() {
 
     }
 
-    @Override
     public void buildBishops() {
 
     }
@@ -60,6 +56,18 @@ public class StandardChessGame implements GameBuilder {
     @Override
     public void buildRules() {
 
+    }
+
+    public Set<Piece> getPiecesArrangementBlack() {
+        return piecesArrangementBlack;
+    }
+
+    public Set<Piece> getPiecesArrangementWhite() {
+        return piecesArrangementWhite;
+    }
+
+    public SquareBoard getSquareBoard() {
+        return squareBoard;
     }
 
     @Override
