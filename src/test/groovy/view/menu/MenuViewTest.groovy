@@ -12,6 +12,8 @@ class MenuViewTest extends Specification {
         def screen = Mock(Screen)
         def graphics = Mock(TextGraphics)
 
+        model.getCurrentOption() >> MenuModel.Option.EXIT
+
         def view = new MenuView(model, screen, graphics)
         def spy = Spy(view)
         when:
