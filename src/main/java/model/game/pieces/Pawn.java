@@ -6,7 +6,7 @@ import model.game.pieces.movingBehaviours.TwoAndOneStrategy;
 
 public class Pawn extends Piece{  // TODO: See what is the figure for this piece in the font
     boolean hasMoved;
-    public Pawn(COLOR color, char figure, Position position, TwoAndOneStrategy movingBehaviour) {
+    public Pawn(COLOR color, Position position, TwoAndOneStrategy movingBehaviour) {
         super(color, 'o', position, movingBehaviour);
     }
 }
