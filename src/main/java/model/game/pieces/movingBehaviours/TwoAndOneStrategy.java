@@ -7,36 +7,30 @@ import java.util.*;
 
 public class TwoAndOneStrategy implements MovingBehaviour{
 
-    private Direction direction;
+    private final Direction direction;
+
+    private final List<Position> dPos = Arrays.asList(new Position(1,0), new Position(2,0), new Position(1,-1),
+            new Position(1,1));
 
     public TwoAndOneStrategy(Direction direction){
         this.direction = direction;
     }
 
     public enum Direction{
-        NORTH,
-        SOUTH
+        NORTH(-1),
+        SOUTH(1);
+        int change;
+        Direction(int change){this.change = change;}
     }
 
     @Override
     public Set<Position> getMoves(BoardModel b, Position objectPosition) {
         Set<Position> possibleMoves = new HashSet<>();
 
-        int row = objectPosition.getRow();
-        int col = objectPosition.getCol();
-        List<Position> possiblePositions;
+        Position mulPos = new Position(direction.change,1);
 
-        if (direction == Direction.NORTH){
-            possiblePositions = Arrays.asList(new Position(row - 1, col), new Position(row - 2, col),
-                     new Position(row -1, col - 1), new Position(row - 1, col + 1));
-        }
-        else {
-            possiblePositions = Arrays.asList(new Position(row + 1, col), new Position(row + 2, col),
-                    new Position(row + 1, col - 1), new Position(row + 1, col + 1));
-        }
-
-        for (Position position : possiblePositions){
-            if(b.positionInBoard(position)) possibleMoves.add(position);
+        for (Position position:dPos) {
+            if(b.positionInBoard(objectPosition.add(position.mull(mulPos)))) possibleMoves.add(objectPosition.add(position.mull(mulPos)));
         }
 
         return possibleMoves;

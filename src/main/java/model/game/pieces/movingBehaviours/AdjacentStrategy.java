@@ -9,19 +9,16 @@ import java.util.List;
 import java.util.Set;
 
 public class AdjacentStrategy implements MovingBehaviour{
+    private final List<Position> dPos = Arrays.asList(new Position(-1,-1), new Position(-1,0), new Position(-1,1),
+            new Position(0,-1), new Position(0,1), new Position(1,-1), new Position(1,1),
+            new Position(1,0));
+
     @Override
     public Set<Position> getMoves(BoardModel b, Position objectPosition) {
         Set<Position> res = new HashSet<>();
 
-        int row = objectPosition.getRow();
-        int col = objectPosition.getCol();
-
-        List<Position> possiblePositions = Arrays.asList(new Position(row -1, col -1), new Position(row -1, col), new Position(row-1, col+1),
-                                new Position(row, col-1), new Position(row, col+1), new Position(row+1, col-1), new Position(row+1, col+1),
-                                new Position(row+1, col));
-
-        for (Position position : possiblePositions){
-            if(b.positionInBoard(position)) res.add(position);
+        for (Position position : dPos){
+            if(b.positionInBoard(objectPosition.add(position))) res.add(objectPosition.add(position));
         }
         return res;
     }

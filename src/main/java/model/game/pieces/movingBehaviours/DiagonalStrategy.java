@@ -11,50 +11,21 @@ public class DiagonalStrategy implements MovingBehaviour{
     public Set<Position> getMoves(BoardModel b, Position objectPosition) {
         Set<Position> possibleMoves = new HashSet<>();
 
-        int x = objectPosition.getCol() - 1;
-        int y = objectPosition.getRow() - 1;
+        int row = objectPosition.getRow();
+        int col = objectPosition.getCol();
 
-        while (b.positionInBoard(new Position(y, x))){
-            Position movePosition = new Position(y, x);
-            possibleMoves.add(movePosition);
-
-            x--;
-            y--;
+        for (int i = 1; b.positionInBoard(new Position(row +i,col + i)); i++) {
+            possibleMoves.add(new Position(row+i, col+i));
         }
-
-        x = objectPosition.getCol() - 1;
-        y = objectPosition.getRow() + 1;
-
-        while (b.positionInBoard(new Position(y, x))){
-            Position movePosition = new Position(y, x);
-            possibleMoves.add(movePosition);
-
-            x--;
-            y++;
+        for (int i = 1; b.positionInBoard(new Position(row-i,col-i)); i++) {
+            possibleMoves.add(new Position(row-i, col-i));
         }
-
-        x = objectPosition.getCol() + 1;
-        y = objectPosition.getRow() + 1;
-
-        while (b.positionInBoard(new Position(y, x))){
-            Position movePosition = new Position(y, x);
-            possibleMoves.add(movePosition);
-
-            x++;
-            y++;
+        for (int i = 1; b.positionInBoard(new Position(row+i,col-i)); i++) {
+            possibleMoves.add(new Position(row+i, col-i));
         }
-
-        x = objectPosition.getCol() + 1;
-        y = objectPosition.getRow() - 1;
-
-        while (b.positionInBoard(new Position(y, x))){
-            Position movePosition = new Position(y, x);
-            possibleMoves.add(movePosition);
-
-            x++;
-            y--;
+        for (int i = 1; b.positionInBoard(new Position(row-i,col+i)); i++) {
+            possibleMoves.add(new Position(row-i, col+i));
         }
-
         return possibleMoves;
     }
 }

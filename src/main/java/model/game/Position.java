@@ -38,6 +38,6 @@ public class Position {
     }
 
     public Position mull(Position position) {
-        return null;
+        return new Position(this.row * position.getRow(),this.col * position.getCol());
     }
 }
