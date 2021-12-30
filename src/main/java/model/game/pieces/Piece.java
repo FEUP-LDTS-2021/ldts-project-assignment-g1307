@@ -57,4 +57,12 @@ public abstract class Piece {
     public MovingBehaviour getMovingBehaviour() {
         return movingBehaviour;
     }
+
+    public COLOR getColor() {
+        return color;
+    }
+
+    public char getFigure() {
+        return figure;
+    }
 }
