@@ -1,7 +1,7 @@
 package model.game.pieces;
 
 
-import model.game.BoardModel;
+import model.game.board.BoardModel;
 import model.game.Position;
 import model.game.pieces.movingBehaviours.MovingBehaviour;
 

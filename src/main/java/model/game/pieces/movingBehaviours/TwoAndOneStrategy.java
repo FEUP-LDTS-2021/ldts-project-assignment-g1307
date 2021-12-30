@@ -1,6 +1,6 @@
 package model.game.pieces.movingBehaviours;
 
-import model.game.BoardModel;
+import model.game.board.BoardModel;
 import model.game.Position;
 
 import java.util.*;
@@ -19,7 +19,7 @@ public class TwoAndOneStrategy implements MovingBehaviour{
     public enum Direction{
         NORTH(-1),
         SOUTH(1);
-        int change;
+        final int change;
         Direction(int change){this.change = change;}
     }
 

@@ -1,4 +1,7 @@
-package model.game;
+package model.game.board;
+
+import model.game.Position;
+import model.game.board.BoardModel;
 
 public class SquareBoard implements BoardModel {
     private final int rows;

@@ -1,5 +1,7 @@
-package model.game;
+package model.game.builder;
 
+import model.game.Position;
+import model.game.board.SquareBoard;
 import model.game.pieces.*;
 import model.game.pieces.movingBehaviours.TwoAndOneStrategy;
 

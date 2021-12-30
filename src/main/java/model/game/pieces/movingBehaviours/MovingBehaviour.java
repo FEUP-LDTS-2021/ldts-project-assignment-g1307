@@ -1,6 +1,6 @@
 package model.game.pieces.movingBehaviours;
 
-import model.game.BoardModel;
+import model.game.board.BoardModel;
 import model.game.Position;
 
 import java.util.Set;

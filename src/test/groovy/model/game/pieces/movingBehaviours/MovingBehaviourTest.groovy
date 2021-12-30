@@ -1,6 +1,6 @@
 package model.game.pieces.movingBehaviours
 
-import model.game.SquareBoard
+import model.game.board.SquareBoard
 import model.game.Position
 import spock.lang.Specification
 

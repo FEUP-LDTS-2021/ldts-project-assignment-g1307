@@ -1,5 +1,6 @@
 package model.game
 
+import model.game.builder.StandardChessGame
 import model.game.pieces.Bishop
 import model.game.pieces.King
 import model.game.pieces.Knight

@@ -1,5 +1,7 @@
 package model.game
 
+import model.game.board.BoardModel
+import model.game.board.SquareBoard
 import spock.lang.Specification
 
 class SquareBoardTest extends Specification {
