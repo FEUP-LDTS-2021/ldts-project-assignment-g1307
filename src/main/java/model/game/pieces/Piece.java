@@ -50,9 +50,9 @@ public abstract class Piece {
         return position;
     }
 
-    public void setPosition(Position position) {
+    public void moveToPosition(Position position) {
         this.position = position;
-    }
+    } // this allows the piece to be moved to any position
 
     public MovingBehaviour getMovingBehaviour() {
         return movingBehaviour;
