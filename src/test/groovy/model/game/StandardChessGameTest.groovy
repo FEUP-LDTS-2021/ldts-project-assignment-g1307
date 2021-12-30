@@ -41,12 +41,118 @@ class StandardChessGameTest extends Specification {
         w == 8
     }
 
+    def "BuildKings"() {
+        when:
+        standardGame.buildKings()
+        def r = standardGame.getResults()
+        then: 'It Should return 2 kings , 1 black and 1 white'
+        r.size() == 2
+
+        def w = 0
+        def b = 0
+        for (def e : r) {
+            if (e instanceof King){
+                if (e.getColor() == Piece.COLOR.BLACK)
+                    b++
+                else if(e.getColor() == Piece.COLOR.White)
+                    w++
+            }
+        }
+        b == 1
+        w == 1
+    }
+
+    def "BuildQueens"() {
+        when:
+        standardGame.buildQueens()
+        def r = standardGame.getResults()
+        then: 'It Should return 2 queens , 1 black and 1 white'
+        r.size() == 2
+
+        def w = 0
+        def b = 0
+        for (def e : r) {
+            if (e instanceof Queen) {
+                if (e.getColor() == Piece.COLOR.BLACK)
+                    b++
+                else if (e.getColor() == Piece.COLOR.White)
+                    w++
+            }
+        }
+        b == 1
+        w == 1
+    }
+
+    def "BuildRooks"() {
+        when:
+        standardGame.buildRooks()
+        def r = standardGame.getResults()
+        then: 'It Should return 4 rooks , 2 black and 2 white'
+        r.size() == 4
+
+        def w = 0
+        def b = 0
+        for (def e : r) {
+            if (e instanceof Rook) {
+                if (e.getColor() == Piece.COLOR.BLACK)
+                    b++
+                else if (e.getColor() == Piece.COLOR.White)
+                    w++
+            }
+        }
+        b == 2
+        w == 2
+    }
+
+    def "BuildKnights"() {
+        when:
+        standardGame.buildKnights()
+        def r = standardGame.getResults()
+        then: 'It Should return 4 knights , 2 black and 2 white'
+        r.size() == 4
+
+        def w = 0
+        def b = 0
+        for (def e : r) {
+            if (e instanceof Knight) {
+                if (e.getColor() == Piece.COLOR.BLACK)
+                    b++
+                else if (e.getColor() == Piece.COLOR.White)
+                    w++
+            }
+        }
+        b == 2
+        w == 2
+    }
+
+    def "BuildBishops"() {
+        when:
+        standardGame.buildBishops()
+        def r = standardGame.getResults()
+        then: 'It Should return 4 bishops, 2 black and 2 white'
+        r.size() == 4
+
+        def w = 0
+        def b = 0
+        for (def e : r) {
+            if (e instanceof Bishop) {
+                if (e.getColor() == Piece.COLOR.BLACK)
+                    b++
+                else if (e.getColor() == Piece.COLOR.White)
+                    w++
+            }
+        }
+        b == 2
+        w == 2
+    }
+
     def "BuildPieces"() {
         when:
         standardGame.buildPieces()
         def r = standardGame.getResults()
         then:
-        r.size() == 16
+        r.size() == 32
+        def p = 0
         def q = 0
         def b = 0
         def k = 0
@@ -63,8 +169,11 @@ class StandardChessGameTest extends Specification {
                 rook++
             } else if(e instanceof King) {
                 king++
+            } else if (e instanceof Pawn) {
+                p++
             }
         }
+        p    == 16
         q    == 2
         b    == 4
         k    == 4
