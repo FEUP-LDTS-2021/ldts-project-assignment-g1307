@@ -1,5 +1,7 @@
 package model.game;
 
+import java.util.Objects;
+
 public class Position {
 
     int row;
@@ -19,10 +21,22 @@ public class Position {
     }
 
     @Override
-    public String toString() {
-        StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append((char) ('a' + col)).append(row + 1);
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Position position)) return false;
+        return row == position.row && col == position.col;
+    }
 
-        return stringBuilder.toString();
+    @Override
+    public int hashCode() {
+        return Objects.hash(row, col);
+    }
+
+    public Position add(Position position) {
+        return new Position(this.row + position.getRow(),this.col + position.getCol());
+    }
+
+    public Position mull(Position position) {
+        return new Position(this.row * position.getRow(),this.col * position.getCol());
     }
 }
