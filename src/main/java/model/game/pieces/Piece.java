@@ -8,7 +8,7 @@ import model.game.pieces.movingBehaviours.MovingBehaviour;
 import java.util.Set;
 
 public abstract class Piece {
-
+    boolean hasMoved;
     COLOR color;
     char figure;
     Position position;
@@ -19,6 +19,7 @@ public abstract class Piece {
         this.figure = figure;
         this.position = position;
         this.movingBehaviour = movingBehaviour;
+        hasMoved = false;
     }
 
     public enum COLOR { // To ask ... does This counts as an OCP Violation?
@@ -52,6 +53,7 @@ public abstract class Piece {
 
     public void moveToPosition(Position position) {
         this.position = position;
+        hasMoved = true;
     } // this allows the piece to be moved to any position
 
     public MovingBehaviour getMovingBehaviour() {
@@ -65,4 +67,9 @@ public abstract class Piece {
     public char getFigure() {
         return figure;
     }
+
+    public boolean isMoved() {
+        return hasMoved;
+    }
+
 }

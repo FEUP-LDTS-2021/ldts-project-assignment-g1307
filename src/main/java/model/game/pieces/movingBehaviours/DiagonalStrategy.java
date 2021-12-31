@@ -4,28 +4,29 @@ import model.game.board.BoardModel;
 import model.game.Position;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
-public class DiagonalStrategy implements MovingBehaviour{
+public class DiagonalStrategy implements MovingBehaviour{ // we have a code smell here - duplicated code
     @Override
     public Set<Position> getMoves(BoardModel b, Position objectPosition) {
         Set<Position> possibleMoves = new HashSet<>();
 
-        int row = objectPosition.getRow();
-        int col = objectPosition.getCol();
+        addPossibleMovesInDir(true,true,possibleMoves,objectPosition,b);
+        addPossibleMovesInDir(true,false,possibleMoves,objectPosition,b);
+        addPossibleMovesInDir(false,true,possibleMoves,objectPosition,b);
+        addPossibleMovesInDir(false,false,possibleMoves,objectPosition,b);
 
-        for (int i = 1; b.positionInBoard(new Position(row +i,col + i)); i++) {
-            possibleMoves.add(new Position(row+i, col+i));
-        }
-        for (int i = 1; b.positionInBoard(new Position(row-i,col-i)); i++) {
-            possibleMoves.add(new Position(row-i, col-i));
-        }
-        for (int i = 1; b.positionInBoard(new Position(row+i,col-i)); i++) {
-            possibleMoves.add(new Position(row+i, col-i));
-        }
-        for (int i = 1; b.positionInBoard(new Position(row-i,col+i)); i++) {
-            possibleMoves.add(new Position(row-i, col+i));
-        }
         return possibleMoves;
+    }
+
+    public void addPossibleMovesInDir(boolean upRow, boolean upCol, Set<Position> pMs, Position pos, BoardModel b) {
+        int c = upRow ? 1:-1;
+        int r = upCol ? 1:-1;
+        int row = pos.getRow();
+        int col = pos.getCol();
+        for (int i = 1; b.positionInBoard(new Position(row +i*r,col + i*c)); i++) {
+            pMs.add(new Position(row+i*r, col+i*c));
+        }
     }
 }
