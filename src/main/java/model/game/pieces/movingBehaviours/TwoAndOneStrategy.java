@@ -34,4 +34,8 @@ public class TwoAndOneStrategy implements MovingBehaviour{
 
         return possibleMoves;
     }
+
+    public Direction getDirection() {
+        return direction;
+    }
 }

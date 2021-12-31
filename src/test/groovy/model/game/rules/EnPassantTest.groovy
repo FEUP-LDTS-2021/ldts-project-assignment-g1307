@@ -19,7 +19,7 @@ class EnPassantTest extends Specification { // TODO : this test is dependent on 
         set.add(bPawn)
         set.add(wPawn)
         gameModel.setPiecesInGame(set)
-        gameModel.setBoardModel(new SquareBoard(8,8))
+        gameModel.setBoardModel(new SquareBoard(8))
 
         def filter = new EnPassant(gameModel)
         when:

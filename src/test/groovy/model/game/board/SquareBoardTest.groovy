@@ -6,7 +6,7 @@ import model.game.board.SquareBoard
 import spock.lang.Specification
 
 class SquareBoardTest extends Specification {
-    BoardModel boardModel = new SquareBoard(8,8)
+    BoardModel boardModel = new SquareBoard(8)
     def 'PositionInBoard in corner of the board'() {
         given: 'a Position'
         def pos = new Position(1,1)

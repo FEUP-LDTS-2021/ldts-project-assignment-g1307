@@ -10,7 +10,7 @@ abstract class MovingBehaviourTest extends Specification{
     def resultsB;
     def resultsC;
     def resultsD;
-    def board = new SquareBoard(8,8)
+    def board = new SquareBoard(8)
 
 
     def "Position of object is d4"() {

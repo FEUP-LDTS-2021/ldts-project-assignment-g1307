@@ -18,7 +18,7 @@ class CastleTest extends Specification {
         Set<Piece> pieces = new HashSet<>()
         Set<Rule> rules = new HashSet<>()
         gameModel = new GameModel()
-        gameModel.setBoardModel(new SquareBoard(8,8))
+        gameModel.setBoardModel(new SquareBoard(8))
 
         rules.add(new Castle(gameModel))
 
