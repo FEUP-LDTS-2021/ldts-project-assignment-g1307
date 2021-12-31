@@ -39,4 +39,8 @@ public class GameModel implements Model { // at a first glance it seems that the
     public void setBoardModel(BoardModel boardModel) {
         this.boardModel = boardModel;
     }
+
+    public void removePiece(Piece p) {
+        piecesInGame.remove(p);
+    }
 }

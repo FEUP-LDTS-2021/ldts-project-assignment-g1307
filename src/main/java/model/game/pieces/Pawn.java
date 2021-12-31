@@ -12,11 +12,12 @@ public class Pawn extends Piece{  // TODO: See what is the figure for this piece
 
     @Override
     public void moveToPosition(Position position) {
-        super.moveToPosition(position);
         advancedTwo = Math.abs(this.position.getRow() - position.getRow()) == 2;
+        this.position = position;
+        hasMoved = true;
     }
 
-    public boolean isAdvancedTwo() {
+    public boolean hasAdvancedTwo() {
         return advancedTwo;
     }
 }

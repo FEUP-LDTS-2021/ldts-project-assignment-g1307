@@ -73,15 +73,4 @@ public abstract class Piece {
         return hasMoved;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Piece piece)) return false;
-        return hasMoved == piece.hasMoved && color == piece.color && Objects.equals(position, piece.position);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(hasMoved, color, position);
-    }
 }
