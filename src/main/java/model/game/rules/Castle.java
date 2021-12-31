@@ -22,7 +22,8 @@ public class Castle implements Rule{
         Set<Position> addedMoves = piece.getMoves(gameModel.getBoardModel());
         if (piece instanceof King king && !piece.isMoved() && !king.inCheck()) { // TODO: a bit repetitive
             if (gameModel.getPiecesInGame().contains(new Rook(piece.getColor(),new Position(piece.getPosition().getRow(), colToSearch)))) {
-                addedMoves.add(new Position(piece.getPosition().getRow(),piece.getPosition().getCol() + 2)); // here the position must have an information to switch with Rook ..still not implemented
+                addedMoves.add(new Position(piece.getPosition().getRow(),piece.getPosition().getCol() + 2)); // here the position must have an information to switch with Rook ...still not implemented
+                // TODO: DO NOT FORGOT TO FINISH THE SWITCH WITH THE ROOK ... TO DISCUSS
             }
             if (gameModel.getPiecesInGame().contains(new Rook(piece.getColor(),new Position(piece.getPosition().getRow(), 1)))) { // rook in first col
                 addedMoves.add(new Position(piece.getPosition().getRow(),piece.getPosition().getCol() - 2));
