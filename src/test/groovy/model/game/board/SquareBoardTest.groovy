@@ -1,5 +1,6 @@
-package model.game
+package model.game.board
 
+import model.game.Position
 import model.game.board.BoardModel
 import model.game.board.SquareBoard
 import spock.lang.Specification
