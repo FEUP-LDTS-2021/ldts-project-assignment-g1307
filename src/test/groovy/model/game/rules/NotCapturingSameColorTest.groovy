@@ -8,15 +8,17 @@ import model.game.pieces.Piece
 import spock.lang.Specification
 
 class NotCapturingSameColorTest extends Specification {
-    def "A positional Move in the same square as other piece"() {
+    def "A positional Move in the same square as other piece of same color"() {
         given:
         def piece = Mock(Piece)
         def piece2 = Mock(Piece)
 
-        piece.getMoves(_ as BoardModel) >> new Position(0,0)
+        Set<Position> set = new HashSet()
+        set.add(new Position(0,0))
+        piece.getMoves(_ as BoardModel) >>> [set.clone(),set.clone()]
         piece2.getPosition() >> new Position(0,0)
         piece.getPosition() >> new Position(2,2)
-
+        'colors are both null'
         def s = new HashSet()
         s.add(piece)
         s.add(piece2)
@@ -32,8 +34,11 @@ class NotCapturingSameColorTest extends Specification {
 
         when:
         def r = nC.obyRule(piece)
-
+        piece.getColor() >> Piece.COLOR.BLACK
+        piece2.getColor() >> Piece.COLOR.White
+        def r2 = nC.obyRule(piece)
         then:
-        !r && r!=null
+        !r.size() && r!=null
+        r2.size() == 1
     }
 }
