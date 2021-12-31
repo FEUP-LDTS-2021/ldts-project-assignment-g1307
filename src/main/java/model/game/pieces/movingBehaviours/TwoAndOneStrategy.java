@@ -18,7 +18,7 @@ public class TwoAndOneStrategy implements MovingBehaviour{
     public enum Direction{
         NORTH(-1),
         SOUTH(1);
-        final int change;
+        public final int change;
         Direction(int change){this.change = change;}
     }
 

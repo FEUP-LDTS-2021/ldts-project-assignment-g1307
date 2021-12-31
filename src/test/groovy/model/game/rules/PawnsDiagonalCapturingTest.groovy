@@ -6,6 +6,7 @@ import model.game.board.BoardModel
 import model.game.board.SquareBoard
 import model.game.pieces.Pawn
 import model.game.pieces.Piece
+import model.game.pieces.movingBehaviours.TwoAndOneStrategy
 import spock.lang.Specification
 
 class PawnsDiagonalCapturingTest extends Specification {
@@ -14,10 +15,13 @@ class PawnsDiagonalCapturingTest extends Specification {
         def piece = Mock(Pawn)
         def piece2 = Mock(Pawn)
 
-        piece2.getPosition() >> new Position(3,3)
-        piece.getPosition() >> new Position(2,2)
+        piece2.getPosition() >> new Position(2,2)
+        piece.getPosition() >> new Position(3,3)
 
         piece.getColor() >> Piece.COLOR.White
+        piece.getMovingBehaviour() >> new TwoAndOneStrategy(TwoAndOneStrategy.Direction.NORTH)
+        Set<Position> set = new HashSet()
+        piece.getMoves(_ as BoardModel) >> set
         piece2.getColor() >> Piece.COLOR.BLACK
 
         def s = new HashSet()
@@ -36,6 +40,6 @@ class PawnsDiagonalCapturingTest extends Specification {
         when:
         def r = nC.obyRule(piece)
         then:
-        r.size() == 3
+        r.size() == 1
     }
 }
