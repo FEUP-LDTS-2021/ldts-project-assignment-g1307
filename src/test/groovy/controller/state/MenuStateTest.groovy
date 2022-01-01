@@ -11,7 +11,7 @@ class MenuStateTest extends Specification {
         given:
         def mM = Mock(MenuModel)
         def mV = Mock(MenuView)
-        MenuState menuState = new MenuState(mM, mV)
+        MenuState menuState = new MenuState(mV)
         def spy = Spy(menuState)
         spy.view = mV
         spy.model = mM
