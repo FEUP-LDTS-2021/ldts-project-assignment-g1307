@@ -19,8 +19,8 @@ class PawnsStandardMoveRuleTest extends Specification {
         piece.getColor() >> Piece.COLOR.White
         piece.getMovingBehaviour() >> new TwoAndOneStrategy(TwoAndOneStrategy.Direction.NORTH)
         Set<Position> set = new HashSet()
-        set.add(new Position(4,3))
-        set.add(new Position(5,3))
+        set.add(new Position(2,3))
+        set.add(new Position(1,3))
         piece.getMoves(_ as BoardModel) >> set
 
         def s = new HashSet()
@@ -36,11 +36,12 @@ class PawnsStandardMoveRuleTest extends Specification {
         def nC = new PawnsStandardMoveRule(gameModel)
 
         when:
-        def r = nC.obyRule(piece)
+        def r = nC.obyRule(piece).size()
         piece.moveToPosition(new Position(1,4))
-        def r2 = nC.obyRule(piece)
+        piece.isMoved() >> true
+        def r2 = nC.obyRule(piece).size()
         then:
-        r.size() == 2
-        r2.size() == 1
+        r == 2
+        r2 == 1
     }
 }
