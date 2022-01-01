@@ -125,4 +125,11 @@ public abstract class View<T extends Model> { // NOTA: a fonte só e para ser us
 
     public abstract void draw() throws IOException;
 
+    public void close() throws IOException {
+        screen.close();
+    }
+
+    public Screen getScreen() {
+        return this.screen;
+    }
 }
