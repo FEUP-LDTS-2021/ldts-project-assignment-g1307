@@ -26,7 +26,8 @@ public class MenuState extends ControllerState<MenuModel,MenuView> {
             case Enter -> {
                 switch (model.getCurrentOption()) {
                     case NEWGAME -> nextControllerState = new GameState();// TODO: CHANGE THIS
-                    case EXIT -> view.close();
+                    case EXIT -> {
+                    }
                 }
             }
             case EOF -> view.getScreen().close();
