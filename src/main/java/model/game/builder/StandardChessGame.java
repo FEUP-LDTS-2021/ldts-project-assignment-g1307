@@ -17,7 +17,7 @@ public class StandardChessGame implements GameBuilder {
     public StandardChessGame(){
         piecesArrangementWhite = new HashSet<>();
         piecesArrangementBlack = new HashSet<>();
-        squareBoard = new SquareBoard(8,8);
+        squareBoard = new SquareBoard(8);
     }
 
     @Override

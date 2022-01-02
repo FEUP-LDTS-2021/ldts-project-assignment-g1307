@@ -9,8 +9,7 @@ class TwoAndOneStrategySouthTest extends MovingBehaviourTest{
 
         'number of positions of result of Test d4, a8, a5, a1 -- using moves count'
 
-        resultsA = 4
-        resultsB = resultsC = 3
+        resultsA = resultsB = resultsC = 2
         resultsD = 0
     }
 
@@ -21,9 +20,7 @@ class TwoAndOneStrategySouthTest extends MovingBehaviourTest{
         when:
         def r = twoAndOne.getMoves(board, p)
         then:
-        'the 3 positions'
-        r.contains(new Position(8,1))
-        r.contains(new Position(8,3))
+        'the 1 positions'
         r.contains(new Position(8,2))
     }
 }
