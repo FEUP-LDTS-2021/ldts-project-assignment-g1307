@@ -5,6 +5,8 @@ import model.game.Position;
 import model.game.move.Move;
 import model.game.pieces.Piece;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 public class NoStepOverPiece implements Rule{
@@ -15,9 +17,11 @@ public class NoStepOverPiece implements Rule{
     @Override
     public Set<Move> obyRule(Piece p) {
         Set<Move> filterMoves = p.getMoves(gameModel.getBoardModel());
-        for (Move move : filterMoves) {
+        List<Position> positions = new ArrayList<>();
+        for (Move move: filterMoves) positions.add(move.getPosition());
+        for (Position mPos : positions) {
             for (Piece piece : gameModel.getPiecesInGame()) {
-                if (move.getPosition().equals(piece.getPosition()))
+                if (mPos.equals(piece.getPosition()))
                     removeStepOverMoves(piece, piece.getPosition().sub(p.getPosition()),filterMoves);
             }
         }
