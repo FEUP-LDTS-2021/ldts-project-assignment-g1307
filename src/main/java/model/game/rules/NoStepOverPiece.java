@@ -2,6 +2,7 @@ package model.game.rules;
 
 import model.game.GameModel;
 import model.game.Position;
+import model.game.move.Move;
 import model.game.pieces.Piece;
 
 import java.util.Set;
@@ -12,7 +13,7 @@ public class NoStepOverPiece implements Rule{
         this.gameModel = gameModel;
     }
     @Override
-    public Set<Position> obyRule(Piece pieceToFilter) {
+    public Set<Move> obyRule(Piece pieceToFilter) {
         return null;
     }
 }
