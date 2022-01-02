@@ -17,7 +17,7 @@ public class StandardChessGame implements GameBuilder {
     public StandardChessGame(){
         piecesArrangementWhite = new HashSet<>();
         piecesArrangementBlack = new HashSet<>();
-        squareBoard = new SquareBoard(8,8);
+        squareBoard = new SquareBoard(8);
     }
 
     @Override
@@ -27,7 +27,7 @@ public class StandardChessGame implements GameBuilder {
     }
 
     public void buildPawns() {
-        for (int i = 1; i <= 8; i++){
+        for (int i = 1; i <= squareBoard.getColumns(); i++){
             piecesArrangementWhite.add(new Pawn(Piece.COLOR.White, new Position(7, i),
                     new TwoAndOneStrategy(TwoAndOneStrategy.Direction.NORTH)));
             piecesArrangementBlack.add(new Pawn(Piece.COLOR.BLACK, new Position(2, i),
