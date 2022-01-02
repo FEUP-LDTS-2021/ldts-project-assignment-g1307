@@ -12,7 +12,7 @@ import java.io.IOException;
 
 public class MenuView extends View<MenuModel> {
 
-    MenuView(MenuModel model){
+    public MenuView(MenuModel model){
         super(model, "square.ttf"); // TODO : we could pass the font as an argument too
     }
 
@@ -63,7 +63,6 @@ public class MenuView extends View<MenuModel> {
             TerminalPosition stringPos = new TerminalPosition(colToWrite, rowOfRectangle + 2);
             graphics.putString(stringPos, opt.toString());
         }
-
     }
 
     @Override
@@ -83,4 +82,5 @@ public class MenuView extends View<MenuModel> {
         graphics.setBackgroundColor(TextColor.Factory.fromString("#312e2b"));
         graphics.fillRectangle(new TerminalPosition(0,0), new TerminalSize(getWidth(),getHeight()),' ');
     }
+
 }
