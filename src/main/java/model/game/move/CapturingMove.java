@@ -12,11 +12,12 @@ public class CapturingMove extends MoveDecorator {
         super(move);
         assert piece != null;
         this.inGamePieces = inGamePieces;
+        capturedPiece = piece;
     }
 
     @Override
     public void execute() {
         super.execute();
-        inGamePieces.remove(super.getPiece());
+        inGamePieces.remove(capturedPiece);
     }
 }
