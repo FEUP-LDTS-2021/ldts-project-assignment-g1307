@@ -13,6 +13,7 @@ import spock.lang.Specification
 class CastleTest extends Specification {
     GameModel gameModel
     Piece piece
+    Rook rook
 
     def setup() {
         Set<Piece> pieces = new HashSet<>()
@@ -24,12 +25,12 @@ class CastleTest extends Specification {
 
         'a king in e8 with a rook in h8 - castle short'
         Piece king = new King(Piece.COLOR.BLACK, new Position(1,5))
-        Piece rook = new Rook(Piece.COLOR.BLACK, new Position(1,8))
+        rook = new Rook(Piece.COLOR.BLACK, new Position(1,8))
         pieces.add(king)
         pieces.add(rook)
 
         piece = Stub(King)
-        piece.getMoves(_ as BoardModel) >> new HashSet<Position>()
+        piece.getMovesPositions(_ as BoardModel) >> new HashSet<Position>()
         piece.getPosition() >> new Position(1,5)
         piece.getColor() >> Piece.COLOR.BLACK
 
@@ -41,11 +42,12 @@ class CastleTest extends Specification {
         def castleFilter = new Castle(gameModel)
         when:
         def legalMoves = castleFilter.obyRule(piece)
+        legalMoves[0].execute()
         then:
         legalMoves.size() == 1
         'when castling the pos of the king would be g8 and rook new pos f8'
         // maybe make a Move class to implement this behaviour ... or extend position(it seems better) ?
-        legalMoves.contains(new Position(1,7))
+        rook.getPosition() == new Position(1,6)
     }
 
     def "Not Castling when king is in threat"() {

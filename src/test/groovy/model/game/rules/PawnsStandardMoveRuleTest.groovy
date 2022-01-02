@@ -4,6 +4,8 @@ import model.game.GameModel
 import model.game.Position
 import model.game.board.BoardModel
 import model.game.board.SquareBoard
+import model.game.move.Move
+import model.game.move.SimpleMove
 import model.game.pieces.Pawn
 import model.game.pieces.Piece
 import model.game.pieces.movingBehaviours.TwoAndOneStrategy
@@ -18,9 +20,9 @@ class PawnsStandardMoveRuleTest extends Specification {
 
         piece.getColor() >> Piece.COLOR.White
         piece.getMovingBehaviour() >> new TwoAndOneStrategy(TwoAndOneStrategy.Direction.NORTH)
-        Set<Position> set = new HashSet()
-        set.add(new Position(2,3))
-        set.add(new Position(1,3))
+        Set<Move> set = new HashSet()
+        set.add(new SimpleMove(piece ,new Position(2,3)))
+        set.add(new SimpleMove(piece ,new Position(1,3)))
         piece.getMoves(_ as BoardModel) >> set
 
         def s = new HashSet()
@@ -37,7 +39,6 @@ class PawnsStandardMoveRuleTest extends Specification {
 
         when:
         def r = nC.obyRule(piece).size()
-        piece.moveToPosition(new Position(1,4))
         piece.isMoved() >> true
         def r2 = nC.obyRule(piece).size()
         then:

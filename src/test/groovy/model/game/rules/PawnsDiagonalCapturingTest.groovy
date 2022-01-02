@@ -1,9 +1,11 @@
 package model.game.rules
 
+import model.Model
 import model.game.GameModel
 import model.game.Position
 import model.game.board.BoardModel
 import model.game.board.SquareBoard
+import model.game.move.Move
 import model.game.pieces.Pawn
 import model.game.pieces.Piece
 import model.game.pieces.movingBehaviours.TwoAndOneStrategy
@@ -20,7 +22,7 @@ class PawnsDiagonalCapturingTest extends Specification {
 
         piece.getColor() >> Piece.COLOR.White
         piece.getMovingBehaviour() >> new TwoAndOneStrategy(TwoAndOneStrategy.Direction.NORTH)
-        Set<Position> set = new HashSet()
+        Set<Move> set = new HashSet()
         piece.getMoves(_ as BoardModel) >> set
         piece2.getColor() >> Piece.COLOR.BLACK
 

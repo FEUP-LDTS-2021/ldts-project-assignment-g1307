@@ -4,6 +4,8 @@ import model.game.GameModel
 import model.game.Position
 import model.game.board.BoardModel
 import model.game.board.SquareBoard
+import model.game.move.Move
+import model.game.move.SimpleMove
 import model.game.pieces.Piece
 import spock.lang.Specification
 
@@ -13,9 +15,9 @@ class NotCapturingSameColorTest extends Specification {
         def piece = Mock(Piece)
         def piece2 = Mock(Piece)
 
-        Set<Position> set = new HashSet()
-        set.add(new Position(0,0))
-        piece.getMoves(_ as BoardModel) >>> [set.clone(),set.clone()]
+        Set<Move> set = new HashSet()
+        set.add(new SimpleMove(piece,new Position(0,0)))
+        piece.getMoves(_ as BoardModel) >>> [set.clone(), set.clone()]
         piece2.getPosition() >> new Position(0,0)
         piece.getPosition() >> new Position(2,2)
         'colors are both null'
