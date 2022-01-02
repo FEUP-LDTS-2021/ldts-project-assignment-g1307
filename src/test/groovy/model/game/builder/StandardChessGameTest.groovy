@@ -1,4 +1,4 @@
-package model.game
+package model.game.builder
 
 import model.game.builder.StandardChessGame
 import model.game.pieces.Bishop

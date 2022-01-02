@@ -9,8 +9,7 @@ public class TwoAndOneStrategy implements MovingBehaviour{
 
     private final Direction direction;
 
-    private final List<Position> dPos = Arrays.asList(new Position(1,0), new Position(2,0), new Position(1,-1),
-            new Position(1,1));
+    private final List<Position> dPos = Arrays.asList(new Position(1,0), new Position(2,0));
 
     public TwoAndOneStrategy(Direction direction){
         this.direction = direction;
@@ -19,7 +18,7 @@ public class TwoAndOneStrategy implements MovingBehaviour{
     public enum Direction{
         NORTH(-1),
         SOUTH(1);
-        final int change;
+        public final int change;
         Direction(int change){this.change = change;}
     }
 
@@ -34,5 +33,9 @@ public class TwoAndOneStrategy implements MovingBehaviour{
         }
 
         return possibleMoves;
+    }
+
+    public Direction getDirection() {
+        return direction;
     }
 }

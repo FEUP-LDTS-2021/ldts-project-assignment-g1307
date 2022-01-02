@@ -1,13 +1,13 @@
-package model.game
+package model.game.board
 
-import model.game.board.BoardCase
-import model.game.board.BoardModel
-import model.game.board.SquareBoard
+import model.game.Position
+
 import spock.lang.Specification
 
 import java.awt.Color
 
 class SquareBoardTest extends Specification {
+
     SquareBoard board = new SquareBoard(8, Color.WHITE, Color.BLACK)
     BoardModel boardModel = new SquareBoard(8)
 

@@ -3,8 +3,12 @@ package model.game.pieces;
 
 import model.game.board.BoardModel;
 import model.game.Position;
+import model.game.move.Move;
+import model.game.move.SimpleMove;
 import model.game.pieces.movingBehaviours.MovingBehaviour;
 
+import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 public abstract class Piece {
@@ -45,7 +49,18 @@ public abstract class Piece {
         }
     }
 
-    public Set<Position> getMoves(BoardModel boardModel) {return movingBehaviour.getMoves(boardModel,position);}
+    public Set<Position> getMovesPositions(BoardModel boardModel) {return movingBehaviour.getMoves(boardModel,position);}
+
+    public Set<Move> getMoves(BoardModel boardModel) {
+        Set<Position> positions = movingBehaviour.getMoves(boardModel,position);
+        Set<Move> moves = new HashSet<>();
+
+        for (Position position: positions) {
+            moves.add(new SimpleMove(this,position));
+        }
+
+        return moves;
+    }
 
     public Position getPosition() {
         return position;

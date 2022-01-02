@@ -10,8 +10,8 @@ import java.util.Set;
 
 public class StandardChessGame implements GameBuilder {
 
-    private Set<Piece> piecesArrangementWhite;
-    private Set<Piece> piecesArrangementBlack;
+    private final Set<Piece> piecesArrangementWhite;
+    private final Set<Piece> piecesArrangementBlack;
     private final SquareBoard squareBoard;
 
     public StandardChessGame(){

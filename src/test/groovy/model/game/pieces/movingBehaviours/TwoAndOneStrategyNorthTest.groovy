@@ -9,9 +9,8 @@ class TwoAndOneStrategyNorthTest extends MovingBehaviourTest{
 
         'number of positions of result of Test d4, a8, a5, a1 -- using moves count'
 
-        resultsA = 4
+        resultsA = resultsC = resultsD = 2
         resultsB = 0
-        resultsC = resultsD = 3
     }
 
     def "Checking if some positions are in the possible ones"() {
@@ -21,9 +20,7 @@ class TwoAndOneStrategyNorthTest extends MovingBehaviourTest{
         when:
         def r = twoAndOne.getMoves(board, p)
         then:
-        'the 4 positions'
-        r.contains(new Position(6,1))
-        r.contains(new Position(6,3))
+        'the 2 positions'
         r.contains(new Position(6,2))
         r.contains(new Position(5,2))
     }
