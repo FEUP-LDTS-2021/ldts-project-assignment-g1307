@@ -13,6 +13,7 @@ class NoStepOverPieceTest extends Specification {
         given: 'A piece that can go to the same position of piece2 and another right after'
         Piece piece1 = Mock(Piece)
         Piece piece2 = Mock(Piece)
+        piece1.getPosition() >> new Position(1,1)
         def gameModel = new GameModel()
 
         def mPiece1 = new HashSet()
@@ -35,6 +36,5 @@ class NoStepOverPieceTest extends Specification {
 
         then:
         r.size() == 1
-
     }
 }
