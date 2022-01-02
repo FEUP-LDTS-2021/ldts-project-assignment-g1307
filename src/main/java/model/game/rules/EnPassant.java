@@ -29,7 +29,7 @@ public class EnPassant implements Rule {
                     int diffCol = piece.getPosition().getCol() - p.getPosition().getCol();
                     if (diffCol == - 1 || diffCol == 1) {
                         Position position = new Position(piece.getPosition().getRow() - 1, p.getPosition().getRow());
-                        addedMoves.add(new CapturingMove(pawn,  new SimpleMove(pawn, position)));
+                        addedMoves.add(new CapturingMove(pawn,  new SimpleMove(pawn, position), gameModel.getPiecesInGame()));
                         break; // there will be only one possible en passant move
                     }
                 }

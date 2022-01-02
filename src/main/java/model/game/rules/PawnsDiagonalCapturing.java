@@ -28,7 +28,7 @@ public class PawnsDiagonalCapturing implements Rule{
                 if (piece.getColor() != p.getColor()) {
                     if (piece.getPosition().equals(possiblePosCapture1) || piece.getPosition().equals(possiblePosCapture2)) {
                         SimpleMove simpleMove = new SimpleMove(pawn, piece.getPosition());
-                        addedMoves.add(new CapturingMove(piece,simpleMove));
+                        addedMoves.add(new CapturingMove(piece,simpleMove, gameModel.getPiecesInGame()));
                     }
                 }
             }

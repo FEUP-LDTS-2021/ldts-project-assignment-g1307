@@ -4,6 +4,7 @@ import model.game.GameModel
 import model.game.Position
 import model.game.board.BoardModel
 import model.game.board.SquareBoard
+import model.game.move.SimpleMove
 import model.game.pieces.Piece
 import spock.lang.Specification
 
@@ -15,8 +16,9 @@ class KillPieceOnCaptureTest extends Specification {
         def gameModel = new GameModel()
 
         def mPiece1 = new HashSet()
-        mPiece1.add(new Position(1,2))
+        mPiece1.add(new SimpleMove(piece1,new Position(1,2)))
         piece1.getMoves(_ as BoardModel) >> mPiece1
+        piece1.getColor() >> Piece.COLOR.BLACK
 
         piece2.getPosition() >> new Position(1,2)
 
@@ -35,6 +37,6 @@ class KillPieceOnCaptureTest extends Specification {
         r[0].execute()
 
         then:
-        piece2 == null
+        gameModel.getPiecesInGame().size() == 1
     }
 }
