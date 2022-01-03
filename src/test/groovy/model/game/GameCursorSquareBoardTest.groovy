@@ -7,72 +7,66 @@ class GameCursorSquareBoardTest extends Specification {
     GameCursor gameCursorA;
     GameCursor gameCursorB;
     GameCursor gameCursorC;
-    Position selectedPositionA;
-    Position selectedPositionB;
-    Position selectedPositionC;
 
     void setup() {
         gameCursorA = new GameCursor(new Position(1, 1), new SquareBoard(8))
         gameCursorB = new GameCursor(new Position(8, 8), new SquareBoard(8))
         gameCursorC = new GameCursor(new Position(3, 3), new SquareBoard(8))
-        selectedPositionA = null;
-        selectedPositionB = null;
-        selectedPositionC = null;
     }
 
     def "MoveUp"() {
         when:
         gameCursorA.moveUp()
-        gameCursorA.select(selectedPositionA)
+        gameCursorA.select()
         gameCursorB.moveUp()
-        gameCursorB.select(selectedPositionB)
+        gameCursorB.select()
         gameCursorC.moveUp()
-        gameCursorC.select(selectedPositionC)
+        gameCursorC.select()
         then:
-        selectedPositionA.getRow() == 8 && selectedPositionA.getCol() == 1
-        selectedPositionB.getRow() == 7 && selectedPositionB.getCol() == 8
-        selectedPositionC.getRow() == 2 && selectedPositionC.getCol() == 3
+        gameCursorA.getSelectedPosition().getRow() == 8 && gameCursorA.getSelectedPosition().getCol() == 1
+        gameCursorB.getSelectedPosition().getRow() == 7 && gameCursorB.getSelectedPosition().getCol() == 8
+        gameCursorC.getSelectedPosition().getRow() == 2 && gameCursorC.getSelectedPosition().getCol() == 3
     }
 
     def "MoveDown"() {
         when:
         gameCursorA.moveDown()
-        gameCursorA.select(selectedPositionA)
+        gameCursorA.select()
         gameCursorB.moveDown()
-        gameCursorB.select(selectedPositionB)
+        gameCursorB.select()
         gameCursorC.moveDown()
-        gameCursorC.select(selectedPositionC)
+        gameCursorC.select()
         then:
-        selectedPositionA.getRow() == 2 && selectedPositionA.getCol() == 1
-        selectedPositionB.getRow() == 1 && selectedPositionB.getCol() == 8
-        selectedPositionC.getRow() == 4 && selectedPositionC.getCol() == 3
+        gameCursorA.getSelectedPosition().getRow() == 2 && gameCursorA.getSelectedPosition().getCol() == 1
+        gameCursorB.getSelectedPosition().getRow() == 1 && gameCursorB.getSelectedPosition().getCol() == 8
+        gameCursorC.getSelectedPosition().getRow() == 4 && gameCursorC.getSelectedPosition().getCol() == 3
     }
 
     def "MoveLeft"() {
         when:
         gameCursorA.moveLeft()
-        gameCursorA.select(selectedPositionA)
+        gameCursorA.select()
         gameCursorB.moveLeft()
-        gameCursorB.select(selectedPositionB)
+        gameCursorB.select()
         gameCursorC.moveLeft()
-        gameCursorC.select(selectedPositionC)
+        gameCursorC.select()
         then:
-        selectedPositionA.getRow() == 1 && selectedPositionA.getCol() == 8
-        selectedPositionB.getRow() == 8 && selectedPositionB.getCol() == 7
-        selectedPositionC.getRow() == 3 && selectedPositionC.getCol() == 2
+        gameCursorA.getSelectedPosition().getRow() == 1 && gameCursorA.getSelectedPosition().getCol() == 8
+        gameCursorB.getSelectedPosition().getRow() == 8 && gameCursorB.getSelectedPosition().getCol() == 7
+        gameCursorC.getSelectedPosition().getRow() == 3 && gameCursorC.getSelectedPosition().getCol() == 2
     }
 
     def "MoveRight"() {
         when:
         gameCursorA.moveRight()
-        gameCursorA.select(selectedPositionA)
+        gameCursorA.select()
         gameCursorB.moveRight()
-        gameCursorB.select(selectedPositionB)
+        gameCursorB.select()
         gameCursorC.moveRight()
-        gameCursorC.select(selectedPositionC)
+        gameCursorC.select()
         then:
-        selectedPositionA.getRow() == 1 && selectedPositionA.getCol() == 2
-        selectedPositionB.getRow() == 8 && selectedPositionB.getCol() == 1
-        selectedPositionC.getRow() == 3 && selectedPositionC.getCol() == 4
+        gameCursorA.getSelectedPosition().getRow() == 1 && gameCursorA.getSelectedPosition().getCol() == 2
+        gameCursorB.getSelectedPosition().getRow() == 8 && gameCursorB.getSelectedPosition().getCol() == 1
+        gameCursorC.getSelectedPosition().getRow() == 3 && gameCursorC.getSelectedPosition().getCol() == 4
     }
 }

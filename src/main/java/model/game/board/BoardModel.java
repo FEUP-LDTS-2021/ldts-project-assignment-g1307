@@ -7,5 +7,7 @@ import java.util.List;
 
 public interface BoardModel extends Model {
     boolean positionInBoard(Position position);
+    int getRows();
+    int getColumns();
     List<BoardCase> getCases();
 }
