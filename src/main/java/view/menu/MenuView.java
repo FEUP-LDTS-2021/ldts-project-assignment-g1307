@@ -13,7 +13,7 @@ import java.io.IOException;
 public class MenuView extends View<MenuModel> {
 
     public MenuView(MenuModel model){
-        super(model, "square.ttf"); // TODO : we could pass the font as an argument too
+        super(model, "square.ttf", 25, 25, 50); // TODO : we could pass the font as an argument too
     }
 
     MenuView(MenuModel model, Screen screen, TextGraphics textGraphics) {
