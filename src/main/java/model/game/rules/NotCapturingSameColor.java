@@ -13,16 +13,13 @@ public class NotCapturingSameColor implements Rule{
         this.gameModel = gameModel;
     }
     @Override
-    public Set<Move> obyRule(Piece pieceToFilter) { // Not an optimal algorithm...refractor later
-        Set<Move> addedMoves = pieceToFilter.getMoves(gameModel.getBoardModel());
-        for (Move move : addedMoves) {
+    public void obyRule(Set<Move> movesToFilter, Piece piece)  {
+        for (Move move : movesToFilter) {
             for (Piece p : gameModel.getPiecesInGame()) {
-                if (p == pieceToFilter) continue;
-                if (p.getPosition().equals(move.getPosition()) && pieceToFilter.getColor() == p.getColor()) {
-                    addedMoves.remove(move);
+                if (p.getPosition().equals(move.getPosition()) && piece.getColor() == p.getColor()) {
+                    movesToFilter.remove(move);
                 }
             }
         }
-        return addedMoves;
     }
 }

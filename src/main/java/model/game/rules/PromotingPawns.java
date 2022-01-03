@@ -11,6 +11,7 @@ import model.game.pieces.Piece;
 import model.game.pieces.Queen;
 import model.game.pieces.movingBehaviours.TwoAndOneStrategy;
 
+import java.util.Arrays;
 import java.util.Set;
 
 public class PromotingPawns implements Rule{
@@ -43,19 +44,17 @@ public class PromotingPawns implements Rule{
 
     }
     @Override
-    public Set<Move> obyRule(Piece p) {
-        Set<Move> filterMoves = p.getMoves(gameModel.getBoardModel());
+    public void obyRule(Set<Move> movesToFilter, Piece p) {
         if (p instanceof Pawn pawn && pawn.isMoved()) {
             TwoAndOneStrategy.Direction direction = ((TwoAndOneStrategy) pawn.getMovingBehaviour()).getDirection();
             int rowToSearch = direction == TwoAndOneStrategy.Direction.NORTH ? 1:colToSearchSouth;
-            for (Move move: filterMoves) {
+            for (Move move: movesToFilter) {
                 if (move.getPosition().getRow() == rowToSearch) {
                     Move newMove = new SimpleMove(pawn, new Position(rowToSearch, move.getPosition().getCol()));
-                    removeMoveAndAddNew(filterMoves,newMove);
+                    removeMoveAndAddNew(movesToFilter,newMove);
                 }
             }
         }
-        return filterMoves;
     }
 
     private void removeMoveAndAddNew(Set<Move> filterMoves, Move move) {

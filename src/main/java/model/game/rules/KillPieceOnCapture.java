@@ -15,17 +15,14 @@ public class KillPieceOnCapture implements Rule{
     }
 
     @Override
-    public Set<Move> obyRule(Piece p) {
-        Set<Move> filterMoves = p.getMoves(gameModel.getBoardModel());
-
-        for (Move move: filterMoves) {
+    public void obyRule(Set<Move> movesToFilter, Piece p)  {
+        for (Move move: movesToFilter) {
             for (Piece piece : gameModel.getPiecesInGame()) {
                 if (move.getPosition().equals(piece.getPosition()) && piece.getColor() != p.getColor()) {
-                    filterMoves.remove(move);
-                    filterMoves.add(new CapturingMove(piece, move, gameModel.getPiecesInGame()));
+                    movesToFilter.remove(move);
+                    movesToFilter.add(new CapturingMove(piece, move, gameModel.getPiecesInGame()));
                 }
             }
         }
-        return filterMoves;
     }
 }

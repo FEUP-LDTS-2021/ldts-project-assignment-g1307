@@ -40,7 +40,8 @@ class PawnsDiagonalCapturingTest extends Specification {
         def nC = new PawnsDiagonalCapturing(gameModel)
 
         when:
-        def r = nC.obyRule(piece)
+        Set<Move> r = piece.getMoves(gameModel.getBoardModel())
+        nC.obyRule(r, piece)
         then:
         r.size() == 1
     }

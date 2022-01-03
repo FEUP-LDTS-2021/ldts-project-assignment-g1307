@@ -16,14 +16,14 @@ public class PawnsStandardMoveRule implements Rule{
         this.gameModel = gameModel;
     }
     @Override
-    public Set<Move> obyRule(Piece p) { // TODO: REMEMBER TO SET THE MOVE TWO FLAG
-        Set<Move> filterMoves = p.getMoves(gameModel.getBoardModel());
+    public void obyRule(Set<Move> movesToFilter, Piece p) {
         if (p instanceof Pawn pawn && pawn.isMoved()) {
+            Position pawnPos = p.getPosition();
+            int pRow = pawnPos.getRow(); int pCol = pawnPos.getCol();
             TwoAndOneStrategy.Direction direction = ((TwoAndOneStrategy) pawn.getMovingBehaviour()).getDirection();
-            Position posToRemove = new Position(p.getPosition().getRow() + direction.change * 2, p.getPosition().getRow());
+            Position posToRemove = new Position(pRow + direction.change * 2, pCol);
             Move move = new SimpleMove(p,posToRemove);
-            filterMoves.removeIf(m -> move.getPosition().equals(m.getPosition()) && m.getPiece() == move.getPiece());
+            movesToFilter.removeIf(m -> posToRemove.equals(m.getPosition()) && m.getPiece() == p);
         }
-        return filterMoves;
     }
 }

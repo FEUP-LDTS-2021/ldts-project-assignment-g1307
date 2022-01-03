@@ -24,9 +24,11 @@ public class Castle implements Rule{
             super(move);
             assert rook != null;
             this.rook = rook;
-            boolean longCastle = move.getPiece().getPosition().getCol() - rook.getPosition().getCol() > 0; // queen side Castle in chess
+            Position mPos = move.getPosition();
+            int col = mPos.getCol(); int row = mPos.getRow();
+            boolean longCastle = col - rook.getPosition().getCol() > 0; // queen side Castle in chess
             int rSideToBe = longCastle ? 1 : -1;
-            rPos = new Position(move.getPosition().getRow(), move.getPosition().getCol() + rSideToBe);
+            rPos = new Position(row, col + rSideToBe);
         }
 
         public void execute() {
@@ -41,22 +43,19 @@ public class Castle implements Rule{
         colToSearch = squareBoard.getColumns();
     }
     @Override
-    public Set<Move> obyRule(Piece piece) { // TODO: a bit repetitive ... it has to check if there are pieces in between
-        Set<Move> addedMoves = piece.getMoves(gameModel.getBoardModel());
+    public void obyRule(Set<Move> movesToFilter, Piece piece)  { // TODO: a bit repetitive ... it has to check if there are pieces in between
         if (piece instanceof King king && !piece.isMoved() && !king.inCheck()) {
             for (Piece p : gameModel.getPiecesInGame()) {
                 if (p instanceof Rook rook) {
                     if (p.getPosition().equals(new Position(piece.getPosition().getRow(), colToSearch))) {
                         SimpleMove move = new SimpleMove(king, new Position(piece.getPosition().getRow(), piece.getPosition().getCol() + 2));
-                        addedMoves.add(new CastleMove(rook, move));
+                        movesToFilter.add(new CastleMove(rook, move));
                     } else if (p.getPosition().equals(new Position(piece.getPosition().getRow(), 1))) {
                         SimpleMove move = new SimpleMove(king, new Position(piece.getPosition().getRow(), piece.getPosition().getCol() - 2));
-                        addedMoves.add(new CastleMove(rook, move));
+                        movesToFilter.add(new CastleMove(rook, move));
                     }
                 }
             }
         }
-
-        return addedMoves;
     }
 }

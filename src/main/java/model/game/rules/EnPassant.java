@@ -20,21 +20,21 @@ public class EnPassant implements Rule {
     }
 
     @Override
-    public Set<Move> obyRule(Piece piece) {
-        Set<Move> addedMoves = piece.getMoves(gameModel.getBoardModel());
-        if (piece instanceof Pawn pawn && !piece.isMoved()) { // TODO: a bit repetitive
+    public void obyRule(Set<Move> movesToFilter, Piece piece)   {
+        if (piece instanceof Pawn pawn && !piece.isMoved()) {
             for (Piece p: gameModel.getPiecesInGame()) {
+                Position pPiece = piece.getPosition();
+                Position pP = p.getPosition();
                 if (p instanceof Pawn aPawn && aPawn.hasAdvancedTwo() && aPawn.getColor() != piece.getColor()) {
-                    if (piece.getPosition().getRow() != p.getPosition().getRow()) continue;
-                    int diffCol = piece.getPosition().getCol() - p.getPosition().getCol();
+                    if (pPiece.getRow() != pP.getRow()) continue;
+                    int diffCol = pPiece.getCol() - pP.getCol();
                     if (diffCol == - 1 || diffCol == 1) {
-                        Position position = new Position(piece.getPosition().getRow() - 1, p.getPosition().getRow());
-                        addedMoves.add(new CapturingMove(pawn,  new SimpleMove(pawn, position), gameModel.getPiecesInGame()));
+                        Position position = new Position(pPiece.getRow() - 1, pP.getRow());
+                        movesToFilter.add(new CapturingMove(pawn,  new SimpleMove(pawn, position), gameModel.getPiecesInGame()));
                         break; // there will be only one possible en passant move
                     }
                 }
             }
         }
-        return addedMoves;
     }
 }
