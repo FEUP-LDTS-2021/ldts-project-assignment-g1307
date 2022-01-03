@@ -12,7 +12,7 @@ import java.util.Set;
 
 public class PawnsStandardMoveRule implements Rule{
     GameModel gameModel;
-    PawnsStandardMoveRule(GameModel gameModel) {
+    public PawnsStandardMoveRule(GameModel gameModel) {
         this.gameModel = gameModel;
     }
     @Override

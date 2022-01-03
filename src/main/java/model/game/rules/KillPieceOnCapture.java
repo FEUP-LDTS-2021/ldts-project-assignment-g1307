@@ -10,7 +10,7 @@ import java.util.Set;
 public class KillPieceOnCapture implements Rule{
     private final GameModel gameModel;
 
-    KillPieceOnCapture(GameModel gameModel) {
+    public KillPieceOnCapture(GameModel gameModel) {
         this.gameModel = gameModel;
     }
 

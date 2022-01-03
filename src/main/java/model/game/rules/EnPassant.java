@@ -15,7 +15,7 @@ import java.util.Set;
 
 public class EnPassant implements Rule {
     GameModel gameModel;
-    EnPassant(GameModel gameModel) {
+    public EnPassant(GameModel gameModel) {
         this.gameModel = gameModel;
     }
 

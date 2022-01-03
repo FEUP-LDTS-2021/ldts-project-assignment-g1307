@@ -34,11 +34,9 @@ public class GameView extends View<GameModel> {
     }
 
     public static void main(String[] args) {
-        GameModel gameModel = new GameModel();
-        gameModel.setBoardModel(new SquareBoard(8));
+        GameModel gameModel;
         GameBuilder gameBuilder = new StandardChessGame();
-        gameBuilder.buildPieces();
-        gameModel.setPiecesInGame(gameBuilder.getResults());
+        gameModel = gameBuilder.buildPieces().buildRules().getResults();
         View<?> gameView = new GameView(gameModel);
         try {
             gameView.draw();

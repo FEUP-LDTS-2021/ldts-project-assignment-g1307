@@ -11,7 +11,7 @@ import java.util.Set;
 
 public class NoStepOverPiece implements Rule{
     GameModel gameModel;
-    NoStepOverPiece(GameModel gameModel) {
+    public NoStepOverPiece(GameModel gameModel) {
         this.gameModel = gameModel;
     }
     @Override

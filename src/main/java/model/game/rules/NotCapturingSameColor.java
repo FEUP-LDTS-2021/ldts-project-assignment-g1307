@@ -9,7 +9,7 @@ import java.util.Set;
 
 public class NotCapturingSameColor implements Rule{
     GameModel gameModel;
-    NotCapturingSameColor(GameModel gameModel) {
+    public NotCapturingSameColor(GameModel gameModel) {
         this.gameModel = gameModel;
     }
     @Override
