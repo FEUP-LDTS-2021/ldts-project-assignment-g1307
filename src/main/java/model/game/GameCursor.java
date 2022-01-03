@@ -21,8 +21,8 @@ public class GameCursor {
         this.boardModel = boardModel;
     }
 
-    public Position getCurrentPosition() {
-        return currentPosition;
+    public void select(Position position){
+
     }
 
     public void moveUp() {
