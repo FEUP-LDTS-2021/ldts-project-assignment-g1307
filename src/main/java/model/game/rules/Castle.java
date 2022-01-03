@@ -35,7 +35,7 @@ public class Castle implements Rule{
         }
     }
 
-    Castle(GameModel gameModel) throws NotSupportedBoard {
+    public Castle(GameModel gameModel) throws NotSupportedBoard {
         this.gameModel = gameModel;
         if (!(gameModel.getBoardModel() instanceof SquareBoard squareBoard)) throw new NotSupportedBoard();
         colToSearch = squareBoard.getColumns();

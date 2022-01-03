@@ -13,7 +13,7 @@ import java.util.Set;
 
 public class PawnsDiagonalCapturing implements Rule{
     GameModel gameModel;
-    PawnsDiagonalCapturing(GameModel gameModel) {
+    public PawnsDiagonalCapturing(GameModel gameModel) {
         this.gameModel = gameModel;
     }
     @Override

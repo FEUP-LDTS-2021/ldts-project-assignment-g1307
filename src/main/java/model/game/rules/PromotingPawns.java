@@ -35,7 +35,7 @@ public class PromotingPawns implements Rule{
         }
     }
 
-    PromotingPawns(GameModel gameModel) throws NotSupportedBoard {
+    public PromotingPawns(GameModel gameModel) throws NotSupportedBoard {
         this.gameModel = gameModel;
         if (!(gameModel.getBoardModel() instanceof SquareBoard squareBoard)) throw new NotSupportedBoard();
         colToSearchSouth = squareBoard.getColumns();
