@@ -25,26 +25,27 @@ public class GameCursor {
     }
 
     public void moveUp() {
-        currentPosition = currentPosition.sub(new Position(1,0));
-        if (!boardModel.positionInBoard(currentPosition))
-            currentPosition = currentPosition.add(new Position(boardModel.getRows(),0));
+        Position position = currentPosition.sub(new Position(1,0));
+        setPosition(position);
     }
 
     public void moveDown() {
-        currentPosition = currentPosition.add(new Position(1, 0));
-        if (!boardModel.positionInBoard(currentPosition))
-            currentPosition = currentPosition.sub(new Position(boardModel.getRows(),0));
+        Position position = currentPosition.add(new Position(1, 0));
+        setPosition(position);
     }
 
     public void moveLeft() {
-        currentPosition = currentPosition.sub(new Position(0, 1));
-        if (!boardModel.positionInBoard(currentPosition))
-            currentPosition = currentPosition.add(new Position(0,boardModel.getColumns()));
+        Position position = currentPosition.sub(new Position(0, 1));
+        setPosition(position);
     }
 
     public void moveRight() {
-        currentPosition = currentPosition.add(new Position(0, 1));
-        if (!boardModel.positionInBoard(currentPosition))
-            currentPosition = currentPosition.sub(new Position(0,boardModel.getColumns()));
+        Position position = currentPosition.add(new Position(0, 1));
+        setPosition(position);
+    }
+
+    private void setPosition(Position position) {
+        if (boardModel.positionInBoard(position))
+            currentPosition = position;
     }
 }

@@ -23,7 +23,7 @@ class GameCursorSquareBoardTest extends Specification {
         gameCursorC.moveUp()
         gameCursorC.select()
         then:
-        gameCursorA.getSelectedPosition().getRow() == 8 && gameCursorA.getSelectedPosition().getCol() == 1
+        gameCursorA.getSelectedPosition().getRow() == 1 && gameCursorA.getSelectedPosition().getCol() == 1
         gameCursorB.getSelectedPosition().getRow() == 7 && gameCursorB.getSelectedPosition().getCol() == 8
         gameCursorC.getSelectedPosition().getRow() == 2 && gameCursorC.getSelectedPosition().getCol() == 3
     }
@@ -38,7 +38,7 @@ class GameCursorSquareBoardTest extends Specification {
         gameCursorC.select()
         then:
         gameCursorA.getSelectedPosition().getRow() == 2 && gameCursorA.getSelectedPosition().getCol() == 1
-        gameCursorB.getSelectedPosition().getRow() == 1 && gameCursorB.getSelectedPosition().getCol() == 8
+        gameCursorB.getSelectedPosition().getRow() == 8 && gameCursorB.getSelectedPosition().getCol() == 8
         gameCursorC.getSelectedPosition().getRow() == 4 && gameCursorC.getSelectedPosition().getCol() == 3
     }
 
@@ -51,7 +51,7 @@ class GameCursorSquareBoardTest extends Specification {
         gameCursorC.moveLeft()
         gameCursorC.select()
         then:
-        gameCursorA.getSelectedPosition().getRow() == 1 && gameCursorA.getSelectedPosition().getCol() == 8
+        gameCursorA.getSelectedPosition().getRow() == 1 && gameCursorA.getSelectedPosition().getCol() == 1
         gameCursorB.getSelectedPosition().getRow() == 8 && gameCursorB.getSelectedPosition().getCol() == 7
         gameCursorC.getSelectedPosition().getRow() == 3 && gameCursorC.getSelectedPosition().getCol() == 2
     }
@@ -66,7 +66,7 @@ class GameCursorSquareBoardTest extends Specification {
         gameCursorC.select()
         then:
         gameCursorA.getSelectedPosition().getRow() == 1 && gameCursorA.getSelectedPosition().getCol() == 2
-        gameCursorB.getSelectedPosition().getRow() == 8 && gameCursorB.getSelectedPosition().getCol() == 1
+        gameCursorB.getSelectedPosition().getRow() == 8 && gameCursorB.getSelectedPosition().getCol() == 8
         gameCursorC.getSelectedPosition().getRow() == 3 && gameCursorC.getSelectedPosition().getCol() == 4
     }
 }
