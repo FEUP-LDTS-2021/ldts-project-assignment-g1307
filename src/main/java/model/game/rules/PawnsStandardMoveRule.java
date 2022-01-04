@@ -22,8 +22,15 @@ public class PawnsStandardMoveRule implements Rule{
             int pRow = pawnPos.getRow(); int pCol = pawnPos.getCol();
             TwoAndOneStrategy.Direction direction = ((TwoAndOneStrategy) pawn.getMovingBehaviour()).getDirection();
             Position posToRemove = new Position(pRow + direction.change * 2, pCol);
-            Move move = new SimpleMove(p,posToRemove);
             movesToFilter.removeIf(m -> posToRemove.equals(m.getPosition()) && m.getPiece() == p);
+            pieceInTheWay(movesToFilter ,new Position(pRow + direction.change, pCol));
+        }
+    }
+
+    private void pieceInTheWay(Set<Move> movesToFilter, Position pieceInFront) {
+        for (Piece piece : gameModel.getPiecesInGame()) {
+            if (piece.getPosition().equals(pieceInFront))
+                movesToFilter.removeIf(move -> move.getPosition().equals(pieceInFront));
         }
     }
 }

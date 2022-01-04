@@ -4,8 +4,10 @@ import model.game.GameCursor;
 import model.game.GameModel;
 import model.game.Position;
 import model.game.board.SquareBoard;
+import model.game.clock.ClockModel;
 import model.game.pieces.*;
 import model.game.pieces.movingBehaviours.TwoAndOneStrategy;
+import model.game.player.Player;
 import model.game.rules.*;
 
 import java.util.HashSet;
@@ -16,9 +18,8 @@ public class StandardChessGame implements GameBuilder {
     private final GameModel gameModel;
     private final Set<Piece> piecesArrangementWhite;
     private final Set<Piece> piecesArrangementBlack;
-    private final Set<Rule> rules;
+    private Rule[] rules;
     private final SquareBoard squareBoard;
-    // to add ... clock or a player that has a clock
 
     public StandardChessGame(){
         this.gameModel = new GameModel();
@@ -28,14 +29,20 @@ public class StandardChessGame implements GameBuilder {
         squareBoard = new SquareBoard(8);
         gameModel.setCursor(new GameCursor(new Position(1,1) , squareBoard));
         gameModel.setBoardModel(squareBoard);
-        rules = new HashSet<>();
+        Player[] players = {new Player(new ClockModel(),Piece.COLOR.White), new Player(new ClockModel(),Piece.COLOR.BLACK)}; // maybe do a build player
+        gameModel.setGamePlayers(players);
+        rules = new Rule[8];
+
     }
 
     @Override
     public GameBuilder reset() {
         piecesArrangementWhite.clear();
         piecesArrangementBlack.clear();
-        rules.clear();
+        rules = new Rule[0];
+
+        updateModelPieces();
+        gameModel.setRules(rules);
         return this;
     }
 
@@ -110,14 +117,14 @@ public class StandardChessGame implements GameBuilder {
     @Override
     public GameBuilder buildRules() {
         try {
-            rules.add(new Castle(gameModel));
-            rules.add(new EnPassant(gameModel));
-            rules.add(new KillPieceOnCapture(gameModel));
-            rules.add(new NoStepOverPiece(gameModel));
-            rules.add(new NotCapturingSameColor(gameModel));
-            rules.add(new PawnsDiagonalCapturing(gameModel));
-            rules.add(new PawnsStandardMoveRule(gameModel));
-            rules.add(new PromotingPawns(gameModel));
+            rules[0] = new Castle(gameModel);
+            rules[1] = new EnPassant(gameModel);
+            rules[2] = new NoStepOverPiece(gameModel);
+            rules[3] = new KillPieceOnCapture(gameModel);
+            rules[4] = new NotCapturingSameColor(gameModel);
+            rules[5] = new PawnsDiagonalCapturing(gameModel);
+            rules[6] = new PawnsStandardMoveRule(gameModel);
+            rules[7] = new PromotingPawns(gameModel);
         } catch (NotSupportedBoard e) {
             e.printStackTrace();
         }

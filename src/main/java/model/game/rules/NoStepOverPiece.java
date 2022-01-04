@@ -28,7 +28,8 @@ public class NoStepOverPiece implements Rule{
     }
 
     private void removeStepOverMoves(Position pStepped ,Position changeInPos, Set<Move> moves) {
-        Position normalPos = normalizePosition(changeInPos);
+        Position normalPos = normalizePositionChange(changeInPos);
+
         Position pos = pStepped.add(normalPos);
         for (; gameModel.getBoardModel().positionInBoard(pos); pos = pos.add(normalPos)) {
             Position finalPos = pos;
@@ -36,10 +37,11 @@ public class NoStepOverPiece implements Rule{
         }
     }
 
-    private Position normalizePosition(Position position) {
-        double posLength = Math.sqrt(Math.pow(position.getCol(),2) + Math.pow(position.getRow(), 2));
-        double inverseLength = 1.0d / (int)posLength;
-
-        return new Position((int)(position.getRow() * inverseLength), (int)(position.getCol() * inverseLength));
+    private Position normalizePositionChange(Position position) {
+        int row = position.getRow();
+        int col = position.getCol();
+        int rowLen = row != 0 ? Math.abs(row) : 1;
+        int colLen = col != 0 ? Math.abs(col) : 1;
+        return new Position(row/rowLen, col/colLen);
     }
 }

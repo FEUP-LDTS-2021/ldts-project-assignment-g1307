@@ -21,8 +21,8 @@ public class PawnsDiagonalCapturing implements Rule{
         if (p instanceof Pawn pawn) {
             TwoAndOneStrategy.Direction direction = ((TwoAndOneStrategy) pawn.getMovingBehaviour()).getDirection();
 
-            Position possiblePosCapture1 = new Position(p.getPosition().getRow() + direction.change, p.getPosition().getRow() -1);
-            Position possiblePosCapture2 = new Position(p.getPosition().getRow() + direction.change, p.getPosition().getRow() +1);
+            Position possiblePosCapture1 = new Position(p.getPosition().getRow() + direction.change, p.getPosition().getCol() -1);
+            Position possiblePosCapture2 = new Position(p.getPosition().getRow() + direction.change, p.getPosition().getCol() +1);
             for (Piece piece : gameModel.getPiecesInGame()) {
                 if (piece.getColor() != p.getColor()) {
                     Position pPos = piece.getPosition();

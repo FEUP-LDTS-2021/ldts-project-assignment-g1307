@@ -24,6 +24,10 @@ public class GameCursor {
         return selectedPosition;
     }
 
+    public Position getCurrentPosition() {
+        return currentPosition;
+    }
+
     public void moveUp() {
         Position position = currentPosition.sub(new Position(1,0));
         setPosition(position);

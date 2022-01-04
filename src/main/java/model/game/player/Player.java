@@ -1,15 +1,14 @@
 package model.game.player;
 
 import model.game.GameSubscriber;
+import model.game.clock.Clock;
 import model.game.pieces.Piece;
-
-import java.time.Clock;
 
 public class Player implements GameSubscriber {
     Clock clock;
     final Piece.COLOR color;
 
-    Player(Clock clock, Piece.COLOR color) {
+    public Player(Clock clock, Piece.COLOR color) {
         this.clock = clock;
         this.color = color;
     }
