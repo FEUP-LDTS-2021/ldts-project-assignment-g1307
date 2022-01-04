@@ -1,5 +1,6 @@
 package model.game.builder;
 
+import model.game.GameCursor;
 import model.game.GameModel;
 import model.game.Position;
 import model.game.board.SquareBoard;
@@ -25,6 +26,7 @@ public class StandardChessGame implements GameBuilder {
         piecesArrangementBlack = new HashSet<>();
 
         squareBoard = new SquareBoard(8);
+        gameModel.setCursor(new GameCursor(new Position(1,1) , squareBoard));
         gameModel.setBoardModel(squareBoard);
         rules = new HashSet<>();
     }

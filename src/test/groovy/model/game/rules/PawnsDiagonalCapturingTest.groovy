@@ -1,6 +1,5 @@
 package model.game.rules
 
-import model.Model
 import model.game.GameModel
 import model.game.Position
 import model.game.board.BoardModel
