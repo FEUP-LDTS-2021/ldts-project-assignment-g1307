@@ -47,15 +47,32 @@ public class Castle implements Rule{
         if (piece instanceof King king && !piece.isMoved() && !king.inCheck()) {
             for (Piece p : gameModel.getPiecesInGame()) {
                 if (p instanceof Rook rook) {
-                    if (p.getPosition().equals(new Position(piece.getPosition().getRow(), colToSearch))) {
-                        SimpleMove move = new SimpleMove(king, new Position(piece.getPosition().getRow(), piece.getPosition().getCol() + 2));
+                    Position pPos = p.getPosition();
+                    Position piecePos = piece.getPosition();
+                    if (!noPieceBetween(piecePos, pPos.getCol())) continue;
+                    if (pPos.equals(new Position(piecePos.getRow(), colToSearch))) {
+                        SimpleMove move = new SimpleMove(king, new Position(piecePos.getRow(), piecePos.getCol() + 2));
                         movesToFilter.add(new CastleMove(rook, move));
                     } else if (p.getPosition().equals(new Position(piece.getPosition().getRow(), 1))) {
-                        SimpleMove move = new SimpleMove(king, new Position(piece.getPosition().getRow(), piece.getPosition().getCol() - 2));
+                        SimpleMove move = new SimpleMove(king, new Position(piecePos.getRow(), piecePos.getCol() - 2));
                         movesToFilter.add(new CastleMove(rook, move));
                     }
                 }
             }
         }
+    }
+
+    private boolean noPieceBetween(Position kingPos, int rookCol ){
+        int kingRow = kingPos.getRow();
+        int kingCol = kingPos.getCol();
+        boolean changeInCol = kingRow - rookCol < 0;
+        for (Piece piece : gameModel.getPiecesInGame()) {
+            Position piecePos = piece.getPosition();
+            int pieceCol = piecePos.getCol();
+            if (piecePos.getRow() == kingRow && pieceCol < rookCol == changeInCol && pieceCol > kingCol == changeInCol) {
+                return false;
+            }
+        }
+        return true;
     }
 }

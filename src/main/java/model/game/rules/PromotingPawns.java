@@ -11,8 +11,7 @@ import model.game.pieces.Piece;
 import model.game.pieces.Queen;
 import model.game.pieces.movingBehaviours.TwoAndOneStrategy;
 
-import java.util.Arrays;
-import java.util.Set;
+import java.util.*;
 
 public class PromotingPawns implements Rule{
     GameModel gameModel;
@@ -32,7 +31,6 @@ public class PromotingPawns implements Rule{
             Queen queen = new Queen(super.getPiece().getColor(),super.getPosition());
             pieces.remove(super.getPiece());
             pieces.add(queen);
-            // TODO: THIS SHOULD TRIGGER A MESSAGE THAT ASKS TO WHAT PIECE TO PROMOTE
         }
     }
 
@@ -41,24 +39,23 @@ public class PromotingPawns implements Rule{
         if (!(gameModel.getBoardModel() instanceof SquareBoard squareBoard)) throw new NotSupportedBoard();
         colToSearchSouth = squareBoard.getColumns();
         colToSearchNorth = 1;
-
     }
+
     @Override
     public void obyRule(Set<Move> movesToFilter, Piece p) {
         if (p instanceof Pawn pawn && pawn.isMoved()) {
             TwoAndOneStrategy.Direction direction = ((TwoAndOneStrategy) pawn.getMovingBehaviour()).getDirection();
             int rowToSearch = direction == TwoAndOneStrategy.Direction.NORTH ? 1:colToSearchSouth;
+            Set<Move> toDelete = new HashSet<>();
+            Set<Move> toAdd = new HashSet<>();
             for (Move move: movesToFilter) {
                 if (move.getPosition().getRow() == rowToSearch) {
-                    Move newMove = new SimpleMove(pawn, new Position(rowToSearch, move.getPosition().getCol()));
-                    removeMoveAndAddNew(movesToFilter,newMove);
+                    toDelete.add(move);
+                    toAdd.add(new PromotingMove(move, gameModel.getPiecesInGame()));
                 }
             }
+            for (Move move : toDelete) { movesToFilter.remove(move);}
+            movesToFilter.addAll(toAdd);
         }
-    }
-
-    private void removeMoveAndAddNew(Set<Move> filterMoves, Move move) {
-        filterMoves.removeIf(m -> move.getPosition().equals(m.getPosition()) && m.getPiece() == move.getPiece());
-        filterMoves.add(new PromotingMove(move, gameModel.getPiecesInGame()));
     }
 }
