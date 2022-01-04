@@ -2,24 +2,23 @@ package model.game;
 
 import model.Model;
 import model.game.board.BoardModel;
+import model.game.move.Move;
 import model.game.pieces.Piece;
 import model.game.player.Player;
 import model.game.rules.Rule;
 
-import java.awt.*;
 import java.util.HashSet;
 import java.util.Set;
 
 public class GameModel implements Model { // at a first glance it seems that the class will become to big ---> keep track of this class
     private Set<Piece> piecesInGame;
     private Player[] gamePlayers;
-    private Set<Rule> rules;
+    private Rule[] rules;
     private BoardModel boardModel;
     private GameCursor cursor;
-    private int turn = -1;
+    private int turn = 0;
 
     public GameModel(){
-        rules = new HashSet<>();
         piecesInGame = new HashSet<>();
     }
 
@@ -31,11 +30,11 @@ public class GameModel implements Model { // at a first glance it seems that the
         this.piecesInGame = piecesInGame;
     }
 
-    public Set<Rule> getRules() {
+    public Rule[] getRules() {
         return rules;
     }
 
-    public void setRules(Set<Rule> rules) {
+    public void setRules(Rule[] rules) {
         this.rules = rules;
     }
 
@@ -59,11 +58,24 @@ public class GameModel implements Model { // at a first glance it seems that the
         this.gamePlayers = gamePlayers;
     }
 
+    public Set<Move> getPieceLegalMoves() {
+
+        return null;
+    }
+
+    public Piece findSelectedPiece() {
+        return null;
+    }
+
+    public void filterMoves(Set<Move> moves, Piece piece) {
+
+    }
+
     public void notifyPlayers() {
-        int i = 0;
-        turn = ( turn + 1 ) % gamePlayers.length;
-        for (Player player: gamePlayers){
-            player.setTurn(turn == i);
-        }
+
+    }
+
+    public void select() {
+
     }
 }
