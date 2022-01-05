@@ -100,17 +100,15 @@ public class GameModel implements Model {
     }
 
     public void select() {
-        if (cursor.getSelectedPosition() == null) {
-            cursor.select();
-            return;
-        }
 
-        Set<Move> moves = getPieceLegalMoves();
-        for (Move move : moves) {
-            if (move.getPosition().equals(cursor.getCurrentPosition())) {
-                move.execute();
-                notifyPlayers();
-                break;
+        if (cursor.getSelectedPosition() != null) {
+            Set<Move> moves = getPieceLegalMoves();
+            for (Move move : moves) {
+                if (move.getPosition().equals(cursor.getCurrentPosition())) {
+                    move.execute();
+                    notifyPlayers();
+                    break;
+                }
             }
         }
         cursor.select();
