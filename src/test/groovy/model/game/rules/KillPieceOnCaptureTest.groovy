@@ -4,6 +4,7 @@ import model.game.GameModel
 import model.game.Position
 import model.game.board.BoardModel
 import model.game.board.SquareBoard
+import model.game.move.Move
 import model.game.move.SimpleMove
 import model.game.pieces.Piece
 import spock.lang.Specification
@@ -31,7 +32,8 @@ class KillPieceOnCaptureTest extends Specification {
         def filter = new KillPieceOnCapture(gameModel)
         when:
 
-        def r = filter.obyRule(piece1)
+        Set<Move> r = piece1.getMoves(gameModel.getBoardModel())
+        filter.obyRule(r, piece1)
 
         assert r != null
         r[0].execute()

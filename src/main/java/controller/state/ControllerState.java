@@ -36,7 +36,7 @@ public abstract class ControllerState<T extends Model,W extends View<T>> {
         key = screen.pollInput();
 
         if (key == null)
-            return KeyType.Unknown; // nothing happened ... TODO: CHANGE
+            return KeyType.Unknown;
 
         return key.getKeyType();
     }

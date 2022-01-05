@@ -2,19 +2,25 @@ package model.game;
 
 import model.Model;
 import model.game.board.BoardModel;
+import model.game.move.Move;
 import model.game.pieces.Piece;
+import model.game.player.Player;
 import model.game.rules.Rule;
 
+import java.util.HashSet;
 import java.util.Set;
 
-public class GameModel implements Model { // at a first glance it seems that the class will become to big ---> keep track of this class
-    //ClockModel as a subscriber -> an array of subscribers actually, it will inform which clock should be counting
-    // A Game end detector
+public class GameModel implements Model {
     private Set<Piece> piecesInGame;
-    private Set<Piece.COLOR> colorsInOrder;
-    private Set<Rule> rules;
+    private Player[] gamePlayers;
+    private Rule[] rules;
     private BoardModel boardModel;
-    public GameModel(){}
+    private GameCursor cursor;
+    private int turn = 0;
+
+    public GameModel(){
+        piecesInGame = new HashSet<>();
+    }
 
     public Set<Piece> getPiecesInGame() {
         return piecesInGame;
@@ -24,11 +30,11 @@ public class GameModel implements Model { // at a first glance it seems that the
         this.piecesInGame = piecesInGame;
     }
 
-    public Set<Rule> getRules() {
+    public Rule[] getRules() {
         return rules;
     }
 
-    public void setRules(Set<Rule> rules) {
+    public void setRules(Rule[] rules) {
         this.rules = rules;
     }
 
@@ -40,7 +46,73 @@ public class GameModel implements Model { // at a first glance it seems that the
         this.boardModel = boardModel;
     }
 
-    public void removePiece(Piece p) {
-        piecesInGame.remove(p);
+    public void setCursor(GameCursor gameCursor) {
+        this.cursor = gameCursor;
+    }
+
+    public GameCursor getCursor() {
+        return cursor;
+    }
+
+    public void setGamePlayers(Player[] gamePlayers) {
+        this.gamePlayers = gamePlayers;
+    }
+
+    public Set<Move> getPieceLegalMoves() {
+
+        Set<Move> moves = new HashSet<>();
+
+        if (cursor.getSelectedPosition() == null)
+            return moves;
+
+        Piece piece = findSelectedPiece();
+        if (piece == null) return moves;
+        moves = piece.getMoves(boardModel);
+
+        filterMoves(moves, piece);
+
+        return moves;
+    }
+
+    public Piece findSelectedPiece() {
+        Position selPos = cursor.getSelectedPosition();
+
+        for (Piece p : piecesInGame) {
+            if (selPos.equals(p.getPosition()) && p.getColor() == gamePlayers[turn].getColor()) {
+                return p;
+            }
+        }
+        return null;
+    }
+
+    public void filterMoves(Set<Move> moves, Piece piece) {
+        for (Rule rule: rules) {
+            rule.obyRule(moves,piece);
+        }
+    }
+
+    public void notifyPlayers() {
+        int i = 0;
+        turn = ( turn + 1 ) % gamePlayers.length;
+        for (Player player: gamePlayers){
+            player.setTurn(turn == i);
+        }
+    }
+
+    public void select() {
+        if (cursor.getSelectedPosition() == null) {
+            cursor.select();
+            return;
+        }
+
+        Set<Move> moves = getPieceLegalMoves();
+        for (Move move : moves) {
+            if (move.getPosition().equals(cursor.getCurrentPosition())) {
+                move.execute();
+                notifyPlayers();
+                break;
+            }
+        }
+        cursor.select();
     }
 }

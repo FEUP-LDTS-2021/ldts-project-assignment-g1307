@@ -7,7 +7,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class DiagonalStrategy implements MovingBehaviour{ // we have a code smell here - duplicated code
+public class DiagonalStrategy implements MovingBehaviour{
     @Override
     public Set<Position> getMoves(BoardModel b, Position objectPosition) {
         Set<Position> possibleMoves = new HashSet<>();

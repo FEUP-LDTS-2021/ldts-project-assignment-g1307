@@ -3,9 +3,9 @@ package model.game.board;
 import model.Model;
 import model.game.Position;
 
-import java.util.Set;
+import java.util.List;
 
 public interface BoardModel extends Model {
     boolean positionInBoard(Position position);
-    Set<BoardCase> getCases();
+    List<BoardCase> getCases();
 }

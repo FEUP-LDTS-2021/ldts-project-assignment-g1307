@@ -35,10 +35,12 @@ class NotCapturingSameColorTest extends Specification {
         def nC = new NotCapturingSameColor(gameModel)
 
         when:
-        def r = nC.obyRule(piece)
+        Set<Move> r = piece.getMoves(gameModel.getBoardModel())
+        nC.obyRule(r, piece)
         piece.getColor() >> Piece.COLOR.BLACK
         piece2.getColor() >> Piece.COLOR.White
-        def r2 = nC.obyRule(piece)
+        Set<Move> r2 = piece.getMoves(gameModel.getBoardModel())
+        nC.obyRule(r, piece)
         then:
         !r.size() && r!=null
         r2.size() == 1

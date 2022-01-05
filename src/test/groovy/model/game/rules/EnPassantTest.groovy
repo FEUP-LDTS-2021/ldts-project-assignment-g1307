@@ -3,6 +3,7 @@ package model.game.rules
 import model.game.GameModel
 import model.game.Position
 import model.game.board.SquareBoard
+import model.game.move.Move
 import model.game.pieces.Pawn
 import model.game.pieces.Piece
 import model.game.pieces.movingBehaviours.TwoAndOneStrategy
@@ -25,7 +26,8 @@ class EnPassantTest extends Specification { // TODO : this test is dependent on 
         when:
         bPawn.moveToPosition(new Position(4,2))
 
-        def r = filter.obyRule(wPawn)
+        Set<Move> r = wPawn.getMoves(gameModel.getBoardModel())
+        filter.obyRule(r, wPawn)
         then:
         r.size() == 3
     }

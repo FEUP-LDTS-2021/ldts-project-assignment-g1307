@@ -1,6 +1,5 @@
 package model.game.builder
 
-import model.game.builder.StandardChessGame
 import model.game.pieces.Bishop
 import model.game.pieces.King
 import model.game.pieces.Knight
@@ -18,7 +17,7 @@ class StandardChessGameTest extends Specification {
         standardGame.buildPieces()
         standardGame.reset()
         then:
-        standardGame.getResults().size() == 0
+        !standardGame.getResults().getPiecesInGame()
     }
 
     def "BuildPawns"() {
@@ -26,11 +25,11 @@ class StandardChessGameTest extends Specification {
         standardGame.buildPawns()
         def r = standardGame.getResults()
         then: 'It Should return 16 pawns , 8 black and 8 white'
-        r.size() == 16
+        r.getPiecesInGame().size() == 16
 
         def w = 0
         def b = 0
-        for (def e : r) {
+        for (def e : r.getPiecesInGame()) {
             if (e instanceof Pawn){
                 if (e.getColor() == Piece.COLOR.BLACK)
                     b++
@@ -47,11 +46,11 @@ class StandardChessGameTest extends Specification {
         standardGame.buildKings()
         def r = standardGame.getResults()
         then: 'It Should return 2 kings , 1 black and 1 white'
-        r.size() == 2
+        r.getPiecesInGame().size() == 2
 
         def w = 0
         def b = 0
-        for (def e : r) {
+        for (def e :  r.getPiecesInGame()) {
             if (e instanceof King){
                 if (e.getColor() == Piece.COLOR.BLACK)
                     b++
@@ -68,11 +67,11 @@ class StandardChessGameTest extends Specification {
         standardGame.buildQueens()
         def r = standardGame.getResults()
         then: 'It Should return 2 queens , 1 black and 1 white'
-        r.size() == 2
+        r.getPiecesInGame().size() == 2
 
         def w = 0
         def b = 0
-        for (def e : r) {
+        for (def e :  r.getPiecesInGame()) {
             if (e instanceof Queen) {
                 if (e.getColor() == Piece.COLOR.BLACK)
                     b++
@@ -89,11 +88,11 @@ class StandardChessGameTest extends Specification {
         standardGame.buildRooks()
         def r = standardGame.getResults()
         then: 'It Should return 4 rooks , 2 black and 2 white'
-        r.size() == 4
+        r.getPiecesInGame().size() == 4
 
         def w = 0
         def b = 0
-        for (def e : r) {
+        for (def e :  r.getPiecesInGame()) {
             if (e instanceof Rook) {
                 if (e.getColor() == Piece.COLOR.BLACK)
                     b++
@@ -110,11 +109,11 @@ class StandardChessGameTest extends Specification {
         standardGame.buildKnights()
         def r = standardGame.getResults()
         then: 'It Should return 4 knights , 2 black and 2 white'
-        r.size() == 4
+        r.getPiecesInGame().size() == 4
 
         def w = 0
         def b = 0
-        for (def e : r) {
+        for (def e :  r.getPiecesInGame()) {
             if (e instanceof Knight) {
                 if (e.getColor() == Piece.COLOR.BLACK)
                     b++
@@ -131,11 +130,11 @@ class StandardChessGameTest extends Specification {
         standardGame.buildBishops()
         def r = standardGame.getResults()
         then: 'It Should return 4 bishops, 2 black and 2 white'
-        r.size() == 4
+        r.getPiecesInGame().size() == 4
 
         def w = 0
         def b = 0
-        for (def e : r) {
+        for (def e :  r.getPiecesInGame()) {
             if (e instanceof Bishop) {
                 if (e.getColor() == Piece.COLOR.BLACK)
                     b++
@@ -152,14 +151,14 @@ class StandardChessGameTest extends Specification {
         standardGame.buildPieces()
         def r = standardGame.getResults()
         then:
-        r.size() == 32
+        r.getPiecesInGame().size() == 32
         def p = 0
         def q = 0
         def b = 0
         def k = 0
         def rook = 0
         def king = 0
-        for (def e : r) {
+        for (def e :  r.getPiecesInGame()) {
             if (e instanceof Bishop){
                 b++
             }else if(e instanceof Knight) {
@@ -183,6 +182,15 @@ class StandardChessGameTest extends Specification {
     }
 
     def "BuildRules"() {
+        given:
+        GameBuilder gameBuilder = new StandardChessGame()
+
+        def model = gameBuilder.buildRules().getResults()
+
+        when:
+        def r = model.getRules().size()
+        then:
+        r == 8
 
     }
 }

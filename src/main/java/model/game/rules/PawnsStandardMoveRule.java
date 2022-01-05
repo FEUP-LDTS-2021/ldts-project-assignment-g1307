@@ -12,18 +12,25 @@ import java.util.Set;
 
 public class PawnsStandardMoveRule implements Rule{
     GameModel gameModel;
-    PawnsStandardMoveRule(GameModel gameModel) {
+    public PawnsStandardMoveRule(GameModel gameModel) {
         this.gameModel = gameModel;
     }
     @Override
-    public Set<Move> obyRule(Piece p) { // TODO: REMEMBER TO SET THE MOVE TWO FLAG
-        Set<Move> filterMoves = p.getMoves(gameModel.getBoardModel());
+    public void obyRule(Set<Move> movesToFilter, Piece p) {
         if (p instanceof Pawn pawn && pawn.isMoved()) {
+            Position pawnPos = p.getPosition();
+            int pRow = pawnPos.getRow(); int pCol = pawnPos.getCol();
             TwoAndOneStrategy.Direction direction = ((TwoAndOneStrategy) pawn.getMovingBehaviour()).getDirection();
-            Position posToRemove = new Position(p.getPosition().getRow() + direction.change * 2, p.getPosition().getRow());
-            Move move = new SimpleMove(p,posToRemove);
-            filterMoves.removeIf(m -> move.getPosition().equals(m.getPosition()) && m.getPiece() == move.getPiece());
+            Position posToRemove = new Position(pRow + direction.change * 2, pCol);
+            movesToFilter.removeIf(m -> posToRemove.equals(m.getPosition()) && m.getPiece() == p);
+            pieceInTheWay(movesToFilter ,new Position(pRow + direction.change, pCol));
         }
-        return filterMoves;
+    }
+
+    private void pieceInTheWay(Set<Move> movesToFilter, Position pieceInFront) {
+        for (Piece piece : gameModel.getPiecesInGame()) {
+            if (piece.getPosition().equals(pieceInFront))
+                movesToFilter.removeIf(move -> move.getPosition().equals(pieceInFront));
+        }
     }
 }

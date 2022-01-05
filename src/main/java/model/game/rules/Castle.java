@@ -24,9 +24,11 @@ public class Castle implements Rule{
             super(move);
             assert rook != null;
             this.rook = rook;
-            boolean longCastle = move.getPiece().getPosition().getCol() - rook.getPosition().getCol() > 0; // queen side Castle in chess
+            Position mPos = move.getPosition();
+            int col = mPos.getCol(); int row = mPos.getRow();
+            boolean longCastle = col - rook.getPosition().getCol() > 0; // queen side Castle in chess
             int rSideToBe = longCastle ? 1 : -1;
-            rPos = new Position(move.getPosition().getRow(), move.getPosition().getCol() + rSideToBe);
+            rPos = new Position(row, col + rSideToBe);
         }
 
         public void execute() {
@@ -35,28 +37,42 @@ public class Castle implements Rule{
         }
     }
 
-    Castle(GameModel gameModel) throws NotSupportedBoard {
+    public Castle(GameModel gameModel) throws NotSupportedBoard {
         this.gameModel = gameModel;
         if (!(gameModel.getBoardModel() instanceof SquareBoard squareBoard)) throw new NotSupportedBoard();
         colToSearch = squareBoard.getColumns();
     }
     @Override
-    public Set<Move> obyRule(Piece piece) { // TODO: a bit repetitive ... it has to check if there are pieces in between
-        Set<Move> addedMoves = piece.getMoves(gameModel.getBoardModel());
+    public void obyRule(Set<Move> movesToFilter, Piece piece)  {
         if (piece instanceof King king && !piece.isMoved() && !king.inCheck()) {
             for (Piece p : gameModel.getPiecesInGame()) {
                 if (p instanceof Rook rook) {
-                    if (p.getPosition().equals(new Position(piece.getPosition().getRow(), colToSearch))) {
-                        SimpleMove move = new SimpleMove(king, new Position(piece.getPosition().getRow(), piece.getPosition().getCol() + 2));
-                        addedMoves.add(new CastleMove(rook, move));
+                    Position pPos = p.getPosition();
+                    Position piecePos = piece.getPosition();
+                    if (!noPieceBetween(piecePos, pPos.getCol())) continue;
+                    if (pPos.equals(new Position(piecePos.getRow(), colToSearch))) {
+                        SimpleMove move = new SimpleMove(king, new Position(piecePos.getRow(), piecePos.getCol() + 2));
+                        movesToFilter.add(new CastleMove(rook, move));
                     } else if (p.getPosition().equals(new Position(piece.getPosition().getRow(), 1))) {
-                        SimpleMove move = new SimpleMove(king, new Position(piece.getPosition().getRow(), piece.getPosition().getCol() - 2));
-                        addedMoves.add(new CastleMove(rook, move));
+                        SimpleMove move = new SimpleMove(king, new Position(piecePos.getRow(), piecePos.getCol() - 2));
+                        movesToFilter.add(new CastleMove(rook, move));
                     }
                 }
             }
         }
+    }
 
-        return addedMoves;
+    private boolean noPieceBetween(Position kingPos, int rookCol ){
+        int kingRow = kingPos.getRow();
+        int kingCol = kingPos.getCol();
+        boolean changeInCol = kingRow - rookCol < 0;
+        for (Piece piece : gameModel.getPiecesInGame()) {
+            Position piecePos = piece.getPosition();
+            int pieceCol = piecePos.getCol();
+            if (piecePos.getRow() == kingRow && pieceCol < rookCol == changeInCol && pieceCol > kingCol == changeInCol) {
+                return false;
+            }
+        }
+        return true;
     }
 }

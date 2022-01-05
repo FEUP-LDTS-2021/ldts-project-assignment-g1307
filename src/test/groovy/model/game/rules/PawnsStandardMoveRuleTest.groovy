@@ -38,11 +38,15 @@ class PawnsStandardMoveRuleTest extends Specification {
         def nC = new PawnsStandardMoveRule(gameModel)
 
         when:
-        def r = nC.obyRule(piece).size()
+        Set<Move> r = piece.getMoves(gameModel.getBoardModel())
+        nC.obyRule(r, piece)
+        def ls = r.size()
         piece.isMoved() >> true
-        def r2 = nC.obyRule(piece).size()
+        nC.obyRule(r, piece)
+        def rs = r.size()
+
         then:
-        r == 2
-        r2 == 1
+        ls == 2
+        rs == 1
     }
 }

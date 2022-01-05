@@ -3,18 +3,18 @@ package model.game.board;
 import model.game.Position;
 
 import java.awt.*;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.LinkedList;
+import java.util.List;
 
 public class SquareBoard implements BoardModel {
     private final int rows;
     private final int columns;
 
-    private final Set<BoardCase> boardCases;
+    private final List<BoardCase> boardCases;
     private final Color blackCaseColor;
     private final Color whiteCaseColor;
 
-    public SquareBoard(int rowsAndCols, Color whiteCaseColor, Color blackCaseColor) { // maybe add a config that has all the information needed
+    public SquareBoard(int rowsAndCols, Color whiteCaseColor, Color blackCaseColor) {
         this.rows = rowsAndCols;
         this.columns = rowsAndCols;
         this.whiteCaseColor = whiteCaseColor;
@@ -30,8 +30,8 @@ public class SquareBoard implements BoardModel {
         boardCases = createBoardCases();
     }
 
-    private Set<BoardCase> createBoardCases() {
-        Set<BoardCase> boardCases = new HashSet<>();
+    private List<BoardCase> createBoardCases() {
+        List<BoardCase> boardCases = new LinkedList<>();
         for (int row = 1; row <= rows; row++) {
             for (int col = 1; col <= columns; col++) {
                 if((row+col)%2 == 0)
@@ -57,7 +57,7 @@ public class SquareBoard implements BoardModel {
     }
 
     @Override
-    public Set<BoardCase> getCases() {
+    public List<BoardCase> getCases() {
         return boardCases;
     }
 }

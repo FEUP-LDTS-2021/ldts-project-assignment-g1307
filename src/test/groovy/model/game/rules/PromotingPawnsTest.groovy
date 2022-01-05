@@ -31,7 +31,8 @@ class PromotingPawnsTest extends Specification {
 
         def f = new PromotingPawns(g)
         when:
-        def move = f.obyRule(piece)
+        Set<Move> move = piece.getMoves(Mock(BoardModel))
+        f.obyRule(move, piece)
         assert move!=null
         move[0].execute()
         then:

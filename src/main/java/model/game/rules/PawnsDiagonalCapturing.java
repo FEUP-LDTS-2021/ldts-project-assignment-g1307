@@ -13,26 +13,25 @@ import java.util.Set;
 
 public class PawnsDiagonalCapturing implements Rule{
     GameModel gameModel;
-    PawnsDiagonalCapturing(GameModel gameModel) {
+    public PawnsDiagonalCapturing(GameModel gameModel) {
         this.gameModel = gameModel;
     }
     @Override
-    public Set<Move> obyRule(Piece p) {
-        Set<Move> addedMoves = p.getMoves(gameModel.getBoardModel());
+    public void obyRule(Set<Move> movesToFilter, Piece p)  {
         if (p instanceof Pawn pawn) {
             TwoAndOneStrategy.Direction direction = ((TwoAndOneStrategy) pawn.getMovingBehaviour()).getDirection();
 
-            Position possiblePosCapture1 = new Position(p.getPosition().getRow() + direction.change, p.getPosition().getRow() -1);
-            Position possiblePosCapture2 = new Position(p.getPosition().getRow() + direction.change, p.getPosition().getRow() +1);
+            Position possiblePosCapture1 = new Position(p.getPosition().getRow() + direction.change, p.getPosition().getCol() -1);
+            Position possiblePosCapture2 = new Position(p.getPosition().getRow() + direction.change, p.getPosition().getCol() +1);
             for (Piece piece : gameModel.getPiecesInGame()) {
                 if (piece.getColor() != p.getColor()) {
-                    if (piece.getPosition().equals(possiblePosCapture1) || piece.getPosition().equals(possiblePosCapture2)) {
-                        SimpleMove simpleMove = new SimpleMove(pawn, piece.getPosition());
-                        addedMoves.add(new CapturingMove(piece,simpleMove, gameModel.getPiecesInGame()));
+                    Position pPos = piece.getPosition();
+                    if (pPos.equals(possiblePosCapture1) || pPos.equals(possiblePosCapture2)) {
+                        SimpleMove simpleMove = new SimpleMove(pawn, pPos);
+                        movesToFilter.add(new CapturingMove(piece,simpleMove, gameModel.getPiecesInGame()));
                     }
                 }
             }
         }
-        return addedMoves;
     }
 }

@@ -4,6 +4,7 @@ import model.game.GameModel
 import model.game.Position
 import model.game.board.BoardModel
 import model.game.board.SquareBoard
+import model.game.move.Move
 import model.game.pieces.King
 import model.game.pieces.Piece
 import model.game.pieces.Queen
@@ -41,7 +42,8 @@ class CastleTest extends Specification {
         given:
         def castleFilter = new Castle(gameModel)
         when:
-        def legalMoves = castleFilter.obyRule(piece)
+        Set<Move> legalMoves = piece.getMoves(gameModel.getBoardModel())
+        castleFilter.obyRule(legalMoves, piece)
         legalMoves[0].execute()
         then:
         legalMoves.size() == 1
@@ -60,7 +62,8 @@ class CastleTest extends Specification {
         'The responsibility to set the king in check should be of the game'
         k.inCheck() >> true
         when:
-        def legalMoves = castleFilter.obyRule(piece)
+        Set<Move> legalMoves = piece.getMoves(gameModel.getBoardModel())
+        castleFilter.obyRule(legalMoves, piece)
         then: 'No legal moves to king'
         legalMoves.size() == 0
     }
@@ -74,7 +77,8 @@ class CastleTest extends Specification {
         def castleFilter = new Castle(gameModel)
         piece.isMoved() >> true
         when:
-        def legalMoves = castleFilter.obyRule(piece)
+        Set<Move> legalMoves = piece.getMoves(gameModel.getBoardModel())
+        castleFilter.obyRule(legalMoves, piece)
         then: 'No legal moves to king'
         legalMoves.size() == 0
 

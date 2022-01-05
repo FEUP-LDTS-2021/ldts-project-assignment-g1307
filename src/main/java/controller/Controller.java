@@ -13,8 +13,7 @@ public class Controller {
     ControllerState<?,?> state;
 
     public Controller() {
-        this.state = new MenuState(); // this seems a bit off ... if we wanted a new menu state we would have to make a new Controller
-                                      // TODO: find solution later ... Most Pieces children have the same problem ( when using fonts )
+        this.state = new MenuState();
     }
 
     Controller(MenuView menuView) { // For testing, dep.injection

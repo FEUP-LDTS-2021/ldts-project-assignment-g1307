@@ -11,36 +11,37 @@ import java.util.Set;
 
 public class NoStepOverPiece implements Rule{
     GameModel gameModel;
-    NoStepOverPiece(GameModel gameModel) {
+    public NoStepOverPiece(GameModel gameModel) {
         this.gameModel = gameModel;
     }
     @Override
-    public Set<Move> obyRule(Piece p) {
-        Set<Move> filterMoves = p.getMoves(gameModel.getBoardModel());
+    public void obyRule(Set<Move> movesToFilter, Piece p) {
         List<Position> positions = new ArrayList<>();
-        for (Move move: filterMoves) positions.add(move.getPosition());
+        for (Move move: movesToFilter) {positions.add(move.getPosition());}
         for (Position mPos : positions) {
             for (Piece piece : gameModel.getPiecesInGame()) {
-                if (mPos.equals(piece.getPosition()))
-                    removeStepOverMoves(piece, piece.getPosition().sub(p.getPosition()),filterMoves);
+                Position piecePos = piece.getPosition();
+                if (mPos.equals(piecePos))
+                    removeStepOverMoves(piecePos, piecePos.sub(p.getPosition()),movesToFilter);
             }
         }
-        return filterMoves;
     }
 
-    private void removeStepOverMoves(Piece pStepped ,Position changeInPos, Set<Move> moves) {
-        Position normalPos = normalizePosition(changeInPos);
-        Position pos = pStepped.getPosition().add(normalPos);
+    private void removeStepOverMoves(Position pStepped ,Position changeInPos, Set<Move> moves) {
+        Position normalPos = normalizePositionChange(changeInPos);
+
+        Position pos = pStepped.add(normalPos);
         for (; gameModel.getBoardModel().positionInBoard(pos); pos = pos.add(normalPos)) {
             Position finalPos = pos;
             moves.removeIf(move -> move.getPosition().equals(finalPos));
         }
     }
 
-    private Position normalizePosition(Position position) {
-        double posLength = Math.sqrt(Math.pow(position.getCol(),2) + Math.pow(position.getRow(), 2));
-        double inverseLength = 1.0d / (int)posLength;
-
-        return new Position((int)(position.getRow() * inverseLength), (int)(position.getCol() * inverseLength));
+    private Position normalizePositionChange(Position position) {
+        int row = position.getRow();
+        int col = position.getCol();
+        int rowLen = row != 0 ? Math.abs(row) : 1;
+        int colLen = col != 0 ? Math.abs(col) : 1;
+        return new Position(row/rowLen, col/colLen);
     }
 }

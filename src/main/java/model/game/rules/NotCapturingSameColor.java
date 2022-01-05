@@ -5,24 +5,24 @@ import model.game.Position;
 import model.game.move.Move;
 import model.game.pieces.Piece;
 
+import java.util.HashSet;
 import java.util.Set;
 
 public class NotCapturingSameColor implements Rule{
     GameModel gameModel;
-    NotCapturingSameColor(GameModel gameModel) {
+    public NotCapturingSameColor(GameModel gameModel) {
         this.gameModel = gameModel;
     }
     @Override
-    public Set<Move> obyRule(Piece pieceToFilter) { // Not an optimal algorithm...refractor later
-        Set<Move> addedMoves = pieceToFilter.getMoves(gameModel.getBoardModel());
-        for (Move move : addedMoves) {
+    public void obyRule(Set<Move> movesToFilter, Piece piece)  {
+        Set<Move> toRemove = new HashSet<>();
+        for (Move move : movesToFilter) {
             for (Piece p : gameModel.getPiecesInGame()) {
-                if (p == pieceToFilter) continue;
-                if (p.getPosition().equals(move.getPosition()) && pieceToFilter.getColor() == p.getColor()) {
-                    addedMoves.remove(move);
+                if (p.getPosition().equals(move.getPosition()) && piece.getColor() == p.getColor()) {
+                    toRemove.add(move);
                 }
             }
         }
-        return addedMoves;
+        for (Move move: toRemove) movesToFilter.remove(move);
     }
 }

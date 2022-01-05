@@ -18,21 +18,22 @@ import java.io.IOException;
 import java.net.URISyntaxException;
 import java.net.URL;
 
-public abstract class View<T extends Model> { // NOTA: a fonte só e para ser usada no gameview ... reposta dps ...
-    // adicionar buttons como opções(fora daqui) para uma melhor ligação com o model e uma pre-definição melhor no output
-
-    private static final int height = 25;
-    private static final int width = 50;
+public abstract class View<T extends Model> {
+    private int height;
+    private int width;
 
     protected T model;
     private Screen screen;
     protected TextGraphics graphics;
     protected Font font;
 
-    protected View(T model, String fontName) {
+
+    protected View(T model, String fontName, int fontSize, int height, int width) {
         this.model = model;
         loadFont(fontName);
-        initWindow();
+        this.height = height;
+        this.width = width;
+        initWindow(fontSize);
     }
 
     public View(T model, String fontName, Screen screen, TextGraphics textGraphics) {
@@ -42,13 +43,13 @@ public abstract class View<T extends Model> { // NOTA: a fonte só e para ser us
         this.graphics = textGraphics;
     }
 
-    protected void initWindow() {
+    protected void initWindow(int fontSize) {
         try {
             TerminalSize terminalSize = new TerminalSize(width, height);
             DefaultTerminalFactory factory = new DefaultTerminalFactory()
                     .setInitialTerminalSize(terminalSize);
 
-            Font loadedFont = font.deriveFont(Font.PLAIN, 25);
+            Font loadedFont = font.deriveFont(Font.PLAIN, fontSize);
             AWTTerminalFontConfiguration fontConfig = AWTTerminalFontConfiguration.newInstance(loadedFont);
             DefaultTerminalFactory defaultTerminalFactory = factory.setTerminalEmulatorFontConfiguration(fontConfig);
             factory.setForceAWTOverSwing(true);
@@ -106,19 +107,19 @@ public abstract class View<T extends Model> { // NOTA: a fonte só e para ser us
         }
     }
 
-    protected static int getHeightCenter() {
+    protected int getHeightCenter() {
         return height / 2;
     }
 
-    protected static int getWidthCenter() {
+    protected int getWidthCenter() {
         return width / 2;
     }
 
-    protected static int getHeight() {
+    protected int getHeight() {
         return height;
     }
 
-    protected static int getWidth() {
+    protected int getWidth() {
         return width;
     }
 
