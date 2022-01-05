@@ -13,7 +13,7 @@ public class MenuState extends ControllerState<MenuModel,MenuView> {
 
     public MenuState() {
         this.model = new MenuModel();
-        this.view = new MenuView(model); // menuView MUST HAVE THE SAME MODEL -- this seems off too
+        this.view = new MenuView(model);
     }
 
     @Override
@@ -25,7 +25,7 @@ public class MenuState extends ControllerState<MenuModel,MenuView> {
             case ArrowRight -> {model.setNextOption(); nextControllerState = this;}
             case Enter -> {
                 switch (model.getCurrentOption()) {
-                    case NEWGAME -> nextControllerState = new GameState();// TODO: CHANGE THIS
+                    case NEWGAME -> nextControllerState = new GameState();
                     case EXIT -> {
                     }
                 }

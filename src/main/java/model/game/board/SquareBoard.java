@@ -14,7 +14,7 @@ public class SquareBoard implements BoardModel {
     private final Color blackCaseColor;
     private final Color whiteCaseColor;
 
-    public SquareBoard(int rowsAndCols, Color whiteCaseColor, Color blackCaseColor) { // maybe add a config that has all the information needed
+    public SquareBoard(int rowsAndCols, Color whiteCaseColor, Color blackCaseColor) {
         this.rows = rowsAndCols;
         this.columns = rowsAndCols;
         this.whiteCaseColor = whiteCaseColor;

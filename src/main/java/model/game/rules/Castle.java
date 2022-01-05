@@ -43,7 +43,7 @@ public class Castle implements Rule{
         colToSearch = squareBoard.getColumns();
     }
     @Override
-    public void obyRule(Set<Move> movesToFilter, Piece piece)  { // TODO: a bit repetitive ... it has to check if there are pieces in between
+    public void obyRule(Set<Move> movesToFilter, Piece piece)  {
         if (piece instanceof King king && !piece.isMoved() && !king.inCheck()) {
             for (Piece p : gameModel.getPiecesInGame()) {
                 if (p instanceof Rook rook) {

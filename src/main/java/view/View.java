@@ -18,9 +18,7 @@ import java.io.IOException;
 import java.net.URISyntaxException;
 import java.net.URL;
 
-public abstract class View<T extends Model> { // NOTA: a fonte só e para ser usada no gameview ... reposta dps ...
-    // adicionar buttons como opções(fora daqui) para uma melhor ligação com o model e uma pre-definição melhor no output
-
+public abstract class View<T extends Model> {
     private int height;
     private int width;
 

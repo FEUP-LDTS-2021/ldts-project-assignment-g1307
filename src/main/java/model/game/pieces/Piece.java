@@ -26,7 +26,7 @@ public abstract class Piece {
         hasMoved = false;
     }
 
-    public enum COLOR { // To ask ... does This counts as an OCP Violation?
+    public enum COLOR {
         BLACK(0x00, 0x00, 0x00),
         White(0xFF, 0xFF, 0xFF),
         BLUE(0x00, 0x00, 0xFF),

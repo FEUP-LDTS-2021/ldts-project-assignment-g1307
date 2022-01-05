@@ -10,7 +10,7 @@ import model.game.rules.Rule;
 import java.util.HashSet;
 import java.util.Set;
 
-public class GameModel implements Model { // at a first glance it seems that the class will become to big ---> keep track of this class
+public class GameModel implements Model {
     private Set<Piece> piecesInGame;
     private Player[] gamePlayers;
     private Rule[] rules;
