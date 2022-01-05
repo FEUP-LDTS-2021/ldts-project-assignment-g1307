@@ -53,3 +53,44 @@ The following screenshots ilustrate the general look of our game, as well as the
 
 <br>
 <br />
+
+
+<p align="center" justify="center">
+  <img src="docs/images/screenshots/castle1.jpg"/>
+</p>
+<p align="center">
+  <b><i>Fig 2. Castle 1/2</i></b>
+</p>  
+
+<br>
+<br />
+
+<p align="center" justify="center">
+  <img src="docs/images/screenshots/castle2.jpg"/>
+</p>
+<p align="center">
+  <b><i>Fig 3. Castle 2/2</i></b>
+</p>  
+
+<br>
+<br />
+
+<p align="center" justify="center">
+  <img src="docs/images/screenshots/endpawn1.jpg"/>
+</p>
+<p align="center">
+  <b><i>Fig 4. Pawn reaches other side and turns into queen 1/2</i></b>
+</p>  
+
+<br>
+<br />
+
+<p align="center" justify="center">
+  <img src="docs/images/screenshots/endpawn2.jpg"/>
+</p>
+<p align="center">
+  <b><i>Fig 5. Pawn reaches other side and turns into queen 2/2</i></b>
+</p>  
+
+<br>
+<br />
