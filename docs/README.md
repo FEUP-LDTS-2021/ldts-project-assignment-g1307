@@ -41,7 +41,7 @@ As such, we decided to apply an Architectural Pattern, more specifically, the Mo
   <img src="images/UML/VMC_UML.jpg"/>
 </p>
 <p align="center">
-  <b><i>Fig 1. Fig 1. Model, Controller and Viewer pattern design </i></b>
+  <b><i>Fig 1. Model, Controller and Viewer pattern design </i></b>
 </p>  
 
 <br>
@@ -53,3 +53,40 @@ As such, we decided to apply an Architectural Pattern, more specifically, the Mo
 - Better testability
 - Better separation of the games logic
 - Easier addition of features during development.
+
+
+<br>
+<br />
+
+### Board Strategy
+#### **Problem in context:**
+Even though we only planned on the game having only one kind of board, the classic 8x8 board, we decided to develop it in a way that would allow for multiple kinds of boards.
+
+#### The Pattern:
+We applied the Strategy Pattern.
+
+#### Implementation:
+< needs to be written >
+
+<br>
+<br />
+
+<p align="center" justify="center">
+  <img src="images/UML/strategy_UML.jpg"/>
+</p>
+<p align="center">
+  <b><i>Fig 2. BoardModel Strategy (only SquareBoard is implemented) </i></b>
+</p>  
+
+<br>
+<br />
+
+These classes can be found in the following files:
+- [BoardModel](../src/main/java/model/game/board/BoardModel.java)
+- [SquareBoard](../src/main/java/model/game/board/SquareBoard.java)
+
+### Consequences:
+Benefits of applying the above pattern:
+ - Allows for different types of boards that differ only in their behaviour.
+ - Is an alternative to subclassing.
+ - Eliminates conditional statements.
