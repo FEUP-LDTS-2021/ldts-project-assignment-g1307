@@ -30,18 +30,6 @@ public class GameView extends View<GameModel> {
         super(model,"CHEQ_TT.TTF", screen, textGraphics);
     }
 
-    public static void main(String[] args) {
-        GameModel gameModel;
-        GameBuilder gameBuilder = new StandardChessGame();
-        gameModel = gameBuilder.buildPieces().buildRules().getResults();
-        View<?> gameView = new GameView(gameModel);
-        try {
-            gameView.draw();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
     void drawBoard() {
         for (BoardCase boardCase: model.getBoardModel().getCases()) {
             graphics.setBackgroundColor(TextColor.RGB.Factory.fromString(getBackgroundCaseColor(boardCase)));

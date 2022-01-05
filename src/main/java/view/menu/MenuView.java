@@ -20,15 +20,6 @@ public class MenuView extends View<MenuModel> {
         super(model,"square.ttf", screen, textGraphics);
     }
 
-    public static void main(String[] args) {
-        View<?> menuView = new MenuView(new MenuModel());
-        try {
-            menuView.draw();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
     public void drawTitle() {
         graphics.setForegroundColor(TextColor.Factory.fromString("#4f763a"));
 

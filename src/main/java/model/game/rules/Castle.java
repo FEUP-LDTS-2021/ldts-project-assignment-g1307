@@ -53,7 +53,7 @@ public class Castle implements Rule{
                     if (pPos.equals(new Position(piecePos.getRow(), colToSearch))) {
                         SimpleMove move = new SimpleMove(king, new Position(piecePos.getRow(), piecePos.getCol() + 2));
                         movesToFilter.add(new CastleMove(rook, move));
-                    } else if (p.getPosition().equals(new Position(piece.getPosition().getRow(), 1))) {
+                    } else if (pPos.equals(new Position(piecePos.getRow(), 1))) {
                         SimpleMove move = new SimpleMove(king, new Position(piecePos.getRow(), piecePos.getCol() - 2));
                         movesToFilter.add(new CastleMove(rook, move));
                     }
@@ -69,7 +69,7 @@ public class Castle implements Rule{
         for (Piece piece : gameModel.getPiecesInGame()) {
             Position piecePos = piece.getPosition();
             int pieceCol = piecePos.getCol();
-            if (piecePos.getRow() == kingRow && pieceCol < rookCol == changeInCol && pieceCol > kingCol == changeInCol) {
+            if (piecePos.getRow() == kingRow && pieceCol < rookCol != changeInCol && pieceCol > kingCol != changeInCol) {
                 return false;
             }
         }
