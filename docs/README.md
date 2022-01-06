@@ -24,15 +24,19 @@ This project was developed by Lucas Sousa (up202004682@edu.fe.up.pt), Vitor Cava
 
 ## Design
 ### General Structure
-Considering the nature of this project, in order to better design the GUI based game and to better implement the different game rules and conditions, we considered  its architeture an important consideration.
+#### Problem in Context:
+In order to make the code <b> more reusable </b>, <b> organizable  </b>, and so that it wouldn't break the <b>
+Single Principle Responsibility </b> (which could easily happen) we decided to use the <b> MVC Architecture Pattern </b>.
 
 #### The Pattern:
-As such, we decided to apply an Architectural Pattern, more specifically, the Model-View-Controller pattern.
+The MVC pattern separates the code in three packages the Model, View and Control. The model represents the logical
+part of the program, the View is responsible for showing the program (depending on the model) and the controller is 
+responsible for controlling the states of the program (depending on the previous two).
 
 #### Implementation:
 - **Model** - Stores the data pertaining to the game, such as the positions of the pieces and their posible movements, aswell as the logic of the game and every piece.
 - **View** - Handles the output of the graphical interface of the game through Lanterna, drawing the menu, board and its pieces.
-- **Controller** - Handles all processes and changes of the Model and the View.
+- **Controller** - Controls the flow of the program.
 
 <br>
 <br />
@@ -49,24 +53,25 @@ As such, we decided to apply an Architectural Pattern, more specifically, the Mo
 
 #### Consequences:
 - Organization of source code, allowing for better development
-- High cohesion
-- Better testability
-- Better separation of the games logic
+- Modifications don't affect the entire program
+- Better separation of the program logic from the view drawing
 - Easier addition of features during development.
-
-
+- Single Responsibility Principle is not violated
 <br>
 <br />
 
 ### Board Strategy
 #### **Problem in context:**
-Even though we only planned on the game having only one kind of board, the classic 8x8 board, we decided to develop it in a way that would allow for multiple kinds of boards.
+Even though we only planned on the game having only one kind of board, the classic 8x8 board, we decided to develop it in a way that would allow for multiple types of boards.
+In this way we protected ourselves from going against the <b> Open-Closed Principle </b> and we let the game
+open for new variants of the game.
 
 #### The Pattern:
-We applied the Strategy Pattern.
+We have applied the Strategy Pattern. In this way we prevent future violations of the <b> SOLID </b>principles.
+We also go in line with the good practises, by not "working" for the implementation but for the interface.  
 
 #### Implementation:
-< needs to be written >
+
 
 <br>
 <br />
@@ -87,6 +92,6 @@ These classes can be found in the following files:
 
 ### Consequences:
 Benefits of applying the above pattern:
- - Allows for different types of boards that differ only in their behaviour.
- - Is an alternative to subclassing.
- - Eliminates conditional statements.
+ - Allows for different types of boards that differ from the classical square board.
+ - Isolate the implementation details. 
+ - Obeys Open/Closed Principle. New strategies can be introduced without having to change the context.
