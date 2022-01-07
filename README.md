@@ -15,7 +15,7 @@ The following screenshots ilustrate the general look of our game, as well as the
 <br>
 <br />
 
-###Game Preview
+### Game Preview
 
 <p align="center" justify="center">
   <img src="https://media.giphy.com/media/80aOD8QhMp4jU3faZt/giphy.gif" width="480" height="240" />
