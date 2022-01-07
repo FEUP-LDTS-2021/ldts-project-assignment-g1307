@@ -3,6 +3,7 @@ plugins {
     id 'groovy'
     id "org.kordamp.gradle.errorprone" version "0.47.0"
     id 'application'
+    id 'info.solidsoft.pitest' version '1.6.0'
 }
 
 group 'org.chessGame'
@@ -24,4 +25,7 @@ test {
 
 application {
     mainClass.set("Application")
+}
+pitest {
+    junit5PluginVersion = '0.12'
 }
