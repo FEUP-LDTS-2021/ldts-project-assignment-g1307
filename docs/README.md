@@ -61,7 +61,7 @@ responsible for controlling the states of the program (depending on the previous
 <br />
 
 ### Board Strategy
-#### **Problem in context:**
+#### Problem in context:
 Even though we only planned on the game having only one kind of board, the classic 8x8 board, we decided to develop it in a way that would allow for multiple types of boards.
 In this way we protected ourselves from going against the <b> Open-Closed Principle </b> and we let the game
 open for new variants of the game.
@@ -90,8 +90,51 @@ These classes can be found in the following files:
 - [BoardModel](../src/main/java/model/game/board/BoardModel.java)
 - [SquareBoard](../src/main/java/model/game/board/SquareBoard.java)
 
-### Consequences:
+#### Consequences:
 Benefits of applying the above pattern:
  - Allows for different types of boards that differ from the classical square board.
  - Isolate the implementation details. 
+ - Obeys Open/Closed Principle. New strategies can be introduced without having to change the context.
+
+<br>
+<br />
+
+### Possible moves for different pieces
+#### Problem in context:
+Each tipe of piece in the game can only move in very specific ways (Ex. Bishop can only move to diagonal squares), and some pieces move in similar ways to other pieces (Ex. Queen can move like a Bishop and like a Rook).
+
+#### The pattern:
+We have applied the Composite Pattern. This way we can create general behaviours for the more common moves, such as moving side-to-side or moving diagonaly, and more specific behaviours for pieces like the Pawn.
+We also have moving behaviour groups that combine different behaviours (Ex. The MovingBehaviourGroup associated with the queen is made up of a side moving behaviour and an adjacent moving behaviour).
+
+#### Implementation:
+<br>
+<br />
+
+<p align="center" justify="center">
+  <img src="images/UML/composite_UML.jpg"/>
+</p>
+<p align="center">
+  <b><i>Fig 3. Composite Pattern in MovingBehaviours </i></b>
+</p>  
+
+<br>
+<br />
+
+These classes can be found in the following files:
+- [MovingBehaviour](../src/main/java/model/game/pieces/movingBehaviours/MovingBehaviour.java)
+- [MovingBehaviourGroup](../src/main/java/model/game/pieces/movingBehaviours/MovingBehaviourGroup.java)
+- [PreDetermined](../src/main/java/model/game/pieces/movingBehaviours/PreDetermined.java)
+- [AdjacentStrategy](../src/main/java/model/game/pieces/movingBehaviours/AdjacentStrategy.java)
+- [LStrategy](../src/main/java/model/game/pieces/movingBehaviours/LStrategy.java)
+- [DiagonalStrategy](../src/main/java/model/game/pieces/movingBehaviours/DiagonalStrategy.java)
+- [SideStrategy](../src/main/java/model/game/pieces/movingBehaviours/SideStrategy.java)
+- [TwoAndOneStrategy](../src/main/java/model/game/pieces/movingBehaviours/TwoAndOneStrategy.java)
+
+
+#### Consequences:
+Benefits of applying the above pattern:
+ - Allows for simpler moving behaviours that can be composed into the more complex behaviours of the pieces.
+ - Allows for the implementation of movingBehaviours that can be utilized by multiple pieces.
+ - Isolate the implementation details.
  - Obeys Open/Closed Principle. New strategies can be introduced without having to change the context.
