@@ -194,4 +194,40 @@ Benefits of applying the above pattern:
  - Allows for the implementation of movingBehaviours that can be utilized by multiple pieces.
  - Isolate the implementation details.
  - Obeys Open/Closed Principle. New moving behaviours can be introduced without having to change the context.
- 
+
+<br>
+<br />
+
+### Player's turn
+#### **Problem in context:**
+In order to inform the game clock when it needs to restart, the player needs to Know when his turn finishes. 
+
+#### The Pattern:
+We have applied the <b> Observer Pattern </b>. With it, we can notify the player when it is his turn to play. 
+
+#### Implementation:
+The notifyPlayer method in GameModel will inform the Player's object when the turn is over, which will make the setTurn method in the Player class inform the clock that it's his turn to play, meaning the clock will restart.
+
+<br>
+<br />
+
+<p align="center" justify="center">
+  <img src="images/UML/observerMethod.png"/>
+</p>
+<p align="center">
+  <b><i>Fig 4. Observer Pattern </i></b>
+</p>  
+
+<br>
+<br />
+
+These classes can be found in the following files:
+- [GameModel](../src/main/java/model/game/GameModel.java)
+- [Player](../src/main/java/model/game/player/Player.java)
+- [GameSubscriber](../src/main/java/model/game/GameSubscriber.java)
+
+
+### Consequences:
+Benefits of applying the above pattern:
+- Follows Open/Close Principle.
+- Establish relationships between objects at runtime.
