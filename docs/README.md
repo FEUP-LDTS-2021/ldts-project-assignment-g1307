@@ -2,7 +2,7 @@
 
 ## Game Description
 
-This version of Chess is a representation of the classic strategy tabletop game Chess played between 2 players, in alternating turns. Each player has at their disposal 16 chess pieces (8 pawns, 2 rooks, 2 knights, 2 bishops, 1 queen and 1 king). Each type of piece has specific movement rules. When a player moves a piece to the same square as an enemy piece, the enemy piece is taken and the square is ocupied by the player piece. The king piece has to stay alive at all points, so when a check is initiated, the player needs to act in order to protect their king. Once the king has no safe squares from a check, it is a check-mate and the player loses.
+This version of Chess is a representation of the classic strategy tabletop game Chess played between 2 players, in alternating turns. Each player has at their disposal 16 chess pieces (8 pawns, 2 rooks, 2 knights, 2 bishops, 1 queen and 1 king). Each type of piece has specific movement rules. When a player moves a piece to the same square as an enemy piece, the enemy piece is taken and the square is occupied by the player piece. The king piece has to stay alive at all points, so when a check is initiated, the player needs to act in order to protect their king. Once the king has no safe squares from a check, it is a check-mate and the player loses.
 
 This project was developed by Lucas Sousa (up202004682@edu.fe.up.pt), Vitor Cavaleiro (up202004724@edu.fe.up.pt) and Ricardo Matos (up202007962@edu.fe.up.pt) for LDTS 2021-22.
 
@@ -10,7 +10,7 @@ This project was developed by Lucas Sousa (up202004682@edu.fe.up.pt), Vitor Cava
 
 - **Menu** - When first running the game, the user will be met with a menu that can be navigated with the left and right arrows keys. It has the option to start a new game or to exit.
 - **2 Player Game** - The game is will show a standard 8 by 8 square board, with 8 pawns, 2 rooks, 2 knights, 2 bishops, 1 queen and 1 king on either side, where 2 players take alternating turns moving their pieces.
-- **Piece Movement** - The pieces of the game, when selected will be able to be moved to a correct, legal position based on the rules of the game (Ex: knight will only be able to move in an L shape, the bishop will only be able to move diagonaly).
+- **Piece Movement** - The pieces of the game, when selected will be able to be moved to a correct, legal position based on the rules of the game (Ex: knight will only be able to move in an L shape, the bishop will only be able to move diagonally).
 - **Piece capturing** - When a Piece is moved to square occupied by an enemy piece, it will capture it. The enemy piece will be removed from the board and the other piece will take its square.
 - **Cursor** - In each turn, the player will be able to select the desired piece, with the arrow keys, and then select a legal square for the piece to move into.
 
@@ -34,7 +34,7 @@ part of the program, the View is responsible for showing the program (depending 
 responsible for controlling the states of the program (depending on the previous two).
 
 #### Implementation:
-- **Model** - Stores the data pertaining to the game, such as the positions of the pieces and their posible movements, aswell as the logic of the game and every piece.
+- **Model** - Stores the data pertaining to the game, such as the positions of the pieces and their possible movements, as well as the logic of the game and every piece.
 - **View** - Handles the output of the graphical interface of the game through Lanterna, drawing the menu, board and its pieces.
 - **Controller** - Controls the flow of the program.
 
@@ -153,10 +153,10 @@ Benefits of applying the above pattern:
 
 ### Possible moves for different pieces
 #### Problem in context:
-Each tipe of piece in the game can only move in very specific ways (Ex. Bishop can only move to diagonal squares), and some pieces move in similar ways to other pieces (Ex. Queen can move like a Bishop and like a Rook).
+Each type of piece in the game can only move in very specific ways (Ex. Bishop can only move to diagonal squares), and some pieces move in similar ways to other pieces (Ex. Queen can move like a Bishop and like a Rook).
 
 #### The pattern:
-We have applied the <b>Composite Pattern</b>. This way we can create general behaviours for the more common moves, such as moving side-to-side or moving diagonaly, and more specific behaviours for pieces like the Pawn.
+We have applied the <b>Composite Pattern</b>. This way we can create general behaviours for the more common moves, such as moving side-to-side or moving diagonally, and more specific behaviours for pieces like the Pawn.
 We also have moving behaviour groups that combine different behaviours (Ex. The MovingBehaviourGroup associated with the queen is made up of a side moving behaviour and an adjacent moving behaviour).
 Our implementation however, does not provide the option of recursively iterate through moving behaviours (we used a set here) as it wouldn't make sense 
 to have a moving behaviour group with more than one equal moving behaviour (those squares would already be considered from the 
@@ -200,13 +200,19 @@ Benefits of applying the above pattern:
 
 ### Player's turn
 #### **Problem in context:**
-In order to inform the game clock when it needs to restart, the player needs to Know when his turn finishes. 
+After every move the players must be informed if it is their turn to play. If it is, then the player clock must start
+ticking. So, the player must <b>observe the board</b> so that it can know <b> when the game turn state has been changed </b>.
+
 
 #### The Pattern:
-We have applied the <b> Observer Pattern </b>. With it, we can notify the player when it is his turn to play. 
+We have applied the <b> Observer Pattern </b>. With it, we can notify the player when it is his turn to play. And we can
+easily add new subscribers to the game <b> without having to change the code in the GameModel </b>, which allows to follow
+the <b> Open/Closed Principle </b>.
 
 #### Implementation:
-The notifyPlayer method in GameModel will inform the Player's object when the turn is over, which will make the setTurn method in the Player class inform the clock that it's his turn to play, meaning the clock will restart.
+The notifyPlayers method in GameModel will inform the gamePlayers when a move is made and if it is his turn, the responsibility
+to make the clock ticking/ stopping is from the Player. Every player implements an interface called GameSubscriber that tells the player
+if it is his turn, informing the player that a move was made. <b> Note:</b> Clock is yet to be implemented.
 
 <br>
 <br />
@@ -230,4 +236,4 @@ These classes can be found in the following files:
 ### Consequences:
 Benefits of applying the above pattern:
 - Follows Open/Close Principle.
-- Establish relationships between objects at runtime.
+- Establish relationships between objects allowing the players to know the state of the game.
