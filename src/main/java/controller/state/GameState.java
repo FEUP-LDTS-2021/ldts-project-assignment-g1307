@@ -10,10 +10,6 @@ import java.io.IOException;
 
 public class GameState extends ControllerState<GameModel,GameView>{
 
-    public GameState(GameModel gameModel, GameView gameView) {
-        super(gameModel, gameView);
-    }
-
     public GameState() {
         this.model = new StandardChessGame().buildRules().buildPieces().getResults();
         this.view = new GameView(model);

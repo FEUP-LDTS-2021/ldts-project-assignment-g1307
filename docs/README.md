@@ -284,7 +284,17 @@ Benefits of applying the above pattern:
 <br />
 
 ## Known Code Smells And Refactoring Suggestions
+#### **Large Class**
+We consider the [StandardChessGame](../src/main/java/model/game/builder/StandardChessGame.java) class a **Large Class** due to having a builder method for every piece. However, we find justifiable since every piece has an unique starting position in the layout of the game.
 
+#### **Lazy Class**
+We consider the child classes of the Piece class (Ex. Queen, Rook, etc) to be **Lazy Classes**. This is due to the fact that they dont do much outside of attributing the correct moving behaviour group and the character that corresponds with the symbol in the font that's shown on screen.
+
+#### **Feature Envy**
+The **Feature Envy** smell is present in the Rule class and in the classes that implement it. These classes decide which of possible moves for a piece are legal, filtering their possible moves. As such they access the data of the pieces more than their own. Due to our implementation of the pieces and behaviours, we find this code smell justifiable.
+
+#### **Speculative Generality**
+The Clock and ClockModel classes, aswell as the getClock method in the Player class are **Speculative Generality** smells because they are related to the player countdown clocks that we intend to add in the future.
 
 <br>
 <br />

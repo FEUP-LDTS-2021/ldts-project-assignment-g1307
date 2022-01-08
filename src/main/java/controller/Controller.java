@@ -16,10 +16,6 @@ public class Controller {
         this.state = new MenuState();
     }
 
-    Controller(MenuView menuView) { // For testing, dep.injection
-        this.state = new MenuState(menuView);
-    }
-
     public void run() {
         ScheduledExecutorService executor = Executors.newSingleThreadScheduledExecutor();
         executor.scheduleAtFixedRate(() -> {
