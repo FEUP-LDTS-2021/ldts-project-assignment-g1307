@@ -243,18 +243,26 @@ Benefits of applying the above pattern:
 
 ### Building the chess game
 #### Problem in context:
+Before a game can start, there need's to be a defined set of rules, a board and a set of pieces each player can 
+use. The program structure allows the programmer to build a customized game, however, we will focus on the traditional chess game.
 
 #### The pattern:
+We have applied the <b> Builder Pattern </b> . With this pattern, we can organize the construction
+of the game components in a much <b> cleaner and organized way </b>. It also allows the programmer <b> to easily add different gameplay components </b>(ex: game with 4 sets of pieces).
 
 #### Implementation:
+The standardChessGame class, the class that builds the classical chess game, has a build
+method for every type of piece, take the buildBishops method for example, it will add to both set of pieces 2 bishops. The buildPieces method
+combines all the methods that create the different pieces and the updateModelPieces method applies the pieces to the gameModel. The buildRules method assigns to the gameModel the set of rules the game obeys. The getResults method returns the complete gameModel 
+, which will be received by the gameState.
 <br>
 <br />
 
 <p align="center" justify="center">
-  <img src="images/UML/composite_UML.jpg"/>
+  <img src="images/UML/.jpg"/>
 </p>
 <p align="center">
-  <b><i>Fig 5. Building pattern </i></b>
+  <b><i>Fig 5. Builder Pattern </i></b>
 </p>  
 
 <br>
@@ -268,6 +276,9 @@ These classes can be found in the following files:
 
 #### Consequences:
 Benefits of applying the above pattern:
+ - Respects Single Responsibility Principle.
+ - Allows construction code to be reused when building different types of chess games.
+ - Allows the creation of objects step-by-step.
 
 <br>
 <br />
