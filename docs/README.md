@@ -237,3 +237,37 @@ These classes can be found in the following files:
 Benefits of applying the above pattern:
 - Follows Open/Close Principle.
 - Establish relationships between objects allowing the players to know the state of the game.
+
+<br>
+<br />
+
+### Building the chess game
+#### Problem in context:
+
+#### The pattern:
+
+#### Implementation:
+<br>
+<br />
+
+<p align="center" justify="center">
+  <img src="images/UML/composite_UML.jpg"/>
+</p>
+<p align="center">
+  <b><i>Fig 5. Building pattern </i></b>
+</p>  
+
+<br>
+<br />
+
+These classes can be found in the following files:
+- [GameState](../src/main/java/controller/state/GameState.java)
+- [GameBuilder](../src/main/java/model/game/builder/GameBuilder.java)
+- [StandardChessGame](../src/main/java/model/game/builder/StandardChessGame.java)
+
+
+#### Consequences:
+Benefits of applying the above pattern:
+
+<br>
+<br />
