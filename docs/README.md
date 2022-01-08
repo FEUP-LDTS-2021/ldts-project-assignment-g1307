@@ -308,3 +308,10 @@ Benefits of applying the above pattern:
 <p align="center">
   <b><i>Fig < need to add number >. Code coverage screenshot</i></b>
 </p>
+
+### Link to mutation testing reports
+[Controller Mutation tests](../docs/mutation_test/202201082213/index.html)
+
+[Model Mutation tests](../docs/mutation_test/202201082209/index.html)
+
+[View Mutation tests](../docs/mutation_test/202201082223/index.html)
