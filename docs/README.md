@@ -16,11 +16,18 @@ This project was developed by Lucas Sousa (up202004682@edu.fe.up.pt), Vitor Cava
 
 ## Planned Features
 
+Order by importance: 
 - **Check** - When, in the current round, an enemy piece is threatening to capture the king a check is initiated. When this happens the player must act in order to protect the king and stop the check.
 
 - **Checkmate** - During a check, when there is no possible way to protect the king and stop the check, there will be a Checkmate. The player who initiated the check will win and the game will return to the Main Menu.
 
 - **Countdown Clock** - When starting a new game, the players will be asked the duration of the countdown clocks. During the game, each turn, the corresponding clock will start ticking down, stopping when the player has made their move. Subsequently, the other player's clock will do the same. When a player's clock reaches 0 the game will end and that player will lose.
+
+- **New variants of chess** - This point will proof almost all the design patterns that we have created
+
+- **New options to menu - depending on the above topic** - Creating options that allows you to choose the new variants
+
+- **Maybe a Mouse Cursor and/or sound** - It would be cool to have a mouse courser
 
 ## Design
 ### General Structure
@@ -244,12 +251,15 @@ Benefits of applying the above pattern:
 ### Building the chess game
 #### Problem in context:
 Before a game can start, there need's to be a defined set of rules, a board and a set of pieces each player can 
-use. The program structure allows the programmer to build a customized game, however, we will focus on the traditional chess game.
+use. The program structure allows the programmer to build a customized game, however, we will focus on the traditional chess game, for now.
+The fact that we construct a game based on pre-defined steps allows constructing games based on the client will, we could for instance 
+create a game obj without rules ( which is known in chess as analysis). 
 
 #### The pattern:
 We have applied the <b> Builder Pattern </b> . With this pattern, we can organize the construction
-of the game components in a much <b> cleaner and organized way </b>. It also allows the programmer <b> to easily add different gameplay components </b>(ex: game with 4 sets of pieces).
-
+of the game components in a much <b> cleaner and organized way </b>. It also allows the programmer <b> to easily add different gameplay components </b>.
+In this way, we let the Game builder be the <b> constructor of the game </b> taking that responsibility from the GameModel,<b> avoiding
+per se a code smell </b> and <b> respecting Single Responsibility Principle </b>
 #### Implementation:
 The standardChessGame class, the class that builds the classical chess game, has a build
 method for every type of piece, take the buildBishops method for example, it will add to both set of pieces 2 bishops. The buildPieces method

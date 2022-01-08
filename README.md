@@ -10,7 +10,7 @@ For a more detailed version of this description click [here](./docs/README.md).
 
 ## Screenshots
 
-The following screenshots ilustrate the general look of our game, as well as the divergent functionalities:
+The following screenshots illustrate the general look of our game, as well as the divergent functionalities:
 
 <br>
 <br />
@@ -30,13 +30,13 @@ The following screenshots ilustrate the general look of our game, as well as the
 <br>
 <br />
 
-### Menu
+### Menu 
 
 <p align="center" justify="center">
   <img src="docs/images/screenshots/menu1.jpg"/>
 </p>
 <p align="center">
-  <b><i>Fig 1. Main Menu </i></b>
+  <b><i>Fig 1. Main Menu Mockup</i></b>
 </p>  
 
 <br>
