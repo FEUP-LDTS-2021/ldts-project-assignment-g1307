@@ -282,3 +282,19 @@ Benefits of applying the above pattern:
 
 <br>
 <br />
+
+## Known Code Smells And Refactoring Suggestions
+
+
+<br>
+<br />
+
+ ## Testing
+
+### Screenshot of coverage report
+<p align="center" justify="center">
+  <img src="images/screenshots/coverage.jpg"/>
+</p>
+<p align="center">
+  <b><i>Fig < need to add number >. Code coverage screenshot</i></b>
+</p>
