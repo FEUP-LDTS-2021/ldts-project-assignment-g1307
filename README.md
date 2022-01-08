@@ -30,13 +30,13 @@ The following screenshots illustrate the general look of our game, as well as th
 <br>
 <br />
 
-### Menu
+### Menu 
 
 <p align="center" justify="center">
   <img src="docs/images/screenshots/menu1.jpg"/>
 </p>
 <p align="center">
-  <b><i>Fig 1. Main Menu </i></b>
+  <b><i>Fig 1. Main Menu Mockup</i></b>
 </p>  
 
 <br>
