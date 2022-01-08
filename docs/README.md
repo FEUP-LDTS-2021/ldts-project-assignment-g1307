@@ -171,7 +171,7 @@ altering pre-existing code.
   <img src="images/UML/composite_UML.jpg"/>
 </p>
 <p align="center">
-  <b><i>Fig 3. Composite Pattern in MovingBehaviours </i></b>
+  <b><i>Fig 4. Composite Pattern in MovingBehaviours </i></b>
 </p>  
 
 <br>
@@ -221,7 +221,7 @@ if it is his turn, informing the player that a move was made. <b> Note:</b> Cloc
   <img src="images/UML/observerMethod.png"/>
 </p>
 <p align="center">
-  <b><i>Fig 4. Observer Pattern </i></b>
+  <b><i>Fig 5. Observer Pattern </i></b>
 </p>  
 
 <br>
@@ -259,10 +259,10 @@ combines all the methods that create the different pieces and the updateModelPie
 <br />
 
 <p align="center" justify="center">
-  <img src="images/UML/.jpg"/>
+  <img src="images/UML/builderPattern.png"/>
 </p>
 <p align="center">
-  <b><i>Fig 5. Builder Pattern </i></b>
+  <b><i>Fig 6. Builder Pattern </i></b>
 </p>  
 
 <br>
