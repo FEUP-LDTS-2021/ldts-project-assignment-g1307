@@ -12,8 +12,6 @@ For a more detailed version of this description click [here](./docs/README.md).
 
 The following screenshots illustrate the general look of our game, as well as the divergent functionalities:
 
-<br>
-<br />
 
 ### Game Preview
 
