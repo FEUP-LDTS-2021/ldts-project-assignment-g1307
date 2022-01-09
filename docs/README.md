@@ -308,20 +308,25 @@ Benefits of applying the above pattern:
  - Allows for construction code to be reused when building different types of chess games.
  - Allows for the creation of objects step-by-step.
 
-### Applying the rules of the game
-#### Problem in context:
-Every chess game and every variant of it has rules. We could have applied those rules in the pieces moving behaviour or even
-in the pieces , however, this would come with a great price, <b> the violation of Single Responsibility Principle </b>. Why ?
-Chess pieces would do must then they should and also know more than they should (<b> and this could become a future Open/Closed Principle violation</b>).
-So we opt to use the <b> Filter Pattern </b> which solves the previous issues and gives flexibility to add/remove rules based
-on the client wish without implying a SOLID violation. 
-#### The pattern:
+<br>
+<br />
 
-We opt to use the <b> Filter pattern </b>. This pattern is responsible for applying the rules based on the criteria defined by it.
+### **Applying the rules of the game**
+### Problem in context:
+
+Every chess game and every variant of it has rules. We could have applied those rules in the pieces moving behaviour or even
+in the pieces , however, this would come at a great price, <b> the violation of Single Responsibility Principle</b>. Why?
+Chess pieces would do more than they should and also know more than they should (<b> and this could become a future Open/Closed Principle violation</b>).
+So we opted to use the <b> Filter Pattern </b> which solves the previous issues and gives the flexibility to add/remove rules based
+on the clients wish without implying a SOLID violation. 
+
+### The pattern:
+
+We opted to use the <b> Filter pattern</b>. This pattern is responsible for applying the rules based on the criteria defined by it.
 Having the liberty to make changes to the moves that a piece can make without letting it know about those rules.
 
-#### Implementation:
-Every class that implements rule must receive a piece and a set of moves and apply the criteria defined by it.
+### Implementation:
+Every class that implements a rule must receive a piece and a set of moves and apply the criteria defined by it.
 
 
 
@@ -332,7 +337,7 @@ Every class that implements rule must receive a piece and a set of moves and app
   <img src="images/UML/Rule%20uml.png"/>
 </p>
 <p align="center">
-  <b><i>Fig 6. Rule Pattern </i></b>
+  <b><i>Fig 7. Rule Pattern </i></b>
 </p>  
 
 <br>
@@ -342,11 +347,11 @@ These classes can be found in the following package:
 - [Rule](../src/main/java/model/game/rules)
 
 
-#### Consequences:
+### Consequences:
 Benefits of applying the above pattern:
-- Allows more flexible code making it cleaner and easier
-- Allows introduction of new rules without breaking <b> Open/Closed Principle </b>
-- Keeps the <b> Responsibility of dealing with rules separated from the Pieces (Single Principle Responsibility) </b>
+- Allows for more flexible code making it cleaner and easier.
+- Allows for the introduction of new rules without breaking <b> Open/Closed Principle</b>.
+- Keeps the <b> Responsibility of dealing with rules separate from the Pieces (Single Principle Responsibility)</b>.
 
 
 <br>
@@ -368,7 +373,7 @@ than their own. Due to our implementation of the pieces and behaviours, we find 
 this smell comes <b> from the use of the filter pattern </b>.
 
 #### **Speculative Generality**
-The Clock and ClockModel classes, aswell as the getClock method in the Player class are **Speculative Generality** smells because they are related to the player countdown clocks that we intend to add in the future.
+The Clock and ClockModel classes, as well as the getClock method in the Player class are **Speculative Generality** smells because they are related to the player countdown clocks that we intend to add in the future.
 
 <br>
 <br />
@@ -380,7 +385,7 @@ The Clock and ClockModel classes, aswell as the getClock method in the Player cl
   <img src="images/screenshots/coverage.jpg"/>
 </p>
 <p align="center">
-  <b><i>Fig < need to add number >. Code coverage screenshot</i></b>
+  <b><i>Fig 9. Code coverage screenshot</i></b>
 </p>
 
 ### Link to mutation testing reports
