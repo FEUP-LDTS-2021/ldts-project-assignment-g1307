@@ -357,6 +357,52 @@ Benefits of applying the above pattern:
 <br>
 <br />
 
+### **Controller  operation**
+### Problem in context:
+
+Since the program follows the MVC  pattern, there needs to be a controller that reads the user inputs and manages the flow of the game. 
+
+### The pattern:
+The implemented pattern is the State Pattern. It behaves like a finite-state machine, meaning there is a number of finite states, and each transition,
+from one state to another, must follow a rule  made by the programmer. 
+
+
+### Implementation:
+When the controller is initialized and executed, the MenuState is set to the default state of the controller. Depending on the user input, the MenuState will determine
+the next state and so on... 
+When the user chooses the exit option, the state is set to null and then the program closes. When the user chooses the new game option
+the closeIfMoving method closes the menu window and the game window opens(Other options are being considered for development). The game state behaves similarly.
+
+<br>
+<br />
+
+<p align="center" justify="center">
+  <img src="images/UML/statePattern.png"/>
+</p>
+<p align="center">
+  <b><i>Fig 8. State Pattern </i></b>
+</p>  
+
+<br>
+<br />
+
+These classes can be found in the following files:
+- [Controller](../src/main/java/controller/Controller.java)
+- [ControllerState](../src/main/java/controller/state/ControllerState.java)
+- [GameState](../src/main/java/controller/state/GameState.java)
+- [MenuState](../src/main/java/controller/state/MenuState.java)
+
+
+### Consequences:
+Benefits of applying the above pattern:
+- Simplifies the code.
+- Follows the Open/Closed Principle.
+- Follows the Single Responsibility Principle.
+
+<br>
+<br />
+
+
 ## Known Code Smells And Refactoring Suggestions
 #### **Large Class**
 We consider the [StandardChessGame](../src/main/java/model/game/builder/StandardChessGame.java) class a **Large Class** due to having a builder method for every piece. However, we find justifiable since every piece has an unique starting position in the layout of the game
