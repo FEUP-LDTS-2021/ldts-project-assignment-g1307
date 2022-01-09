@@ -290,18 +290,64 @@ Benefits of applying the above pattern:
  - Allows construction code to be reused when building different types of chess games.
  - Allows the creation of objects step-by-step.
 
+### Applying the rules of the game
+#### Problem in context:
+Every chess game and every variant of it has rules. We could have applied those rules in the pieces moving behaviour or even
+in the pieces , however, this would come with a great price, <b> the violation of Single Responsibility Principle </b>. Why ?
+Chess pieces would do must then they should and also know more than they should (<b> and this could become a future Open/Closed Principle violation</b>).
+So we opt to use the <b> Filter Pattern </b> which solves the previous issues and gives flexibility to add/remove rules based
+on the client wish without implying a SOLID violation. 
+#### The pattern:
+
+We opt to use the <b> Filter pattern </b>. This pattern is responsible for applying the rules based on the criteria defined by it.
+Having the liberty to make changes to the moves that a piece can make without letting it know about those rules.
+
+#### Implementation:
+Every class that implements rule must receive a piece and a set of moves and apply the criteria defined by it.
+
+
+
+<br>
+<br />
+
+<p align="center" justify="center">
+  <img src="images/UML/Rule%20uml.png"/>
+</p>
+<p align="center">
+  <b><i>Fig 6. Rule Pattern </i></b>
+</p>  
+
+<br>
+<br />
+
+These classes can be found in the following package:
+- [Rule](../src/main/java/model/game/rules)
+
+
+#### Consequences:
+Benefits of applying the above pattern:
+- Allows more flexible code making it cleaner and easier
+- Allows introduction of new rules without breaking <b> Open/Closed Principle </b>
+- Keeps the <b> Responsibility of dealing with rules separated from the Pieces (Single Principle Responsibility) </b>
+
+
 <br>
 <br />
 
 ## Known Code Smells And Refactoring Suggestions
 #### **Large Class**
-We consider the [StandardChessGame](../src/main/java/model/game/builder/StandardChessGame.java) class a **Large Class** due to having a builder method for every piece. However, we find justifiable since every piece has an unique starting position in the layout of the game.
-
+We consider the [StandardChessGame](../src/main/java/model/game/builder/StandardChessGame.java) class a **Large Class** due to having a builder method for every piece. However, we find justifiable since every piece has an unique starting position in the layout of the game
+and in this way the code gets cleaner and easier to understand ( we could have combined all the methods into one big one but that is not a good principle)
 #### **Lazy Class**
-We consider the child classes of the Piece class (Ex. Queen, Rook, etc) to be **Lazy Classes**. This is due to the fact that they dont do much outside of attributing the correct moving behaviour group and the character that corresponds with the symbol in the font that's shown on screen.
+We consider the child classes of the Piece class (Ex. Queen, Rook, etc) to be **Lazy Classes**. This is due to the fact 
+that they don't do much outside of attributing the correct moving behaviour group and the character that corresponds with 
+the symbol in the font that's shown on screen.
 
 #### **Feature Envy**
-The **Feature Envy** smell is present in the Rule class and in the classes that implement it. These classes decide which of possible moves for a piece are legal, filtering their possible moves. As such they access the data of the pieces more than their own. Due to our implementation of the pieces and behaviours, we find this code smell justifiable.
+The **Feature Envy** smell is present in the Rule class and in the classes that implement it. These classes decide which 
+of possible moves for a piece are legal, filtering their possible moves. As such, they access the data of the pieces more
+than their own. Due to our implementation of the pieces and behaviours, we find this code smell justifiable. Note that 
+this smell comes <b> from the use of the filter pattern </b>.
 
 #### **Speculative Generality**
 The Clock and ClockModel classes, aswell as the getClock method in the Player class are **Speculative Generality** smells because they are related to the player countdown clocks that we intend to add in the future.
