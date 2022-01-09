@@ -40,7 +40,7 @@ public class MenuView extends View<MenuModel> {
         }
 
     }
-    public void drawOption() { // TODO: MAGIC ... and cleaning/refactoring
+    public void drawOption() {
         int colOfRectangle = MenuModel.Option.maxLength() + 2;
         int rowOfRectangle = getHeightCenter() + 3;
         TerminalPosition terminalPosition = new TerminalPosition(getWidthCenter() -colOfRectangle / 2 , rowOfRectangle);

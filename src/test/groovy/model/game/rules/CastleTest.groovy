@@ -68,7 +68,7 @@ class CastleTest extends Specification {
         legalMoves.size() == 0
     }
 
-    def "Not Castling after one of the pieces as moved"() { // TODO: VERIFY IF THE TEST IS CORRECTED
+    def "Not Castling after one of the pieces as moved"() {
         given:
         def aPiece= gameModel.getPiecesInGame()[0]
         def pos = aPiece.getPosition()

@@ -19,6 +19,7 @@ class MenuViewTest extends Specification {
         when:
         spy.draw()
         then:
+        1 * spy.clear()
         1 * spy.drawOption()
         1 * spy.drawTitle()
     }
