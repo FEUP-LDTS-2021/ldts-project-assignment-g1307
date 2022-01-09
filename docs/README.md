@@ -30,7 +30,10 @@ Order by importance:
 - **Maybe a Mouse Cursor and/or sound** - It would be cool to have a mouse cursor.
 
 ## Design
+Throughout the development, we aimed to make our code as modular as we could, insuring adherence to the <b>SOLID</b> principles.
+
 ### General Structure
+
 #### Problem in Context:
 In order to make the code <b> more reusable </b>, <b> organizable  </b>, and so that it wouldn't break the <b>
 Single Principle Responsibility </b> (which could easily happen) we decided to use the <b> MVC Architecture Pattern </b>.
