@@ -27,7 +27,7 @@ public class MenuModel implements Model {
             return option.ordinal() - this.ordinal();
         }
 
-    } // Same question of Color enum. TODO: add more options
+    }
     private Option current;
 
     public MenuModel() {

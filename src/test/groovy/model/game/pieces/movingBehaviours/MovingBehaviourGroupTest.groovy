@@ -6,7 +6,7 @@ import model.game.Position
 import java.util.stream.Collectors
 import java.util.stream.IntStream
 
-class MovingBehaviourGroupTest extends MovingBehaviourTest { // TODO: CLEAN THIS
+class MovingBehaviourGroupTest extends MovingBehaviourTest {
     def setup(){
         'Giving a Strategy that corresponds to the queen type of movement'
         Set<MovingBehaviour> set = new HashSet<>()

@@ -9,7 +9,7 @@ import model.game.pieces.Piece
 import model.game.pieces.movingBehaviours.TwoAndOneStrategy
 import spock.lang.Specification
 
-class EnPassantTest extends Specification { // TODO : this test is dependent on the behaviour of other classes ... change that
+class EnPassantTest extends Specification {
     def "A simple en Passant move"() {
         given:
         Pawn bPawn = new Pawn(Piece.COLOR.BLACK, new Position(2,2), new TwoAndOneStrategy(TwoAndOneStrategy.Direction.SOUTH))

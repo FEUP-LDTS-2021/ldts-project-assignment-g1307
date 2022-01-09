@@ -25,6 +25,7 @@ public class GameState extends ControllerState<GameModel,GameView>{
             case ArrowRight -> { cursor.moveRight(); nextControllerState = this;}
             case ArrowUp-> { cursor.moveUp(); nextControllerState = this;}
             case ArrowDown -> { cursor.moveDown(); nextControllerState = this;}
+            case Backspace -> nextControllerState = new MenuState();
             case Enter -> {model.select(); nextControllerState = this;}
             case EOF -> view.getScreen().close();
             default -> nextControllerState = this;
