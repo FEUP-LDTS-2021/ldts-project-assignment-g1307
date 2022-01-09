@@ -442,3 +442,9 @@ The Clock and ClockModel classes, as well as the getClock method in the Player c
 [Model Mutation tests](../docs/mutation_test/202201082209/index.html)
 
 [View Mutation tests](../docs/mutation_test/202201082223/index.html)
+
+## Self-evaluation
+
+- Vitor Cavaleiro: 30%
+- Ricardo de Matos: 50%
+- Lucas Sousa: 20%
