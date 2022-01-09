@@ -135,8 +135,8 @@ In this way we protected ourselves from going against the <b> Open-Closed Princi
 open for new variants of the game.
 
 ### The Pattern:
-We have applied the Strategy Pattern. In this way we prevent future violations of the <b> SOLID </b>principles.
-We also go in line with the good practises, by not "working" for the implementation but for the interface.
+We have applied the Strategy Pattern. This way we prevent future violations of the <b> SOLID </b>principles.
+It's also a good practise, by not "working" for the implementation but for the interface.
 
 ### Implementation:
 
@@ -177,7 +177,7 @@ We also have moving behaviour groups that combine different behaviours (Ex. The 
 Our implementation however, does not provide the option of recursively iterate through moving behaviours (we used a set here) as it wouldn't make sense 
 to have a moving behaviour group with more than one equal moving behaviour (those squares would already be considered from the 
 previous moving behaviour), so one could say that this is more of a <b> Strategy Pattern that calls combined strategy's </b>.
-This pattern allows us to oby the <b> Open/Closed Principle </b> as it let us introduce new Moving behaviours without 
+This pattern allows us to obey the <b> Open/Closed Principle </b> as it lets us introduce new Moving behaviours without 
 altering pre-existing code. 
 <br>
 <br />
@@ -225,13 +225,13 @@ ticking. So, the player must <b>observe the board</b> so that it can know <b> wh
 
 ### The Pattern:
 We have applied the <b> Observer Pattern </b>. With it, we can notify the player when it is his turn to play. And we can
-easily add new subscribers to the game <b> without having to change the code in the GameModel </b>, which allows to follow
+easily add new subscribers to the game <b> without having to change the code in the GameModel </b>, which follows
 the <b> Open/Closed Principle </b>.
 
 ### Implementation:
-The notifyPlayers method in GameModel will inform the gamePlayers when a move is made and if it is his turn, the responsibility
-to make the clock ticking/ stopping is from the Player. Every player implements an interface called GameSubscriber that tells the player
-if it is his turn, informing the player that a move was made. <b> Note:</b> Clock is yet to be implemented.
+The notifyPlayers method in GameModel will inform the gamePlayers when a move is made and if it is their turn, the responsibility
+to make the clock ticking/ stopping is of the Player. Every player implements an interface called GameSubscriber that tells the player
+if it is their turn, informing the player that a move was made. <b> Note:</b> Clock is yet to be implemented.
 
 <br>
 <br />
@@ -255,7 +255,7 @@ These classes can be found in the following files:
 ### Consequences:
 Benefits of applying the above pattern:
 - Follows Open/Close Principle.
-- Establish relationships between objects allowing the players to know the state of the game.
+- Establishes relationships between objects allowing the players to know the state of the game.
 
 <br>
 <br />
@@ -263,24 +263,23 @@ Benefits of applying the above pattern:
 ### **Building the chess game**
 ### Problem in context:
 
-Before a game can start, there need's to be a defined set of rules, a board and a set of pieces each player can 
+Before a game can start, there needs to be a defined set of rules, a board and a set of pieces each player can 
 use. The program structure allows the programmer to build a customized game, however, we will focus on the traditional chess game, for now.
-The fact that we construct a game based on pre-defined steps allows constructing games based on the client will, we could for instance 
-create a game obj without rules ( which is known in chess as analysis). 
+The fact that we construct a game based on pre-defined steps allows for the construction of games based on the clients will, we could for instance 
+create a game object without rules ( which is known in chess as analysis). 
 
 ### The pattern:
 
-We have applied the <b> Builder Pattern </b> . With this pattern, we can organize the construction
-of the game components in a much <b> cleaner and organized way </b>. It also allows the programmer <b> to easily add different gameplay components </b>.
-In this way, we let the Game builder be the <b> constructor of the game </b> taking that responsibility from the GameModel,<b> avoiding
-per se a code smell </b> and <b> respecting Single Responsibility Principle </b>
+We have applied the <b> Builder Pattern</b>. With this pattern, we can organize the construction
+of the game components in a much <b> cleaner and organized way</b>. It also allows the programmer <b>to easily add different gameplay components</b>.
+This way, we let the Game builder be the <b> constructor of the game </b> taking that responsibility from the GameModel,<b> avoiding
+per se a code smell </b> and <b> respecting Single Responsibility Principle </b>.
 
 ### Implementation:
 
 The standardChessGame class, the class that builds the classical chess game, has a build
-method for every type of piece, take the buildBishops method for example, it will add to both set of pieces 2 bishops. The buildPieces method
-combines all the methods that create the different pieces and the updateModelPieces method applies the pieces to the gameModel. The buildRules method assigns to the gameModel the set of rules the game obeys. The getResults method returns the complete gameModel 
-, which will be received by the gameState.
+method for every type of piece, take the buildBishops method for example, it will add to both sets of pieces 2 bishops. The buildPieces method
+combines all the methods that create the different pieces and the updateModelPieces method applies the pieces to the gameModel. The buildRules method assigns to the gameModel the set of rules the game obeys. The getResults method returns the complete gameModel, which will be received by the gameState.
 <br>
 <br />
 
@@ -302,9 +301,9 @@ These classes can be found in the following files:
 
 ### Consequences:
 Benefits of applying the above pattern:
- - Respects Single Responsibility Principle.
- - Allows construction code to be reused when building different types of chess games.
- - Allows the creation of objects step-by-step.
+ - Respects the Single Responsibility Principle.
+ - Allows for construction code to be reused when building different types of chess games.
+ - Allows for the creation of objects step-by-step.
 
 <br>
 <br />
