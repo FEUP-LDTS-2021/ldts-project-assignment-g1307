@@ -142,7 +142,9 @@ We have applied the Strategy Pattern. This way we prevent future violations of t
 It's also a good practise, by not "working" for the implementation but for the interface.
 
 ### Implementation:
-
+The interface BoarModel defines to methods that are intrinsic to every board. A board should be able to tell if a position is
+inside or outside it, and it also should be able to tell which are those classes. The last one is crucial as it is essential for
+the rendering of the board.
 
 <p align="center" justify="center">
   <img src="images/UML/strategy_UML.jpg"/>
