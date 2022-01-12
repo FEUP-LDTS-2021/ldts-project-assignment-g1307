@@ -23,7 +23,14 @@ public class PawnsStandardMoveRule implements Rule{
             TwoAndOneStrategy.Direction direction = ((TwoAndOneStrategy) pawn.getMovingBehaviour()).getDirection();
             Position posToRemove = new Position(pRow + direction.change * 2, pCol);
             movesToFilter.removeIf(m -> posToRemove.equals(m.getPosition()) && m.getPiece() == p);
+        }
+
+        if (p instanceof Pawn pawn) {
+            Position pawnPos = p.getPosition();
+            int pRow = pawnPos.getRow(); int pCol = pawnPos.getCol();
+            TwoAndOneStrategy.Direction direction = ((TwoAndOneStrategy) pawn.getMovingBehaviour()).getDirection();
             pieceInTheWay(movesToFilter ,new Position(pRow + direction.change, pCol));
+            pieceInTheWay(movesToFilter, new Position(pRow + direction.change * 2, pCol));
         }
     }
 
