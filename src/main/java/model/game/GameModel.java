@@ -1,5 +1,6 @@
 package model.game;
 
+import jdk.jshell.spi.ExecutionControl;
 import model.Model;
 import model.game.board.BoardModel;
 import model.game.move.Move;
@@ -8,6 +9,7 @@ import model.game.player.Player;
 import model.game.rules.Rule;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public class GameModel implements Model {
@@ -112,5 +114,14 @@ public class GameModel implements Model {
             }
         }
         cursor.select();
+    }
+
+    public boolean checkStalemate(Player player) throws ExecutionControl.NotImplementedException {
+        throw new ExecutionControl.NotImplementedException("N implementado");
+    }
+
+
+    void setCheck() throws ExecutionControl.NotImplementedException {
+        throw new ExecutionControl.NotImplementedException("N implementado");
     }
 }
