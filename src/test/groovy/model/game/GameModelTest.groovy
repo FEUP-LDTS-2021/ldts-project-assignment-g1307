@@ -4,6 +4,7 @@ import model.game.board.BoardModel
 import model.game.board.SquareBoard
 import model.game.move.Move
 import model.game.move.SimpleMove
+import model.game.pieces.King
 import model.game.pieces.Piece
 import model.game.player.Player
 import model.game.rules.Rule
@@ -83,5 +84,30 @@ class GameModelTest extends Specification {
         gameModel.select()
         then:
         1 * move.execute()
+    }
+
+    def "check"() {
+        given:
+        Player player1 = Mock(Player)
+        Player[] players = [player, player1]
+
+        player.getColor() >> Piece.COLOR.BLACK
+        player1.getColor() >> Piece.COLOR.White
+
+        Piece king = Mock(King)
+
+        king.getPosition() >> move.getPosition()
+
+        def set = new HashSet()
+        set.add(piece)
+        set.add(king)
+        gameModel.setPiecesInGame(set)
+        gameModel.setGamePlayers(players)
+        when:
+
+        gameModel.setCheck();
+
+        then:
+        king.inCheck()
     }
 }
