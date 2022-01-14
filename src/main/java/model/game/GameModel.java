@@ -128,12 +128,8 @@ public class GameModel implements Model {
 
     void setCheck() {
         for (Player player : gamePlayers) {
-            King king = null;
+            King king = getPlayerKing(player);
             boolean inCheck = false;
-            for (Piece piece : piecesInGame) {
-                if (piece instanceof King && piece.getColor() == player.getColor())
-                    king = (King) piece;
-            }
             assert king != null;
             for (Piece piece : piecesInGame) {
                 Set<Move> pMoves = piece.getMoves(boardModel);
@@ -147,5 +143,13 @@ public class GameModel implements Model {
             }
             if (!inCheck) king.setInCheck(false);
         }
+    }
+
+    King getPlayerKing(Player player) {
+        for (Piece piece : piecesInGame) {
+            if (piece instanceof King && piece.getColor() == player.getColor())
+                return (King) piece;
+        }
+        return null;
     }
 }
