@@ -94,13 +94,22 @@ class GameModelTest extends Specification {
         player.getColor() >> Piece.COLOR.BLACK
         player1.getColor() >> Piece.COLOR.White
 
-        Piece king = Mock(King)
+        King king = Mock(King)
 
+        king.getColor() >> Piece.COLOR.White
         king.getPosition() >> move.getPosition()
 
         def set = new HashSet()
+        King bKing = Mock(King)
+        bKing.getColor() >> Piece.COLOR.BLACK
+
+        def mvs = new HashSet()
+        bKing.getMoves(_ as BoardModel) >> mvs
+        king.getMoves(_ as BoardModel) >> mvs
+
         set.add(piece)
         set.add(king)
+        set.add(bKing)
         gameModel.setPiecesInGame(set)
         gameModel.setGamePlayers(players)
         when:
@@ -108,6 +117,6 @@ class GameModelTest extends Specification {
         gameModel.setCheck();
 
         then:
-        king.inCheck()
+        1 * king.setInCheck(true)
     }
 }
