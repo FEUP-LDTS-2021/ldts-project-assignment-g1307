@@ -119,7 +119,7 @@ public class GameModel implements Model {
 
     public boolean checkStalemate(Player player) {
         for (Piece p : piecesInGame) {
-            if (p.getColor() == gamePlayers[turn].getColor() && p.getMoves(boardModel).size() != 0) {
+            if (p.getColor() == player.getColor() && p.getMoves(boardModel).size() != 0) {
                 return false;
             }
         }
@@ -139,7 +139,7 @@ public class GameModel implements Model {
                 Set<Move> pMoves = piece.getMoves(boardModel);
                 filterMoves(pMoves, piece);
                 for (Move move : pMoves) {
-                    if (move.getPosition().equals(king.getPosition())) {
+                    if (move.getPosition().equals(king.getPosition()) && piece.getColor() != king.getColor()) {
                         king.setInCheck(true);
                         inCheck = true;
                     }

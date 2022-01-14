@@ -16,7 +16,7 @@ class GameModelTest extends Specification {
     Move move
     def gameCursor
     def piece
-    def player
+    Player player
 
     def setup() {
         piece = Mock(Piece)
@@ -123,33 +123,17 @@ class GameModelTest extends Specification {
 
     def "Stalemate"() {
         given:
-        def player = Mock(Player);
-        def king = Mock(King)
-        def enemyKing = Mock(King)
-        def enemyQueen = Mock(Queen)
-
         player.getColor() >> Piece.COLOR.BLACK
+
+        King king = Mock(King)
+
+        'This king(or any other piece) should not have any possible move'
+        def kingMvs = new HashSet()
         king.getColor() >> Piece.COLOR.BLACK
-        enemyKing.getColor() >> Piece.COLOR.White
-        enemyQueen.getColor() >> Piece.COLOR.White
-
-        king.getPosition() >> new Position(1,8)
-        enemyQueen.getPosition() >> new Position(3,7)
-        enemyKing.getPosition() >> new Position(2,6)
-
+        king.getMoves(_ as BoardModel) >> kingMvs
 
         def s = new HashSet()
         s.add(king)
-        s.add(enemyKing)
-        s.add(enemyQueen)
-
-        BoardModel boardModel = Mock(SquareBoard)
-
-        boardModel.positionInBoard(_ as Position) >> true
-
-        GameModel gameModel = new GameModel()
-        gameModel.setBoardModel(boardModel)
-        gameModel.setPiecesInGame(s)
 
         when:
         def result = gameModel.checkStalemate(player)

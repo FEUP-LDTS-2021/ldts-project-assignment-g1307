@@ -31,6 +31,7 @@ public class Castle implements Rule{
             rPos = new Position(row, col + rSideToBe);
         }
 
+        @Override
         public void execute() {
             super.execute();
             rook.moveToPosition(rPos);
