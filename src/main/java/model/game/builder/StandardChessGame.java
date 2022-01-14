@@ -29,7 +29,7 @@ public class StandardChessGame implements GameBuilder {
         squareBoard = new SquareBoard(8);
         gameModel.setCursor(new GameCursor(new Position(1,1) , squareBoard));
         gameModel.setBoardModel(squareBoard);
-        Player[] players = {new Player(new ClockModel(),Piece.COLOR.White), new Player(new ClockModel(),Piece.COLOR.BLACK)}; // maybe do a build player
+        Player[] players = {new Player(new ClockModel(),Piece.COLOR.White), new Player(new ClockModel(),Piece.COLOR.BLACK)};
         gameModel.setGamePlayers(players);
         rules = new Rule[8];
 
