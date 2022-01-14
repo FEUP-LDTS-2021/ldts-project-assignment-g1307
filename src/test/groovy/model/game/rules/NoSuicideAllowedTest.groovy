@@ -37,9 +37,7 @@ class NoSuicideAllowedTest extends Specification {
         king.getMoves(_ as BoardModel) >> sKingMoves
 
 
-        def gameModel = Stub(GameModel) {
-            setCheck: king.inCheck()>>true
-        }
+        def gameModel = Stub(GameModel)
 
         def piecesGame = new HashSet()
         piecesGame.add(piece)
