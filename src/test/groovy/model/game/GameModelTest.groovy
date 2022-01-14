@@ -6,6 +6,7 @@ import model.game.move.Move
 import model.game.move.SimpleMove
 import model.game.pieces.King
 import model.game.pieces.Piece
+import model.game.pieces.Queen
 import model.game.player.Player
 import model.game.rules.Rule
 import spock.lang.Specification
@@ -118,5 +119,42 @@ class GameModelTest extends Specification {
 
         then:
         1 * king.setInCheck(true)
+    }
+
+    def "Stalemate"() {
+        given:
+        def player = Mock(Player);
+        def king = Mock(King)
+        def enemyKing = Mock(King)
+        def enemyQueen = Mock(Queen)
+
+        player.getColor() >> Piece.COLOR.BLACK
+        king.getColor() >> Piece.COLOR.BLACK
+        enemyKing.getColor() >> Piece.COLOR.White
+        enemyQueen.getColor() >> Piece.COLOR.White
+
+        king.getPosition() >> new Position(1,8)
+        enemyQueen.getPosition() >> new Position(3,7)
+        enemyKing.getPosition() >> new Position(2,6)
+
+
+        def s = new HashSet()
+        s.add(king)
+        s.add(enemyKing)
+        s.add(enemyQueen)
+
+        BoardModel boardModel = Mock(SquareBoard)
+
+        boardModel.positionInBoard(_ as Position) >> true
+
+        GameModel gameModel = new GameModel()
+        gameModel.setBoardModel(boardModel)
+        gameModel.setPiecesInGame(s)
+
+        when:
+        def result = gameModel.checkStalemate(player)
+
+        then:
+        result
     }
 }

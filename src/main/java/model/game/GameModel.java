@@ -117,24 +117,28 @@ public class GameModel implements Model {
         cursor.select();
     }
 
-    public boolean checkStalemate(Player player) throws ExecutionControl.NotImplementedException {
-        throw new ExecutionControl.NotImplementedException("N implementado");
+    public boolean checkStalemate(Player player) {
+        for (Piece p : piecesInGame) {
+            if (p.getColor() == gamePlayers[turn].getColor() && p.getMoves(boardModel).size() != 0) {
+                return false;
+            }
+        }
+        return true;
     }
-
 
     void setCheck() {
         for (Player player : gamePlayers) {
             King king = null;
             boolean inCheck = false;
-            for (Piece piece: piecesInGame){
+            for (Piece piece : piecesInGame) {
                 if (piece instanceof King && piece.getColor() == player.getColor())
-                    king = (King)piece;
+                    king = (King) piece;
             }
             assert king != null;
             for (Piece piece : piecesInGame) {
                 Set<Move> pMoves = piece.getMoves(boardModel);
-                filterMoves(pMoves,piece);
-                for (Move move:pMoves) {
+                filterMoves(pMoves, piece);
+                for (Move move : pMoves) {
                     if (move.getPosition().equals(king.getPosition())) {
                         king.setInCheck(true);
                         inCheck = true;
