@@ -31,7 +31,7 @@ public class StandardChessGame implements GameBuilder {
         gameModel.setBoardModel(squareBoard);
         Player[] players = {new Player(new ClockModel(),Piece.COLOR.White), new Player(new ClockModel(),Piece.COLOR.BLACK)};
         gameModel.setGamePlayers(players);
-        rules = new Rule[9];
+        rules = new Rule[10];
 
     }
 
@@ -126,6 +126,7 @@ public class StandardChessGame implements GameBuilder {
             rules[6] = new EnPassant(gameModel);
             rules[7] = new PromotingPawns(gameModel);
             rules[8] = new NoSuicideAllowed(gameModel);
+            rules[9] = new ProtectKingRule(gameModel);
         } catch (NotSupportedBoard e) {
             e.printStackTrace();
         }

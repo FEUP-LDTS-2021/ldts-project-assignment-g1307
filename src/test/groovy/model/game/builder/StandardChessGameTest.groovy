@@ -190,7 +190,7 @@ class StandardChessGameTest extends Specification {
         when:
         def r = model.getRules().size()
         then:
-        r == 9
+        r == 10
 
     }
 }
