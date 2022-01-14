@@ -14,15 +14,27 @@ class NoSuicideAllowedTest extends Specification {
         Piece piece = Mock(Piece)
         King king = Mock(King)
 
+        piece.getColor() >> Piece.COLOR.BLACK
+        king.getColor() >> Piece.COLOR.White
+
         Move move = Mock(Move)
         Position position = Mock(Position)
         move.getPosition() >> position
+        move.getPiece() >> king
 
-        def sMoves = new HashSet()
-        sMoves.add(move)
+        Move move2 = Mock(Move)
+        move2.getPosition() >> position
 
-        piece.getMoves(_ as BoardModel) >> sMoves
-        king.getMoves(_ as BoardModel) >> sMoves
+        position.equals(_) >> true
+
+        def sKingMoves = new HashSet()
+        sKingMoves.add(move)
+
+        def sPieceMove = new HashSet()
+        sPieceMove.add(move2)
+
+        piece.getMoves(_ as BoardModel) >> sPieceMove
+        king.getMoves(_ as BoardModel) >> sKingMoves
 
 
         def gameModel = Stub(GameModel) {
@@ -33,16 +45,16 @@ class NoSuicideAllowedTest extends Specification {
         piecesGame.add(piece)
         piecesGame.add(king)
 
-        gameModel.setPiecesInGame(piecesGame)
+        gameModel.getPiecesInGame() >> piecesGame
 
         def rule = new NoSuicideAllowed(gameModel)
         when:
 
-        rule.obyRule(sMoves, king)
+        rule.obyRule(sKingMoves, king)
 
         then:
 
-        sMoves.isEmpty()
+        sKingMoves.isEmpty()
 
     }
 }
