@@ -4,6 +4,7 @@ import jdk.jshell.spi.ExecutionControl;
 import model.Model;
 import model.game.board.BoardModel;
 import model.game.move.Move;
+import model.game.pieces.King;
 import model.game.pieces.Piece;
 import model.game.player.Player;
 import model.game.rules.Rule;
@@ -116,12 +117,17 @@ public class GameModel implements Model {
         cursor.select();
     }
 
-    public boolean checkStalemate(Player player) throws ExecutionControl.NotImplementedException {
-        throw new ExecutionControl.NotImplementedException("N implementado");
+    public boolean checkStalemate(Player player) {
+        for (Piece p : piecesInGame) {
+            if (p.getColor() == gamePlayers[turn].getColor() && p.getMoves(boardModel).size() != 0) {
+                return false;
+            }
+        }
+        return true;
     }
 
 
-    void setCheck() throws ExecutionControl.NotImplementedException {
+        void setCheck() throws ExecutionControl.NotImplementedException {
         throw new ExecutionControl.NotImplementedException("N implementado");
     }
 }
