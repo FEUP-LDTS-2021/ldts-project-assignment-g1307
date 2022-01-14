@@ -13,6 +13,7 @@ import model.game.pieces.Piece
 import model.game.pieces.Rook
 import model.game.pieces.movingBehaviours.DiagonalStrategy
 import model.game.pieces.movingBehaviours.SideStrategyTest
+import model.game.player.Player
 import spock.lang.Specification
 
 class ProtectKingRuleTest extends Specification {
@@ -22,44 +23,30 @@ class ProtectKingRuleTest extends Specification {
         king.getColor() >> Piece.COLOR.BLACK
         def pawn = Mock(Pawn)
         pawn.getColor() >> Piece.COLOR.BLACK
-        def enemyRook = Mock(Rook)
-        enemyRook.getColor() >> Piece.COLOR.White
-
-        king.getPosition() >> new Position(3,1)
-        pawn.getPosition() >> new Position(3,2)
-        enemyRook.getPosition() >> new Position(3,8)
 
         Set<Move> set = new HashSet()
-        def rookMove = Mock(SimpleMove)
         def pawnMove = Mock(SimpleMove)
 
-        rookMove.getPosition() >> king.getPosition()
-        set.add(rookMove)
-        enemyRook.getMoves(_ as BoardModel) >> set
-        set.clear()
-        pawnMove.getPosition() >> new Position(4,2)
         set.add(pawnMove)
         pawn.getMoves(_ as BoardModel) >> set
 
         def s = new HashSet()
-        s.add(King)
+        s.add(king)
         s.add(pawn)
-        s.add(enemyRook)
 
-        BoardModel boardModel = Mock(SquareBoard)
+        def gameModel = Stub(GameModel) {
+            setCheck: king.inCheck() >>> [false,true]
+            getPiecesInGame() >> s
+        }
 
-        boardModel.positionInBoard(_ as Position) >> true
-
-        GameModel gameModel = new GameModel()
-        gameModel.setBoardModel(boardModel)
-        gameModel.setPiecesInGame(s)
         def nC = new ProtectKingRule(gameModel)
 
         when:
         Set<Move> r = pawn.getMoves(gameModel.getBoardModel())
         nC.obyRule(r, pawn)
+        def result = r.size()
 
         then:
-        r.size() == 0
+        result == 0
     }
 }
