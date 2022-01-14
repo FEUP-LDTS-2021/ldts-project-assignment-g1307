@@ -126,7 +126,7 @@ public class GameModel implements Model {
         return true;
     }
 
-    void setCheck() {
+    public void setCheck() {
         for (Player player : gamePlayers) {
             King king = getPlayerKing(player);
             boolean inCheck = false;
