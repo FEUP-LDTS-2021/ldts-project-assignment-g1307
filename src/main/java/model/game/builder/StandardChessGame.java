@@ -29,9 +29,9 @@ public class StandardChessGame implements GameBuilder {
         squareBoard = new SquareBoard(8);
         gameModel.setCursor(new GameCursor(new Position(1,1) , squareBoard));
         gameModel.setBoardModel(squareBoard);
-        Player[] players = {new Player(new ClockModel(),Piece.COLOR.White), new Player(new ClockModel(),Piece.COLOR.BLACK)}; // maybe do a build player
+        Player[] players = {new Player(new ClockModel(),Piece.COLOR.White), new Player(new ClockModel(),Piece.COLOR.BLACK)};
         gameModel.setGamePlayers(players);
-        rules = new Rule[8];
+        rules = new Rule[10];
 
     }
 
@@ -125,6 +125,8 @@ public class StandardChessGame implements GameBuilder {
             rules[5] = new PawnsStandardMoveRule(gameModel);
             rules[6] = new EnPassant(gameModel);
             rules[7] = new PromotingPawns(gameModel);
+            rules[8] = new ProtectKingRule(gameModel);
+            rules[9] = new NoSuicideAllowed(gameModel);
         } catch (NotSupportedBoard e) {
             e.printStackTrace();
         }

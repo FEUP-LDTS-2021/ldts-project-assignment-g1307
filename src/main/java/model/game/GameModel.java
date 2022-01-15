@@ -3,11 +3,14 @@ package model.game;
 import model.Model;
 import model.game.board.BoardModel;
 import model.game.move.Move;
+import model.game.pieces.King;
 import model.game.pieces.Piece;
 import model.game.player.Player;
 import model.game.rules.Rule;
 
 import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Set;
 
 public class GameModel implements Model {
@@ -112,5 +115,33 @@ public class GameModel implements Model {
             }
         }
         cursor.select();
+    }
+
+    public boolean checkStalemate(Player player) {
+        List<Piece> listPiecesInGame = new LinkedList<>(piecesInGame);
+        for (Piece p : listPiecesInGame) {
+            Set<Move> possibleMvs = p.getMoves(boardModel);
+            filterMoves(possibleMvs,p);
+            if (p.getColor() == player.getColor() && !possibleMvs.isEmpty()) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public boolean checkMate() {
+        return checkStalemate(gamePlayers[turn]) && getPlayerKing(gamePlayers[turn].getColor()).inCheck();
+    }
+
+    public King getPlayerKing(Piece.COLOR color) {
+        for (Piece piece : piecesInGame) {
+            if (piece instanceof King && piece.getColor() == color)
+                return (King) piece;
+        }
+        return null;
+    }
+
+    public boolean gameEnded() {
+        return checkMate() || checkStalemate(gamePlayers[turn]);
     }
 }

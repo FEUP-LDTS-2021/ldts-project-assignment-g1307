@@ -4,7 +4,9 @@ import model.game.board.BoardModel
 import model.game.board.SquareBoard
 import model.game.move.Move
 import model.game.move.SimpleMove
+import model.game.pieces.King
 import model.game.pieces.Piece
+import model.game.pieces.Queen
 import model.game.player.Player
 import model.game.rules.Rule
 import spock.lang.Specification
@@ -14,7 +16,7 @@ class GameModelTest extends Specification {
     Move move
     def gameCursor
     def piece
-    def player
+    Player player
 
     def setup() {
         piece = Mock(Piece)
@@ -83,5 +85,45 @@ class GameModelTest extends Specification {
         gameModel.select()
         then:
         1 * move.execute()
+    }
+
+    def "CheckMate"() {
+        given:
+        King king = Mock(King)
+        gameModel.getPiecesInGame().add(king)
+
+        gameModel.getPlayerKing(_ as Piece.COLOR) >> king
+        king.inCheck() >> true
+        player.getColor() >> Piece.COLOR.White
+        king.getColor() >> Piece.COLOR.White
+
+        king.getMoves(_ as BoardModel) >> new HashSet<Move>()
+
+        'Piece Does Not have any possible move, it is in staleMate and the king is threatened -> checkmate'
+        when:
+        def result = gameModel.checkMate()
+        then:
+        result
+
+    }
+
+    def "Stalemate"() {
+        given:
+        player.getColor() >> Piece.COLOR.BLACK
+
+        'This Piece in game should not have any possible move'
+
+        when:
+        def result = gameModel.checkStalemate(player)
+
+        then:
+        result
+    }
+
+    def "GameNotEnded"() {
+        when:
+        def r = gameModel.gameEnded()
+        then:
+        !r
     }
 }
