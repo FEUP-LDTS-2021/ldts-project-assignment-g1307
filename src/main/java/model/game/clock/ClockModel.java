@@ -8,38 +8,44 @@ import java.util.TimerTask;
 public class ClockModel implements Model, Clock{
 
     private int time;
+    private int increment;
     private Timer timer;
 
     private boolean ended;
     private boolean paused;
+
+    public ClockModel(int time, int increment){
+        this.time = time;
+        this.increment = increment;
+        timer = null;
+        ended = false;
+        paused = true;
+    }
+
+    public ClockModel(int time){
+        this.time = time;
+        this.increment = 0;
+        timer = null;
+        ended = false;
+        paused = true;
+    }
 
 
     public boolean isEnded() {
         return ended;
     }
 
-    public void setEnded(boolean ended) {
-        this.ended = ended;
-    }
-
     public boolean isPaused() {
         return paused;
-    }
-
-    public void setPaused(boolean paused) {
-        this.paused = paused;
     }
 
     public int getTime() {
         return time;
     }
 
-    public void setTime(int time) {
-        this.time = time;
-    }
-
     @Override
     public void pause() {
+        if (timer == null) return;
         timer.cancel();
         paused = true;
     }
@@ -47,6 +53,7 @@ public class ClockModel implements Model, Clock{
     @Override
     public void resume() {
         if(!ended){
+            time += increment;
             paused = false;
             this.timer = new Timer();
             TimerTask task = new TimerTask(){
@@ -67,12 +74,6 @@ public class ClockModel implements Model, Clock{
     public void cancel() {
         pause();
         ended = true;
-    }
-
-    public ClockModel(int time){
-        this.time = time;
-        ended = false;
-        paused = true;
     }
 
     @Override

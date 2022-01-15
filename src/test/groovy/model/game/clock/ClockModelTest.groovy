@@ -85,6 +85,14 @@ class ClockModelTest extends Specification{
 
         expect:
         remaining == 20
+    }
 
+    def "Test for clock with increment"() {
+        ClockModel clock = new ClockModel(30, 999999)
+        clock.resume()
+        clock.pause()
+
+        expect:
+        clock.getTime() > 30
     }
 }
