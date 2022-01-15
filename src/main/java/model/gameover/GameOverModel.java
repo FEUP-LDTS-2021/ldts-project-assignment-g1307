@@ -21,11 +21,10 @@ public class GameOverModel implements Model {
         return checkmate;
     }
 
-    public Player getWinner() {
-        return winner;
-    }
-
     public String gameOverMessage() {
-        return "";
+        if (winner != null){
+            return winner.getColor().name() + " won by " + (checkmate? "checkmate":"time");
+        }
+        return "It's a draw";
     }
 }
