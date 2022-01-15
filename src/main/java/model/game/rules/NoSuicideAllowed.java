@@ -22,15 +22,16 @@ public class NoSuicideAllowed implements Rule{
         if (piece instanceof King) {
             Boolean hasMove = piece.isMoved();
             Position originalPos = piece.getPosition();
-            List<Piece> pieces = new ArrayList<>(gameModel.getPiecesInGame());
+            Set<Piece> piecesInGame = gameModel.getPiecesInGame();
+            List<Piece> pieces = new ArrayList<>(piecesInGame);
             Set<Move> toRemove = new HashSet<>();
             for (Move move : movesToFilter) {
-                move.execute();
+                piecesInGame.removeIf(m -> m.getPosition().equals(move.getPosition()));
                 if (isCaseAttacked(move))
                     toRemove.add(move);
                 piece.moveToPosition(originalPos);
                 piece.setHasMove(hasMove);
-                gameModel.getPiecesInGame().addAll(pieces);
+                piecesInGame.addAll(pieces);
             }
             movesToFilter.removeAll(toRemove);
         }
