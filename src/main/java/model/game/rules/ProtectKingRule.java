@@ -21,6 +21,9 @@ public class ProtectKingRule implements Rule{
     @Override
     public void obyRule(Set<Move> movesToFilter, Piece piece) {
         if (!(piece instanceof King)) {
+            King king = gameModel.getPlayerKing(piece.getColor());
+            king.setInCheck(isInCheck(king));
+
             simulateMoves(movesToFilter, piece);
         }
     }
@@ -54,7 +57,6 @@ public class ProtectKingRule implements Rule{
                 toRemove.add(move);
             piece.moveToPosition(originalPos);
             piece.setHasMove(hasMove);
-            gameModel.getPiecesInGame().clear();
             gameModel.getPiecesInGame().addAll(pieces);
         }
         movesToFilter.removeAll(toRemove);

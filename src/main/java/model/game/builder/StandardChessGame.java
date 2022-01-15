@@ -125,8 +125,8 @@ public class StandardChessGame implements GameBuilder {
             rules[5] = new PawnsStandardMoveRule(gameModel);
             rules[6] = new EnPassant(gameModel);
             rules[7] = new PromotingPawns(gameModel);
-            rules[8] = new NoSuicideAllowed(gameModel);
-            rules[9] = new ProtectKingRule(gameModel);
+            rules[8] = new ProtectKingRule(gameModel);
+            rules[9] = new NoSuicideAllowed(gameModel);
         } catch (NotSupportedBoard e) {
             e.printStackTrace();
         }

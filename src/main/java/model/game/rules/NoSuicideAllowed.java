@@ -1,10 +1,14 @@
 package model.game.rules;
 
 import model.game.GameModel;
+import model.game.Position;
 import model.game.move.Move;
 import model.game.pieces.King;
 import model.game.pieces.Piece;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 public class NoSuicideAllowed implements Rule{
@@ -16,13 +20,26 @@ public class NoSuicideAllowed implements Rule{
     @Override
     public void obyRule(Set<Move> movesToFilter, Piece piece) {
         if (piece instanceof King) {
-            movesToFilter.removeIf(this::isCaseAttacked);
+            Boolean hasMove = piece.isMoved();
+            Position originalPos = piece.getPosition();
+            List<Piece> pieces = new ArrayList<>(gameModel.getPiecesInGame());
+            Set<Move> toRemove = new HashSet<>();
+            for (Move move : movesToFilter) {
+                move.execute();
+                if (isCaseAttacked(move))
+                    toRemove.add(move);
+                piece.moveToPosition(originalPos);
+                piece.setHasMove(hasMove);
+                gameModel.getPiecesInGame().addAll(pieces);
+            }
+            movesToFilter.removeAll(toRemove);
         }
     }
 
     private boolean isCaseAttacked(Move move) {
         Piece king = move.getPiece();
-        for (Piece piece: gameModel.getPiecesInGame()) {
+        Set<Piece> piecesInGame = gameModel.getPiecesInGame();
+        for (Piece piece: piecesInGame) {
             if (piece.getColor() != king.getColor()) {
                 Set<Move> moves = piece.getMoves(gameModel.getBoardModel());
                 filterMovesUntilRule(moves, piece);
@@ -38,7 +55,7 @@ public class NoSuicideAllowed implements Rule{
 
     private void filterMovesUntilRule(Set<Move> filterMoves, Piece piece) {
         for (Rule rule : gameModel.getRules()) {
-            if (!(rule instanceof NoSuicideAllowed)) {
+            if (!(rule instanceof ProtectKingRule)) {
                 rule.obyRule(filterMoves,piece);
             }
             else
