@@ -79,33 +79,12 @@ public class ClockModel implements Model, Clock{
     @Override
     public String toString(){
         int sec, min, hour, aux;
-        StringBuilder builder = new StringBuilder();
         aux = time;
         hour = aux / 3600;
         aux = aux % 3600;
         min = aux/60;
         aux = aux%60;
         sec = aux;
-        if(hour < 10){
-            builder.append(0);
-            builder.append(hour);
-        }
-        else builder.append(hour);
-        builder.append(":");
-
-        if(min < 10){
-            builder.append(0);
-            builder.append(min);
-        }
-        else builder.append(min);
-        builder.append(":");
-
-        if(sec < 10){
-            builder.append(0);
-            builder.append(sec);
-        }
-        else builder.append(sec);
-
-        return builder.toString();
+        return String.format("%02X:%02X:%02X", hour, min, sec);
     }
 }
