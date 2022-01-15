@@ -8,7 +8,7 @@ import java.util.TimerTask;
 public class ClockModel implements Model, Clock{
 
     private int time;
-    private int increment;
+    private final int increment;
     private Timer timer;
 
     private boolean ended;
@@ -90,7 +90,7 @@ public class ClockModel implements Model, Clock{
     }
 
     @Override
-    public void skiptime(int time) {
+    public void skipTime(int time) {
         this.time = this.time - time;
         if(this.time <=0) cancel();
     }

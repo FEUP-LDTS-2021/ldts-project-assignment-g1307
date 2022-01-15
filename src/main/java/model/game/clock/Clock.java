@@ -5,5 +5,5 @@ public interface Clock {
     void resume();
     void cancel();
     @Override String toString();
-    void skiptime(int time);
+    void skipTime(int time);
 }
