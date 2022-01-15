@@ -6,11 +6,11 @@ import model.game.player.Player;
 
 
 public class EndGameModel implements Model {
-    private Player[] winners;
+    private Player winner;
     private boolean checkmate;
 
-    public EndGameModel(Player[] winners, boolean checkmate){
-        this.winners = winners;
+    public EndGameModel(Player winner, boolean checkmate){
+        this.winner = winner;
         this.checkmate = checkmate;
     }
 
@@ -18,7 +18,12 @@ public class EndGameModel implements Model {
         throw new ExecutionControl.NotImplementedException("N implementado");
     }
 
-    public boolean wonByCheckmate(Player[] winners) throws ExecutionControl.NotImplementedException {
+
+    public boolean wonByCheckmate() throws ExecutionControl.NotImplementedException {
+        throw new ExecutionControl.NotImplementedException("N implementado");
+    }
+
+    public Player getWinner() throws ExecutionControl.NotImplementedException {
         throw new ExecutionControl.NotImplementedException("N implementado");
     }
 }
