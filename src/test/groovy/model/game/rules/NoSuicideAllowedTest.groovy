@@ -25,7 +25,11 @@ class NoSuicideAllowedTest extends Specification {
         Move move2 = Mock(Move)
         move2.getPosition() >> position
 
+        Position piecePos = Mock(Position)
+        piece.getPosition() >> piecePos
+        king.getPosition() >> position
         position.equals(_) >> true
+        piecePos.equals(_) >> false
 
         def sKingMoves = new HashSet()
         sKingMoves.add(move)
@@ -45,7 +49,16 @@ class NoSuicideAllowedTest extends Specification {
 
         gameModel.getPiecesInGame() >> piecesGame
 
+        def rules = new HashSet()
         def rule = new NoSuicideAllowed(gameModel)
+        def mockedRule = Mock(Castle)
+        rules.add(rule)
+        rules.add(mockedRule)
+
+        mockedRule.obyRule(_ as Set<Move>, _ as Piece) >> null
+
+        gameModel.getRules() >> rules
+
         when:
 
         rule.obyRule(sKingMoves, king)

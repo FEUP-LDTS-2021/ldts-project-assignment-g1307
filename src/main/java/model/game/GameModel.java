@@ -124,23 +124,8 @@ public class GameModel implements Model {
         return true;
     }
 
-    public void setCheck() {
-        for (Player player : gamePlayers) {
-            King king = getPlayerKing(player.getColor());
-            boolean inCheck = false;
-            assert king != null;
-            for (Piece piece : piecesInGame) {
-                Set<Move> pMoves = piece.getMoves(boardModel);
-                filterMoves(pMoves, piece);
-                for (Move move : pMoves) {
-                    if (move.getPosition().equals(king.getPosition()) && piece.getColor() != king.getColor()) {
-                        king.setInCheck(true);
-                        inCheck = true;
-                    }
-                }
-            }
-            if (!inCheck) king.setInCheck(false);
-        }
+    public boolean checkMate() {
+        return false;
     }
 
     public King getPlayerKing(Piece.COLOR color) {

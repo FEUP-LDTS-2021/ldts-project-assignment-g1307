@@ -27,6 +27,7 @@ public class NoSuicideAllowed implements Rule{
             Set<Move> toRemove = new HashSet<>();
             for (Move move : movesToFilter) {
                 piecesInGame.removeIf(m -> m.getPosition().equals(move.getPosition()));
+                piece.moveToPosition(move.getPosition());
                 if (isCaseAttacked(move))
                     toRemove.add(move);
                 piece.moveToPosition(originalPos);

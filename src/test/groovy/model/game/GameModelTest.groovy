@@ -87,38 +87,8 @@ class GameModelTest extends Specification {
         1 * move.execute()
     }
 
-    def "check"() {
-        given:
-        Player player1 = Mock(Player)
-        Player[] players = [player, player1]
+    def "CheckMate"() {
 
-        player.getColor() >> Piece.COLOR.BLACK
-        player1.getColor() >> Piece.COLOR.White
-
-        King king = Mock(King)
-
-        king.getColor() >> Piece.COLOR.White
-        king.getPosition() >> move.getPosition()
-
-        def set = new HashSet()
-        King bKing = Mock(King)
-        bKing.getColor() >> Piece.COLOR.BLACK
-
-        def mvs = new HashSet()
-        bKing.getMoves(_ as BoardModel) >> mvs
-        king.getMoves(_ as BoardModel) >> mvs
-
-        set.add(piece)
-        set.add(king)
-        set.add(bKing)
-        gameModel.setPiecesInGame(set)
-        gameModel.setGamePlayers(players)
-        when:
-
-        gameModel.setCheck();
-
-        then:
-        1 * king.setInCheck(true)
     }
 
     def "Stalemate"() {
