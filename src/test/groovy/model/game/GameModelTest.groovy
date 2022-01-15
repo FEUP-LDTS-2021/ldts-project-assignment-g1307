@@ -88,6 +88,18 @@ class GameModelTest extends Specification {
     }
 
     def "CheckMate"() {
+        given:
+        King king = Mock(King)
+        gameModel.getPiecesInGame().add(king)
+
+        king.inCheck() >> true
+        player.getColor() >> Piece.COLOR.White
+        king.getColor() >> Piece.COLOR.White
+        'Piece Does Not have any possible move, it is in staleMate and the king is threatened -> checkmate'
+        when:
+        def result = gameModel.checkMate()
+        then:
+        result
 
     }
 
@@ -95,15 +107,7 @@ class GameModelTest extends Specification {
         given:
         player.getColor() >> Piece.COLOR.BLACK
 
-        King king = Mock(King)
-
-        'This king(or any other piece) should not have any possible move'
-        def kingMvs = new HashSet()
-        king.getColor() >> Piece.COLOR.BLACK
-        king.getMoves(_ as BoardModel) >> kingMvs
-
-        def s = new HashSet()
-        s.add(king)
+        'This Piece in game should not have any possible move'
 
         when:
         def result = gameModel.checkStalemate(player)
