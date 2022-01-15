@@ -14,16 +14,15 @@ public class EndGameModel implements Model {
         this.checkmate = checkmate;
     }
 
-    public boolean tied() throws ExecutionControl.NotImplementedException {
-        throw new ExecutionControl.NotImplementedException("N implementado");
+    public boolean tied() {
+        return (winner == null);
     }
 
-
-    public boolean wonByCheckmate() throws ExecutionControl.NotImplementedException {
-        throw new ExecutionControl.NotImplementedException("N implementado");
+    public boolean wonByCheckmate() {
+        return checkmate;
     }
 
-    public Player getWinner() throws ExecutionControl.NotImplementedException {
-        throw new ExecutionControl.NotImplementedException("N implementado");
+    public Player getWinner() {
+        return winner;
     }
 }
