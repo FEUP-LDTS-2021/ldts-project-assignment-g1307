@@ -1,5 +1,8 @@
 package model.game.clock;
 
 public interface Clock {
-    void changeClockState();
+    void pause();
+    void resume();
+    void cancel();
+    @Override String toString();
 }
