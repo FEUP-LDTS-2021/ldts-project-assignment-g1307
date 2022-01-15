@@ -1,12 +1,8 @@
-package model.endGame
+package model.gameover
 
-import model.game.clock.Clock
-import model.game.clock.ClockModel
-import model.game.pieces.Piece
+
 import model.game.player.Player
 import spock.lang.Specification
-
-import java.lang.management.PlatformLoggingMXBean
 
 class EndGameModelTest extends Specification{
     def "Game tie"(){
@@ -14,8 +10,8 @@ class EndGameModelTest extends Specification{
         Player tie = null
         Player winner = Mock(Player)
 
-        def endGameModelTie = new EndGameModel(tie, false)
-        def endGameModelWinner = new EndGameModel(winner, true)
+        def endGameModelTie = new GameOverModel(tie, false)
+        def endGameModelWinner = new GameOverModel(winner, true)
 
         when:
         def r1 = endGameModelTie.tied()
@@ -30,8 +26,8 @@ class EndGameModelTest extends Specification{
         given:
         Player winner = Mock(Player)
 
-        def endGameModelCheckmate = new EndGameModel(winner, true)
-        def endGameModelTimeEnded = new EndGameModel(winner, false)
+        def endGameModelCheckmate = new GameOverModel(winner, true)
+        def endGameModelTimeEnded = new GameOverModel(winner, false)
 
         when:
         def r1 = endGameModelCheckmate.wonByCheckmate()
