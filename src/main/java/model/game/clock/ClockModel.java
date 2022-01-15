@@ -85,6 +85,7 @@ public class ClockModel implements Model, Clock{
         min = aux/60;
         aux = aux%60;
         sec = aux;
+
         return String.format("%02X:%02X:%02X", hour, min, sec);
     }
 
