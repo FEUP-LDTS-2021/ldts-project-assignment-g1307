@@ -66,6 +66,7 @@ class ClockModelTest extends Specification{
 
     def "simulating passage of time"(){
         ClockModel clock = new ClockModel(20)
+        clock.resume()
         clock.skiptime(10)
         int remaining = clock.getTime()
         clock.cancel();
