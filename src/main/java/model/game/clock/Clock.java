@@ -1,5 +1,8 @@
 package model.game.clock;
 
+import java.util.Timer;
+
 public interface Clock {
-    void changeClockState();
+    public void pause();
+    public void resume();
 }
