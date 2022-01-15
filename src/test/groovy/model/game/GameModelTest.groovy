@@ -120,12 +120,10 @@ class GameModelTest extends Specification {
         result
     }
 
-    def "GameEnded"() {
-        given:
-        gameModel.checkMate() >> true
+    def "GameNotEnded"() {
         when:
         def r = gameModel.gameEnded()
         then:
-        r
+        !r
     }
 }
