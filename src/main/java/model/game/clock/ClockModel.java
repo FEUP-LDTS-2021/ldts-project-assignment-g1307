@@ -4,6 +4,7 @@ import model.Model;
 import model.game.GameSubscriber;
 
 import java.util.Timer;
+import java.util.TimerTask;
 
 public class ClockModel implements Model, Clock{
     public boolean isEnded() {
@@ -38,20 +39,40 @@ public class ClockModel implements Model, Clock{
 
     @Override
     public void pause() {
-
+        timer.cancel();
+        paused = true;
     }
 
     @Override
     public void resume() {
-
+        if(!ended){
+            paused = false;
+            this.timer = new Timer();
+            TimerTask task = new TimerTask(){
+                @Override
+                public void run(){
+                    //view method should collect remaining time at this point in time
+                    time--;
+                    if(time <= 0) {
+                        ended = true;
+                        timer.cancel();
+                        //should call method to end the game
+                    }
+                }
+            };
+            this.timer.scheduleAtFixedRate(task, 0, 1000);
+        }
     }
 
     @Override
     public void cancel() {
-
+        pause();
+        ended = true;
     }
 
     public ClockModel(int time){
-
+        this.time = time;
+        ended = false;
+        paused = true;
     }
 }

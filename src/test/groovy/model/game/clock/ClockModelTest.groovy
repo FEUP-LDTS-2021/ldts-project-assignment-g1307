@@ -23,6 +23,7 @@ class ClockModelTest extends Specification{
                     clock.isPaused() == true //clock should now be paused and with 20 sec remaining
                     clock.getTime() == 20
                     clock.resume()
+                    clock.isPaused() == false;
                 }
             }
         }, 0, 1000)
