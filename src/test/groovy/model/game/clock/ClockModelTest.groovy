@@ -1,71 +1,48 @@
 package model.game.clock
 
 import spock.lang.Specification
-import java.util.Timer
-import java.util.TimerTask
+import java.util.concurrent.TimeUnit
 
 class ClockModelTest extends Specification{
 
     def "Clock pause and resume"(){
         ClockModel clock = new ClockModel(30) //30 sec clock
-        int time = 10
-        Timer timer = new Timer()
 
         clock.resume()
-        timer.scheduleAtFixedRate(new TimerTask() { //should start a 10 sec timer and then pause the clock
-            @Override
-            void run() {
-                time--
-                if(time <=0){
-                    timer.cancel()
-                    clock.pause()
+        TimeUnit.SECONDS.sleep(10) //code sleeps for 10 seconds
+        clock.pause()
 
-                    clock.isPaused() == true //clock should now be paused and with 20 sec remaining
-                    clock.getTime() == 20
-                    clock.resume()
-                    clock.isPaused() == false;
-                }
-            }
-        }, 0, 1000)
+        expect:
+        clock.isPaused() == true
+        clock.getTime() == 19 //1 sec dellay
+
+        clock.resume();
+        clock.isPaused() == false;
     }
 
     def "Clock end"(){
         ClockModel clock = new ClockModel(15) //15 sec clock
-        int time = 16
-        Timer timer = new Timer()
 
 
         clock.resume()
-        timer.scheduleAtFixedRate(new TimerTask() { //should start a 16 sec timer and check if the clock has ended
-            @Override
-            void run() {
-                time--
-                if(time <=0){
-                    timer.cancel()
-                    clock.isEnded() == true
-                    clock.getTime() == 0
-                }
-            }
-        }, 0, 1000)
+        TimeUnit.SECONDS.sleep(16) //stops code for 15 sec
+
+        expect:
+        clock.isEnded() == true
     }
 
     def "Clock Cancel"(){
-        ClockModel clock = new ClockModel(60) //60 sec clock
+        ClockModel clock = new ClockModel(20) //20 sec clock
         int time = 5
         Timer timer = new Timer()
 
         clock.resume()
-        timer.scheduleAtFixedRate(new TimerTask() { //should start a 5 sec timer and then cancel the clock
-            @Override
-            void run() {
-                time--
-                if(time <=0){
-                    timer.cancel()
-                    clock.cancel()
-                    clock.isEnded() == true
-                }
-            }
-        }, 0, 1000)
+        TimeUnit.SECONDS.sleep(5)
+        clock.cancel()
+
+        expect:
+        clock.isEnded() == true
+        clock.getTime() == 14
     }
 
     def "get remaining time without stopping"(){
@@ -74,15 +51,10 @@ class ClockModelTest extends Specification{
         Timer timer = new Timer()
 
         clock.resume()
-        timer.scheduleAtFixedRate(new TimerTask() { //should start a 5 sec timer and then check the remaining time on the clcck;
-            @Override
-            void run() {
-                time--
-                if(time <=0){
-                    timer.cancel()
-                    clock.getTime() == 15
-                }
-            }
-        }, 0, 1000)
+        TimeUnit.SECONDS.sleep(5)
+        int remaining = clock.getTime();
+
+        expect:
+        remaining == 14;
     }
 }
