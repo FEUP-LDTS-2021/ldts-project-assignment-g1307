@@ -58,8 +58,20 @@ class ClockModelTest extends Specification{
         clock.resume()
         TimeUnit.SECONDS.sleep(5)
         String remaining = clock.toString();
+        clock.cancel();
 
         expect:
         remaining == "00:01:04"
+    }
+
+    def "simulating passage of time"(){
+        ClockModel clock = new ClockModel(20)
+        clock.resume()
+        clock.skiptime(10)
+        int remaining = clock.getTime()
+        clock.cancel();
+
+        expect:
+        remaining == 9
     }
 }

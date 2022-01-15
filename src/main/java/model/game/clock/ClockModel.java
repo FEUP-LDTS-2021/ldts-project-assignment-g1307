@@ -52,12 +52,10 @@ public class ClockModel implements Model, Clock{
             TimerTask task = new TimerTask(){
                 @Override
                 public void run(){
-                    //view method should collect remaining time at this point in time
                     time--;
                     if(time <= 0) {
                         ended = true;
                         timer.cancel();
-                        //should call method to end the game
                     }
                 }
             };
@@ -80,33 +78,17 @@ public class ClockModel implements Model, Clock{
     @Override
     public String toString(){
         int sec, min, hour, aux;
-        StringBuilder builder = new StringBuilder();
         aux = time;
         hour = aux / 3600;
         aux = aux % 3600;
         min = aux/60;
         aux = aux%60;
         sec = aux;
-        if(hour < 10){
-            builder.append(0);
-            builder.append(hour);
-        }
-        else builder.append(hour);
-        builder.append(":");
+        return String.format("%02d:%02d:%02d", hour, min, sec);
+    }
 
-        if(min < 10){
-            builder.append(0);
-            builder.append(min);
-        }
-        else builder.append(min);
-        builder.append(":");
-
-        if(sec < 10){
-            builder.append(0);
-            builder.append(sec);
-        }
-        else builder.append(sec);
-
-        return builder.toString();
+    @Override
+    public void skiptime(int time) {
+        this.time = this.time - time;
     }
 }
