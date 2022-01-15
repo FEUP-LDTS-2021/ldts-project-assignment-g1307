@@ -23,7 +23,6 @@ class ClockModelTest extends Specification{
     def "Clock end"(){
         ClockModel clock = new ClockModel(15) //15 sec clock
 
-
         clock.resume()
         TimeUnit.SECONDS.sleep(16) //stops code for 15 sec
 
@@ -33,8 +32,6 @@ class ClockModelTest extends Specification{
 
     def "Clock Cancel"(){
         ClockModel clock = new ClockModel(20) //20 sec clock
-        int time = 5
-        Timer timer = new Timer()
 
         clock.resume()
         TimeUnit.SECONDS.sleep(5)
@@ -47,8 +44,6 @@ class ClockModelTest extends Specification{
 
     def "get remaining time without stopping"(){
         ClockModel clock = new ClockModel(20) //20 sec clock
-        int time = 5
-        Timer timer = new Timer()
 
         clock.resume()
         TimeUnit.SECONDS.sleep(5)
@@ -59,6 +54,12 @@ class ClockModelTest extends Specification{
     }
 
     def "remaining time in string"(){
+        ClockModel clock = new ClockModel(70)
+        clock.resume()
+        TimeUnit.SECONDS.sleep(5)
+        String remaining = clock.toString();
 
+        expect:
+        remaining == "00:01:04"
     }
 }
