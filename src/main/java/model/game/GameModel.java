@@ -9,6 +9,8 @@ import model.game.player.Player;
 import model.game.rules.Rule;
 
 import java.util.HashSet;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Set;
 
 public class GameModel implements Model {
@@ -116,8 +118,11 @@ public class GameModel implements Model {
     }
 
     public boolean checkStalemate(Player player) {
-        for (Piece p : piecesInGame) {
-            if (p.getColor() == player.getColor() && p.getMoves(boardModel).size() != 0) {
+        List<Piece> listPiecesInGame = new LinkedList<>(piecesInGame);
+        for (Piece p : listPiecesInGame) {
+            Set<Move> possibleMvs = p.getMoves(boardModel);
+            filterMoves(possibleMvs,p);
+            if (p.getColor() == player.getColor() && !possibleMvs.isEmpty()) {
                 return false;
             }
         }
@@ -134,5 +139,9 @@ public class GameModel implements Model {
                 return (King) piece;
         }
         return null;
+    }
+
+    public boolean gameEnded() {
+        return false;
     }
 }
