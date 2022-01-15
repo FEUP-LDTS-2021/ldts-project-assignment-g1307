@@ -92,5 +92,6 @@ public class ClockModel implements Model, Clock{
     @Override
     public void skiptime(int time) {
         this.time = this.time - time;
+        if(this.time <=0) cancel();
     }
 }
