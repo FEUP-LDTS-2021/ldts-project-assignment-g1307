@@ -125,7 +125,7 @@ public class GameModel implements Model {
     }
 
     public boolean checkMate() {
-        return false;
+        return checkStalemate(gamePlayers[turn]) && getPlayerKing(gamePlayers[turn].getColor()).inCheck();
     }
 
     public King getPlayerKing(Piece.COLOR color) {

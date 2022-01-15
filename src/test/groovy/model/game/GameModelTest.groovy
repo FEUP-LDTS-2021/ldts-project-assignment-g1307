@@ -92,9 +92,13 @@ class GameModelTest extends Specification {
         King king = Mock(King)
         gameModel.getPiecesInGame().add(king)
 
+        gameModel.getPlayerKing(_ as Piece.COLOR) >> king
         king.inCheck() >> true
         player.getColor() >> Piece.COLOR.White
         king.getColor() >> Piece.COLOR.White
+
+        king.getMoves(_ as BoardModel) >> new HashSet<Move>()
+
         'Piece Does Not have any possible move, it is in staleMate and the king is threatened -> checkmate'
         when:
         def result = gameModel.checkMate()
