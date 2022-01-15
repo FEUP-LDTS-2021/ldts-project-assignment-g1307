@@ -1,6 +1,6 @@
 package model.gameover
 
-
+import model.game.pieces.Piece
 import model.game.player.Player
 import spock.lang.Specification
 
@@ -36,5 +36,21 @@ class EndGameModelTest extends Specification{
         then:
         r1
         !r2
+    }
+
+    def "Game over message"() {
+        Player winner = Mock(Player)
+
+        winner.getColor() >> Piece.COLOR.BLACK
+
+        def checkmate = new GameOverModel(winner, true)
+        def timeEnded = new GameOverModel(winner, false)
+        def tie = new GameOverModel(null, false)
+
+        expect:
+        "BLACK won by checkmate" == checkmate.gameOverMessage()
+        "BLACK won by time" == timeEnded.gameOverMessage()
+        "It's a draw" == tie.gameOverMessage()
+
     }
 }

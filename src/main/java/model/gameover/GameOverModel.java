@@ -25,7 +25,7 @@ public class GameOverModel implements Model {
         return winner;
     }
 
-    public String winnerMessage() {
+    public String gameOverMessage() {
         return "";
     }
 }
