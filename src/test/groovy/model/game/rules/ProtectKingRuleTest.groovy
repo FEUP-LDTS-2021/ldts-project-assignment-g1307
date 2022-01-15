@@ -23,6 +23,8 @@ class ProtectKingRuleTest extends Specification {
         king.getColor() >> Piece.COLOR.BLACK
         def pawn = Mock(Pawn)
         pawn.getColor() >> Piece.COLOR.BLACK
+        def enemyRook = Mock(Rook)
+        enemyRook.getColor() >> Piece.COLOR.White
 
         Set<Move> set = new HashSet()
         def pawnMove = Mock(SimpleMove)
@@ -33,11 +35,23 @@ class ProtectKingRuleTest extends Specification {
         def s = new HashSet()
         s.add(king)
         s.add(pawn)
+        s.add(enemyRook)
 
         def gameModel = Stub(GameModel) {
-            setCheck: king.inCheck() >>> [false,true]
             getPiecesInGame() >> s
         }
+        king.inCheck() >> false
+        Set<Move> rMoves = new HashSet()
+        def rookMove = Mock(SimpleMove)
+
+        rMoves.add(rookMove)
+        enemyRook.getMoves(_ as BoardModel) >> rMoves
+
+        Position position = Mock(Position)
+        king.getPosition() >> position
+        rookMove.getPosition() >> position
+
+        position.equals(_ as Position) >> true
 
         def nC = new ProtectKingRule(gameModel)
 
