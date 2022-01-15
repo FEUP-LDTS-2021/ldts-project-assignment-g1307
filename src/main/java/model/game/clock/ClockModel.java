@@ -59,7 +59,7 @@ public class ClockModel implements Model, Clock{
                     }
                 }
             };
-            this.timer.scheduleAtFixedRate(task, 0, 1000);
+            this.timer.scheduleAtFixedRate(task, 1000, 1000);
         }
     }
 
@@ -85,10 +85,12 @@ public class ClockModel implements Model, Clock{
         aux = aux%60;
         sec = aux;
         return String.format("%02d:%02d:%02d", hour, min, sec);
+
     }
 
     @Override
     public void skiptime(int time) {
         this.time = this.time - time;
+        if(this.time <=0) cancel();
     }
 }

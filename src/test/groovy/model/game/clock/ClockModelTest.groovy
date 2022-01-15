@@ -1,77 +1,90 @@
 package model.game.clock
 
 import spock.lang.Specification
-import java.util.concurrent.TimeUnit
+
 
 class ClockModelTest extends Specification{
 
     def "Clock pause and resume"(){
         ClockModel clock = new ClockModel(30) //30 sec clock
+        boolean check1, check2;
+        int checkTime;
 
         clock.resume()
-        TimeUnit.SECONDS.sleep(10) //code sleeps for 10 seconds
+        clock.skiptime(10) //simulates the passage of 10 seconds in the clock
         clock.pause()
+        check1 = clock.isPaused()
+        checkTime = clock.getTime()
+        clock.resume()
+        check2 = clock.isPaused()
+        clock.cancel()
 
         expect:
-        clock.isPaused()
-        clock.getTime() == 19 //1 sec dellay
 
-        clock.resume();
-        !clock.isPaused();
+        check1
+        checkTime == 20
+        !check2
+
     }
 
     def "Clock end"(){
-        ClockModel clock = new ClockModel(15) //15 sec clock
+        ClockModel clock = new ClockModel(15)
+        boolean check
 
         clock.resume()
-        TimeUnit.SECONDS.sleep(16) //stops code for 15 sec
+        clock.skiptime(15)
+        check = clock.isEnded()
+        clock.cancel()
 
         expect:
-        clock.isEnded()
+        check
+
     }
 
     def "Clock Cancel"(){
-        ClockModel clock = new ClockModel(20) //20 sec clock
+        ClockModel clock = new ClockModel(20)
 
         clock.resume()
-        TimeUnit.SECONDS.sleep(5)
+        clock.skiptime(5)
         clock.cancel()
 
         expect:
         clock.isEnded()
-        clock.getTime() == 14
+        clock.getTime() == 15
     }
 
     def "get remaining time without stopping"(){
-        ClockModel clock = new ClockModel(20) //20 sec clock
+        ClockModel clock = new ClockModel(20)
 
         clock.resume()
-        TimeUnit.SECONDS.sleep(5)
+        clock.skiptime(5)
         int remaining = clock.getTime();
+        clock.cancel();
 
         expect:
-        remaining == 14;
+        remaining == 15
     }
 
     def "remaining time in string"(){
         ClockModel clock = new ClockModel(70)
         clock.resume()
-        TimeUnit.SECONDS.sleep(5)
+        clock.skiptime(5)
         String remaining = clock.toString();
         clock.cancel();
 
         expect:
-        remaining == "00:01:04"
+        remaining == "00:01:05"
     }
 
     def "simulating passage of time"(){
-        ClockModel clock = new ClockModel(20)
+        ClockModel clock = new ClockModel(30)
         clock.resume()
         clock.skiptime(10)
         int remaining = clock.getTime()
         clock.cancel();
 
         expect:
-        remaining == 9
+        remaining == 20
+
     }
 }
