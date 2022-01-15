@@ -75,4 +75,8 @@ public class ClockModel implements Model, Clock{
         ended = false;
         paused = true;
     }
+
+    @Override
+    public String toString(){
+    }
 }

@@ -6,4 +6,5 @@ public interface Clock {
     public void pause();
     public void resume();
     public void cancel();
+    public String toString();
 }

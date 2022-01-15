@@ -57,4 +57,8 @@ class ClockModelTest extends Specification{
         expect:
         remaining == 14;
     }
+
+    def "remaining time in string"(){
+
+    }
 }
