@@ -1,6 +1,5 @@
 package model.game;
 
-import jdk.jshell.spi.ExecutionControl;
 import model.Model;
 import model.game.board.BoardModel;
 import model.game.move.Move;
@@ -10,7 +9,6 @@ import model.game.player.Player;
 import model.game.rules.Rule;
 
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 public class GameModel implements Model {
@@ -128,7 +126,7 @@ public class GameModel implements Model {
 
     public void setCheck() {
         for (Player player : gamePlayers) {
-            King king = getPlayerKing(player);
+            King king = getPlayerKing(player.getColor());
             boolean inCheck = false;
             assert king != null;
             for (Piece piece : piecesInGame) {
@@ -145,9 +143,9 @@ public class GameModel implements Model {
         }
     }
 
-    King getPlayerKing(Player player) {
+    public King getPlayerKing(Piece.COLOR color) {
         for (Piece piece : piecesInGame) {
-            if (piece instanceof King && piece.getColor() == player.getColor())
+            if (piece instanceof King && piece.getColor() == color)
                 return (King) piece;
         }
         return null;

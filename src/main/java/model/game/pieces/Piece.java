@@ -69,7 +69,7 @@ public abstract class Piece {
     public void moveToPosition(Position position) {
         this.position = position;
         hasMoved = true;
-    } // this allows the piece to be moved to any position
+    }
 
     public MovingBehaviour getMovingBehaviour() {
         return movingBehaviour;
@@ -87,4 +87,7 @@ public abstract class Piece {
         return hasMoved;
     }
 
+    public void setHasMove(Boolean hasMoved) {
+        this.hasMoved = hasMoved;
+    }
 }
