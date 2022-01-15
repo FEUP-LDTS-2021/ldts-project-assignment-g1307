@@ -7,4 +7,5 @@ public interface Clock {
     public void resume();
     public void cancel();
     public String toString();
+    public void skiptime(int time);
 }

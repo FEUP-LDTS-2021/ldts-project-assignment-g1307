@@ -87,4 +87,8 @@ public class ClockModel implements Model, Clock{
         sec = aux;
         return String.format("%02X:%02X:%02X", hour, min, sec);
     }
+
+    @Override
+    public void skiptime(int time) {
+    }
 }

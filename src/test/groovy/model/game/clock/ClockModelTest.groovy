@@ -62,4 +62,8 @@ class ClockModelTest extends Specification{
         expect:
         remaining == "00:01:04"
     }
+
+    def "simulating passage of time"(){
+
+    }
 }
