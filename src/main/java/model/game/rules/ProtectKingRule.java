@@ -57,6 +57,7 @@ public class ProtectKingRule implements Rule{
                 toRemove.add(move);
             piece.moveToPosition(originalPos);
             piece.setHasMove(hasMove);
+            gameModel.getPiecesInGame().clear();
             gameModel.getPiecesInGame().addAll(pieces);
         }
         movesToFilter.removeAll(toRemove);

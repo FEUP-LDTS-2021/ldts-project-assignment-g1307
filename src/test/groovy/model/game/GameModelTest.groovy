@@ -126,4 +126,16 @@ class GameModelTest extends Specification {
         then:
         !r
     }
+
+    def "winner"() {
+        def player2 = Mock(Player)
+        Player[] players = [player, player2]
+        gameModel.setGamePlayers(players)
+
+        def pieces = new HashSet()
+        gameModel.setPiecesInGame(pieces)
+        
+        expect:
+        gameModel.winner() == null
+    }
 }
