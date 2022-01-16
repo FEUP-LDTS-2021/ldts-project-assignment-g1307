@@ -1,8 +1,10 @@
 package view.gameover;
 
+import com.googlecode.lanterna.TerminalPosition;
+import com.googlecode.lanterna.TerminalSize;
+import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
 import com.googlecode.lanterna.screen.Screen;
-import jdk.jshell.spi.ExecutionControl;
 import model.gameover.GameOverModel;
 import view.View;
 
@@ -16,15 +18,27 @@ public class GameOverView extends View<GameOverModel> {
         super(model,"square.ttf", screen, textGraphics);
     }
 
-    public void drawGameOverMessage() throws ExecutionControl.NotImplementedException {
-        throw new ExecutionControl.NotImplementedException("N implementado");
+    public void drawGameOverMessage() {
+        String gameOverMessage = model.gameOverMessage();
+
+        TerminalPosition stringPos = new TerminalPosition(getWidthCenter() - gameOverMessage.length() / 2, getHeightCenter());
+        graphics.setForegroundColor(TextColor.Factory.fromString("#4f763a"));
+        graphics.putString(stringPos, gameOverMessage);
     }
 
     @Override
     public void clear(){
+        super.clear();
+        graphics.setBackgroundColor(TextColor.Factory.fromString("#312e2b"));
+        graphics.fillRectangle(new TerminalPosition(0,0), new TerminalSize(getWidth(),getHeight()),' ');
     }
 
     @Override
     public void draw() throws IOException {
+        clear();
+
+        drawGameOverMessage();
+
+        refresh();
     }
 }
