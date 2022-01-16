@@ -16,6 +16,12 @@ public class GameOverState extends ControllerState<GameOverModel, GameOverView>{
 
     @Override
     public ControllerState<?,?> run() throws IOException {
-        return null;
+        draw();
+        ControllerState<?,?> nextControllerState = this;
+        if(getKey(view.getScreen()) != null) {
+            nextControllerState = new MenuState();
+            view.getScreen().close();
+        }
+        return closeIfMoving(nextControllerState);
     }
 }
