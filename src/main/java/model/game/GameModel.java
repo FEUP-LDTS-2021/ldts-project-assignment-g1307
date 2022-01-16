@@ -146,6 +146,8 @@ public class GameModel implements Model {
     }
 
     public Player winner() {
+        if (checkMate())
+            return gamePlayers[(turn - 1) % gamePlayers.length];
         return null;
     }
 }
