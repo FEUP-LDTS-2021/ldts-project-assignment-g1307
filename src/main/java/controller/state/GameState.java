@@ -4,6 +4,7 @@ import model.game.GameCursor;
 import model.game.GameModel;
 import model.game.builder.GameBuilder;
 import model.game.builder.StandardChessGame;
+import model.gameover.GameOverModel;
 import view.game.GameView;
 
 import java.io.IOException;
@@ -30,6 +31,10 @@ public class GameState extends ControllerState<GameModel,GameView>{
             case EOF -> view.getScreen().close();
             default -> nextControllerState = this;
         }
+
+        if (model.gameEnded())
+            nextControllerState = new GameOverState(new GameOverModel( model.winner() , model.checkMate()));
+
         return closeIfMoving(nextControllerState);
     }
 }

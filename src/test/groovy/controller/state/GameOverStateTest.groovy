@@ -16,7 +16,7 @@ class GameOverStateTest extends Specification{
         spy.view = gameOverView
         spy.model = gameOverModel
         def screen = Mock(Screen)
-        spy.getKey(_ as Screen) >>> [null, KeyType.Enter]
+        spy.getKey(_ as Screen) >>> [KeyType.Unknown, KeyType.EOF]
         gameOverView.getScreen() >> screen
         gameOverView.close() >> null
         when:
