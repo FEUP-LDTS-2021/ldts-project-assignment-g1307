@@ -126,4 +126,23 @@ class GameModelTest extends Specification {
         then:
         !r
     }
+
+    def "winner"() {
+        def player2 = Mock(Player)
+        Player[] players = [player, player2]
+        player.getColor() >> Piece.COLOR.BLACK
+        gameModel.setGamePlayers(players)
+
+        King king = Mock(King)
+        def pieces = new HashSet()
+        pieces.add(king)
+        king.inCheck() >>> [true, false]
+        king.getColor() >> Piece.COLOR.BLACK
+        king.getMoves(_ as BoardModel) >> new HashSet<Move>()
+        gameModel.setPiecesInGame(pieces)
+        
+        expect:
+        gameModel.winner() == player2
+        gameModel.winner() == null
+    }
 }

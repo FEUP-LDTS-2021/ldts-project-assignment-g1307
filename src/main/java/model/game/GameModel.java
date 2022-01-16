@@ -144,4 +144,10 @@ public class GameModel implements Model {
     public boolean gameEnded() {
         return checkMate() || checkStalemate(gamePlayers[turn]);
     }
+
+    public Player winner() {
+        if (checkMate())
+            return gamePlayers[(turn - 1 + gamePlayers.length) % gamePlayers.length];
+        return null;
+    }
 }
