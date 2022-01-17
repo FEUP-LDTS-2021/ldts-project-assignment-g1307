@@ -6,4 +6,5 @@ public interface Clock {
     void cancel();
     @Override String toString();
     void skipTime(int time);
+    boolean hasEnded();
 }

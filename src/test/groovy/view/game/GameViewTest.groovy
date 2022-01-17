@@ -14,6 +14,7 @@ class GameViewTest extends Specification {
         def screen = Mock(Screen)
         def graphics = Mock(TextGraphics)
 
+        model.getGamePlayers() >> new HashSet()
         def lst = new LinkedList()
         def b = Mock(BoardModel)
         model.getPiecesInGame() >> lst
@@ -28,5 +29,6 @@ class GameViewTest extends Specification {
         then:
         1 * spy.clear()
         1 * spy.drawBoard()
+        1 * spy.drawClock()
     }
 }

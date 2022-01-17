@@ -67,11 +67,4 @@ public class MenuView extends View<MenuModel> {
         refresh();
     }
 
-    @Override
-    protected void clear() {
-        super.clear();
-        graphics.setBackgroundColor(TextColor.Factory.fromString("#312e2b"));
-        graphics.fillRectangle(new TerminalPosition(0,0), new TerminalSize(getWidth(),getHeight()),' ');
-    }
-
 }

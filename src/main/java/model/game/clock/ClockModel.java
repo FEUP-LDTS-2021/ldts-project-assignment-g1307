@@ -30,8 +30,8 @@ public class ClockModel implements Model, Clock{
         paused = true;
     }
 
-
-    public boolean isEnded() {
+    @Override
+    public boolean hasEnded() {
         return ended;
     }
 
@@ -56,6 +56,7 @@ public class ClockModel implements Model, Clock{
             time += increment;
             paused = false;
             this.timer = new Timer();
+            Thread t = Thread.currentThread();
             TimerTask task = new TimerTask(){
                 @Override
                 public void run(){
@@ -64,6 +65,8 @@ public class ClockModel implements Model, Clock{
                         ended = true;
                         timer.cancel();
                     }
+                    if (!t.isAlive())
+                        timer.cancel();
                 }
             };
             this.timer.scheduleAtFixedRate(task, 1000, 1000);

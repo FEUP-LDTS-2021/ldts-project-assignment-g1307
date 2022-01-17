@@ -2,11 +2,11 @@ package model.game
 
 import model.game.board.BoardModel
 import model.game.board.SquareBoard
+import model.game.clock.ClockModel
 import model.game.move.Move
 import model.game.move.SimpleMove
 import model.game.pieces.King
 import model.game.pieces.Piece
-import model.game.pieces.Queen
 import model.game.player.Player
 import model.game.rules.Rule
 import spock.lang.Specification
@@ -122,6 +122,9 @@ class GameModelTest extends Specification {
 
     def "GameNotEnded"() {
         when:
+        ClockModel clockModel = Mock(ClockModel)
+        player.getClock() >> clockModel
+        clockModel.hasEnded() >> false
         def r = gameModel.gameEnded()
         then:
         !r
@@ -140,9 +143,15 @@ class GameModelTest extends Specification {
         king.getColor() >> Piece.COLOR.BLACK
         king.getMoves(_ as BoardModel) >> new HashSet<Move>()
         gameModel.setPiecesInGame(pieces)
+
+        ClockModel clockModel = Mock(ClockModel)
+        player.getClock() >> clockModel
+        player2.getClock() >> clockModel
+        clockModel.hasEnded() >>> [false, false,true]
         
         expect:
         gameModel.winner() == player2
         gameModel.winner() == null
+        gameModel.winner() == player2
     }
 }

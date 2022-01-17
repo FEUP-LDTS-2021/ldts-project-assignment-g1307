@@ -33,7 +33,7 @@ class ClockModelTest extends Specification{
 
         clock.resume()
         clock.skipTime(15)
-        check = clock.isEnded()
+        check = clock.hasEnded()
         clock.cancel()
 
         expect:
@@ -49,7 +49,7 @@ class ClockModelTest extends Specification{
         clock.cancel()
 
         expect:
-        clock.isEnded()
+        clock.hasEnded()
         clock.getTime() == 15
     }
 

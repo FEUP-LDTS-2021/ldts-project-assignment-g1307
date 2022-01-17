@@ -25,8 +25,8 @@ public class SquareBoard implements BoardModel {
     public SquareBoard(int rowsAndCols) {
         this.rows = rowsAndCols;
         this.columns = rowsAndCols;
-        this.whiteCaseColor = Color.lightGray;
-        this.blackCaseColor = Color.green;
+        this.whiteCaseColor = new Color(238,238,210);
+        this.blackCaseColor = new Color(118,150,86);
         boardCases = createBoardCases();
     }
 

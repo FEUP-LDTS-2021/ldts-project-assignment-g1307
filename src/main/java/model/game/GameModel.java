@@ -61,6 +61,10 @@ public class GameModel implements Model {
         this.gamePlayers = gamePlayers;
     }
 
+    public Player[] getGamePlayers() {
+        return gamePlayers;
+    }
+
     public Set<Move> getPieceLegalMoves() {
 
         Set<Move> moves = new HashSet<>();
@@ -99,6 +103,7 @@ public class GameModel implements Model {
         turn = ( turn + 1 ) % gamePlayers.length;
         for (Player player: gamePlayers){
             player.setTurn(turn == i);
+            i+=1;
         }
     }
 
@@ -141,12 +146,20 @@ public class GameModel implements Model {
         return null;
     }
 
+    public boolean timeEnded() {
+        for (Player player: gamePlayers) {
+            if (player.getClock().hasEnded())
+                return true;
+        }
+        return false;
+    }
+
     public boolean gameEnded() {
-        return checkMate() || checkStalemate(gamePlayers[turn]);
+        return checkMate() || checkStalemate(gamePlayers[turn]) || timeEnded();
     }
 
     public Player winner() {
-        if (checkMate())
+        if (checkMate() || timeEnded())
             return gamePlayers[(turn - 1 + gamePlayers.length) % gamePlayers.length];
         return null;
     }

@@ -13,7 +13,7 @@ import model.game.pieces.Rook;
 import java.util.Set;
 
 public class Castle implements Rule{
-    GameModel gameModel;
+    final GameModel gameModel;
     int colToSearch;
 
     private static class CastleMove extends MoveDecorator {
@@ -63,16 +63,16 @@ public class Castle implements Rule{
         }
     }
 
-    private boolean noPieceBetween(Position kingPos, int rookCol ){
+    private boolean noPieceBetween(Position kingPos, int rookCol){
         int kingRow = kingPos.getRow();
         int kingCol = kingPos.getCol();
-        boolean changeInCol = kingRow - rookCol < 0;
         for (Piece piece : gameModel.getPiecesInGame()) {
             Position piecePos = piece.getPosition();
             int pieceCol = piecePos.getCol();
-            if (piecePos.getRow() == kingRow && pieceCol < rookCol != changeInCol && pieceCol > kingCol != changeInCol) {
+            if (piecePos.getRow() == kingRow && pieceCol > rookCol && pieceCol < kingCol )
                 return false;
-            }
+            else if (piecePos.getRow() == kingRow && pieceCol < rookCol && pieceCol > kingCol )
+                return false;
         }
         return true;
     }

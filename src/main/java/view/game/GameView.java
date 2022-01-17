@@ -12,6 +12,7 @@ import model.game.builder.GameBuilder;
 import model.game.builder.StandardChessGame;
 import model.game.move.Move;
 import model.game.pieces.Piece;
+import model.game.player.Player;
 import view.View;
 
 import java.awt.*;
@@ -64,19 +65,27 @@ public class GameView extends View<GameModel> {
         }
     }
 
+    void drawClock() {
+        Player[] players = model.getGamePlayers();
+        TerminalPosition terminalPosition = new TerminalPosition(getHeightCenter() + 5, getWidthCenter() - 2 * players.length +1);
+
+        for (Player player : players) {
+            graphics.setBackgroundColor(TextColor.Factory.fromString(player.getColor().toString()));
+            graphics.setForegroundColor(TextColor.Factory.fromString("#615e5b"));
+            graphics.putString(terminalPosition, player.getClock().toString());
+            terminalPosition = new TerminalPosition(terminalPosition.getColumn(),terminalPosition.getRow() - 5);
+        }
+    }
+
     @Override
     public void draw() throws IOException {
         clear();
 
         drawBoard();
 
+        drawClock();
+
         refresh();
     }
 
-    @Override
-    protected void clear() {
-        super.clear();
-        graphics.setBackgroundColor(TextColor.Factory.fromString("#312e2b"));
-        graphics.fillRectangle(new TerminalPosition(0,0), new TerminalSize(getWidth(),getHeight()),' ');
-    }
 }

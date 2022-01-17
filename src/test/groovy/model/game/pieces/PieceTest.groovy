@@ -7,6 +7,6 @@ class PieceTest extends Specification {
         def g = Piece.COLOR.BLACK
 
         expect:
-        g.toString() == "#000000"
+        g.toString() == "#565352"
     }
 }

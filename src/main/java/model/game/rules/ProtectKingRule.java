@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Set;
 
 public class ProtectKingRule implements Rule{
-    private GameModel gameModel;
+    private final GameModel gameModel;
 
     public ProtectKingRule(GameModel gameModel){
         this.gameModel = gameModel;
@@ -24,7 +24,7 @@ public class ProtectKingRule implements Rule{
             King king = gameModel.getPlayerKing(piece.getColor());
             king.setInCheck(isInCheck(king));
 
-            simulateMoves(movesToFilter, piece);
+            simulateMoves(movesToFilter, piece, king);
         }
     }
 
@@ -46,19 +46,20 @@ public class ProtectKingRule implements Rule{
         return false;
     }
 
-    private void simulateMoves(Set<Move> movesToFilter, Piece piece) {
-        Boolean hasMove = piece.isMoved();
+    private void simulateMoves(Set<Move> movesToFilter, Piece piece, King king) {
         Position originalPos = piece.getPosition();
-        List<Piece> pieces = new ArrayList<>(gameModel.getPiecesInGame());
+        Boolean hasMove = piece.isMoved();
+        Set<Piece> inGamePieces = gameModel.getPiecesInGame();
+        List<Piece> pieces = new ArrayList<>(inGamePieces);
         Set<Move> toRemove = new HashSet<>();
         for (Move move:movesToFilter) {
             move.execute();
-            if (isInCheck(gameModel.getPlayerKing(piece.getColor())))
+            if (isInCheck(king))
                 toRemove.add(move);
             piece.moveToPosition(originalPos);
             piece.setHasMove(hasMove);
-            gameModel.getPiecesInGame().clear();
-            gameModel.getPiecesInGame().addAll(pieces);
+            inGamePieces.clear();
+            inGamePieces.addAll(pieces);
         }
         movesToFilter.removeAll(toRemove);
     }
