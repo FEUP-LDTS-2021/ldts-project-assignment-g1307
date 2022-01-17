@@ -1,7 +1,6 @@
 package model.game.rules;
 
 import model.game.GameModel;
-import model.game.Position;
 import model.game.move.Move;
 import model.game.pieces.Piece;
 

@@ -53,7 +53,7 @@ public abstract class View<T extends Model> {
 
             Font loadedFont = font.deriveFont(Font.PLAIN, fontSize);
             AWTTerminalFontConfiguration fontConfig = AWTTerminalFontConfiguration.newInstance(loadedFont);
-            DefaultTerminalFactory defaultTerminalFactory = factory.setTerminalEmulatorFontConfiguration(fontConfig);
+            factory.setTerminalEmulatorFontConfiguration(fontConfig);
             factory.setForceAWTOverSwing(true);
 
             Terminal terminal = factory.createTerminal();

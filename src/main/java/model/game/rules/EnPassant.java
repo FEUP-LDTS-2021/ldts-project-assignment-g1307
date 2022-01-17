@@ -4,14 +4,11 @@ import model.game.GameModel;
 import model.game.Position;
 import model.game.move.CapturingMove;
 import model.game.move.Move;
-import model.game.move.MoveDecorator;
 import model.game.move.SimpleMove;
 import model.game.pieces.Pawn;
 import model.game.pieces.Piece;
-import model.game.pieces.Rook;
 import model.game.pieces.movingBehaviours.TwoAndOneStrategy;
 
-import java.lang.ref.Cleaner;
 import java.util.Set;
 
 public class EnPassant implements Rule {
