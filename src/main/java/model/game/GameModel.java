@@ -61,6 +61,10 @@ public class GameModel implements Model {
         this.gamePlayers = gamePlayers;
     }
 
+    public Player[] getGamePlayers() {
+        return gamePlayers;
+    }
+
     public Set<Move> getPieceLegalMoves() {
 
         Set<Move> moves = new HashSet<>();

@@ -12,6 +12,7 @@ import model.game.builder.GameBuilder;
 import model.game.builder.StandardChessGame;
 import model.game.move.Move;
 import model.game.pieces.Piece;
+import model.game.player.Player;
 import view.View;
 
 import java.awt.*;
@@ -64,11 +65,17 @@ public class GameView extends View<GameModel> {
         }
     }
 
+    void drawClock() {
+
+    }
+
     @Override
     public void draw() throws IOException {
         clear();
 
         drawBoard();
+
+        drawClock();
 
         refresh();
     }
