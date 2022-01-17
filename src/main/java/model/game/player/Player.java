@@ -23,6 +23,9 @@ public class Player implements GameSubscriber {
 
     @Override
     public void setTurn(boolean playerTurn) {
-
+        if (playerTurn)
+            clock.resume();
+        else
+            clock.pause();
     }
 }
