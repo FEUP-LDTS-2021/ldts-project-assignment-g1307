@@ -1,6 +1,8 @@
 package view;
 
+import com.googlecode.lanterna.TerminalPosition;
 import com.googlecode.lanterna.TerminalSize;
+import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
 import com.googlecode.lanterna.screen.Screen;
 import com.googlecode.lanterna.screen.TerminalScreen;
@@ -86,6 +88,8 @@ public abstract class View<T extends Model> {
 
     protected void clear() {
         screen.clear();
+        graphics.setBackgroundColor(TextColor.Factory.fromString("#312e2b"));
+        graphics.fillRectangle(new TerminalPosition(0,0), new TerminalSize(getWidth(),getHeight()),' ');
     }
 
     protected void refresh() throws IOException {
