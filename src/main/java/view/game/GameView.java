@@ -66,7 +66,15 @@ public class GameView extends View<GameModel> {
     }
 
     void drawClock() {
+        Player[] players = model.getGamePlayers();
+        TerminalPosition terminalPosition = new TerminalPosition(getHeightCenter() + 5, getWidthCenter() - 4 * players.length);
 
+        for (Player player : players) {
+            graphics.setBackgroundColor(TextColor.Factory.fromString(player.getColor().toString()));
+            graphics.setForegroundColor(TextColor.Factory.fromString("#615e5b"));
+            graphics.putString(terminalPosition, player.getClock().toString());
+            terminalPosition = new TerminalPosition(terminalPosition.getColumn(),terminalPosition.getRow() + 5);
+        }
     }
 
     @Override
