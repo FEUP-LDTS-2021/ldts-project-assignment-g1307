@@ -102,7 +102,7 @@ public class GameModel implements Model {
         int i = 0;
         turn = ( turn + 1 ) % gamePlayers.length;
         for (Player player: gamePlayers){
-            player.setTurn(turn == i);
+            player.setTurn(turn == i++);
         }
     }
 

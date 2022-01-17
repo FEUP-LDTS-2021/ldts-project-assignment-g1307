@@ -2,7 +2,6 @@ package controller.state;
 
 import model.game.GameCursor;
 import model.game.GameModel;
-import model.game.builder.GameBuilder;
 import model.game.builder.StandardChessGame;
 import model.gameover.GameOverModel;
 import view.game.GameView;

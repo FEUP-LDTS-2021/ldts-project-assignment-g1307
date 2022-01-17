@@ -4,7 +4,7 @@ import model.Model;
 
 public class MenuModel implements Model {
 
-    public enum Option {NEWGAME, EXIT;
+    public enum Option {BULLET, BLITZ, RAPID, CLASSICAL, EXIT;
         static final Option[] values = values();
         public Option next() {
             return values[(this.ordinal()+1) % values.length];
@@ -15,7 +15,7 @@ public class MenuModel implements Model {
         }
 
         public static int maxLength() {
-            int max = Option.NEWGAME.toString().length();
+            int max = Option.CLASSICAL.toString().length();
             for (Option p: values) {
                 if (p.toString().length() > max)
                     max = p.toString().length();
@@ -31,7 +31,7 @@ public class MenuModel implements Model {
     private Option current;
 
     public MenuModel() {
-        current = Option.NEWGAME;
+        current = Option.BULLET;
     }
 
     public void setNextOption() {

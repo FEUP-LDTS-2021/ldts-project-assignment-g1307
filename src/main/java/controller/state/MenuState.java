@@ -25,7 +25,10 @@ public class MenuState extends ControllerState<MenuModel,MenuView> {
             case ArrowRight -> {model.setNextOption(); nextControllerState = this;}
             case Enter -> {
                 switch (model.getCurrentOption()) {
-                    case NEWGAME -> nextControllerState = new GameState();
+                    case BULLET -> nextControllerState = new GameState();
+                    case BLITZ -> nextControllerState = new GameState();
+                    case CLASSICAL -> nextControllerState = new GameState();
+                    case RAPID -> nextControllerState = new GameState();
                     case EXIT -> {
                     }
                 }
