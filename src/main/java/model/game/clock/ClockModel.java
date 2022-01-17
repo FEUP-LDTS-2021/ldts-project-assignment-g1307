@@ -31,7 +31,7 @@ public class ClockModel implements Model, Clock{
     }
 
 
-    public boolean isEnded() {
+    public boolean hasEnded() {
         return ended;
     }
 

@@ -4,12 +4,14 @@ import model.game.GameCursor;
 import model.game.GameModel;
 import model.game.Position;
 import model.game.board.SquareBoard;
+import model.game.clock.Clock;
 import model.game.clock.ClockModel;
 import model.game.pieces.*;
 import model.game.pieces.movingBehaviours.TwoAndOneStrategy;
 import model.game.player.Player;
 import model.game.rules.*;
 
+import java.sql.Time;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -22,6 +24,10 @@ public class StandardChessGame implements GameBuilder {
     private final SquareBoard squareBoard;
 
     public StandardChessGame(){
+        this(300, 0);
+    }
+
+    public StandardChessGame(int time, int increment){
         this.gameModel = new GameModel();
         piecesArrangementWhite = new HashSet<>();
         piecesArrangementBlack = new HashSet<>();
@@ -30,7 +36,7 @@ public class StandardChessGame implements GameBuilder {
         gameModel.setCursor(new GameCursor(new Position(1,1) , squareBoard));
         gameModel.setBoardModel(squareBoard);
 
-        Player[] players = {new Player(new ClockModel(300),Piece.COLOR.White), new Player(new ClockModel(300),Piece.COLOR.BLACK)};
+        Player[] players = {new Player(new ClockModel(time, increment),Piece.COLOR.White), new Player(new ClockModel(time, increment),Piece.COLOR.BLACK)};
         gameModel.setGamePlayers(players);
         rules = new Rule[10];
 
