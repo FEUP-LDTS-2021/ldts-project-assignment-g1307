@@ -9,7 +9,7 @@ class MenuModelTest extends Specification {
         when:
         menuModel.setNextOption()
         then:
-        menuModel.getCurrentOption() == MenuModel.Option.EXIT
+        menuModel.getCurrentOption() == MenuModel.Option.BLITZ
     }
 
     def "SetPreviousOption"() {
@@ -23,15 +23,15 @@ class MenuModelTest extends Specification {
 
     def "Option diff to another"() {
         given:
-        MenuModel.Option option = MenuModel.Option.NEWGAME;
+        MenuModel.Option option = MenuModel.Option.BULLET;
         when:
         int i = option.diffToOption(MenuModel.Option.EXIT)
         then:
-        i == 1
+        i == 4
     }
 
     def "max Option"() {
         expect:
-        MenuModel.Option.maxLength() == 7
+        MenuModel.Option.maxLength() == 9
     }
 }
