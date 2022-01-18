@@ -12,9 +12,11 @@ import java.util.List;
 import java.util.Set;
 
 public class NoSuicideAllowed implements Rule{
-    GameModel gameModel;
-    public NoSuicideAllowed(GameModel gameModel) {
-        this.gameModel = gameModel;
+    Set<Piece> pieceSet;
+    Set<Rule> rules;
+    public NoSuicideAllowed(Set<Piece> pieceSet, Set<Rule> rules) {
+        this.pieceSet = pieceSet;
+        this.rules = rules;
     }
 
     @Override
@@ -28,7 +30,7 @@ public class NoSuicideAllowed implements Rule{
             for (Move move : movesToFilter) {
                 piecesInGame.removeIf(m -> m.getPosition().equals(move.getPosition()));
                 piece.moveToPosition(move.getPosition());
-                if (isCaseAttacked(move))
+                if (isCaseAttacked(move, piecesInGame))
                     toRemove.add(move);
                 piece.moveToPosition(originalPos);
                 piece.setHasMove(hasMove);
@@ -38,9 +40,8 @@ public class NoSuicideAllowed implements Rule{
         }
     }
 
-    private boolean isCaseAttacked(Move move) {
+    private boolean isCaseAttacked(Move move, Set<Piece> piecesInGame) {
         Piece king = move.getPiece();
-        Set<Piece> piecesInGame = gameModel.getPiecesInGame();
         for (Piece piece: piecesInGame) {
             if (piece.getColor() != king.getColor()) {
                 Set<Move> moves = piece.getMoves(gameModel.getBoardModel());

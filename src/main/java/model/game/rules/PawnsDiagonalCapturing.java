@@ -12,9 +12,9 @@ import model.game.pieces.movingBehaviours.TwoAndOneStrategy;
 import java.util.Set;
 
 public class PawnsDiagonalCapturing implements Rule{
-    GameModel gameModel;
-    public PawnsDiagonalCapturing(GameModel gameModel) {
-        this.gameModel = gameModel;
+    Set<Piece> pieceSet;
+    public PawnsDiagonalCapturing(Set<Piece> pieceSet) {
+        this.pieceSet = pieceSet;
     }
     @Override
     public void obyRule(Set<Move> movesToFilter, Piece p)  {

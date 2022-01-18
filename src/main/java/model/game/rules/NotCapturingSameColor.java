@@ -8,8 +8,8 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class NotCapturingSameColor implements Rule{
-    GameModel gameModel;
-    public NotCapturingSameColor(GameModel gameModel) {
+    Set<Piece> gameModel;
+    public NotCapturingSameColor(Set<Piece> gameModel) {
         this.gameModel = gameModel;
     }
     @Override

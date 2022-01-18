@@ -14,7 +14,7 @@ import model.game.pieces.movingBehaviours.TwoAndOneStrategy;
 import java.util.*;
 
 public class PromotingPawns implements Rule{
-    GameModel gameModel;
+    Set<Piece> pieceSet;
     int colToSearchNorth;
     int colToSearchSouth;
 
@@ -34,9 +34,8 @@ public class PromotingPawns implements Rule{
         }
     }
 
-    public PromotingPawns(GameModel gameModel) throws NotSupportedBoard {
-        this.gameModel = gameModel;
-        if (!(gameModel.getBoardModel() instanceof SquareBoard squareBoard)) throw new NotSupportedBoard();
+    public PromotingPawns(Set<Piece> pieceSet, SquareBoard squareBoard) {
+        this.pieceSet = pieceSet;
         colToSearchSouth = squareBoard.getColumns();
         colToSearchNorth = 1;
     }

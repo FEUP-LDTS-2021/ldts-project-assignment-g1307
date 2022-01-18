@@ -12,9 +12,9 @@ import model.game.pieces.movingBehaviours.TwoAndOneStrategy;
 import java.util.Set;
 
 public class EnPassant implements Rule {
-    GameModel gameModel;
-    public EnPassant(GameModel gameModel) {
-        this.gameModel = gameModel;
+    Set<Piece> pieceSet;
+    public EnPassant(Set<Piece> pieceSet) {
+        this.pieceSet = pieceSet;
     }
 
     @Override
@@ -29,7 +29,7 @@ public class EnPassant implements Rule {
                     TwoAndOneStrategy.Direction direction = ((TwoAndOneStrategy) pawn.getMovingBehaviour()).getDirection();
                     if (diffCol == - 1 || diffCol == 1) {
                         Position position = new Position(pPiece.getRow() + direction.change, pP.getCol());
-                        movesToFilter.add(new CapturingMove(p,  new SimpleMove(pawn, position), gameModel.getPiecesInGame()));
+                        movesToFilter.add(new CapturingMove(p,  new SimpleMove(pawn, position), pieceSet));
                     }
                 }
             }
