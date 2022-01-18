@@ -29,7 +29,7 @@ class PromotingPawnsTest extends Specification {
         g.setPiecesInGame(set)
         g.setBoardModel(new SquareBoard(8))
 
-        def f = new PromotingPawns(g)
+        def f = new PromotingPawns(g.getPiecesInGame(), g.getBoardModel() as SquareBoard)
         when:
         Set<Move> move = piece.getMoves(Mock(BoardModel))
         f.obyRule(move, piece)

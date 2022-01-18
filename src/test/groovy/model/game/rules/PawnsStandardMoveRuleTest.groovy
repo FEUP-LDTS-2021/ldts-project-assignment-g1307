@@ -40,7 +40,7 @@ class PawnsStandardMoveRuleTest extends Specification {
         GameModel gameModel = new GameModel()
         gameModel.setBoardModel(boardModel)
         gameModel.setPiecesInGame(s)
-        def nC = new PawnsStandardMoveRule(gameModel)
+        def nC = new PawnsStandardMoveRule(gameModel.getPiecesInGame())
 
         when:
         Set<Move> r = piece.getMoves(gameModel.getBoardModel())
@@ -84,7 +84,7 @@ class PawnsStandardMoveRuleTest extends Specification {
         GameModel gameModel = new GameModel()
         gameModel.setBoardModel(boardModel)
         gameModel.setPiecesInGame(s)
-        def nC = new PawnsStandardMoveRule(gameModel)
+        def nC = new PawnsStandardMoveRule(gameModel.getPiecesInGame())
 
         when:
         Set<Move> r = piece.getMoves(gameModel.getBoardModel())

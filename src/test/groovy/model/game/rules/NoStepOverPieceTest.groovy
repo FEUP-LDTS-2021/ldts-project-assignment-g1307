@@ -30,7 +30,7 @@ class NoStepOverPieceTest extends Specification {
         gameModel.setPiecesInGame(set)
         gameModel.setBoardModel(new SquareBoard(8))
 
-        def filter = new NoStepOverPiece(gameModel)
+        def filter = new NoStepOverPiece(gameModel.boardModel,gameModel.getPiecesInGame())
 
         when:
         Set<Move> r = piece1.getMoves(gameModel.getBoardModel())
