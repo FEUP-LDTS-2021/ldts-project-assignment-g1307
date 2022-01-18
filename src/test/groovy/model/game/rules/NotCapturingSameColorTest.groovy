@@ -32,7 +32,7 @@ class NotCapturingSameColorTest extends Specification {
         GameModel gameModel = new GameModel()
         gameModel.setBoardModel(boardModel)
         gameModel.setPiecesInGame(s)
-        def nC = new NotCapturingSameColor(gameModel)
+        def nC = new NotCapturingSameColor(gameModel.getPiecesInGame())
 
         when:
         Set<Move> r = piece.getMoves(gameModel.getBoardModel())

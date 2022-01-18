@@ -50,7 +50,7 @@ class NoSuicideAllowedTest extends Specification {
         gameModel.getPiecesInGame() >> piecesGame
 
         def rules = new HashSet()
-        def rule = new NoSuicideAllowed(gameModel)
+        def rule = new NoSuicideAllowed(gameModel.getPiecesInGame(),gameModel.getRules(),gameModel.getBoardModel())
         def mockedRule = Mock(Castle)
         rules.add(rule)
         rules.add(mockedRule)

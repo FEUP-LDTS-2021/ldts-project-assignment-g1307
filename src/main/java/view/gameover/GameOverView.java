@@ -27,13 +27,6 @@ public class GameOverView extends View<GameOverModel> {
     }
 
     @Override
-    public void clear(){
-        super.clear();
-        graphics.setBackgroundColor(TextColor.Factory.fromString("#312e2b"));
-        graphics.fillRectangle(new TerminalPosition(0,0), new TerminalSize(getWidth(),getHeight()),' ');
-    }
-
-    @Override
     public void draw() throws IOException {
         clear();
 

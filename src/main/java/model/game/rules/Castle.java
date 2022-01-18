@@ -1,7 +1,7 @@
 package model.game.rules;
 
-import model.game.GameModel;
 import model.game.Position;
+import model.game.board.BoardModel;
 import model.game.board.SquareBoard;
 import model.game.move.Move;
 import model.game.move.MoveDecorator;
@@ -13,7 +13,8 @@ import model.game.pieces.Rook;
 import java.util.Set;
 
 public class Castle implements Rule{
-    final GameModel gameModel;
+    BoardModel board;
+    Set<Piece> piecesInGame;
     int colToSearch;
 
     private static class CastleMove extends MoveDecorator {
@@ -38,15 +39,15 @@ public class Castle implements Rule{
         }
     }
 
-    public Castle(GameModel gameModel) throws NotSupportedBoard {
-        this.gameModel = gameModel;
-        if (!(gameModel.getBoardModel() instanceof SquareBoard squareBoard)) throw new NotSupportedBoard();
-        colToSearch = squareBoard.getColumns();
+    public Castle(SquareBoard boardModel, Set<Piece> piecesInGame) throws NotSupportedBoard {
+        this.board = boardModel;
+        this.piecesInGame = piecesInGame;
+        colToSearch = boardModel.getColumns();
     }
     @Override
     public void obyRule(Set<Move> movesToFilter, Piece piece)  {
         if (piece instanceof King king && !piece.isMoved() && !king.inCheck()) {
-            for (Piece p : gameModel.getPiecesInGame()) {
+            for (Piece p : piecesInGame) {
                 if (p instanceof Rook rook) {
                     Position pPos = p.getPosition();
                     Position piecePos = piece.getPosition();
@@ -66,7 +67,7 @@ public class Castle implements Rule{
     private boolean noPieceBetween(Position kingPos, int rookCol){
         int kingRow = kingPos.getRow();
         int kingCol = kingPos.getCol();
-        for (Piece piece : gameModel.getPiecesInGame()) {
+        for (Piece piece : piecesInGame) {
             Position piecePos = piece.getPosition();
             int pieceCol = piecePos.getCol();
             if (piecePos.getRow() == kingRow && pieceCol > rookCol && pieceCol < kingCol )

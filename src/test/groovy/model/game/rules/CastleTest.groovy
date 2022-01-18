@@ -22,7 +22,7 @@ class CastleTest extends Specification {
         gameModel = new GameModel()
         gameModel.setBoardModel(new SquareBoard(8))
 
-        rules.add(new Castle(gameModel))
+        rules.add(new Castle(gameModel.getBoardModel() as SquareBoard,gameModel.getPiecesInGame()))
 
         'a king in e8 with a rook in h8 - castle short'
         Piece king = new King(Piece.COLOR.BLACK, new Position(1,5))
@@ -40,7 +40,7 @@ class CastleTest extends Specification {
 
     def "Castling when king is not under threat"() {
         given:
-        def castleFilter = new Castle(gameModel)
+        def castleFilter = new Castle(gameModel.getBoardModel() as SquareBoard,gameModel.getPiecesInGame())
         when:
         Set<Move> legalMoves = piece.getMoves(gameModel.getBoardModel())
         castleFilter.obyRule(legalMoves, piece)
@@ -57,7 +57,7 @@ class CastleTest extends Specification {
         Set<Piece> pieces = gameModel.getPiecesInGame()
         pieces.add(new Queen(Piece.COLOR.White, new Position(3,5)))
         gameModel.setPiecesInGame(pieces) // just to readability
-        def castleFilter = new Castle(gameModel)
+        def castleFilter = new Castle(gameModel.getBoardModel() as SquareBoard,gameModel.getPiecesInGame())
         def k = (King) piece
         'The responsibility to set the king in check should be of the game'
         k.inCheck() >> true
@@ -74,7 +74,7 @@ class CastleTest extends Specification {
         def pos = aPiece.getPosition()
         aPiece.moveToPosition(new Position(0,0))
         aPiece.moveToPosition(pos)
-        def castleFilter = new Castle(gameModel)
+        def castleFilter = new Castle(gameModel.getBoardModel() as SquareBoard,gameModel.getPiecesInGame())
         piece.isMoved() >> true
         when:
         Set<Move> legalMoves = piece.getMoves(gameModel.getBoardModel())

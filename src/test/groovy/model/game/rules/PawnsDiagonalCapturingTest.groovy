@@ -36,7 +36,7 @@ class PawnsDiagonalCapturingTest extends Specification {
         GameModel gameModel = new GameModel()
         gameModel.setBoardModel(boardModel)
         gameModel.setPiecesInGame(s)
-        def nC = new PawnsDiagonalCapturing(gameModel)
+        def nC = new PawnsDiagonalCapturing(gameModel.getPiecesInGame())
 
         when:
         Set<Move> r = piece.getMoves(gameModel.getBoardModel())

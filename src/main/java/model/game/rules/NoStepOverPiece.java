@@ -1,7 +1,7 @@
 package model.game.rules;
 
-import model.game.GameModel;
 import model.game.Position;
+import model.game.board.BoardModel;
 import model.game.move.Move;
 import model.game.pieces.Piece;
 
@@ -10,16 +10,18 @@ import java.util.List;
 import java.util.Set;
 
 public class NoStepOverPiece implements Rule{
-    GameModel gameModel;
-    public NoStepOverPiece(GameModel gameModel) {
-        this.gameModel = gameModel;
+    Set<Piece> pieceSet;
+    BoardModel boardModel;
+    public NoStepOverPiece(BoardModel boardModel, Set<Piece> pieceSet) {
+        this.pieceSet = pieceSet;
+        this.boardModel = boardModel;
     }
     @Override
     public void obyRule(Set<Move> movesToFilter, Piece p) {
         List<Position> positions = new ArrayList<>();
         for (Move move: movesToFilter) {positions.add(move.getPosition());}
         for (Position mPos : positions) {
-            for (Piece piece : gameModel.getPiecesInGame()) {
+            for (Piece piece : pieceSet) {
                 Position piecePos = piece.getPosition();
                 if (mPos.equals(piecePos))
                     removeStepOverMoves(piecePos, piecePos.sub(p.getPosition()),movesToFilter);
@@ -31,7 +33,7 @@ public class NoStepOverPiece implements Rule{
         Position normalPos = normalizePositionChange(changeInPos);
 
         Position pos = pStepped.add(normalPos);
-        for (; gameModel.getBoardModel().positionInBoard(pos); pos = pos.add(normalPos)) {
+        for (; boardModel.positionInBoard(pos); pos = pos.add(normalPos)) {
             Position finalPos = pos;
             moves.removeIf(move -> move.getPosition().equals(finalPos));
         }

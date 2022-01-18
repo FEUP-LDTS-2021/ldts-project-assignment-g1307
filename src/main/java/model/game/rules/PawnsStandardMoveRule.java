@@ -1,9 +1,7 @@
 package model.game.rules;
 
-import model.game.GameModel;
 import model.game.Position;
 import model.game.move.Move;
-import model.game.move.SimpleMove;
 import model.game.pieces.Pawn;
 import model.game.pieces.Piece;
 import model.game.pieces.movingBehaviours.TwoAndOneStrategy;
@@ -11,9 +9,9 @@ import model.game.pieces.movingBehaviours.TwoAndOneStrategy;
 import java.util.Set;
 
 public class PawnsStandardMoveRule implements Rule{
-    GameModel gameModel;
-    public PawnsStandardMoveRule(GameModel gameModel) {
-        this.gameModel = gameModel;
+    Set<Piece> pieceSet;
+    public PawnsStandardMoveRule(Set<Piece> pieceSet) {
+        this.pieceSet = pieceSet;
     }
     @Override
     public void obyRule(Set<Move> movesToFilter, Piece p) {
@@ -35,7 +33,7 @@ public class PawnsStandardMoveRule implements Rule{
     }
 
     private void pieceInTheWay(Set<Move> movesToFilter, Position pieceInFront) {
-        for (Piece piece : gameModel.getPiecesInGame()) {
+        for (Piece piece : pieceSet) {
             if (piece.getPosition().equals(pieceInFront))
                 movesToFilter.removeIf(move -> move.getPosition().equals(pieceInFront));
         }

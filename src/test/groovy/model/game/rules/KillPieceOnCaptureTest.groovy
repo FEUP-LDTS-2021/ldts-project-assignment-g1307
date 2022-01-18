@@ -29,7 +29,7 @@ class KillPieceOnCaptureTest extends Specification {
         gameModel.setPiecesInGame(set)
         gameModel.setBoardModel(new SquareBoard(8))
 
-        def filter = new KillPieceOnCapture(gameModel)
+        def filter = new KillPieceOnCapture(gameModel.getPiecesInGame())
         when:
 
         Set<Move> r = piece1.getMoves(gameModel.getBoardModel())

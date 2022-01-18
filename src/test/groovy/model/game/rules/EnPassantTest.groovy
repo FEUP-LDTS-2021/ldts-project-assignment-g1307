@@ -22,7 +22,7 @@ class EnPassantTest extends Specification {
         gameModel.setPiecesInGame(set)
         gameModel.setBoardModel(new SquareBoard(8))
 
-        def filter = new EnPassant(gameModel)
+        def filter = new EnPassant(gameModel.getPiecesInGame())
         when:
         bPawn.moveToPosition(new Position(4,2))
 
