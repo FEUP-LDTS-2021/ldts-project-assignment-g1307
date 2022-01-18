@@ -18,6 +18,7 @@ import java.util.Set;
 public class StandardChessGame implements GameBuilder {
 
     private final GameModel gameModel;
+    private final Set<Piece> pieceSet;
     private final Set<Piece> piecesArrangementWhite;
     private final Set<Piece> piecesArrangementBlack;
     private Rule[] rules;
@@ -33,19 +34,20 @@ public class StandardChessGame implements GameBuilder {
         piecesArrangementBlack = new HashSet<>();
 
         squareBoard = new SquareBoard(8);
+        pieceSet = gameModel.getPiecesInGame();
         gameModel.setCursor(new GameCursor(new Position(1,1) , squareBoard));
         gameModel.setBoardModel(squareBoard);
 
         Player[] players = {new Player(new ClockModel(time, increment),Piece.COLOR.White), new Player(new ClockModel(time, increment),Piece.COLOR.BLACK)};
         gameModel.setGamePlayers(players);
         rules = new Rule[10];
-
     }
 
     @Override
     public GameBuilder reset() {
         piecesArrangementWhite.clear();
         piecesArrangementBlack.clear();
+        pieceSet.clear();
         rules = new Rule[0];
 
         updateModelPieces();
@@ -117,23 +119,23 @@ public class StandardChessGame implements GameBuilder {
     }
 
     private void updateModelPieces() {
-        piecesArrangementWhite.addAll(piecesArrangementBlack);
-        gameModel.setPiecesInGame(piecesArrangementWhite);
+        pieceSet.addAll(piecesArrangementBlack);
+        pieceSet.addAll(piecesArrangementWhite);
     }
 
     @Override
     public GameBuilder buildRules() {
         try {
-            rules[0] = new Castle(gameModel);
-            rules[1] = new NoStepOverPiece(gameModel);
-            rules[2] = new KillPieceOnCapture(gameModel);
-            rules[3] = new NotCapturingSameColor(gameModel);
-            rules[4] = new PawnsDiagonalCapturing(gameModel);
-            rules[5] = new PawnsStandardMoveRule(gameModel);
-            rules[6] = new EnPassant(gameModel);
-            rules[7] = new PromotingPawns(gameModel);
+            rules[0] = new Castle(squareBoard,pieceSet);
+            rules[1] = new NoStepOverPiece(squareBoard, pieceSet);
+            rules[2] = new KillPieceOnCapture(pieceSet);
+            rules[3] = new NotCapturingSameColor(pieceSet);
+            rules[4] = new PawnsDiagonalCapturing(pieceSet);
+            rules[5] = new PawnsStandardMoveRule(pieceSet);
+            rules[6] = new EnPassant(pieceSet);
+            rules[7] = new PromotingPawns(pieceSet, squareBoard);
             rules[8] = new ProtectKingRule(gameModel);
-            rules[9] = new NoSuicideAllowed(gameModel);
+            rules[9] = new NoSuicideAllowed(pieceSet,rules,squareBoard);
         } catch (NotSupportedBoard e) {
             e.printStackTrace();
         }

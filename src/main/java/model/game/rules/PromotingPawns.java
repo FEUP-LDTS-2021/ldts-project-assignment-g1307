@@ -1,11 +1,8 @@
 package model.game.rules;
 
-import model.game.GameModel;
-import model.game.Position;
 import model.game.board.SquareBoard;
 import model.game.move.Move;
 import model.game.move.MoveDecorator;
-import model.game.move.SimpleMove;
 import model.game.pieces.Pawn;
 import model.game.pieces.Piece;
 import model.game.pieces.Queen;
@@ -50,7 +47,7 @@ public class PromotingPawns implements Rule{
             for (Move move: movesToFilter) {
                 if (move.getPosition().getRow() == rowToSearch) {
                     toDelete.add(move);
-                    toAdd.add(new PromotingMove(move, gameModel.getPiecesInGame()));
+                    toAdd.add(new PromotingMove(move, pieceSet));
                 }
             }
             for (Move move : toDelete) { movesToFilter.remove(move);}

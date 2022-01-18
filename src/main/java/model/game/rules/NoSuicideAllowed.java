@@ -2,6 +2,8 @@ package model.game.rules;
 
 import model.game.GameModel;
 import model.game.Position;
+import model.game.board.BoardModel;
+import model.game.board.SquareBoard;
 import model.game.move.Move;
 import model.game.pieces.King;
 import model.game.pieces.Piece;
@@ -13,10 +15,12 @@ import java.util.Set;
 
 public class NoSuicideAllowed implements Rule{
     Set<Piece> pieceSet;
-    Set<Rule> rules;
-    public NoSuicideAllowed(Set<Piece> pieceSet, Set<Rule> rules) {
+    Rule[] rules;
+    BoardModel boardModel;
+    public NoSuicideAllowed(Set<Piece> pieceSet, Rule[] rules, BoardModel boardModel) {
         this.pieceSet = pieceSet;
         this.rules = rules;
+        this.boardModel = boardModel;
     }
 
     @Override
@@ -24,7 +28,7 @@ public class NoSuicideAllowed implements Rule{
         if (piece instanceof King) {
             Boolean hasMove = piece.isMoved();
             Position originalPos = piece.getPosition();
-            Set<Piece> piecesInGame = gameModel.getPiecesInGame();
+            Set<Piece> piecesInGame = pieceSet;
             List<Piece> pieces = new ArrayList<>(piecesInGame);
             Set<Move> toRemove = new HashSet<>();
             for (Move move : movesToFilter) {
@@ -44,7 +48,7 @@ public class NoSuicideAllowed implements Rule{
         Piece king = move.getPiece();
         for (Piece piece: piecesInGame) {
             if (piece.getColor() != king.getColor()) {
-                Set<Move> moves = piece.getMoves(gameModel.getBoardModel());
+                Set<Move> moves = piece.getMoves(boardModel);
                 filterMovesUntilRule(moves, piece);
                 for (Move enemyMove : moves) {
                     if (enemyMove.getPosition().equals(move.getPosition())) {
@@ -57,7 +61,7 @@ public class NoSuicideAllowed implements Rule{
     }
 
     private void filterMovesUntilRule(Set<Move> filterMoves, Piece piece) {
-        for (Rule rule : gameModel.getRules()) {
+        for (Rule rule : rules) {
             if (!(rule instanceof ProtectKingRule)) {
                 rule.obyRule(filterMoves,piece);
             }

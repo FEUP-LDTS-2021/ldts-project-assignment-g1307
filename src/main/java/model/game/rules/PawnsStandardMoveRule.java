@@ -1,6 +1,5 @@
 package model.game.rules;
 
-import model.game.GameModel;
 import model.game.Position;
 import model.game.move.Move;
 import model.game.pieces.Pawn;
@@ -34,7 +33,7 @@ public class PawnsStandardMoveRule implements Rule{
     }
 
     private void pieceInTheWay(Set<Move> movesToFilter, Position pieceInFront) {
-        for (Piece piece : gameModel.getPiecesInGame()) {
+        for (Piece piece : pieceSet) {
             if (piece.getPosition().equals(pieceInFront))
                 movesToFilter.removeIf(move -> move.getPosition().equals(pieceInFront));
         }

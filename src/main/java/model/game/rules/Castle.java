@@ -47,7 +47,7 @@ public class Castle implements Rule{
     @Override
     public void obyRule(Set<Move> movesToFilter, Piece piece)  {
         if (piece instanceof King king && !piece.isMoved() && !king.inCheck()) {
-            for (Piece p : gameModel.getPiecesInGame()) {
+            for (Piece p : piecesInGame) {
                 if (p instanceof Rook rook) {
                     Position pPos = p.getPosition();
                     Position piecePos = piece.getPosition();
@@ -67,7 +67,7 @@ public class Castle implements Rule{
     private boolean noPieceBetween(Position kingPos, int rookCol){
         int kingRow = kingPos.getRow();
         int kingCol = kingPos.getCol();
-        for (Piece piece : gameModel.getPiecesInGame()) {
+        for (Piece piece : piecesInGame) {
             Position piecePos = piece.getPosition();
             int pieceCol = piecePos.getCol();
             if (piecePos.getRow() == kingRow && pieceCol > rookCol && pieceCol < kingCol )

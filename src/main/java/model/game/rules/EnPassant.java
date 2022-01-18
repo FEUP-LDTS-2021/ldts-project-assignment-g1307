@@ -1,6 +1,5 @@
 package model.game.rules;
 
-import model.game.GameModel;
 import model.game.Position;
 import model.game.move.CapturingMove;
 import model.game.move.Move;
@@ -20,7 +19,7 @@ public class EnPassant implements Rule {
     @Override
     public void obyRule(Set<Move> movesToFilter, Piece piece)   {
         if (piece instanceof Pawn pawn) {
-            for (Piece p: gameModel.getPiecesInGame()) {
+            for (Piece p: pieceSet) {
                 Position pPiece = piece.getPosition();
                 Position pP = p.getPosition();
                 if (p instanceof Pawn aPawn && aPawn.hasAdvancedTwo() && aPawn.getColor() != piece.getColor()) {

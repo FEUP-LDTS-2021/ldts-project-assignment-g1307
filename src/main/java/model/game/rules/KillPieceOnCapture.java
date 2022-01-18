@@ -19,7 +19,7 @@ public class KillPieceOnCapture implements Rule{
     public void obyRule(Set<Move> movesToFilter, Piece p)  {
         Set<Move> toRemove = new HashSet<>();
         Set<Move> toAdd = new HashSet<>();
-        Set<Piece> piecesInGame = gameModel.getPiecesInGame();
+        Set<Piece> piecesInGame = pieceSet;
         for (Move move: movesToFilter) {
             for (Piece piece : piecesInGame) {
                 if (move.getPosition().equals(piece.getPosition()) && piece.getColor() != p.getColor()) {

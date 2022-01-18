@@ -1,9 +1,7 @@
 package model.game.rules;
 
-import model.game.GameModel;
 import model.game.Position;
 import model.game.board.BoardModel;
-import model.game.board.SquareBoard;
 import model.game.move.Move;
 import model.game.pieces.Piece;
 
@@ -35,7 +33,7 @@ public class NoStepOverPiece implements Rule{
         Position normalPos = normalizePositionChange(changeInPos);
 
         Position pos = pStepped.add(normalPos);
-        for (; gameModel.getBoardModel().positionInBoard(pos); pos = pos.add(normalPos)) {
+        for (; boardModel.positionInBoard(pos); pos = pos.add(normalPos)) {
             Position finalPos = pos;
             moves.removeIf(move -> move.getPosition().equals(finalPos));
         }
