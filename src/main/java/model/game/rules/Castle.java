@@ -39,7 +39,7 @@ public class Castle implements Rule{
         }
     }
 
-    public Castle(SquareBoard boardModel, Set<Piece> piecesInGame) throws NotSupportedBoard {
+    public Castle(SquareBoard boardModel, Set<Piece> piecesInGame) {
         this.board = boardModel;
         this.piecesInGame = piecesInGame;
         colToSearch = boardModel.getColumns();
