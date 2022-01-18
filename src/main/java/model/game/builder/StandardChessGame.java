@@ -125,20 +125,17 @@ public class StandardChessGame implements GameBuilder {
 
     @Override
     public GameBuilder buildRules() {
-        try {
-            rules[0] = new Castle(squareBoard,pieceSet);
-            rules[1] = new NoStepOverPiece(squareBoard, pieceSet);
-            rules[2] = new KillPieceOnCapture(pieceSet);
-            rules[3] = new NotCapturingSameColor(pieceSet);
-            rules[4] = new PawnsDiagonalCapturing(pieceSet);
-            rules[5] = new PawnsStandardMoveRule(pieceSet);
-            rules[6] = new EnPassant(pieceSet);
-            rules[7] = new PromotingPawns(pieceSet, squareBoard);
-            rules[8] = new ProtectKingRule(gameModel);
-            rules[9] = new NoSuicideAllowed(pieceSet,rules,squareBoard);
-        } catch (NotSupportedBoard e) {
-            e.printStackTrace();
-        }
+        rules[0] = new Castle(squareBoard,pieceSet);
+        rules[1] = new NoStepOverPiece(squareBoard, pieceSet);
+        rules[2] = new KillPieceOnCapture(pieceSet);
+        rules[3] = new NotCapturingSameColor(pieceSet);
+        rules[4] = new PawnsDiagonalCapturing(pieceSet);
+        rules[5] = new PawnsStandardMoveRule(pieceSet);
+        rules[6] = new EnPassant(pieceSet);
+        rules[7] = new PromotingPawns(pieceSet, squareBoard);
+        rules[8] = new ProtectKingRule(gameModel);
+        rules[9] = new NoSuicideAllowed(pieceSet,rules,squareBoard);
+
         gameModel.setRules(rules);
         return this;
     }
