@@ -71,11 +71,9 @@ class GameModelTest extends Specification {
         when:
         Player[] players = [player, Mock(Player)]
         gameModel.setGamePlayers(players)
-        //boolean b = player.clock.counting
         gameModel.notifyPlayers()
         then:
-        true
-        //player.clock.counting != b
+        1 * player.setTurn(false)
     }
 
     def "Select"() {
