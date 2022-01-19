@@ -15,6 +15,11 @@ public class GameState extends ControllerState<GameModel,GameView>{
         this.view = new GameView(model);
     }
 
+    GameState(GameModel gameModel, GameView gameView) {
+        this.model = gameModel;
+        this.view = gameView;
+    }
+
     @Override
     public ControllerState<?,?> run() throws IOException {
         draw();
@@ -25,7 +30,7 @@ public class GameState extends ControllerState<GameModel,GameView>{
             case ArrowRight -> { cursor.moveRight(); nextControllerState = this;}
             case ArrowUp-> { cursor.moveUp(); nextControllerState = this;}
             case ArrowDown -> { cursor.moveDown(); nextControllerState = this;}
-            case Backspace -> {nextControllerState = new MenuState(); }
+            case Backspace -> nextControllerState = new MenuState();
             case Enter -> {model.select(); nextControllerState = this;}
             case EOF -> view.getScreen().close();
             default -> nextControllerState = this;
