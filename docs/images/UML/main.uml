@@ -1,0 +1,382 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>C:/Users/ricar/OneDrive/Ambiente de Trabalho/MIEIC/ldts-project-assignment-g1307/src/main</OriginalElement>
+  <nodes>
+    <node x="1094.5576923076924" y="1792.5">model.game.rules.Castle</node>
+    <node x="1923.5576923076924" y="1792.5">model.game.rules.ProtectKingRule</node>
+    <node x="713.0" y="2158.0">model.game.board.BoardCase</node>
+    <node x="2681.7171052631584" y="451.0">model.game.pieces.Rook</node>
+    <node x="266.0" y="581.0">controller.state.ControllerState</node>
+    <node x="7.0" y="273.0">model.game.board.BoardModel</node>
+    <node x="949.0" y="2158.0">controller.Controller</node>
+    <node x="289.0" y="2158.0">model.game.GameSubscriber</node>
+    <node x="473.0" y="1392.0">model.game.pieces.movingBehaviours.LStrategy</node>
+    <node x="697.2171052631579" y="118.0">view.View</node>
+    <node x="2874.7171052631584" y="451.0">model.game.pieces.Knight</node>
+    <node x="2755.5576923076924" y="1792.5">model.game.rules.PromotingPawns</node>
+    <node x="456.50000000000006" y="877.0">controller.state.GameState</node>
+    <node x="246.5" y="866.0">controller.state.MenuState</node>
+    <node x="1870.0" y="1336.0">model.game.pieces.movingBehaviours.TwoAndOneStrategy.Direction</node>
+    <node x="550.5576923076923" y="1803.5">model.game.rules.PawnsStandardMoveRule</node>
+    <node x="0.0" y="1185.0">model.game.builder.StandardChessGame</node>
+    <node x="327.5576923076924" y="1803.5">model.game.move.SimpleMove</node>
+    <node x="2289.7171052631584" y="451.0">model.game.pieces.Bishop</node>
+    <node x="1801.5576923076924" y="1663.5">model.game.rules.Rule</node>
+    <node x="299.5" y="1151.0">model.game.pieces.movingBehaviours.PreDetermined</node>
+    <node x="1468.5" y="1118.0">model.game.pieces.movingBehaviours.MovingBehaviourGroup</node>
+    <node x="1629.5833333333333" y="2000.0">model.game.rules.PromotingPawns.PromotingMove</node>
+    <node x="647.0" y="593.0">view.game.GameView</node>
+    <node x="1569.717105263158" y="273.0">model.game.clock.ClockModel</node>
+    <node x="0.0" y="2158.0">model.game.GameCursor</node>
+    <node x="285.0" y="2264.0">model.game.player.Player</node>
+    <node x="945.5" y="1151.5">model.game.pieces.movingBehaviours.DiagonalStrategy</node>
+    <node x="2511.5576923076924" y="1814.5">model.game.rules.EnPassant</node>
+    <node x="1045.5" y="1012.0">model.game.pieces.movingBehaviours.MovingBehaviour</node>
+    <node x="1185.0" y="2158.0">Application</node>
+    <node x="134.55769230769238" y="1792.0">model.game.move.MoveDecorator</node>
+    <node x="29.5" y="1012.0">model.game.builder.GameBuilder</node>
+    <node x="1793.7171052631581" y="329.0">model.game.pieces.Piece.COLOR</node>
+    <node x="964.0" y="604.0">view.menu.MenuView</node>
+    <node x="1369.717105263158" y="559.5">model.menu.MenuModel.Option</node>
+    <node x="2203.5576923076924" y="1792.5">model.game.rules.NoSuicideAllowed</node>
+    <node x="726.0833333333333" y="1989.0">model.game.rules.Castle.CastleMove</node>
+    <node x="251.58333333333326" y="1641.0">model.game.move.Move</node>
+    <node x="2491.7171052631584" y="428.0">model.game.pieces.King</node>
+    <node x="1569.717105263158" y="0.0">model.game.clock.Clock</node>
+    <node x="3074.7171052631584" y="451.0">model.game.pieces.Queen</node>
+    <node x="1369.717105263158" y="239.0">model.menu.MenuModel</node>
+    <node x="701.75" y="12.5">model.Model</node>
+    <node x="0.0" y="1989.0">model.game.move.CapturingMove</node>
+    <node x="0.0" y="559.0">model.game.board.SquareBoard</node>
+    <node x="846.5576923076923" y="1814.5">model.game.rules.KillPieceOnCapture</node>
+    <node x="622.5" y="1162.5">model.game.pieces.movingBehaviours.SideStrategy</node>
+    <node x="2999.5576923076924" y="1792.5">model.game.rules.NoStepOverPiece</node>
+    <node x="2184.9965170278642" y="0.0">model.game.pieces.Piece</node>
+    <node x="1367.5576923076924" y="1814.5">model.game.rules.NotCapturingSameColor</node>
+    <node x="961.2171052631579" y="129.0">model.game.GameModel</node>
+    <node x="494.0" y="2158.0">model.game.Position</node>
+    <node x="293.0" y="1392.0">model.game.pieces.movingBehaviours.AdjacentStrategy</node>
+    <node x="1643.5576923076924" y="1814.5">model.game.rules.PawnsDiagonalCapturing</node>
+    <node x="1807.5" y="1139.5">model.game.pieces.movingBehaviours.TwoAndOneStrategy</node>
+    <node x="1980.7171052631581" y="417.0">model.game.pieces.Pawn</node>
+    <node x="1380.0" y="2158.0">model.game.rules.NotSupportedBoard</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="model.game.rules.NoSuicideAllowed" target="model.game.rules.Rule" relationship="REALIZATION">
+      <point x="0.0" y="-73.0" />
+      <point x="2347.5576923076924" y="1767.0" />
+      <point x="1913.5576923076924" y="1767.0" />
+      <point x="0.0" y="28.0" />
+    </edge>
+    <edge source="model.game.pieces.movingBehaviours.LStrategy" target="model.game.pieces.movingBehaviours.PreDetermined" relationship="GENERALIZATION">
+      <point x="0.0" y="-28.0" />
+      <point x="529.0" y="1311.0" />
+      <point x="451.0" y="1311.0" />
+      <point x="0.0" y="51.0" />
+    </edge>
+    <edge source="view.game.GameView" target="view.View" relationship="GENERALIZATION">
+      <point x="0.0" y="-94.5" />
+      <point x="795.5" y="538.0" />
+      <point x="957.9671052631579" y="538.0" />
+      <point x="957.9671052631579" y="528.0" />
+      <point x="880.2171052631579" y="528.0" />
+      <point x="60.99999999999994" y="194.5" />
+    </edge>
+    <edge source="model.game.board.SquareBoard" target="model.game.board.BoardModel" relationship="REALIZATION">
+      <point x="0.0" y="-128.5" />
+      <point x="0.0" y="39.5" />
+    </edge>
+    <edge source="model.game.pieces.movingBehaviours.PreDetermined" target="model.game.pieces.movingBehaviours.MovingBehaviour" relationship="REALIZATION">
+      <point x="5.6843418860808015E-14" y="-51.0" />
+      <point x="451.0" y="1093.0" />
+      <point x="1197.0" y="1093.0" />
+      <point x="0.0" y="28.0" />
+    </edge>
+    <edge source="model.game.pieces.movingBehaviours.TwoAndOneStrategy" target="model.game.pieces.movingBehaviours.MovingBehaviour" relationship="REALIZATION">
+      <point x="0.0" y="-62.5" />
+      <point x="1959.0" y="1093.0" />
+      <point x="1197.0" y="1093.0" />
+      <point x="0.0" y="28.0" />
+    </edge>
+    <edge source="model.game.clock.ClockModel" target="model.game.clock.Clock" relationship="REALIZATION">
+      <point x="0.0" y="-39.5" />
+      <point x="0.0" y="28.0" />
+    </edge>
+    <edge source="model.game.pieces.movingBehaviours.MovingBehaviourGroup" target="model.game.pieces.movingBehaviours.MovingBehaviour" relationship="REALIZATION">
+      <point x="0.0" y="-84.0" />
+      <point x="1628.0" y="1093.0" />
+      <point x="1197.0" y="1093.0" />
+      <point x="0.0" y="28.0" />
+    </edge>
+    <edge source="model.game.pieces.Bishop" target="model.game.pieces.Piece" relationship="GENERALIZATION">
+      <point x="0.0" y="-28.0" />
+      <point x="2380.7171052631584" y="309.0" />
+      <point x="2672.4671052631584" y="309.0" />
+      <point x="2672.4671052631584" y="299.0" />
+      <point x="2411.4965170278642" y="299.0" />
+      <point x="75.5" y="139.5" />
+    </edge>
+    <edge source="model.game.rules.PromotingPawns.PromotingMove" target="model.game.rules.PromotingPawns" relationship="INNER_CLASS">
+      <point x="60.5" y="-51.0" />
+      <point x="1811.0833333333333" y="1969.0" />
+      <point x="2867.5576923076924" y="1969.0" />
+      <point x="0.0" y="73.0" />
+    </edge>
+    <edge source="view.View" target="model.Model" relationship="DEPENDENCY">
+      <point x="-5.6843418860808015E-14" y="-194.5" />
+      <point x="819.2171052631579" y="97.0" />
+      <point x="752.9671052631579" y="97.0" />
+      <point x="752.9671052631579" y="87.0" />
+      <point x="748.25" y="87.0" />
+      <point x="0.0" y="15.5" />
+    </edge>
+    <edge source="controller.state.GameState" target="controller.state.ControllerState" relationship="GENERALIZATION">
+      <point x="0.0" y="-39.5" />
+      <point x="551.5" y="841.0" />
+      <point x="446.5" y="841.0" />
+      <point x="0.0" y="106.5" />
+    </edge>
+    <edge source="model.game.rules.NoStepOverPiece" target="model.game.rules.Rule" relationship="REALIZATION">
+      <point x="0.0" y="-73.0" />
+      <point x="3182.5576923076924" y="1767.0" />
+      <point x="1913.5576923076924" y="1767.0" />
+      <point x="0.0" y="28.0" />
+    </edge>
+    <edge source="model.game.pieces.Pawn" target="model.game.pieces.Piece" relationship="GENERALIZATION">
+      <point x="0.0" y="-62.0" />
+      <point x="2125.2171052631584" y="309.0" />
+      <point x="2672.4671052631584" y="309.0" />
+      <point x="2672.4671052631584" y="299.0" />
+      <point x="2411.4965170278642" y="299.0" />
+      <point x="75.5" y="139.5" />
+    </edge>
+    <edge source="model.game.rules.NotCapturingSameColor" target="model.game.rules.Rule" relationship="REALIZATION">
+      <point x="0.0" y="-51.0" />
+      <point x="1495.5576923076924" y="1767.0" />
+      <point x="1913.5576923076924" y="1767.0" />
+      <point x="0.0" y="28.0" />
+    </edge>
+    <edge source="model.game.move.MoveDecorator" target="model.game.move.Move" relationship="REALIZATION">
+      <point x="0.0" y="-73.5" />
+      <point x="221.05769230769238" y="1767.0" />
+      <point x="321.08333333333326" y="1767.0" />
+      <point x="0.0" y="50.5" />
+    </edge>
+    <edge source="model.game.rules.PawnsDiagonalCapturing" target="model.game.rules.Rule" relationship="REALIZATION">
+      <point x="0.0" y="-51.0" />
+      <point x="1773.5576923076924" y="1767.0" />
+      <point x="1913.5576923076924" y="1767.0" />
+      <point x="0.0" y="28.0" />
+    </edge>
+    <edge source="model.game.rules.Castle.CastleMove" target="model.game.rules.Castle" relationship="INNER_CLASS">
+      <point x="46.0" y="-62.0" />
+      <point x="864.0833333333333" y="1959.0" />
+      <point x="1221.0576923076924" y="1959.0" />
+      <point x="0.0" y="73.0" />
+    </edge>
+    <edge source="model.game.rules.Castle" target="model.game.rules.Rule" relationship="REALIZATION">
+      <point x="0.0" y="-73.0" />
+      <point x="1221.0576923076924" y="1767.0" />
+      <point x="1913.5576923076924" y="1767.0" />
+      <point x="0.0" y="28.0" />
+    </edge>
+    <edge source="model.game.pieces.movingBehaviours.AdjacentStrategy" target="model.game.pieces.movingBehaviours.PreDetermined" relationship="GENERALIZATION">
+      <point x="0.0" y="-28.0" />
+      <point x="373.0" y="1311.0" />
+      <point x="451.0" y="1311.0" />
+      <point x="0.0" y="51.0" />
+    </edge>
+    <edge source="model.game.pieces.movingBehaviours.DiagonalStrategy" target="model.game.pieces.movingBehaviours.MovingBehaviour" relationship="REALIZATION">
+      <point x="0.0" y="-50.5" />
+      <point x="0.0" y="28.0" />
+    </edge>
+    <edge source="model.menu.MenuModel" target="model.Model" relationship="REALIZATION">
+      <point x="0.0" y="-73.5" />
+      <point x="1459.717105263158" y="97.0" />
+      <point x="1448.9342105263158" y="97.0" />
+      <point x="1448.9342105263158" y="77.0" />
+      <point x="779.25" y="77.0" />
+      <point x="31.0" y="15.5" />
+    </edge>
+    <edge source="model.game.rules.EnPassant" target="model.game.rules.Rule" relationship="REALIZATION">
+      <point x="1.1368683772161603E-13" y="-51.0" />
+      <point x="2623.5576923076924" y="1767.0" />
+      <point x="1913.5576923076924" y="1767.0" />
+      <point x="0.0" y="28.0" />
+    </edge>
+    <edge source="controller.state.ControllerState" target="view.View" relationship="DEPENDENCY">
+      <point x="0.0" y="-106.5" />
+      <point x="446.50000000000006" y="538.0" />
+      <point x="758.2171052631579" y="538.0" />
+      <point x="-61.0" y="194.5" />
+    </edge>
+    <edge source="model.game.builder.StandardChessGame" target="model.game.builder.GameBuilder" relationship="REALIZATION">
+      <point x="0.0" y="-205.5" />
+      <point x="0.0" y="61.5" />
+    </edge>
+    <edge source="model.game.GameModel" target="model.Model" relationship="REALIZATION">
+      <point x="0.0" y="-183.5" />
+      <point x="1081.217105263158" y="97.0" />
+      <point x="1448.9342105263158" y="97.0" />
+      <point x="1448.9342105263158" y="77.0" />
+      <point x="779.25" y="77.0" />
+      <point x="31.0" y="15.5" />
+    </edge>
+    <edge source="model.game.board.BoardModel" target="model.Model" relationship="INTERFACE_GENERALIZATION">
+      <point x="0.0" y="-39.5" />
+      <point x="123.0" y="87.0" />
+      <point x="717.25" y="87.0" />
+      <point x="-31.0" y="15.5" />
+    </edge>
+    <edge source="model.game.rules.KillPieceOnCapture" target="model.game.rules.Rule" relationship="REALIZATION">
+      <point x="0.0" y="-51.0" />
+      <point x="960.5576923076923" y="1767.0" />
+      <point x="1913.5576923076924" y="1767.0" />
+      <point x="0.0" y="28.0" />
+    </edge>
+    <edge source="model.menu.MenuModel.Option" target="model.menu.MenuModel" relationship="INNER_CLASS">
+      <point x="0.0" y="-128.0" />
+      <point x="0.0" y="73.5" />
+    </edge>
+    <edge source="model.game.pieces.King" target="model.game.pieces.Piece" relationship="GENERALIZATION">
+      <point x="0.0" y="-51.0" />
+      <point x="2576.7171052631584" y="309.0" />
+      <point x="2672.4671052631584" y="309.0" />
+      <point x="2672.4671052631584" y="299.0" />
+      <point x="2411.4965170278642" y="299.0" />
+      <point x="75.5" y="139.5" />
+    </edge>
+    <edge source="model.game.rules.PromotingPawns.PromotingMove" target="model.game.move.MoveDecorator" relationship="GENERALIZATION">
+      <point x="-60.5" y="-51.0" />
+      <point x="1690.0833333333333" y="1969.0" />
+      <point x="221.05769230769238" y="1969.0" />
+      <point x="0.0" y="73.5" />
+    </edge>
+    <edge source="controller.state.ControllerState" target="model.Model" relationship="DEPENDENCY">
+      <point x="0.0" y="-106.5" />
+      <point x="446.50000000000006" y="97.0" />
+      <point x="752.9671052631579" y="97.0" />
+      <point x="752.9671052631579" y="87.0" />
+      <point x="748.25" y="87.0" />
+      <point x="0.0" y="15.5" />
+    </edge>
+    <edge source="model.game.clock.ClockModel" target="model.Model" relationship="REALIZATION">
+      <point x="0.0" y="-39.5" />
+      <point x="1659.217105263158" y="87.0" />
+      <point x="1448.9342105263158" y="87.0" />
+      <point x="1448.9342105263158" y="77.0" />
+      <point x="779.25" y="77.0" />
+      <point x="31.0" y="15.5" />
+    </edge>
+    <edge source="model.game.pieces.Piece.COLOR" target="model.game.pieces.Piece" relationship="INNER_CLASS">
+      <point x="0.0" y="-150.0" />
+      <point x="1877.2171052631581" y="299.0" />
+      <point x="2260.4965170278642" y="299.0" />
+      <point x="-75.5" y="139.5" />
+    </edge>
+    <edge source="model.game.pieces.movingBehaviours.SideStrategy" target="model.game.pieces.movingBehaviours.MovingBehaviour" relationship="REALIZATION">
+      <point x="0.0" y="-39.5" />
+      <point x="774.0" y="1093.0" />
+      <point x="1197.0" y="1093.0" />
+      <point x="0.0" y="28.0" />
+    </edge>
+    <edge source="model.game.pieces.Rook" target="model.game.pieces.Piece" relationship="GENERALIZATION">
+      <point x="0.0" y="-28.0" />
+      <point x="2768.2171052631584" y="309.0" />
+      <point x="2672.4671052631584" y="309.0" />
+      <point x="2672.4671052631584" y="299.0" />
+      <point x="2411.4965170278642" y="299.0" />
+      <point x="75.5" y="139.5" />
+    </edge>
+    <edge source="model.game.player.Player" target="model.game.GameSubscriber" relationship="REALIZATION">
+      <point x="0.0" y="-61.5" />
+      <point x="0.0" y="28.0" />
+    </edge>
+    <edge source="view.menu.MenuView" target="view.View" relationship="GENERALIZATION">
+      <point x="0.0" y="-83.5" />
+      <point x="1111.0" y="538.0" />
+      <point x="957.9671052631579" y="538.0" />
+      <point x="957.9671052631579" y="528.0" />
+      <point x="880.2171052631579" y="528.0" />
+      <point x="60.99999999999994" y="194.5" />
+    </edge>
+    <edge source="model.game.rules.PawnsStandardMoveRule" target="model.game.rules.Rule" relationship="REALIZATION">
+      <point x="0.0" y="-62.0" />
+      <point x="688.5576923076923" y="1767.0" />
+      <point x="1913.5576923076924" y="1767.0" />
+      <point x="0.0" y="28.0" />
+    </edge>
+    <edge source="model.game.rules.Castle.CastleMove" target="model.game.move.MoveDecorator" relationship="GENERALIZATION">
+      <point x="-46.0" y="-62.0" />
+      <point x="772.0833333333333" y="1969.0" />
+      <point x="221.05769230769238" y="1969.0" />
+      <point x="0.0" y="73.5" />
+    </edge>
+    <edge source="model.game.pieces.movingBehaviours.TwoAndOneStrategy.Direction" target="model.game.pieces.movingBehaviours.TwoAndOneStrategy" relationship="INNER_CLASS">
+      <point x="0.0" y="-84.0" />
+      <point x="0.0" y="62.5" />
+    </edge>
+    <edge source="model.game.pieces.Queen" target="model.game.pieces.Piece" relationship="GENERALIZATION">
+      <point x="0.0" y="-28.0" />
+      <point x="3164.7171052631584" y="309.0" />
+      <point x="2672.4671052631584" y="309.0" />
+      <point x="2672.4671052631584" y="299.0" />
+      <point x="2411.4965170278642" y="299.0" />
+      <point x="75.5" y="139.5" />
+    </edge>
+    <edge source="model.game.move.SimpleMove" target="model.game.move.Move" relationship="REALIZATION">
+      <point x="0.0" y="-62.0" />
+      <point x="429.0576923076924" y="1767.0" />
+      <point x="321.08333333333326" y="1767.0" />
+      <point x="0.0" y="50.5" />
+    </edge>
+    <edge source="controller.state.MenuState" target="controller.state.ControllerState" relationship="GENERALIZATION">
+      <point x="0.0" y="-50.5" />
+      <point x="341.5" y="841.0" />
+      <point x="446.5" y="841.0" />
+      <point x="0.0" y="106.5" />
+    </edge>
+    <edge source="model.game.rules.PromotingPawns" target="model.game.rules.Rule" relationship="REALIZATION">
+      <point x="0.0" y="-73.0" />
+      <point x="2867.5576923076924" y="1767.0" />
+      <point x="1913.5576923076924" y="1767.0" />
+      <point x="0.0" y="28.0" />
+    </edge>
+    <edge source="model.game.pieces.Knight" target="model.game.pieces.Piece" relationship="GENERALIZATION">
+      <point x="0.0" y="-28.0" />
+      <point x="2964.7171052631584" y="309.0" />
+      <point x="2672.4671052631584" y="309.0" />
+      <point x="2672.4671052631584" y="299.0" />
+      <point x="2411.4965170278642" y="299.0" />
+      <point x="75.5" y="139.5" />
+    </edge>
+    <edge source="model.game.move.CapturingMove" target="model.game.move.MoveDecorator" relationship="GENERALIZATION">
+      <point x="0.0" y="-62.0" />
+      <point x="136.0" y="1969.0" />
+      <point x="221.05769230769238" y="1969.0" />
+      <point x="0.0" y="73.5" />
+    </edge>
+    <edge source="model.game.rules.ProtectKingRule" target="model.game.rules.Rule" relationship="REALIZATION">
+      <point x="0.0" y="-73.0" />
+      <point x="2053.5576923076924" y="1767.0" />
+      <point x="1913.5576923076924" y="1767.0" />
+      <point x="0.0" y="28.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic" zoom="0.3221035332785538" showDependencies="false" x="1683.0" y="1207.0000000000002" />
+  <SelectedNodes>
+    <node>model.game.board.SquareBoard</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Constructors</Category>
+    <Category>Fields</Category>
+    <Category>Inner Classes</Category>
+    <Category>Methods</Category>
+    <Category>Properties</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

@@ -24,7 +24,7 @@
 </span>
 </span>
 </td>
-<td class=''><pre><span  class=''>package view.menu;</span></pre></td></tr>
+<td class=''><pre><span  class=''>package chess.view.menu;</span></pre></td></tr>
 
 
 <tr>
@@ -129,7 +129,7 @@
 </span>
 </span>
 </td>
-<td class=''><pre><span  class=''>import model.menu.MenuModel;</span></pre></td></tr>
+<td class=''><pre><span  class=''>import chess.model.menu.MenuModel;</span></pre></td></tr>
 
 
 <tr>
@@ -144,7 +144,7 @@
 </span>
 </span>
 </td>
-<td class=''><pre><span  class=''>import view.View;</span></pre></td></tr>
+<td class=''><pre><span  class=''>import chess.view.View;</span></pre></td></tr>
 
 
 <tr>
@@ -234,7 +234,7 @@
 </span>
 </span>
 </td>
-<td class=''><pre><span  class=''>    public MenuView(MenuModel model){</span></pre></td></tr>
+<td class=''><pre><span  class=''>    public MenuView(MenuModel chess.model){</span></pre></td></tr>
 
 
 <tr>
@@ -249,7 +249,7 @@
 </span>
 </span>
 </td>
-<td class='uncovered'><pre><span  class=''>        super(model, &#34;square.ttf&#34;, 25, 25, 50);</span></pre></td></tr>
+<td class='uncovered'><pre><span  class=''>        super(chess.model, &#34;square.ttf&#34;, 25, 25, 50);</span></pre></td></tr>
 
 
 <tr>
@@ -294,7 +294,7 @@
 </span>
 </span>
 </td>
-<td class=''><pre><span  class=''>    MenuView(MenuModel model, Screen screen, TextGraphics textGraphics) {</span></pre></td></tr>
+<td class=''><pre><span  class=''>    MenuView(MenuModel chess.model, Screen screen, TextGraphics textGraphics) {</span></pre></td></tr>
 
 
 <tr>
@@ -309,7 +309,7 @@
 </span>
 </span>
 </td>
-<td class='covered'><pre><span  class=''>        super(model,&#34;square.ttf&#34;, screen, textGraphics);</span></pre></td></tr>
+<td class='covered'><pre><span  class=''>        super(chess.model,&#34;square.ttf&#34;, screen, textGraphics);</span></pre></td></tr>
 
 
 <tr>
@@ -796,7 +796,7 @@
 </span>
 </span>
 </td>
-<td class='covered'><pre><span  class='survived'>            int offSetToStaticCursor =  (colOfRectangle + 2) * opt.diffToOption(model.getCurrentOption());</span></pre></td></tr>
+<td class='covered'><pre><span  class='survived'>            int offSetToStaticCursor =  (colOfRectangle + 2) * opt.diffToOption(chess.model.getCurrentOption());</span></pre></td></tr>
 
 
 <tr>
@@ -972,7 +972,7 @@
 <a href='#grouporg.pitest.mutationtest.report.html.SourceFile@291a7e3c_62'>1</a>
 <span>
 
-1. draw : removed call to view/menu/MenuView::clear &rarr; KILLED<br/>
+1. draw : removed call to chess.view/menu/MenuView::clear &rarr; KILLED<br/>
 
 </span>
 </span>
@@ -1005,7 +1005,7 @@
 <a href='#grouporg.pitest.mutationtest.report.html.SourceFile@291a7e3c_64'>1</a>
 <span>
 
-1. draw : removed call to view/menu/MenuView::drawOption &rarr; KILLED<br/>
+1. draw : removed call to chess.view/menu/MenuView::drawOption &rarr; KILLED<br/>
 
 </span>
 </span>
@@ -1023,7 +1023,7 @@
 <a href='#grouporg.pitest.mutationtest.report.html.SourceFile@291a7e3c_65'>1</a>
 <span>
 
-1. draw : removed call to view/menu/MenuView::drawTitle &rarr; KILLED<br/>
+1. draw : removed call to chess.view/menu/MenuView::drawTitle &rarr; KILLED<br/>
 
 </span>
 </span>
@@ -1056,7 +1056,7 @@
 <a href='#grouporg.pitest.mutationtest.report.html.SourceFile@291a7e3c_67'>1</a>
 <span>
 
-1. draw : removed call to view/menu/MenuView::refresh &rarr; SURVIVED<br/>
+1. draw : removed call to chess.view/menu/MenuView::refresh &rarr; SURVIVED<br/>
 
 </span>
 </span>
@@ -1134,7 +1134,7 @@
 <a href='#grouporg.pitest.mutationtest.report.html.SourceFile@291a7e3c_72'>1</a>
 <span>
 
-1. clear : removed call to view/View::clear &rarr; SURVIVED<br/>
+1. clear : removed call to chess.view/View::clear &rarr; SURVIVED<br/>
 
 </span>
 </span>
@@ -1283,7 +1283,7 @@
 
 <a name='grouporg.pitest.mutationtest.report.html.SourceFile@291a7e3c_51'/> 
 
-<p class='SURVIVED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>drawOption<br/><b>Killed by : </b>none</span></span> Replaced integer addition with subtraction &rarr; SURVIVED</p> <p class='KILLED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>drawOption<br/><b>Killed by : </b>view.menu.MenuViewTest.[engine:spock]/[spec:view.menu.MenuViewTest]/[feature:$spock_feature_0_0]</span></span> Replaced integer multiplication with division &rarr; KILLED</p> 
+<p class='SURVIVED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>drawOption<br/><b>Killed by : </b>none</span></span> Replaced integer addition with subtraction &rarr; SURVIVED</p> <p class='KILLED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>drawOption<br/><b>Killed by : </b>chess.view.menu.MenuViewTest.[engine:spock]/[spec:chess.view.menu.MenuViewTest]/[feature:$spock_feature_0_0]</span></span> Replaced integer multiplication with division &rarr; KILLED</p>
 </td>
 </tr>
 
@@ -1327,7 +1327,7 @@
 
 <a name='grouporg.pitest.mutationtest.report.html.SourceFile@291a7e3c_62'/> 
 
-<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>draw<br/><b>Killed by : </b>view.menu.MenuViewTest.[engine:spock]/[spec:view.menu.MenuViewTest]/[feature:$spock_feature_0_0]</span></span> removed call to view/menu/MenuView::clear &rarr; KILLED</p> 
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>draw<br/><b>Killed by : </b>chess.view.menu.MenuViewTest.[engine:spock]/[spec:chess.view.menu.MenuViewTest]/[feature:$spock_feature_0_0]</span></span> removed call to chess.view/menu/MenuView::clear &rarr; KILLED</p>
 </td>
 </tr>
 
@@ -1338,7 +1338,7 @@
 
 <a name='grouporg.pitest.mutationtest.report.html.SourceFile@291a7e3c_64'/> 
 
-<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>draw<br/><b>Killed by : </b>view.menu.MenuViewTest.[engine:spock]/[spec:view.menu.MenuViewTest]/[feature:$spock_feature_0_0]</span></span> removed call to view/menu/MenuView::drawOption &rarr; KILLED</p> 
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>draw<br/><b>Killed by : </b>chess.view.menu.MenuViewTest.[engine:spock]/[spec:chess.view.menu.MenuViewTest]/[feature:$spock_feature_0_0]</span></span> removed call to chess.view/menu/MenuView::drawOption &rarr; KILLED</p>
 </td>
 </tr>
 
@@ -1349,7 +1349,7 @@
 
 <a name='grouporg.pitest.mutationtest.report.html.SourceFile@291a7e3c_65'/> 
 
-<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>draw<br/><b>Killed by : </b>view.menu.MenuViewTest.[engine:spock]/[spec:view.menu.MenuViewTest]/[feature:$spock_feature_0_0]</span></span> removed call to view/menu/MenuView::drawTitle &rarr; KILLED</p> 
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>draw<br/><b>Killed by : </b>chess.view.menu.MenuViewTest.[engine:spock]/[spec:chess.view.menu.MenuViewTest]/[feature:$spock_feature_0_0]</span></span> removed call to chess.view/menu/MenuView::drawTitle &rarr; KILLED</p>
 </td>
 </tr>
 
@@ -1360,7 +1360,7 @@
 
 <a name='grouporg.pitest.mutationtest.report.html.SourceFile@291a7e3c_67'/> 
 
-<p class='SURVIVED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>draw<br/><b>Killed by : </b>none</span></span> removed call to view/menu/MenuView::refresh &rarr; SURVIVED</p> 
+<p class='SURVIVED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>draw<br/><b>Killed by : </b>none</span></span> removed call to chess.view/menu/MenuView::refresh &rarr; SURVIVED</p>
 </td>
 </tr>
 
@@ -1371,7 +1371,7 @@
 
 <a name='grouporg.pitest.mutationtest.report.html.SourceFile@291a7e3c_72'/> 
 
-<p class='SURVIVED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>clear<br/><b>Killed by : </b>none</span></span> removed call to view/View::clear &rarr; SURVIVED</p> 
+<p class='SURVIVED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>clear<br/><b>Killed by : </b>none</span></span> removed call to chess.view/View::clear &rarr; SURVIVED</p>
 </td>
 </tr>
 
@@ -1407,7 +1407,8 @@
 
 <h2>Tests examined</h2>
 <ul>
-<li>view.menu.MenuViewTest.[engine:spock]/[spec:view.menu.MenuViewTest]/[feature:$spock_feature_0_0] (7 ms)</li><li>view.game.GameViewTest.[engine:spock]/[spec:view.game.GameViewTest]/[feature:$spock_feature_0_0] (14 ms)</li>
+<li>chess.view.menu.MenuViewTest.[engine:spock]/[spec:chess.view.menu.MenuViewTest]/[feature:$spock_feature_0_0] (7 ms)</li><li>chess.view.game.GameViewTest.[engine:spock]/[spec:chess.view.game.GameViewTest]/[feature:$spock_feature_0_0]
+    (14 ms)</li>
 </ul>
 
 <br/>
