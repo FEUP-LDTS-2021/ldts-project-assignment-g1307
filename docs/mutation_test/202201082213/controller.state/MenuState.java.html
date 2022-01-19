@@ -24,7 +24,7 @@
 </span>
 </span>
 </td>
-<td class=''><pre><span  class=''>package controller.state;</span></pre></td></tr>
+<td class=''><pre><span  class=''>package chess.controller.state;</span></pre></td></tr>
 
 
 <tr>
@@ -54,7 +54,7 @@
 </span>
 </span>
 </td>
-<td class=''><pre><span  class=''>import model.menu.MenuModel;</span></pre></td></tr>
+<td class=''><pre><span  class=''>import chess.model.menu.MenuModel;</span></pre></td></tr>
 
 
 <tr>
@@ -69,7 +69,7 @@
 </span>
 </span>
 </td>
-<td class=''><pre><span  class=''>import view.menu.MenuView;</span></pre></td></tr>
+<td class=''><pre><span  class=''>import chess.view.menu.MenuView;</span></pre></td></tr>
 
 
 <tr>
@@ -234,7 +234,7 @@
 </span>
 </span>
 </td>
-<td class='uncovered'><pre><span  class=''>        this.model = new MenuModel();</span></pre></td></tr>
+<td class='uncovered'><pre><span  class=''>        this.chess.model = new MenuModel();</span></pre></td></tr>
 
 
 <tr>
@@ -249,7 +249,7 @@
 </span>
 </span>
 </td>
-<td class='uncovered'><pre><span  class=''>        this.view = new MenuView(model);</span></pre></td></tr>
+<td class='uncovered'><pre><span  class=''>        this.chess.view = new MenuView(chess.model);</span></pre></td></tr>
 
 
 <tr>
@@ -322,7 +322,7 @@
 <a href='#grouporg.pitest.mutationtest.report.html.SourceFile@68c9d179_21'>1</a>
 <span>
 
-1. run : removed call to controller/state/MenuState::draw &rarr; KILLED<br/>
+1. run : removed call to chess.controller/state/MenuState::draw &rarr; KILLED<br/>
 
 </span>
 </span>
@@ -357,7 +357,7 @@
 </span>
 </span>
 </td>
-<td class='covered'><pre><span  class=''>        switch (getKey(view.getScreen())) {</span></pre></td></tr>
+<td class='covered'><pre><span  class=''>        switch (getKey(chess.view.getScreen())) {</span></pre></td></tr>
 
 
 <tr>
@@ -370,12 +370,12 @@
 <a href='#grouporg.pitest.mutationtest.report.html.SourceFile@68c9d179_24'>1</a>
 <span>
 
-1. run : removed call to model/menu/MenuModel::setPreviousOption &rarr; KILLED<br/>
+1. run : removed call to chess.model/menu/MenuModel::setPreviousOption &rarr; KILLED<br/>
 
 </span>
 </span>
 </td>
-<td class='covered'><pre><span  class='killed'>            case ArrowLeft -&#62; {model.setPreviousOption(); nextControllerState = this;}</span></pre></td></tr>
+<td class='covered'><pre><span  class='killed'>            case ArrowLeft -&#62; {chess.model.setPreviousOption(); nextControllerState = this;}</span></pre></td></tr>
 
 
 <tr>
@@ -388,12 +388,12 @@
 <a href='#grouporg.pitest.mutationtest.report.html.SourceFile@68c9d179_25'>1</a>
 <span>
 
-1. run : removed call to model/menu/MenuModel::setNextOption &rarr; KILLED<br/>
+1. run : removed call to chess.model/menu/MenuModel::setNextOption &rarr; KILLED<br/>
 
 </span>
 </span>
 </td>
-<td class='covered'><pre><span  class='killed'>            case ArrowRight -&#62; {model.setNextOption(); nextControllerState = this;}</span></pre></td></tr>
+<td class='covered'><pre><span  class='killed'>            case ArrowRight -&#62; {chess.model.setNextOption(); nextControllerState = this;}</span></pre></td></tr>
 
 
 <tr>
@@ -423,7 +423,7 @@
 </span>
 </span>
 </td>
-<td class='covered'><pre><span  class=''>                switch (model.getCurrentOption()) {</span></pre></td></tr>
+<td class='covered'><pre><span  class=''>                switch (chess.model.getCurrentOption()) {</span></pre></td></tr>
 
 
 <tr>
@@ -516,7 +516,7 @@
 </span>
 </span>
 </td>
-<td class='covered'><pre><span  class='killed'>            case EOF -&#62; view.getScreen().close();</span></pre></td></tr>
+<td class='covered'><pre><span  class='killed'>            case EOF -&#62; chess.view.getScreen().close();</span></pre></td></tr>
 
 
 <tr>
@@ -559,7 +559,7 @@
 <a href='#grouporg.pitest.mutationtest.report.html.SourceFile@68c9d179_36'>1</a>
 <span>
 
-1. run : replaced return value with null for controller/state/MenuState::run &rarr; SURVIVED<br/>
+1. run : replaced return value with null for chess.controller/state/MenuState::run &rarr; SURVIVED<br/>
 
 </span>
 </span>
@@ -608,7 +608,7 @@
 
 <a name='grouporg.pitest.mutationtest.report.html.SourceFile@68c9d179_21'/> 
 
-<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>run<br/><b>Killed by : </b>controller.state.MenuStateTest.[engine:spock]/[spec:controller.state.MenuStateTest]/[feature:$spock_feature_0_1]</span></span> removed call to controller/state/MenuState::draw &rarr; KILLED</p> 
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>run<br/><b>Killed by : </b>chess.controller.state.MenuStateTest.[engine:spock]/[spec:chess.controller.state.MenuStateTest]/[feature:$spock_feature_0_1]</span></span> removed call to chess.controller/state/MenuState::draw &rarr; KILLED</p>
 </td>
 </tr>
 
@@ -619,7 +619,7 @@
 
 <a name='grouporg.pitest.mutationtest.report.html.SourceFile@68c9d179_24'/> 
 
-<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>run<br/><b>Killed by : </b>controller.state.MenuStateTest.[engine:spock]/[spec:controller.state.MenuStateTest]/[feature:$spock_feature_0_0]</span></span> removed call to model/menu/MenuModel::setPreviousOption &rarr; KILLED</p> 
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>run<br/><b>Killed by : </b>chess.controller.state.MenuStateTest.[engine:spock]/[spec:chess.controller.state.MenuStateTest]/[feature:$spock_feature_0_0]</span></span> removed call to chess.model/menu/MenuModel::setPreviousOption &rarr; KILLED</p>
 </td>
 </tr>
 
@@ -630,7 +630,7 @@
 
 <a name='grouporg.pitest.mutationtest.report.html.SourceFile@68c9d179_25'/> 
 
-<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>run<br/><b>Killed by : </b>controller.state.MenuStateTest.[engine:spock]/[spec:controller.state.MenuStateTest]/[feature:$spock_feature_0_0]</span></span> removed call to model/menu/MenuModel::setNextOption &rarr; KILLED</p> 
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>run<br/><b>Killed by : </b>chess.controller.state.MenuStateTest.[engine:spock]/[spec:chess.controller.state.MenuStateTest]/[feature:$spock_feature_0_0]</span></span> removed call to chess.model/menu/MenuModel::setNextOption &rarr; KILLED</p>
 </td>
 </tr>
 
@@ -641,7 +641,7 @@
 
 <a name='grouporg.pitest.mutationtest.report.html.SourceFile@68c9d179_33'/> 
 
-<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>run<br/><b>Killed by : </b>controller.state.MenuStateTest.[engine:spock]/[spec:controller.state.MenuStateTest]/[feature:$spock_feature_0_0]</span></span> removed call to com/googlecode/lanterna/screen/Screen::close &rarr; KILLED</p> 
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>run<br/><b>Killed by : </b>chess.controller.state.MenuStateTest.[engine:spock]/[spec:chess.controller.state.MenuStateTest]/[feature:$spock_feature_0_0]</span></span> removed call to com/googlecode/lanterna/screen/Screen::close &rarr; KILLED</p>
 </td>
 </tr>
 
@@ -652,7 +652,7 @@
 
 <a name='grouporg.pitest.mutationtest.report.html.SourceFile@68c9d179_36'/> 
 
-<p class='SURVIVED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>run<br/><b>Killed by : </b>none</span></span> replaced return value with null for controller/state/MenuState::run &rarr; SURVIVED</p> 
+<p class='SURVIVED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>run<br/><b>Killed by : </b>none</span></span> replaced return value with null for chess.controller/state/MenuState::run &rarr; SURVIVED</p>
 </td>
 </tr>
 
@@ -688,7 +688,9 @@
 
 <h2>Tests examined</h2>
 <ul>
-<li>controller.state.MenuStateTest.[engine:spock]/[spec:controller.state.MenuStateTest]/[feature:$spock_feature_0_1] (4 ms)</li><li>controller.state.MenuStateTest.[engine:spock]/[spec:controller.state.MenuStateTest]/[feature:$spock_feature_0_0] (13 ms)</li>
+<li>chess.controller.state.MenuStateTest.[engine:spock]/[spec:chess.controller.state.MenuStateTest]/[feature:$spock_feature_0_1]
+    (4 ms)</li><li>chess.controller.state.MenuStateTest.[engine:spock]/[spec:chess.controller.state.MenuStateTest]/[feature:$spock_feature_0_0]
+    (13 ms)</li>
 </ul>
 
 <br/>

@@ -24,7 +24,7 @@
 </span>
 </span>
 </td>
-<td class=''><pre><span  class=''>package view;</span></pre></td></tr>
+<td class=''><pre><span  class=''>package chess.view;</span></pre></td></tr>
 
 
 <tr>
@@ -174,7 +174,7 @@
 </span>
 </span>
 </td>
-<td class=''><pre><span  class=''>import model.Model;</span></pre></td></tr>
+<td class=''><pre><span  class=''>import chess.model.Model;</span></pre></td></tr>
 
 
 <tr>
@@ -384,7 +384,7 @@
 </span>
 </span>
 </td>
-<td class=''><pre><span  class=''>    protected T model;</span></pre></td></tr>
+<td class=''><pre><span  class=''>    protected T chess.model;</span></pre></td></tr>
 
 
 <tr>
@@ -474,7 +474,7 @@
 </span>
 </span>
 </td>
-<td class='uncovered'><pre><span  class=''>    protected View(T model, String fontName, int fontSize, int height, int width) {</span></pre></td></tr>
+<td class='uncovered'><pre><span  class=''>    protected View(T chess.model, String fontName, int fontSize, int height, int width) {</span></pre></td></tr>
 
 
 <tr>
@@ -489,7 +489,7 @@
 </span>
 </span>
 </td>
-<td class='uncovered'><pre><span  class=''>        this.model = model;</span></pre></td></tr>
+<td class='uncovered'><pre><span  class=''>        this.chess.model = chess.model;</span></pre></td></tr>
 
 
 <tr>
@@ -502,7 +502,7 @@
 <a href='#grouporg.pitest.mutationtest.report.html.SourceFile@632ceb35_33'>1</a>
 <span>
 
-1. &#60;init&#62; : removed call to view/View::loadFont &rarr; NO_COVERAGE<br/>
+1. &#60;init&#62; : removed call to chess.view/View::loadFont &rarr; NO_COVERAGE<br/>
 
 </span>
 </span>
@@ -550,7 +550,7 @@
 <a href='#grouporg.pitest.mutationtest.report.html.SourceFile@632ceb35_36'>1</a>
 <span>
 
-1. &#60;init&#62; : removed call to view/View::initWindow &rarr; NO_COVERAGE<br/>
+1. &#60;init&#62; : removed call to chess.view/View::initWindow &rarr; NO_COVERAGE<br/>
 
 </span>
 </span>
@@ -600,7 +600,7 @@
 </span>
 </span>
 </td>
-<td class='covered'><pre><span  class=''>    public View(T model, String fontName, Screen screen, TextGraphics textGraphics) {</span></pre></td></tr>
+<td class='covered'><pre><span  class=''>    public View(T chess.model, String fontName, Screen screen, TextGraphics textGraphics) {</span></pre></td></tr>
 
 
 <tr>
@@ -615,7 +615,7 @@
 </span>
 </span>
 </td>
-<td class='covered'><pre><span  class=''>        this.model = model;</span></pre></td></tr>
+<td class='covered'><pre><span  class=''>        this.chess.model = chess.model;</span></pre></td></tr>
 
 
 <tr>
@@ -628,7 +628,7 @@
 <a href='#grouporg.pitest.mutationtest.report.html.SourceFile@632ceb35_41'>1</a>
 <span>
 
-1. &#60;init&#62; : removed call to view/View::loadFont &rarr; SURVIVED<br/>
+1. &#60;init&#62; : removed call to chess.view/View::loadFont &rarr; SURVIVED<br/>
 
 </span>
 </span>
@@ -1171,12 +1171,12 @@
 <a href='#grouporg.pitest.mutationtest.report.html.SourceFile@632ceb35_76'>1</a>
 <span>
 
-1. getModel : replaced return value with null for view/View::getModel &rarr; NO_COVERAGE<br/>
+1. getModel : replaced return value with null for chess.view/View::getModel &rarr; NO_COVERAGE<br/>
 
 </span>
 </span>
 </td>
-<td class='uncovered'><pre><span  class='survived'>        return model;</span></pre></td></tr>
+<td class='uncovered'><pre><span  class='survived'>        return chess.model;</span></pre></td></tr>
 
 
 <tr>
@@ -1221,7 +1221,7 @@
 </span>
 </span>
 </td>
-<td class=''><pre><span  class=''>    public void setModel(T model) {</span></pre></td></tr>
+<td class=''><pre><span  class=''>    public void setModel(T chess.model) {</span></pre></td></tr>
 
 
 <tr>
@@ -1236,7 +1236,7 @@
 </span>
 </span>
 </td>
-<td class='uncovered'><pre><span  class=''>        this.model = model;</span></pre></td></tr>
+<td class='uncovered'><pre><span  class=''>        this.chess.model = chess.model;</span></pre></td></tr>
 
 
 <tr>
@@ -1294,7 +1294,7 @@
 <a href='#grouporg.pitest.mutationtest.report.html.SourceFile@632ceb35_84'>1</a>
 <span>
 
-1. getGraphics : replaced return value with null for view/View::getGraphics &rarr; NO_COVERAGE<br/>
+1. getGraphics : replaced return value with null for chess.view/View::getGraphics &rarr; NO_COVERAGE<br/>
 
 </span>
 </span>
@@ -1713,7 +1713,7 @@
 
 1. getHeightCenter : Replaced integer division with multiplication &rarr; SURVIVED<br/>
 
-2. getHeightCenter : replaced int return with 0 for view/View::getHeightCenter &rarr; SURVIVED<br/>
+2. getHeightCenter : replaced int return with 0 for chess.view/View::getHeightCenter &rarr; SURVIVED<br/>
 
 </span>
 </span>
@@ -1778,7 +1778,7 @@
 
 1. getWidthCenter : Replaced integer division with multiplication &rarr; SURVIVED<br/>
 
-2. getWidthCenter : replaced int return with 0 for view/View::getWidthCenter &rarr; SURVIVED<br/>
+2. getWidthCenter : replaced int return with 0 for chess.view/View::getWidthCenter &rarr; SURVIVED<br/>
 
 </span>
 </span>
@@ -1841,7 +1841,7 @@
 <a href='#grouporg.pitest.mutationtest.report.html.SourceFile@632ceb35_119'>1</a>
 <span>
 
-1. getHeight : replaced int return with 0 for view/View::getHeight &rarr; SURVIVED<br/>
+1. getHeight : replaced int return with 0 for chess.view/View::getHeight &rarr; SURVIVED<br/>
 
 </span>
 </span>
@@ -1904,7 +1904,7 @@
 <a href='#grouporg.pitest.mutationtest.report.html.SourceFile@632ceb35_123'>1</a>
 <span>
 
-1. getWidth : replaced int return with 0 for view/View::getWidth &rarr; SURVIVED<br/>
+1. getWidth : replaced int return with 0 for chess.view/View::getWidth &rarr; SURVIVED<br/>
 
 </span>
 </span>
@@ -2075,7 +2075,7 @@
 <a href='#grouporg.pitest.mutationtest.report.html.SourceFile@632ceb35_134'>1</a>
 <span>
 
-1. getScreen : replaced return value with null for view/View::getScreen &rarr; NO_COVERAGE<br/>
+1. getScreen : replaced return value with null for chess.view/View::getScreen &rarr; NO_COVERAGE<br/>
 
 </span>
 </span>
@@ -2124,7 +2124,7 @@
 
 <a name='grouporg.pitest.mutationtest.report.html.SourceFile@632ceb35_33'/> 
 
-<p class='NO_COVERAGE'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>&#60;init&#62;<br/><b>Killed by : </b>none</span></span> removed call to view/View::loadFont &rarr; NO_COVERAGE</p> 
+<p class='NO_COVERAGE'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>&#60;init&#62;<br/><b>Killed by : </b>none</span></span> removed call to chess.view/View::loadFont &rarr; NO_COVERAGE</p>
 </td>
 </tr>
 
@@ -2135,7 +2135,7 @@
 
 <a name='grouporg.pitest.mutationtest.report.html.SourceFile@632ceb35_36'/> 
 
-<p class='NO_COVERAGE'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>&#60;init&#62;<br/><b>Killed by : </b>none</span></span> removed call to view/View::initWindow &rarr; NO_COVERAGE</p> 
+<p class='NO_COVERAGE'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>&#60;init&#62;<br/><b>Killed by : </b>none</span></span> removed call to chess.view/View::initWindow &rarr; NO_COVERAGE</p>
 </td>
 </tr>
 
@@ -2146,7 +2146,7 @@
 
 <a name='grouporg.pitest.mutationtest.report.html.SourceFile@632ceb35_41'/> 
 
-<p class='SURVIVED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>&#60;init&#62;<br/><b>Killed by : </b>none</span></span> removed call to view/View::loadFont &rarr; SURVIVED</p> 
+<p class='SURVIVED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>&#60;init&#62;<br/><b>Killed by : </b>none</span></span> removed call to chess.view/View::loadFont &rarr; SURVIVED</p>
 </td>
 </tr>
 
@@ -2212,7 +2212,7 @@
 
 <a name='grouporg.pitest.mutationtest.report.html.SourceFile@632ceb35_76'/> 
 
-<p class='NO_COVERAGE'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getModel<br/><b>Killed by : </b>none</span></span> replaced return value with null for view/View::getModel &rarr; NO_COVERAGE</p> 
+<p class='NO_COVERAGE'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getModel<br/><b>Killed by : </b>none</span></span> replaced return value with null for chess.view/View::getModel &rarr; NO_COVERAGE</p>
 </td>
 </tr>
 
@@ -2223,7 +2223,7 @@
 
 <a name='grouporg.pitest.mutationtest.report.html.SourceFile@632ceb35_84'/> 
 
-<p class='NO_COVERAGE'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getGraphics<br/><b>Killed by : </b>none</span></span> replaced return value with null for view/View::getGraphics &rarr; NO_COVERAGE</p> 
+<p class='NO_COVERAGE'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getGraphics<br/><b>Killed by : </b>none</span></span> replaced return value with null for chess.view/View::getGraphics &rarr; NO_COVERAGE</p>
 </td>
 </tr>
 
@@ -2267,7 +2267,7 @@
 
 <a name='grouporg.pitest.mutationtest.report.html.SourceFile@632ceb35_111'/> 
 
-<p class='SURVIVED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getHeightCenter<br/><b>Killed by : </b>none</span></span> Replaced integer division with multiplication &rarr; SURVIVED</p> <p class='SURVIVED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>getHeightCenter<br/><b>Killed by : </b>none</span></span> replaced int return with 0 for view/View::getHeightCenter &rarr; SURVIVED</p> 
+<p class='SURVIVED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getHeightCenter<br/><b>Killed by : </b>none</span></span> Replaced integer division with multiplication &rarr; SURVIVED</p> <p class='SURVIVED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>getHeightCenter<br/><b>Killed by : </b>none</span></span> replaced int return with 0 for chess.view/View::getHeightCenter &rarr; SURVIVED</p>
 </td>
 </tr>
 
@@ -2278,7 +2278,7 @@
 
 <a name='grouporg.pitest.mutationtest.report.html.SourceFile@632ceb35_115'/> 
 
-<p class='SURVIVED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getWidthCenter<br/><b>Killed by : </b>none</span></span> Replaced integer division with multiplication &rarr; SURVIVED</p> <p class='SURVIVED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>getWidthCenter<br/><b>Killed by : </b>none</span></span> replaced int return with 0 for view/View::getWidthCenter &rarr; SURVIVED</p> 
+<p class='SURVIVED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getWidthCenter<br/><b>Killed by : </b>none</span></span> Replaced integer division with multiplication &rarr; SURVIVED</p> <p class='SURVIVED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>getWidthCenter<br/><b>Killed by : </b>none</span></span> replaced int return with 0 for chess.view/View::getWidthCenter &rarr; SURVIVED</p>
 </td>
 </tr>
 
@@ -2289,7 +2289,7 @@
 
 <a name='grouporg.pitest.mutationtest.report.html.SourceFile@632ceb35_119'/> 
 
-<p class='SURVIVED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getHeight<br/><b>Killed by : </b>none</span></span> replaced int return with 0 for view/View::getHeight &rarr; SURVIVED</p> 
+<p class='SURVIVED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getHeight<br/><b>Killed by : </b>none</span></span> replaced int return with 0 for chess.view/View::getHeight &rarr; SURVIVED</p>
 </td>
 </tr>
 
@@ -2300,7 +2300,7 @@
 
 <a name='grouporg.pitest.mutationtest.report.html.SourceFile@632ceb35_123'/> 
 
-<p class='SURVIVED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getWidth<br/><b>Killed by : </b>none</span></span> replaced int return with 0 for view/View::getWidth &rarr; SURVIVED</p> 
+<p class='SURVIVED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getWidth<br/><b>Killed by : </b>none</span></span> replaced int return with 0 for chess.view/View::getWidth &rarr; SURVIVED</p>
 </td>
 </tr>
 
@@ -2322,7 +2322,7 @@
 
 <a name='grouporg.pitest.mutationtest.report.html.SourceFile@632ceb35_134'/> 
 
-<p class='NO_COVERAGE'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getScreen<br/><b>Killed by : </b>none</span></span> replaced return value with null for view/View::getScreen &rarr; NO_COVERAGE</p> 
+<p class='NO_COVERAGE'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getScreen<br/><b>Killed by : </b>none</span></span> replaced return value with null for chess.view/View::getScreen &rarr; NO_COVERAGE</p>
 </td>
 </tr>
 
@@ -2358,7 +2358,8 @@
 
 <h2>Tests examined</h2>
 <ul>
-<li>view.menu.MenuViewTest.[engine:spock]/[spec:view.menu.MenuViewTest]/[feature:$spock_feature_0_0] (7 ms)</li><li>view.game.GameViewTest.[engine:spock]/[spec:view.game.GameViewTest]/[feature:$spock_feature_0_0] (14 ms)</li>
+<li>chess.view.menu.MenuViewTest.[engine:spock]/[spec:chess.view.menu.MenuViewTest]/[feature:$spock_feature_0_0] (7 ms)</li><li>chess.view.game.GameViewTest.[engine:spock]/[spec:chess.view.game.GameViewTest]/[feature:$spock_feature_0_0]
+    (14 ms)</li>
 </ul>
 
 <br/>

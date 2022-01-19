@@ -24,7 +24,7 @@
 </span>
 </span>
 </td>
-<td class=''><pre><span  class=''>package view.game;</span></pre></td></tr>
+<td class=''><pre><span  class=''>package chess.view.game;</span></pre></td></tr>
 
 
 <tr>
@@ -129,7 +129,7 @@
 </span>
 </span>
 </td>
-<td class=''><pre><span  class=''>import model.game.GameModel;</span></pre></td></tr>
+<td class=''><pre><span  class=''>import chess.model.game.GameModel;</span></pre></td></tr>
 
 
 <tr>
@@ -144,7 +144,7 @@
 </span>
 </span>
 </td>
-<td class=''><pre><span  class=''>import model.game.Position;</span></pre></td></tr>
+<td class=''><pre><span  class=''>import chess.model.game.Position;</span></pre></td></tr>
 
 
 <tr>
@@ -159,7 +159,7 @@
 </span>
 </span>
 </td>
-<td class=''><pre><span  class=''>import model.game.board.BoardCase;</span></pre></td></tr>
+<td class=''><pre><span  class=''>import chess.model.game.board.BoardCase;</span></pre></td></tr>
 
 
 <tr>
@@ -174,7 +174,7 @@
 </span>
 </span>
 </td>
-<td class=''><pre><span  class=''>import model.game.builder.GameBuilder;</span></pre></td></tr>
+<td class=''><pre><span  class=''>import chess.model.game.builder.GameBuilder;</span></pre></td></tr>
 
 
 <tr>
@@ -189,7 +189,7 @@
 </span>
 </span>
 </td>
-<td class=''><pre><span  class=''>import model.game.builder.StandardChessGame;</span></pre></td></tr>
+<td class=''><pre><span  class=''>import chess.model.game.builder.StandardChessGame;</span></pre></td></tr>
 
 
 <tr>
@@ -204,7 +204,7 @@
 </span>
 </span>
 </td>
-<td class=''><pre><span  class=''>import model.game.move.Move;</span></pre></td></tr>
+<td class=''><pre><span  class=''>import chess.model.game.move.Move;</span></pre></td></tr>
 
 
 <tr>
@@ -219,7 +219,7 @@
 </span>
 </span>
 </td>
-<td class=''><pre><span  class=''>import model.game.pieces.Piece;</span></pre></td></tr>
+<td class=''><pre><span  class=''>import chess.model.game.pieces.Piece;</span></pre></td></tr>
 
 
 <tr>
@@ -234,7 +234,7 @@
 </span>
 </span>
 </td>
-<td class=''><pre><span  class=''>import view.View;</span></pre></td></tr>
+<td class=''><pre><span  class=''>import chess.view.View;</span></pre></td></tr>
 
 
 <tr>
@@ -384,7 +384,7 @@
 </span>
 </span>
 </td>
-<td class=''><pre><span  class=''>    public GameView(GameModel model) {</span></pre></td></tr>
+<td class=''><pre><span  class=''>    public GameView(GameModel chess.model) {</span></pre></td></tr>
 
 
 <tr>
@@ -399,7 +399,7 @@
 </span>
 </span>
 </td>
-<td class='uncovered'><pre><span  class=''>        super(model,&#34;CHEQ_TT.TTF&#34;, 55, 10, 20);</span></pre></td></tr>
+<td class='uncovered'><pre><span  class=''>        super(chess.model,&#34;CHEQ_TT.TTF&#34;, 55, 10, 20);</span></pre></td></tr>
 
 
 <tr>
@@ -444,7 +444,7 @@
 </span>
 </span>
 </td>
-<td class=''><pre><span  class=''>    GameView(GameModel model, Screen screen, TextGraphics textGraphics) {</span></pre></td></tr>
+<td class=''><pre><span  class=''>    GameView(GameModel chess.model, Screen screen, TextGraphics textGraphics) {</span></pre></td></tr>
 
 
 <tr>
@@ -459,7 +459,7 @@
 </span>
 </span>
 </td>
-<td class='covered'><pre><span  class=''>        super(model,&#34;CHEQ_TT.TTF&#34;, screen, textGraphics);</span></pre></td></tr>
+<td class='covered'><pre><span  class=''>        super(chess.model,&#34;CHEQ_TT.TTF&#34;, screen, textGraphics);</span></pre></td></tr>
 
 
 <tr>
@@ -519,7 +519,7 @@
 </span>
 </span>
 </td>
-<td class='covered'><pre><span  class=''>        for (BoardCase boardCase: model.getBoardModel().getCases()) {</span></pre></td></tr>
+<td class='covered'><pre><span  class=''>        for (BoardCase boardCase: chess.model.getBoardModel().getCases()) {</span></pre></td></tr>
 
 
 <tr>
@@ -547,7 +547,7 @@
 <a href='#grouporg.pitest.mutationtest.report.html.SourceFile@7a362b6b_36'>1</a>
 <span>
 
-1. drawBoard : removed call to view/game/GameView::drawPiece &rarr; NO_COVERAGE<br/>
+1. drawBoard : removed call to chess.view/game/GameView::drawPiece &rarr; NO_COVERAGE<br/>
 
 </span>
 </span>
@@ -630,7 +630,7 @@
 </span>
 </span>
 </td>
-<td class='uncovered'><pre><span  class='survived'>        if (boardCase.getPosition().equals(model.getCursor().getCurrentPosition()))</span></pre></td></tr>
+<td class='uncovered'><pre><span  class='survived'>        if (boardCase.getPosition().equals(chess.model.getCursor().getCurrentPosition()))</span></pre></td></tr>
 
 
 <tr>
@@ -643,7 +643,7 @@
 <a href='#grouporg.pitest.mutationtest.report.html.SourceFile@7a362b6b_42'>1</a>
 <span>
 
-1. getBackgroundCaseColor : replaced return value with &#34;&#34; for view/game/GameView::getBackgroundCaseColor &rarr; NO_COVERAGE<br/>
+1. getBackgroundCaseColor : replaced return value with &#34;&#34; for chess.view/game/GameView::getBackgroundCaseColor &rarr; NO_COVERAGE<br/>
 
 </span>
 </span>
@@ -708,7 +708,7 @@
 </span>
 </span>
 </td>
-<td class='uncovered'><pre><span  class=''>        for (Move move : model.getPieceLegalMoves()) legalPos.add(move.getPosition());</span></pre></td></tr>
+<td class='uncovered'><pre><span  class=''>        for (Move move : chess.model.getPieceLegalMoves()) legalPos.add(move.getPosition());</span></pre></td></tr>
 
 
 <tr>
@@ -754,7 +754,7 @@
 <a href='#grouporg.pitest.mutationtest.report.html.SourceFile@7a362b6b_49'>1</a>
 <span>
 
-1. getBackgroundCaseColor : replaced return value with &#34;&#34; for view/game/GameView::getBackgroundCaseColor &rarr; NO_COVERAGE<br/>
+1. getBackgroundCaseColor : replaced return value with &#34;&#34; for chess.view/game/GameView::getBackgroundCaseColor &rarr; NO_COVERAGE<br/>
 
 </span>
 </span>
@@ -787,7 +787,7 @@
 <a href='#grouporg.pitest.mutationtest.report.html.SourceFile@7a362b6b_51'>1</a>
 <span>
 
-1. getBackgroundCaseColor : replaced return value with &#34;&#34; for view/game/GameView::getBackgroundCaseColor &rarr; NO_COVERAGE<br/>
+1. getBackgroundCaseColor : replaced return value with &#34;&#34; for chess.view/game/GameView::getBackgroundCaseColor &rarr; NO_COVERAGE<br/>
 
 </span>
 </span>
@@ -852,7 +852,7 @@
 </span>
 </span>
 </td>
-<td class='uncovered'><pre><span  class=''>        List&#60;Piece&#62; result = model.getPiecesInGame().stream()</span></pre></td></tr>
+<td class='uncovered'><pre><span  class=''>        List&#60;Piece&#62; result = chess.model.getPiecesInGame().stream()</span></pre></td></tr>
 
 
 <tr>
@@ -865,9 +865,9 @@
 <a href='#grouporg.pitest.mutationtest.report.html.SourceFile@7a362b6b_56'>2</a>
 <span>
 
-1. lambda$drawPiece$0 : replaced boolean return with false for view/game/GameView::lambda$drawPiece$0 &rarr; NO_COVERAGE<br/>
+1. lambda$drawPiece$0 : replaced boolean return with false for chess.view/game/GameView::lambda$drawPiece$0 &rarr; NO_COVERAGE<br/>
 
-2. lambda$drawPiece$0 : replaced boolean return with true for view/game/GameView::lambda$drawPiece$0 &rarr; NO_COVERAGE<br/>
+2. lambda$drawPiece$0 : replaced boolean return with true for chess.view/game/GameView::lambda$drawPiece$0 &rarr; NO_COVERAGE<br/>
 
 </span>
 </span>
@@ -1068,7 +1068,7 @@
 <a href='#grouporg.pitest.mutationtest.report.html.SourceFile@7a362b6b_69'>1</a>
 <span>
 
-1. draw : removed call to view/game/GameView::clear &rarr; KILLED<br/>
+1. draw : removed call to chess.view/game/GameView::clear &rarr; KILLED<br/>
 
 </span>
 </span>
@@ -1101,7 +1101,7 @@
 <a href='#grouporg.pitest.mutationtest.report.html.SourceFile@7a362b6b_71'>1</a>
 <span>
 
-1. draw : removed call to view/game/GameView::drawBoard &rarr; KILLED<br/>
+1. draw : removed call to chess.view/game/GameView::drawBoard &rarr; KILLED<br/>
 
 </span>
 </span>
@@ -1134,7 +1134,7 @@
 <a href='#grouporg.pitest.mutationtest.report.html.SourceFile@7a362b6b_73'>1</a>
 <span>
 
-1. draw : removed call to view/game/GameView::refresh &rarr; SURVIVED<br/>
+1. draw : removed call to chess.view/game/GameView::refresh &rarr; SURVIVED<br/>
 
 </span>
 </span>
@@ -1212,7 +1212,7 @@
 <a href='#grouporg.pitest.mutationtest.report.html.SourceFile@7a362b6b_78'>1</a>
 <span>
 
-1. clear : removed call to view/View::clear &rarr; SURVIVED<br/>
+1. clear : removed call to chess.view/View::clear &rarr; SURVIVED<br/>
 
 </span>
 </span>
@@ -1291,7 +1291,7 @@
 
 <a name='grouporg.pitest.mutationtest.report.html.SourceFile@7a362b6b_36'/> 
 
-<p class='NO_COVERAGE'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>drawBoard<br/><b>Killed by : </b>none</span></span> removed call to view/game/GameView::drawPiece &rarr; NO_COVERAGE</p> 
+<p class='NO_COVERAGE'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>drawBoard<br/><b>Killed by : </b>none</span></span> removed call to chess.view/game/GameView::drawPiece &rarr; NO_COVERAGE</p>
 </td>
 </tr>
 
@@ -1313,7 +1313,7 @@
 
 <a name='grouporg.pitest.mutationtest.report.html.SourceFile@7a362b6b_42'/> 
 
-<p class='NO_COVERAGE'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getBackgroundCaseColor<br/><b>Killed by : </b>none</span></span> replaced return value with &#34;&#34; for view/game/GameView::getBackgroundCaseColor &rarr; NO_COVERAGE</p> 
+<p class='NO_COVERAGE'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getBackgroundCaseColor<br/><b>Killed by : </b>none</span></span> replaced return value with &#34;&#34; for chess.view/game/GameView::getBackgroundCaseColor &rarr; NO_COVERAGE</p>
 </td>
 </tr>
 
@@ -1335,7 +1335,7 @@
 
 <a name='grouporg.pitest.mutationtest.report.html.SourceFile@7a362b6b_49'/> 
 
-<p class='NO_COVERAGE'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getBackgroundCaseColor<br/><b>Killed by : </b>none</span></span> replaced return value with &#34;&#34; for view/game/GameView::getBackgroundCaseColor &rarr; NO_COVERAGE</p> 
+<p class='NO_COVERAGE'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getBackgroundCaseColor<br/><b>Killed by : </b>none</span></span> replaced return value with &#34;&#34; for chess.view/game/GameView::getBackgroundCaseColor &rarr; NO_COVERAGE</p>
 </td>
 </tr>
 
@@ -1346,7 +1346,7 @@
 
 <a name='grouporg.pitest.mutationtest.report.html.SourceFile@7a362b6b_51'/> 
 
-<p class='NO_COVERAGE'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getBackgroundCaseColor<br/><b>Killed by : </b>none</span></span> replaced return value with &#34;&#34; for view/game/GameView::getBackgroundCaseColor &rarr; NO_COVERAGE</p> 
+<p class='NO_COVERAGE'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getBackgroundCaseColor<br/><b>Killed by : </b>none</span></span> replaced return value with &#34;&#34; for chess.view/game/GameView::getBackgroundCaseColor &rarr; NO_COVERAGE</p>
 </td>
 </tr>
 
@@ -1357,7 +1357,7 @@
 
 <a name='grouporg.pitest.mutationtest.report.html.SourceFile@7a362b6b_56'/> 
 
-<p class='NO_COVERAGE'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>lambda$drawPiece$0<br/><b>Killed by : </b>none</span></span> replaced boolean return with false for view/game/GameView::lambda$drawPiece$0 &rarr; NO_COVERAGE</p> <p class='NO_COVERAGE'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>lambda$drawPiece$0<br/><b>Killed by : </b>none</span></span> replaced boolean return with true for view/game/GameView::lambda$drawPiece$0 &rarr; NO_COVERAGE</p> 
+<p class='NO_COVERAGE'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>lambda$drawPiece$0<br/><b>Killed by : </b>none</span></span> replaced boolean return with false for chess.view/game/GameView::lambda$drawPiece$0 &rarr; NO_COVERAGE</p> <p class='NO_COVERAGE'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>lambda$drawPiece$0<br/><b>Killed by : </b>none</span></span> replaced boolean return with true for chess.view/game/GameView::lambda$drawPiece$0 &rarr; NO_COVERAGE</p>
 </td>
 </tr>
 
@@ -1379,7 +1379,7 @@
 
 <a name='grouporg.pitest.mutationtest.report.html.SourceFile@7a362b6b_69'/> 
 
-<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>draw<br/><b>Killed by : </b>view.game.GameViewTest.[engine:spock]/[spec:view.game.GameViewTest]/[feature:$spock_feature_0_0]</span></span> removed call to view/game/GameView::clear &rarr; KILLED</p> 
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>draw<br/><b>Killed by : </b>chess.view.game.GameViewTest.[engine:spock]/[spec:chess.view.game.GameViewTest]/[feature:$spock_feature_0_0]</span></span> removed call to chess.view/game/GameView::clear &rarr; KILLED</p>
 </td>
 </tr>
 
@@ -1390,7 +1390,7 @@
 
 <a name='grouporg.pitest.mutationtest.report.html.SourceFile@7a362b6b_71'/> 
 
-<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>draw<br/><b>Killed by : </b>view.game.GameViewTest.[engine:spock]/[spec:view.game.GameViewTest]/[feature:$spock_feature_0_0]</span></span> removed call to view/game/GameView::drawBoard &rarr; KILLED</p> 
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>draw<br/><b>Killed by : </b>chess.view.game.GameViewTest.[engine:spock]/[spec:chess.view.game.GameViewTest]/[feature:$spock_feature_0_0]</span></span> removed call to chess.view/game/GameView::drawBoard &rarr; KILLED</p>
 </td>
 </tr>
 
@@ -1401,7 +1401,7 @@
 
 <a name='grouporg.pitest.mutationtest.report.html.SourceFile@7a362b6b_73'/> 
 
-<p class='SURVIVED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>draw<br/><b>Killed by : </b>none</span></span> removed call to view/game/GameView::refresh &rarr; SURVIVED</p> 
+<p class='SURVIVED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>draw<br/><b>Killed by : </b>none</span></span> removed call to chess.view/game/GameView::refresh &rarr; SURVIVED</p>
 </td>
 </tr>
 
@@ -1412,7 +1412,7 @@
 
 <a name='grouporg.pitest.mutationtest.report.html.SourceFile@7a362b6b_78'/> 
 
-<p class='SURVIVED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>clear<br/><b>Killed by : </b>none</span></span> removed call to view/View::clear &rarr; SURVIVED</p> 
+<p class='SURVIVED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>clear<br/><b>Killed by : </b>none</span></span> removed call to chess.view/View::clear &rarr; SURVIVED</p>
 </td>
 </tr>
 
@@ -1448,7 +1448,7 @@
 
 <h2>Tests examined</h2>
 <ul>
-<li>view.game.GameViewTest.[engine:spock]/[spec:view.game.GameViewTest]/[feature:$spock_feature_0_0] (14 ms)</li>
+<li>chess.view.game.GameViewTest.[engine:spock]/[spec:chess.view.game.GameViewTest]/[feature:$spock_feature_0_0] (14 ms)</li>
 </ul>
 
 <br/>
