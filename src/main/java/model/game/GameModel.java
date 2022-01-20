@@ -7,6 +7,7 @@ import model.game.pieces.King;
 import model.game.pieces.Piece;
 import model.game.player.Player;
 import model.game.rules.Rule;
+import model.game.sound.Sound;
 
 import java.util.HashSet;
 import java.util.LinkedList;
@@ -20,9 +21,11 @@ public class GameModel implements Model {
     private BoardModel boardModel;
     private GameCursor cursor;
     private int turn = 0;
+    private Sound sound;
 
     public GameModel(){
         piecesInGame = new HashSet<>();
+        this.sound = new Sound(this);
     }
 
     public Set<Piece> getPiecesInGame() {
@@ -115,6 +118,7 @@ public class GameModel implements Model {
                 if (move.getPosition().equals(cursor.getCurrentPosition())) {
                     move.execute();
                     notifyPlayers();
+                    sound.playSound(move);
                     break;
                 }
             }
