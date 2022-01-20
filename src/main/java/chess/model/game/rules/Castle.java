@@ -64,7 +64,7 @@ public class Castle implements Rule{
         }
     }
 
-    private boolean noPieceBetween(Position kingPos, int rookCol){
+    boolean noPieceBetween(Position kingPos, int rookCol){
         int kingRow = kingPos.getRow();
         int kingCol = kingPos.getCol();
         for (Piece piece : piecesInGame) {

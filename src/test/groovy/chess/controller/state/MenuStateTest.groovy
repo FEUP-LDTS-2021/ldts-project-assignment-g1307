@@ -1,5 +1,7 @@
 package chess.controller.state
 
+import chess.model.game.GameModel
+import chess.view.game.GameView
 import com.googlecode.lanterna.input.KeyType
 import com.googlecode.lanterna.screen.Screen
 import chess.model.menu.MenuModel
@@ -52,4 +54,19 @@ class MenuStateTest extends Specification {
         1 * mV.close()
     }
 
+    def "run return"(){
+        def mM = Mock(MenuModel)
+        def mV = Mock(MenuView)
+        MenuState menuState = new MenuState(mV)
+        def screen = Mock(Screen)
+
+        mV.getScreen() >> screen
+        mV.close() >> null
+
+        menuState.view = mV
+        menuState.model = mM
+
+        expect:
+        menuState.run() != null
+    }
 }
