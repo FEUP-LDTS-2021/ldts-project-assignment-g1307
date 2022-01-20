@@ -24,7 +24,7 @@
 </span>
 </span>
 </td>
-<td class=''><pre><span  class=''>package controller.state;</span></pre></td></tr>
+<td class=''><pre><span  class=''>package chess.controller.state;</span></pre></td></tr>
 
 
 <tr>
@@ -114,7 +114,7 @@
 </span>
 </span>
 </td>
-<td class=''><pre><span  class=''>import model.Model;</span></pre></td></tr>
+<td class=''><pre><span  class=''>import chess.model.Model;</span></pre></td></tr>
 
 
 <tr>
@@ -129,7 +129,7 @@
 </span>
 </span>
 </td>
-<td class=''><pre><span  class=''>import view.View;</span></pre></td></tr>
+<td class=''><pre><span  class=''>import chess.view.View;</span></pre></td></tr>
 
 
 <tr>
@@ -204,7 +204,7 @@
 </span>
 </span>
 </td>
-<td class=''><pre><span  class=''>    T model;</span></pre></td></tr>
+<td class=''><pre><span  class=''>    T chess.model;</span></pre></td></tr>
 
 
 <tr>
@@ -219,7 +219,7 @@
 </span>
 </span>
 </td>
-<td class=''><pre><span  class=''>    W view;</span></pre></td></tr>
+<td class=''><pre><span  class=''>    W chess.view;</span></pre></td></tr>
 
 
 <tr>
@@ -264,7 +264,7 @@
 </span>
 </span>
 </td>
-<td class='covered'><pre><span  class=''>        this.model = menuModel;</span></pre></td></tr>
+<td class='covered'><pre><span  class=''>        this.chess.model = menuModel;</span></pre></td></tr>
 
 
 <tr>
@@ -279,7 +279,7 @@
 </span>
 </span>
 </td>
-<td class='covered'><pre><span  class=''>        this.view = menuView;</span></pre></td></tr>
+<td class='covered'><pre><span  class=''>        this.chess.view = menuView;</span></pre></td></tr>
 
 
 <tr>
@@ -382,12 +382,12 @@
 <a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5965d37_25'>1</a>
 <span>
 
-1. draw : removed call to view/View::draw &rarr; SURVIVED<br/>
+1. draw : removed call to chess.view/View::draw &rarr; SURVIVED<br/>
 
 </span>
 </span>
 </td>
-<td class='covered'><pre><span  class='survived'>        view.draw();</span></pre></td></tr>
+<td class='covered'><pre><span  class='survived'>        chess.view.draw();</span></pre></td></tr>
 
 
 <tr>
@@ -463,7 +463,7 @@
 <a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5965d37_30'>1</a>
 <span>
 
-1. closeIfMoving : removed call to view/View::close &rarr; KILLED<br/>
+1. closeIfMoving : removed call to chess.view/View::close &rarr; KILLED<br/>
 
 </span>
 </span>
@@ -481,7 +481,7 @@
 <a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5965d37_31'>1</a>
 <span>
 
-1. closeIfMoving : replaced return value with null for controller/state/ControllerState::closeIfMoving &rarr; SURVIVED<br/>
+1. closeIfMoving : replaced return value with null for chess.controller/state/ControllerState::closeIfMoving &rarr; SURVIVED<br/>
 
 </span>
 </span>
@@ -607,7 +607,7 @@
 <a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5965d37_39'>1</a>
 <span>
 
-1. getKey : replaced return value with null for controller/state/ControllerState::getKey &rarr; NO_COVERAGE<br/>
+1. getKey : replaced return value with null for chess.controller/state/ControllerState::getKey &rarr; NO_COVERAGE<br/>
 
 </span>
 </span>
@@ -640,7 +640,7 @@
 <a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5965d37_41'>1</a>
 <span>
 
-1. getKey : replaced return value with null for controller/state/ControllerState::getKey &rarr; NO_COVERAGE<br/>
+1. getKey : replaced return value with null for chess.controller/state/ControllerState::getKey &rarr; NO_COVERAGE<br/>
 
 </span>
 </span>
@@ -703,12 +703,12 @@
 <a href='#grouporg.pitest.mutationtest.report.html.SourceFile@5965d37_45'>1</a>
 <span>
 
-1. getView : replaced return value with null for controller/state/ControllerState::getView &rarr; KILLED<br/>
+1. getView : replaced return value with null for chess.controller/state/ControllerState::getView &rarr; KILLED<br/>
 
 </span>
 </span>
 </td>
-<td class='covered'><pre><span  class='killed'>        return view;</span></pre></td></tr>
+<td class='covered'><pre><span  class='killed'>        return chess.view;</span></pre></td></tr>
 
 
 <tr>
@@ -767,7 +767,7 @@
 
 <a name='grouporg.pitest.mutationtest.report.html.SourceFile@5965d37_25'/> 
 
-<p class='SURVIVED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>draw<br/><b>Killed by : </b>none</span></span> removed call to view/View::draw &rarr; SURVIVED</p> 
+<p class='SURVIVED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>draw<br/><b>Killed by : </b>none</span></span> removed call to chess.view/View::draw &rarr; SURVIVED</p>
 </td>
 </tr>
 
@@ -778,7 +778,7 @@
 
 <a name='grouporg.pitest.mutationtest.report.html.SourceFile@5965d37_29'/> 
 
-<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>closeIfMoving<br/><b>Killed by : </b>controller.state.MenuStateTest.[engine:spock]/[spec:controller.state.MenuStateTest]/[feature:$spock_feature_0_1]</span></span> negated conditional &rarr; KILLED</p> 
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>closeIfMoving<br/><b>Killed by : </b>chess.controller.state.MenuStateTest.[engine:spock]/[spec:chess.controller.state.MenuStateTest]/[feature:$spock_feature_0_1]</span></span> negated conditional &rarr; KILLED</p>
 </td>
 </tr>
 
@@ -789,7 +789,7 @@
 
 <a name='grouporg.pitest.mutationtest.report.html.SourceFile@5965d37_30'/> 
 
-<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>closeIfMoving<br/><b>Killed by : </b>controller.state.MenuStateTest.[engine:spock]/[spec:controller.state.MenuStateTest]/[feature:$spock_feature_0_1]</span></span> removed call to view/View::close &rarr; KILLED</p> 
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>closeIfMoving<br/><b>Killed by : </b>chess.controller.state.MenuStateTest.[engine:spock]/[spec:chess.controller.state.MenuStateTest]/[feature:$spock_feature_0_1]</span></span> removed call to chess.view/View::close &rarr; KILLED</p>
 </td>
 </tr>
 
@@ -800,7 +800,7 @@
 
 <a name='grouporg.pitest.mutationtest.report.html.SourceFile@5965d37_31'/> 
 
-<p class='SURVIVED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>closeIfMoving<br/><b>Killed by : </b>none</span></span> replaced return value with null for controller/state/ControllerState::closeIfMoving &rarr; SURVIVED</p> 
+<p class='SURVIVED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>closeIfMoving<br/><b>Killed by : </b>none</span></span> replaced return value with null for chess.controller/state/ControllerState::closeIfMoving &rarr; SURVIVED</p>
 </td>
 </tr>
 
@@ -822,7 +822,7 @@
 
 <a name='grouporg.pitest.mutationtest.report.html.SourceFile@5965d37_39'/> 
 
-<p class='NO_COVERAGE'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getKey<br/><b>Killed by : </b>none</span></span> replaced return value with null for controller/state/ControllerState::getKey &rarr; NO_COVERAGE</p> 
+<p class='NO_COVERAGE'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getKey<br/><b>Killed by : </b>none</span></span> replaced return value with null for chess.controller/state/ControllerState::getKey &rarr; NO_COVERAGE</p>
 </td>
 </tr>
 
@@ -833,7 +833,7 @@
 
 <a name='grouporg.pitest.mutationtest.report.html.SourceFile@5965d37_41'/> 
 
-<p class='NO_COVERAGE'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getKey<br/><b>Killed by : </b>none</span></span> replaced return value with null for controller/state/ControllerState::getKey &rarr; NO_COVERAGE</p> 
+<p class='NO_COVERAGE'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getKey<br/><b>Killed by : </b>none</span></span> replaced return value with null for chess.controller/state/ControllerState::getKey &rarr; NO_COVERAGE</p>
 </td>
 </tr>
 
@@ -844,7 +844,7 @@
 
 <a name='grouporg.pitest.mutationtest.report.html.SourceFile@5965d37_45'/> 
 
-<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getView<br/><b>Killed by : </b>controller.state.MenuStateTest.[engine:spock]/[spec:controller.state.MenuStateTest]/[feature:$spock_feature_0_1]</span></span> replaced return value with null for controller/state/ControllerState::getView &rarr; KILLED</p> 
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getView<br/><b>Killed by : </b>chess.controller.state.MenuStateTest.[engine:spock]/[spec:chess.controller.state.MenuStateTest]/[feature:$spock_feature_0_1]</span></span> replaced return value with null for chess.controller/state/ControllerState::getView &rarr; KILLED</p>
 </td>
 </tr>
 
@@ -880,7 +880,9 @@
 
 <h2>Tests examined</h2>
 <ul>
-<li>controller.state.MenuStateTest.[engine:spock]/[spec:controller.state.MenuStateTest]/[feature:$spock_feature_0_1] (4 ms)</li><li>controller.state.MenuStateTest.[engine:spock]/[spec:controller.state.MenuStateTest]/[feature:$spock_feature_0_0] (13 ms)</li>
+<li>chess.controller.state.MenuStateTest.[engine:spock]/[spec:chess.controller.state.MenuStateTest]/[feature:$spock_feature_0_1]
+    (4 ms)</li><li>chess.controller.state.MenuStateTest.[engine:spock]/[spec:chess.controller.state.MenuStateTest]/[feature:$spock_feature_0_0]
+    (13 ms)</li>
 </ul>
 
 <br/>

@@ -6,7 +6,7 @@ plugins {
     id 'info.solidsoft.pitest' version '1.7.0'
 }
 
-group 'org.chessGame'
+group 'chess'
 
 version '1.0-SNAPSHOT'
 
@@ -22,17 +22,19 @@ dependencies {
     implementation group: 'com.googlecode.lanterna', name: 'lanterna', version: '3.1.1'
 }
 
+pitest {
+    junit5PluginVersion = '0.15'
+    pitestVersion = '1.7.0'
+    verbose = true
+}
+
 test {
     useJUnitPlatform()
 }
 
 application {
-    mainClass.set("Application")
-}
-pitest {
-    junit5PluginVersion = '0.15'
-    pitestVersion = '1.6.7'
-    verbose = true
+    mainClass.set("chess.Application")
 }
 
-mainClassName = 'org.ChessGame'
+
+mainClassName = 'chess'

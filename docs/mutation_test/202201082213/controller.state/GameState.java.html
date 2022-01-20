@@ -24,7 +24,7 @@
 </span>
 </span>
 </td>
-<td class=''><pre><span  class=''>package controller.state;</span></pre></td></tr>
+<td class=''><pre><span  class=''>package chess.controller.state;</span></pre></td></tr>
 
 
 <tr>
@@ -54,7 +54,7 @@
 </span>
 </span>
 </td>
-<td class=''><pre><span  class=''>import model.game.GameCursor;</span></pre></td></tr>
+<td class=''><pre><span  class=''>import chess.model.game.GameCursor;</span></pre></td></tr>
 
 
 <tr>
@@ -69,7 +69,7 @@
 </span>
 </span>
 </td>
-<td class=''><pre><span  class=''>import model.game.GameModel;</span></pre></td></tr>
+<td class=''><pre><span  class=''>import chess.model.game.GameModel;</span></pre></td></tr>
 
 
 <tr>
@@ -84,7 +84,7 @@
 </span>
 </span>
 </td>
-<td class=''><pre><span  class=''>import model.game.builder.GameBuilder;</span></pre></td></tr>
+<td class=''><pre><span  class=''>import chess.model.game.builder.GameBuilder;</span></pre></td></tr>
 
 
 <tr>
@@ -99,7 +99,7 @@
 </span>
 </span>
 </td>
-<td class=''><pre><span  class=''>import model.game.builder.StandardChessGame;</span></pre></td></tr>
+<td class=''><pre><span  class=''>import chess.model.game.builder.StandardChessGame;</span></pre></td></tr>
 
 
 <tr>
@@ -114,7 +114,7 @@
 </span>
 </span>
 </td>
-<td class=''><pre><span  class=''>import view.game.GameView;</span></pre></td></tr>
+<td class=''><pre><span  class=''>import chess.view.game.GameView;</span></pre></td></tr>
 
 
 <tr>
@@ -279,7 +279,7 @@
 </span>
 </span>
 </td>
-<td class='uncovered'><pre><span  class=''>        this.model = new StandardChessGame().buildRules().buildPieces().getResults();</span></pre></td></tr>
+<td class='uncovered'><pre><span  class=''>        this.chess.model = new StandardChessGame().buildRules().buildPieces().getResults();</span></pre></td></tr>
 
 
 <tr>
@@ -294,7 +294,7 @@
 </span>
 </span>
 </td>
-<td class='uncovered'><pre><span  class=''>        this.view = new GameView(model);</span></pre></td></tr>
+<td class='uncovered'><pre><span  class=''>        this.chess.view = new GameView(chess.model);</span></pre></td></tr>
 
 
 <tr>
@@ -367,7 +367,7 @@
 <a href='#grouporg.pitest.mutationtest.report.html.SourceFile@26abb146_24'>1</a>
 <span>
 
-1. run : removed call to controller/state/GameState::draw &rarr; NO_COVERAGE<br/>
+1. run : removed call to chess.controller/state/GameState::draw &rarr; NO_COVERAGE<br/>
 
 </span>
 </span>
@@ -402,7 +402,7 @@
 </span>
 </span>
 </td>
-<td class='uncovered'><pre><span  class=''>        GameCursor cursor = model.getCursor();</span></pre></td></tr>
+<td class='uncovered'><pre><span  class=''>        GameCursor cursor = chess.model.getCursor();</span></pre></td></tr>
 
 
 <tr>
@@ -417,7 +417,7 @@
 </span>
 </span>
 </td>
-<td class='uncovered'><pre><span  class=''>        switch (getKey(view.getScreen())) {</span></pre></td></tr>
+<td class='uncovered'><pre><span  class=''>        switch (getKey(chess.view.getScreen())) {</span></pre></td></tr>
 
 
 <tr>
@@ -430,7 +430,7 @@
 <a href='#grouporg.pitest.mutationtest.report.html.SourceFile@26abb146_28'>1</a>
 <span>
 
-1. run : removed call to model/game/GameCursor::moveLeft &rarr; NO_COVERAGE<br/>
+1. run : removed call to chess.model/game/GameCursor::moveLeft &rarr; NO_COVERAGE<br/>
 
 </span>
 </span>
@@ -448,7 +448,7 @@
 <a href='#grouporg.pitest.mutationtest.report.html.SourceFile@26abb146_29'>1</a>
 <span>
 
-1. run : removed call to model/game/GameCursor::moveRight &rarr; NO_COVERAGE<br/>
+1. run : removed call to chess.model/game/GameCursor::moveRight &rarr; NO_COVERAGE<br/>
 
 </span>
 </span>
@@ -466,7 +466,7 @@
 <a href='#grouporg.pitest.mutationtest.report.html.SourceFile@26abb146_30'>1</a>
 <span>
 
-1. run : removed call to model/game/GameCursor::moveUp &rarr; NO_COVERAGE<br/>
+1. run : removed call to chess.model/game/GameCursor::moveUp &rarr; NO_COVERAGE<br/>
 
 </span>
 </span>
@@ -484,7 +484,7 @@
 <a href='#grouporg.pitest.mutationtest.report.html.SourceFile@26abb146_31'>1</a>
 <span>
 
-1. run : removed call to model/game/GameCursor::moveDown &rarr; NO_COVERAGE<br/>
+1. run : removed call to chess.model/game/GameCursor::moveDown &rarr; NO_COVERAGE<br/>
 
 </span>
 </span>
@@ -502,12 +502,12 @@
 <a href='#grouporg.pitest.mutationtest.report.html.SourceFile@26abb146_32'>1</a>
 <span>
 
-1. run : removed call to model/game/GameModel::select &rarr; NO_COVERAGE<br/>
+1. run : removed call to chess.model/game/GameModel::select &rarr; NO_COVERAGE<br/>
 
 </span>
 </span>
 </td>
-<td class='uncovered'><pre><span  class='survived'>            case Enter -&#62; {model.select(); nextControllerState = this;}</span></pre></td></tr>
+<td class='uncovered'><pre><span  class='survived'>            case Enter -&#62; {chess.model.select(); nextControllerState = this;}</span></pre></td></tr>
 
 
 <tr>
@@ -525,7 +525,7 @@
 </span>
 </span>
 </td>
-<td class='uncovered'><pre><span  class='survived'>            case EOF -&#62; view.getScreen().close();</span></pre></td></tr>
+<td class='uncovered'><pre><span  class='survived'>            case EOF -&#62; chess.view.getScreen().close();</span></pre></td></tr>
 
 
 <tr>
@@ -568,7 +568,7 @@
 <a href='#grouporg.pitest.mutationtest.report.html.SourceFile@26abb146_36'>1</a>
 <span>
 
-1. run : replaced return value with null for controller/state/GameState::run &rarr; NO_COVERAGE<br/>
+1. run : replaced return value with null for chess.controller/state/GameState::run &rarr; NO_COVERAGE<br/>
 
 </span>
 </span>
@@ -617,7 +617,7 @@
 
 <a name='grouporg.pitest.mutationtest.report.html.SourceFile@26abb146_24'/> 
 
-<p class='NO_COVERAGE'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>run<br/><b>Killed by : </b>none</span></span> removed call to controller/state/GameState::draw &rarr; NO_COVERAGE</p> 
+<p class='NO_COVERAGE'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>run<br/><b>Killed by : </b>none</span></span> removed call to chess.controller/state/GameState::draw &rarr; NO_COVERAGE</p>
 </td>
 </tr>
 
@@ -628,7 +628,7 @@
 
 <a name='grouporg.pitest.mutationtest.report.html.SourceFile@26abb146_28'/> 
 
-<p class='NO_COVERAGE'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>run<br/><b>Killed by : </b>none</span></span> removed call to model/game/GameCursor::moveLeft &rarr; NO_COVERAGE</p> 
+<p class='NO_COVERAGE'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>run<br/><b>Killed by : </b>none</span></span> removed call to chess.model/game/GameCursor::moveLeft &rarr; NO_COVERAGE</p>
 </td>
 </tr>
 
@@ -639,7 +639,7 @@
 
 <a name='grouporg.pitest.mutationtest.report.html.SourceFile@26abb146_29'/> 
 
-<p class='NO_COVERAGE'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>run<br/><b>Killed by : </b>none</span></span> removed call to model/game/GameCursor::moveRight &rarr; NO_COVERAGE</p> 
+<p class='NO_COVERAGE'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>run<br/><b>Killed by : </b>none</span></span> removed call to chess.model/game/GameCursor::moveRight &rarr; NO_COVERAGE</p>
 </td>
 </tr>
 
@@ -650,7 +650,7 @@
 
 <a name='grouporg.pitest.mutationtest.report.html.SourceFile@26abb146_30'/> 
 
-<p class='NO_COVERAGE'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>run<br/><b>Killed by : </b>none</span></span> removed call to model/game/GameCursor::moveUp &rarr; NO_COVERAGE</p> 
+<p class='NO_COVERAGE'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>run<br/><b>Killed by : </b>none</span></span> removed call to chess.model/game/GameCursor::moveUp &rarr; NO_COVERAGE</p>
 </td>
 </tr>
 
@@ -661,7 +661,7 @@
 
 <a name='grouporg.pitest.mutationtest.report.html.SourceFile@26abb146_31'/> 
 
-<p class='NO_COVERAGE'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>run<br/><b>Killed by : </b>none</span></span> removed call to model/game/GameCursor::moveDown &rarr; NO_COVERAGE</p> 
+<p class='NO_COVERAGE'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>run<br/><b>Killed by : </b>none</span></span> removed call to chess.model/game/GameCursor::moveDown &rarr; NO_COVERAGE</p>
 </td>
 </tr>
 
@@ -672,7 +672,7 @@
 
 <a name='grouporg.pitest.mutationtest.report.html.SourceFile@26abb146_32'/> 
 
-<p class='NO_COVERAGE'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>run<br/><b>Killed by : </b>none</span></span> removed call to model/game/GameModel::select &rarr; NO_COVERAGE</p> 
+<p class='NO_COVERAGE'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>run<br/><b>Killed by : </b>none</span></span> removed call to chess.model/game/GameModel::select &rarr; NO_COVERAGE</p>
 </td>
 </tr>
 
@@ -694,7 +694,7 @@
 
 <a name='grouporg.pitest.mutationtest.report.html.SourceFile@26abb146_36'/> 
 
-<p class='NO_COVERAGE'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>run<br/><b>Killed by : </b>none</span></span> replaced return value with null for controller/state/GameState::run &rarr; NO_COVERAGE</p> 
+<p class='NO_COVERAGE'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>run<br/><b>Killed by : </b>none</span></span> replaced return value with null for chess.controller/state/GameState::run &rarr; NO_COVERAGE</p>
 </td>
 </tr>
 
