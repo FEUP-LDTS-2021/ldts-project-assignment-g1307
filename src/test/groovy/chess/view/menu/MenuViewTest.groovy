@@ -23,7 +23,7 @@ class MenuViewTest extends Specification {
         1 * spy.clear()
         1 * spy.drawOption()
         1 * spy.drawTitle()
-        _ * screen.refresh()
+        1 * screen.refresh()
         1 * graphics.putString(new TerminalPosition(-16,5), 'CLASSICAL')
         _ * graphics.drawRectangle()
         1 * graphics.putString(0, 3, _)
