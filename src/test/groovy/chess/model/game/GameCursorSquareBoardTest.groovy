@@ -69,4 +69,9 @@ class GameCursorSquareBoardTest extends Specification {
         gameCursorB.getSelectedPosition().getRow() == 8 && gameCursorB.getSelectedPosition().getCol() == 8
         gameCursorC.getSelectedPosition().getRow() == 3 && gameCursorC.getSelectedPosition().getCol() == 4
     }
+
+    def "CurrentPosition"(){
+        expect:
+        gameCursorA.getCurrentPosition() == new Position(1,1)
+    }
 }

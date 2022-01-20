@@ -152,4 +152,8 @@ class GameModelTest extends Specification {
         gameModel.winner() == null
         gameModel.winner() == player2
     }
+    def "getCursor"(){
+        expect:
+        gameCursor == gameModel.getCursor()
+    }
 }
