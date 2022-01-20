@@ -15,7 +15,9 @@ class PawnsDiagonalCapturingTest extends Specification {
         given:
         def piece = Mock(Pawn)
         def piece2 = Mock(Pawn)
+        def piece3 = Mock(Pawn)
 
+        piece3.getPosition() >> new Position(2,4)
         piece2.getPosition() >> new Position(2,2)
         piece.getPosition() >> new Position(3,3)
 
@@ -24,10 +26,12 @@ class PawnsDiagonalCapturingTest extends Specification {
         Set<Move> set = new HashSet()
         piece.getMoves(_ as BoardModel) >> set
         piece2.getColor() >> Piece.COLOR.BLACK
+        piece3.getColor() >> Piece.COLOR.BLACK
 
         def s = new HashSet()
         s.add(piece)
         s.add(piece2)
+        s.add(piece3)
 
         BoardModel boardModel = Mock(SquareBoard)
 
@@ -36,12 +40,14 @@ class PawnsDiagonalCapturingTest extends Specification {
         GameModel gameModel = new GameModel()
         gameModel.setBoardModel(boardModel)
         gameModel.setPiecesInGame(s)
+
         def nC = new PawnsDiagonalCapturing(gameModel.getPiecesInGame())
 
         when:
         Set<Move> r = piece.getMoves(gameModel.getBoardModel())
         nC.obyRule(r, piece)
         then:
-        r.size() == 1
+        r.size() == 2
     }
+
 }
