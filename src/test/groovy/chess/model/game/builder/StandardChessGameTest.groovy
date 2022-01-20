@@ -15,9 +15,15 @@ class StandardChessGameTest extends Specification {
     def "Reset"() {
         when:
         standardGame.buildPieces()
-        standardGame.reset()
+        standardGame.buildRules();
+
+        def result = standardGame.reset()
         then:
+        standardGame.piecesArrangementBlack.isEmpty()
+        standardGame.piecesArrangementWhite.isEmpty()
+        result != null
         !standardGame.getResults().getPiecesInGame()
+        !standardGame.getResults().getRules()
     }
 
     def "BuildPawns"() {
@@ -148,7 +154,7 @@ class StandardChessGameTest extends Specification {
 
     def "BuildPieces"() {
         when:
-        standardGame.buildPieces()
+        def result = standardGame.buildPieces()
         def r = standardGame.getResults()
         then:
         r.getPiecesInGame().size() == 32
@@ -179,6 +185,7 @@ class StandardChessGameTest extends Specification {
         k    == 4
         rook == 4
         king == 2
+        result != null
     }
 
     def "BuildRules"() {
@@ -192,5 +199,16 @@ class StandardChessGameTest extends Specification {
         then:
         r == 10
 
+    }
+
+    def "Build cursor, square board and game players"(){
+        when:
+        def cursor = standardGame.getResults().getCursor()
+        def squareBoard = standardGame.getResults().getBoardModel()
+        def players = standardGame.getResults().getGamePlayers()
+        then:
+        cursor != null
+        squareBoard != null
+        players.size() == 2
     }
 }
