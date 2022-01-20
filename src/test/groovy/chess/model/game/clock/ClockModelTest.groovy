@@ -7,7 +7,7 @@ class ClockModelTest extends Specification{
 
     def "Clock pause and resume"(){
         ClockModel clock = new ClockModel(30) //30 sec clock
-        boolean check1, check2;
+        boolean check1, check2, check3;
         int checkTime;
 
         clock.resume()
@@ -20,7 +20,6 @@ class ClockModelTest extends Specification{
         clock.cancel()
 
         expect:
-
         check1
         checkTime == 20
         !check2
@@ -36,9 +35,15 @@ class ClockModelTest extends Specification{
         check = clock.hasEnded()
         clock.cancel()
 
+        ClockModel clock2 = new ClockModel(15)
+        boolean check2
+        clock2.resume()
+        check2 = clock2.hasEnded()
+        clock2.cancel()
+
         expect:
         check
-
+        !check2
     }
 
     def "Clock Cancel"(){
@@ -50,6 +55,7 @@ class ClockModelTest extends Specification{
 
         expect:
         clock.hasEnded()
+        clock.isPaused()
         clock.getTime() == 15
     }
 
