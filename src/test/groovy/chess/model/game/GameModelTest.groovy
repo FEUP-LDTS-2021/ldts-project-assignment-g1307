@@ -79,6 +79,8 @@ class GameModelTest extends Specification {
     def "Select"() {
         gameCursor.getCurrentPosition() >> move.getPosition()
         gameCursor.getSelectedPosition() >> piece.getPosition()
+        def sound = Mock(Sound)
+        gameModel.setSound(sound)
         when:
         gameModel.select()
         then:

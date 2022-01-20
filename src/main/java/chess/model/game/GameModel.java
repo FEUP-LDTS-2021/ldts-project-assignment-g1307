@@ -17,9 +17,15 @@ public class GameModel implements Model {
     private BoardModel boardModel;
     private GameCursor cursor;
     private int turn = 0;
+    private Sound sound;
 
     public GameModel(){
         piecesInGame = new HashSet<>();
+        this.sound = new Sound(this);
+    }
+
+    public void setSound(Sound sound) {
+        this.sound = sound;
     }
 
     public Set<Piece> getPiecesInGame() {
@@ -112,6 +118,7 @@ public class GameModel implements Model {
                 if (move.getPosition().equals(cursor.getCurrentPosition())) {
                     move.execute();
                     notifyPlayers();
+                    sound.playSound(move);
                     break;
                 }
             }
