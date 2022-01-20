@@ -45,4 +45,9 @@ class SquareBoardTest extends Specification {
         then:
         r
     }
+
+    def "getRows"(){
+        expect:
+        board.getRows() == 8
+    }
 }
