@@ -41,5 +41,19 @@ class GameStateTest extends Specification {
         1 * mM.select()
         6 * mM.gameEnded()
         6 * spy.closeIfMoving(_)
+        6 * spy.draw()
+    }
+
+    def "run return"(){
+        def mM = Mock(GameModel)
+        def mV = Mock(GameView)
+        GameState gameState = new GameState(mM, mV)
+        def screen = Mock(Screen)
+
+        mV.getScreen() >> screen
+        mV.close() >> null
+
+        expect:
+        gameState.run() != null
     }
 }
