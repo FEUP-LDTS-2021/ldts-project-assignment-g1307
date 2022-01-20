@@ -17,8 +17,8 @@ public class StandardChessGame implements GameBuilder {
 
     private final GameModel gameModel;
     private final Set<Piece> pieceSet;
-    private final Set<Piece> piecesArrangementWhite;
-    private final Set<Piece> piecesArrangementBlack;
+    final Set<Piece> piecesArrangementWhite;
+    final Set<Piece> piecesArrangementBlack;
     private Rule[] rules;
     private final SquareBoard squareBoard;
 
@@ -48,7 +48,6 @@ public class StandardChessGame implements GameBuilder {
         pieceSet.clear();
         rules = new Rule[0];
 
-        updateModelPieces();
         gameModel.setRules(rules);
         return this;
     }
@@ -112,7 +111,6 @@ public class StandardChessGame implements GameBuilder {
         buildRooks();
         buildKnights();
         buildBishops();
-        updateModelPieces();
         return this;
     }
 

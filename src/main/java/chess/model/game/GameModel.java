@@ -8,10 +8,7 @@ import chess.model.game.pieces.Piece;
 import chess.model.game.player.Player;
 import chess.model.game.rules.Rule;
 
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class GameModel implements Model {
     private Set<Piece> piecesInGame;
@@ -123,7 +120,7 @@ public class GameModel implements Model {
     }
 
     public boolean checkStalemate(Player player) {
-        List<Piece> listPiecesInGame = new LinkedList<>(piecesInGame);
+        List<Piece> listPiecesInGame = new ArrayList<>(piecesInGame);
         for (Piece p : listPiecesInGame) {
             Set<Move> possibleMvs = p.getMoves(boardModel);
             filterMoves(possibleMvs,p);

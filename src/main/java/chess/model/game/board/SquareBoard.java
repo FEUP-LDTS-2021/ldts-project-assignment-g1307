@@ -3,6 +3,7 @@ package chess.model.game.board;
 import chess.model.game.Position;
 
 import java.awt.*;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -31,7 +32,7 @@ public class SquareBoard implements BoardModel {
     }
 
     private List<BoardCase> createBoardCases() {
-        List<BoardCase> boardCases = new LinkedList<>();
+        List<BoardCase> boardCases = new ArrayList<>();
         for (int row = 1; row <= rows; row++) {
             for (int col = 1; col <= columns; col++) {
                 if((row+col)%2 == 0)
