@@ -81,6 +81,88 @@ class CastleTest extends Specification {
         castleFilter.obyRule(legalMoves, piece)
         then: 'No legal moves to king'
         legalMoves.size() == 0
+    }
 
+    def "noPieceBetween true"(){
+        Set<Piece> pieces = new HashSet<>()
+        Set<Rule> rules = new HashSet<>()
+        def gameModel2 = new GameModel()
+        gameModel2.setBoardModel(new SquareBoard(8))
+
+        rules.add(new Castle(gameModel2.getBoardModel() as SquareBoard,gameModel2.getPiecesInGame()))
+
+        'a king in e8 with a rook in h8 - castle short'
+        Piece king = new King(Piece.COLOR.BLACK, new Position(1,5))
+        def rook = new Rook(Piece.COLOR.BLACK, new Position(1,8))
+        def rook3 = new Rook(Piece.COLOR.BLACK, new Position(1,1))
+        pieces.add(king)
+        pieces.add(rook)
+        pieces.add(rook3)
+
+        Piece king2 = new King(Piece.COLOR.BLACK, new Position(8,5))
+        def rook2 = new Rook(Piece.COLOR.BLACK, new Position(8,8))
+        def rook4 = new Rook(Piece.COLOR.BLACK, new Position(8,1))
+        pieces.add(king2)
+        pieces.add(rook2)
+        pieces.add(rook4)
+
+        gameModel2.setPiecesInGame(pieces)
+
+        def castleFilter = new Castle(gameModel2.getBoardModel() as SquareBoard,gameModel2.getPiecesInGame())
+        expect:
+        castleFilter.noPieceBetween(king.getPosition(), rook.getPosition().getCol())
+        castleFilter.noPieceBetween(king2.getPosition(), rook2.getPosition().getCol())
+        castleFilter.noPieceBetween(king.getPosition(), rook3.getPosition().getCol())
+        castleFilter.noPieceBetween(king2.getPosition(), rook4.getPosition().getCol())
+    }
+
+    def "noPieceBetween false"(){
+        Set<Piece> pieces = new HashSet<>()
+        Set<Rule> rules = new HashSet<>()
+        def gameModel2 = new GameModel()
+        gameModel2.setBoardModel(new SquareBoard(8))
+
+        rules.add(new Castle(gameModel2.getBoardModel() as SquareBoard,gameModel2.getPiecesInGame()))
+
+        'a king in e8 with a rook in h8 - castle short'
+        Piece king = new King(Piece.COLOR.BLACK, new Position(1,5))
+        def rook = new Rook(Piece.COLOR.BLACK, new Position(1,8))
+        def rook3 = new Rook(Piece.COLOR.BLACK, new Position(1,1))
+        pieces.add(king)
+        pieces.add(rook)
+        pieces.add(rook3)
+
+        Piece king2 = new King(Piece.COLOR.BLACK, new Position(8,5))
+        def rook2 = new Rook(Piece.COLOR.BLACK, new Position(8,8))
+        def rook4 = new Rook(Piece.COLOR.BLACK, new Position(8,1))
+        pieces.add(king2)
+        pieces.add(rook2)
+        pieces.add(rook4)
+
+        def piece = Stub(Piece)
+        piece.getPosition() >> new Position(1,6)
+        pieces.add(piece)
+
+        def piece2 = Stub(Piece)
+        piece2.getPosition() >> new Position(8,6)
+        pieces.add(piece2)
+
+        def piece3 = Stub(Piece)
+        piece3.getPosition() >> new Position(1,3)
+        pieces.add(piece3)
+
+        def piece4 = Stub(Piece)
+        piece4.getPosition() >> new Position(8,3)
+        pieces.add(piece4)
+
+        gameModel2.setPiecesInGame(pieces)
+
+
+        def castleFilter = new Castle(gameModel2.getBoardModel() as SquareBoard,gameModel2.getPiecesInGame())
+        expect:
+        !castleFilter.noPieceBetween(king.getPosition(), rook.getPosition().getCol())
+        !castleFilter.noPieceBetween(king2.getPosition(), rook2.getPosition().getCol())
+        !castleFilter.noPieceBetween(king.getPosition(), rook3.getPosition().getCol())
+        !castleFilter.noPieceBetween(king2.getPosition(), rook4.getPosition().getCol())
     }
 }
