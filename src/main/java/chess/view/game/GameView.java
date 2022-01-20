@@ -1,5 +1,6 @@
 package chess.view.game;
 
+import chess.model.game.pieces.King;
 import com.googlecode.lanterna.TerminalPosition;
 import com.googlecode.lanterna.TextColor;
 import com.googlecode.lanterna.graphics.TextGraphics;
@@ -55,6 +56,8 @@ public class GameView extends View<GameModel> {
                 .collect(Collectors.toList());
         final TerminalPosition terminalPosition = new TerminalPosition(position.getCol(),position.getRow());
         if (!result.isEmpty()) {
+            if (result.get(0) instanceof King king && king.inCheck() && !king.getPosition().equals(model.getCursor().getCurrentPosition()))
+                graphics.setBackgroundColor(TextColor.RGB.Factory.fromString("#9477cd"));
             graphics.setForegroundColor(TextColor.Factory.fromString(result.get(0).getColor().toString()));
             graphics.setCharacter(terminalPosition, result.get(0).getFigure());
         }else {
