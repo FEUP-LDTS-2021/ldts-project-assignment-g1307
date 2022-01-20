@@ -21,9 +21,7 @@ public class GameOverState extends ControllerState<GameOverModel, GameOverView>{
         switch (getKey(view.getScreen())) {
             case EOF -> view.getScreen().close();
             case Unknown -> nextControllerState = this;
-            default -> {nextControllerState = new MenuState();
-                view.getScreen().close();}
-
+            default -> nextControllerState = new MenuState();
         }
 
         return closeIfMoving(nextControllerState);
