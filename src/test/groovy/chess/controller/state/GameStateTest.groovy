@@ -11,6 +11,8 @@ import com.googlecode.lanterna.input.KeyType
 import com.googlecode.lanterna.screen.Screen
 import spock.lang.Specification
 
+import javax.swing.KeyStroke
+
 class GameStateTest extends Specification {
     def "Run"() {
         given:
@@ -56,4 +58,19 @@ class GameStateTest extends Specification {
         expect:
         gameState.run() != null
     }
+
+//    def "keystroke not null"(){
+//        def mM = Mock(GameModel)
+//        def mV = Mock(GameView)
+//        def gameState = new GameState(mM, mV)
+//        def screen = Mock(Screen)
+//        def key = Mock(KeyType)
+//
+//        mV.getScreen() >> screen
+//        gameState.getKey(screen) >> key
+//        mV.close() >> null
+//
+//        expect:
+//        gameState.getKey(screen) != null
+//    }
 }
