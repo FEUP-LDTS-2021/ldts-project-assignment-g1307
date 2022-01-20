@@ -39,6 +39,5 @@ class GameOverStateTest extends Specification{
 
         expect:
         gameOverState.run() != null
-
     }
 }
