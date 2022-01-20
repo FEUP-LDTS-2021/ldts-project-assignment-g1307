@@ -14,4 +14,14 @@ class KingTest extends Specification {
         !bool
         king.hasMoved
     }
+
+    def "Is in check"(){
+        def king = new King(Piece.COLOR.White ,new Position(1,1))
+        boolean check
+        check = king.inCheck()
+        king.setInCheck(true)
+        expect:
+        !check
+        king.inCheck()
+    }
 }
