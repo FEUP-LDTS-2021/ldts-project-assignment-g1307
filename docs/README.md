@@ -8,26 +8,18 @@ This project was developed by Lucas Sousa (up202004682@edu.fe.up.pt), Vitor Cava
 
 ## Implemented Features
 
-- **Menu** - When first running the game, the user will be met with a menu that can be navigated with the left and right arrows keys. It has the option to start a new game or to exit.
-- **2 Player Game** - The game is will show a standard 8 by 8 square board, with 8 pawns, 2 rooks, 2 knights, 2 bishops, 1 queen and 1 king on either side, where 2 players take alternating turns moving their pieces.
-- **Piece Movement** - The pieces of the game, when selected will be able to be moved to a correct, legal position based on the rules of the game (Ex: knight will only be able to move in an L shape, the bishop will only be able to move diagonally).
+- **Menu** - When first running the game, the user will be met with a menu that can be navigated with the left and right arrows keys. It has multiple game modes and exit as options.
+- **Multiple Game Modes** - Each option in the menu correspondes to a diferent game mode, with a diferent clock duration. In some game modes the clock extends after every move.
+- **2 Player Game** - The game will show a standard 8 by 8 square board, with 8 pawns, 2 rooks, 2 knights, 2 bishops, 1 queen and 1 king on either side, where 2 players take alternating turns moving their pieces.
+- **Piece Movement** - The pieces of the game, when selected will be able to be moved to a correct, legal position based on the rules of the game (Ex: knight will only be able to move in an L shape, the bishop will only be able to move diagonally). There are also situational moves such as castle and en passant.
 - **Piece capturing** - When a Piece is moved to a square occupied by an enemy piece, it will capture it. The enemy piece will be removed from the board and the other piece will take its square.
 - **Cursor** - In each turn, the player will be able to select the desired piece, with the arrow keys, and then select a legal square for the piece to move into.
-
-## Planned Features
-
-Order by importance: 
-- **Check** - When, in the current round, an enemy piece is threatening to capture the king a check is initiated. When this happens the player must act in order to protect the king and stop the check.
-
+- **Check** - When, in the current round, an enemy piece is threatening to capture the king a check is initiated. When this happens the player must act in order to protect the king and stop the check. The king in check will be highlighted in purple.
 - **Checkmate** - During a check, when there is no possible way to protect the king and stop the check, there will be a Checkmate. The player who initiated the check will win and the game will return to the Main Menu.
+- **Countdown Clock** -  During the game, each turn, the corresponding clock will start ticking down, stopping when the player has made their move. Subsequently, the other player's clock will do the same. When a player's clock reaches 0 the game will end and that player will lose. Clock duration is based on the game mode. In some game modes, such as Blitz, the clock duration increases after every move.
+- **Sound** - The game plays sounds for movements, captures and for the checkmate.
 
-- **Countdown Clock** - When starting a new game, the players will be asked the duration of the countdown clocks. During the game, each turn, the corresponding clock will start ticking down, stopping when the player has made their move. Subsequently, the other player's clock will do the same. When a player's clock reaches 0 the game will end and that player will lose.
 
-- **New variants of chess** - This point will prove almost all the design patterns that we have created.
-
-- **New options to menu - depending on the above topic** - Creating options that allows you to choose the new variants.
-
-- **Maybe a Mouse Cursor and/or sound** - It would be cool to have a mouse cursor.
 
 ## Design
 Throughout the development, we aimed to make our code as modular as we could, insuring adherence to the <b>SOLID</b> principles.
