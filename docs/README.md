@@ -419,6 +419,8 @@ Benefits of applying the above pattern:
 #### **Large Class**
 We consider the [StandardChessGame](../src/main/java/chess.model/game/builder/StandardChessGame.java) class a **Large Class** due to having a builder method for every piece. However, we find justifiable since every piece has an unique starting position in the layout of the game
 and in this way the code gets cleaner and easier to understand ( we could have combined all the methods into one big one but that is not a good principle)
+
+We also view the [GameModel](../src/main/java/chess/model/game/GameModel.java) as **Large Class** since it stores alot of information related to the game, with setters and getters, and because it implements methods responsible for the filtering of possible moves, selection of pieces and positions, checkmates and game ending situations.
 #### **Lazy Class**
 We consider the child classes of the Piece class (Ex. Queen, Rook, etc) to be **Lazy Classes**. This is due to the fact 
 that they don't do much outside of attributing the correct moving behaviour group and the character that corresponds with 
@@ -430,8 +432,6 @@ of possible moves for a piece are legal, filtering their possible moves. As such
 than their own. Due to our implementation of the pieces and behaviours, we find this code smell justifiable. Note that 
 this smell comes <b> from the use of the filter pattern </b>.
 
-#### **Speculative Generality**
-The Clock and ClockModel classes, as well as the getClock method in the Player class are **Speculative Generality** smells because they are related to the player countdown clocks that we intend to add in the future.
 
 <br>
 <br />
