@@ -346,7 +346,7 @@ Every class that implements a rule must receive a piece and a set of moves and a
 <br />
 
 <p align="center" justify="center">
-  <img src="images/UML/Rule%20uml.png"/>
+  <img src="images/UML/RulesUml.png"/>
 </p>
 <p align="center">
   <b><i>Fig 7. Rule Pattern </i></b>
@@ -389,7 +389,7 @@ the closeIfMoving method closes the menu window and the game window opens(Other 
 <br />
 
 <p align="center" justify="center">
-  <img src="images/UML/statePattern.png"/>
+  <img src="images/UML/ControllerState.png"/>
 </p>
 <p align="center">
   <b><i>Fig 8. State Pattern </i></b>
