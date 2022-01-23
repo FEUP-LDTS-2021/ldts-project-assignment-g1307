@@ -16,7 +16,7 @@ The following screenshots illustrate the general look of our game, as well as th
 ### Game Preview
 
 <p align="center" justify="center">
-  <img src="https://media.giphy.com/media/80aOD8QhMp4jU3faZt/giphy.gif" width="480" height="240" />
+  <img src="https://media.giphy.com/media/xjhUnnk91wX8VFOtL3/giphy.gif"/>
 </p>
 <p align="center">
   <b><i>Gif. Game flow example </i></b>
@@ -34,7 +34,7 @@ The following screenshots illustrate the general look of our game, as well as th
   <img src="docs/images/screenshots/menu1.jpg"/>
 </p>
 <p align="center">
-  <b><i>Fig 1. Main Menu Mockup</i></b>
+  <b><i>Fig 1. Main Menu</i></b>
 </p>  
 
 <br>
@@ -46,7 +46,7 @@ The following screenshots illustrate the general look of our game, as well as th
   <img src="docs/images/screenshots/initialboard.jpg"/>
 </p>
 <p align="center">
-  <b><i>Fig 1. Mockup Starting Board </i></b>
+  <b><i>Fig 1. Starting Board </i></b>
 </p>  
 
 <br>
@@ -57,7 +57,7 @@ The following screenshots illustrate the general look of our game, as well as th
   <img src="docs/images/screenshots/castle1.jpg"/>
 </p>
 <p align="center">
-  <b><i>Fig 2. Mockup Castle 1/2</i></b>
+  <b><i>Fig 2. Castle 1/2</i></b>
 </p>  
 
 <br>
@@ -67,7 +67,7 @@ The following screenshots illustrate the general look of our game, as well as th
   <img src="docs/images/screenshots/castle2.jpg"/>
 </p>
 <p align="center">
-  <b><i>Fig 3. Mockup Castle 2/2</i></b>
+  <b><i>Fig 3. Castle 2/2</i></b>
 </p>  
 
 <br>
@@ -77,7 +77,7 @@ The following screenshots illustrate the general look of our game, as well as th
   <img src="docs/images/screenshots/endpawn1.jpg"/>
 </p>
 <p align="center">
-  <b><i>Fig 4. Mockup Pawn reaches other side and turns into queen 1/2</i></b>
+  <b><i>Fig 4. Pawn reaches other side and turns into queen 1/2</i></b>
 </p>  
 
 <br>
@@ -87,7 +87,57 @@ The following screenshots illustrate the general look of our game, as well as th
   <img src="docs/images/screenshots/endpawn2.jpg"/>
 </p>
 <p align="center">
-  <b><i>Fig 5. Mockup Pawn reaches other side and turns into queen 2/2</i></b>
+  <b><i>Fig 5. Pawn reaches other side and turns into queen 2/2</i></b>
+</p>  
+
+<br>
+<br />
+
+<p align="center" justify="center">
+  <img src="docs/images/screenshots/enpassant1.jpg"/>
+</p>
+<p align="center">
+  <b><i>Fig 6. En passant 1/2</i></b>
+</p>  
+
+<br>
+<br />
+
+<p align="center" justify="center">
+  <img src="docs/images/screenshots/enpassant2.jpg"/>
+</p>
+<p align="center">
+  <b><i>Fig 7. En passant 2/2</i></b>
+</p>  
+
+<br>
+<br />
+
+<p align="center" justify="center">
+  <img src="docs/images/screenshots/check.jpg"/>
+</p>
+<p align="center">
+  <b><i>Fig 8. Check</i></b>
+</p>  
+
+<br>
+<br />
+
+<p align="center" justify="center">
+  <img src="docs/images/screenshots/checkmate.png"/>
+</p>
+<p align="center">
+  <b><i>Fig 9. End screen by checkmate</i></b>
+</p>  
+
+<br>
+<br />
+
+<p align="center" justify="center">
+  <img src="docs/images/screenshots/time.jpg"/>
+</p>
+<p align="center">
+  <b><i>Fig 10. End screen by time</i></b>
 </p>  
 
 <br>
