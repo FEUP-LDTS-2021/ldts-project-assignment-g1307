@@ -36,11 +36,14 @@ This project was developed by Lucas Sousa (up202004682@edu.fe.up.pt), Vitor Cava
 - **Checkmate** - During a check, when there is no possible way to protect the king and stop the check, there will be a Checkmate. The player who initiated the check will win and the game will return to the Main Menu.
 - **Countdown Clock** -  During the game, each turn, the corresponding clock will start ticking down, stopping when the player has made their move. Subsequently, the other player's clock will do the same. When a player's clock reaches 0 the game will end and that player will lose. Clock duration is based on the game mode. In some game modes, such as Blitz, the clock duration increases after every move.
 - **Sound** - The game plays a sound for movements, captures and checkmate.
+- **Rules** - Illegal Moves are not allowed, rules restrains the movement of pieces. Note that the checkmate and stalemate flags are set by the rules of the game.
 
 
-
-## Design
-Throughout the development, we aimed to make our code as modular as we could, insuring adherence to the <b>SOLID</b> principles.
+## Design Decisions
+As said above, the rules triggers the endGame events, they are defined by order of importance.
+They are also separated from the pieces which makes it cleaner and easier to add new rules and defining new games with it.
+The Moving behaviours of the pieces are also separated from the pieces per se. In this way we can re-utilize moving behaviour 
+and combine them to make another ones.
 
 ### General Structure
 
@@ -49,8 +52,8 @@ In order to make the code <b> more reusable </b>, <b> organizable  </b>, and so 
 Single Principle Responsibility </b> (which could easily happen) we decided to use the <b> MVC Architecture Pattern </b>.
 
 #### The Pattern:
-The MVC pattern separates the code in three packages the Model, View and Controller. The chess.model represents the logical
-part of the program, the View is responsible for showing the program (depending on the chess.model) and the chess.controller is 
+The MVC pattern separates the code in three packages the Model, View and Controller. The model represents the logical
+part of the program, the View is responsible for showing the program (depending on the model) and the controller is 
 responsible for controlling the states of the program (depending on the previous two).
 
 #### Implementation:
@@ -74,7 +77,7 @@ responsible for controlling the states of the program (depending on the previous
 #### Consequences:
 - Organization of source code, allowing for better development
 - Modifications don't affect the entire program
-- Better separation of the program logic from the chess.view drawing
+- Better separation of the program logic from the view drawing
 - Easier addition of features during development.
 - Single Responsibility Principle is not violated
 <br>
@@ -122,12 +125,12 @@ That way, the SimpleMove (concrete component) defines the basic behaviour altere
 <br />
 
 These classes can be found in the following files:
-- [Move](../src/main/java/chess.model/game/move/Move.java)
-- [SimpleMove](../src/main/java/chess.model/game/move/SimpleMove.java)
-- [MoveDecorator](../src/main/java/chess.model/game/move/MoveDecorator.java)
-- [CapturingMove](../src/main/java/chess.model/game/move/CapturingMove.java)
-- [CastlingMove](../src/main/java/chess.model/game/rules/Castle.java)
-- [PromotingMove](../src/main/java/chess.model/game/rules/PromotingPawns.java)
+- [Move](../src/main/java/chess/model/game/move/Move.java)
+- [SimpleMove](../src/main/java/chess/model/game/move/SimpleMove.java)
+- [MoveDecorator](../src/main/java/chess/model/game/move/MoveDecorator.java)
+- [CapturingMove](../src/main/java/chess/model/game/move/CapturingMove.java)
+- [CastlingMove](../src/main/java/chess/model/game/rules/Castle.java)
+- [PromotingMove](../src/main/java/chess/model/game/rules/PromotingPawns.java)
 
 ### Consequences:
 
@@ -140,12 +143,14 @@ Benefits of applying the above pattern:
 <br>
 <br />
 
-### **Board Strategy**
+### **Board Strategy (2x, with the Clock)**
 ### Problem in context:
 
 Even though we only planned on the game having only one kind of board, the classic 8x8 board, we decided to develop it in a way that would allow for multiple types of boards.
 In this way we protected ourselves from going against the <b> Open-Closed Principle </b> and we let the game
-open for new variants of the game.
+open for new variants of the game. <b> We actually used this principle more than once </b>, in the Clock Package we use it so that one
+could create either a more precise clock or a clock with more functionalities. This seems unnecessary, but it actually led us to 
+have <b> less concern between modules </b> and <b> fewer worryings about what a concrete class was doing and how it was doing </b>.
 
 ### The Pattern:
 We have applied the Strategy Pattern. This way we prevent future violations of the <b> SOLID </b>principles.
@@ -154,7 +159,7 @@ It's also a good practise, by not "working" for the implementation but for the i
 ### Implementation:
 The interface BoarModel defines two methods that are intrinsic to every board. A board should be able to tell if a position is
 inside or outside it, and it also should be able to tell which are those cases. The last one is crucial as it is essential for
-the rendering of the board.
+the rendering of the board. In the clock something similar happens.
 
 <p align="center" justify="center">
   <img src="images/UML/strategy_UML.jpg"/>
@@ -167,8 +172,8 @@ the rendering of the board.
 <br />
 
 These classes can be found in the following files:
-- [BoardModel](../src/main/java/chess.model/game/board/BoardModel.java)
-- [SquareBoard](../src/main/java/chess.model/game/board/SquareBoard.java)
+- [BoardModel](../src/main/java/chess/model/game/board/BoardModel.java)
+- [SquareBoard](../src/main/java/chess/model/game/board/SquareBoard.java)
 
 ### Consequences:
 
@@ -210,14 +215,14 @@ altering pre-existing code.
 <br />
 
 These classes can be found in the following files:
-- [MovingBehaviour](../src/main/java/chess.model/game/pieces/movingBehaviours/MovingBehaviour.java)
-- [MovingBehaviourGroup](../src/main/java/chess.model/game/pieces/movingBehaviours/MovingBehaviourGroup.java)
-- [PreDetermined](../src/main/java/chess.model/game/pieces/movingBehaviours/PreDetermined.java)
-- [AdjacentStrategy](../src/main/java/chess.model/game/pieces/movingBehaviours/AdjacentStrategy.java)
-- [LStrategy](../src/main/java/chess.model/game/pieces/movingBehaviours/LStrategy.java)
-- [DiagonalStrategy](../src/main/java/chess.model/game/pieces/movingBehaviours/DiagonalStrategy.java)
-- [SideStrategy](../src/main/java/chess.model/game/pieces/movingBehaviours/SideStrategy.java)
-- [TwoAndOneStrategy](../src/main/java/chess.model/game/pieces/movingBehaviours/TwoAndOneStrategy.java)
+- [MovingBehaviour](../src/main/java/chess/model/game/pieces/movingBehaviours/MovingBehaviour.java)
+- [MovingBehaviourGroup](../src/main/java/chess/model/game/pieces/movingBehaviours/MovingBehaviourGroup.java)
+- [PreDetermined](../src/main/java/chess/model/game/pieces/movingBehaviours/PreDetermined.java)
+- [AdjacentStrategy](../src/main/java/chess/model/game/pieces/movingBehaviours/AdjacentStrategy.java)
+- [LStrategy](../src/main/java/chess/model/game/pieces/movingBehaviours/LStrategy.java)
+- [DiagonalStrategy](../src/main/java/chess/model/game/pieces/movingBehaviours/DiagonalStrategy.java)
+- [SideStrategy](../src/main/java/chess/model/game/pieces/movingBehaviours/SideStrategy.java)
+- [TwoAndOneStrategy](../src/main/java/chess/model/game/pieces/movingBehaviours/TwoAndOneStrategy.java)
 
 
 ### Consequences:
@@ -262,9 +267,9 @@ if it is their turn, informing the player that a move was made. <b> Note:</b> Cl
 <br />
 
 These classes can be found in the following files:
-- [GameModel](../src/main/java/chess.model/game/GameModel.java)
-- [Player](../src/main/java/chess.model/game/player/Player.java)
-- [GameSubscriber](../src/main/java/chess.model/game/GameSubscriber.java)
+- [GameModel](../src/main/java/chess/model/game/GameModel.java)
+- [Player](../src/main/java/chess/model/game/player/Player.java)
+- [GameSubscriber](../src/main/java/chess/model/game/GameSubscriber.java)
 
 
 ### Consequences:
@@ -309,9 +314,9 @@ combines all the methods that create the different pieces and the updateModelPie
 <br />
 
 These classes can be found in the following files:
-- [GameState](../src/main/java/chess.controller/state/GameState.java)
-- [GameBuilder](../src/main/java/chess.model/game/builder/GameBuilder.java)
-- [StandardChessGame](../src/main/java/chess.model/game/builder/StandardChessGame.java)
+- [GameState](../src/main/java/chess/controller/state/GameState.java)
+- [GameBuilder](../src/main/java/chess/model/game/builder/GameBuilder.java)
+- [StandardChessGame](../src/main/java/chess/model/game/builder/StandardChessGame.java)
 
 
 ### Consequences:
@@ -356,7 +361,7 @@ Every class that implements a rule must receive a piece and a set of moves and a
 <br />
 
 These classes can be found in the following package:
-- [Rule](../src/main/java/chess.model/game/rules)
+- [Rule](../src/main/java/chess/model/game/rules)
 
 
 ### Consequences:
@@ -372,18 +377,18 @@ Benefits of applying the above pattern:
 ### **Controller  operation**
 ### Problem in context:
 
-Since the program follows the MVC  pattern, there needs to be a chess.controller that reads the user inputs and manages the flow of the game. 
+Since the program follows the MVC  pattern, there needs to be a controller that reads the user inputs and manages the flow of the game. 
 
 ### The pattern:
 The implemented pattern is the State Pattern. It behaves like a finite-state machine, meaning there is a number of finite states, and each transition,
-from one state to another, must follow a rule  made by the programmer. 
+from one state to another, must follow a rule made by the programmer. 
 
 
 ### Implementation:
-When the chess.controller is initialized and executed, the MenuState is set to the default state of the chess.controller. Depending on the user input, the MenuState will determine
+When the controller is initialized and executed, the MenuState is set to the default state of the controller. Depending on the user input, the MenuState will determine
 the next state and so on... 
 When the user chooses the exit option, the state is set to null and then the program closes. When the user chooses the new game option
-the closeIfMoving method closes the menu window and the game window opens(Other options are being considered for development). The game state behaves similarly.
+the closeIfMoving method closes the menu window and the game window opens. The game state behaves similarly, changing for the game end state when the game ends.
 
 <br>
 <br />
@@ -399,10 +404,11 @@ the closeIfMoving method closes the menu window and the game window opens(Other 
 <br />
 
 These classes can be found in the following files:
-- [Controller](../src/main/java/chess.controller/Controller.java)
-- [ControllerState](../src/main/java/chess.controller/state/ControllerState.java)
-- [GameState](../src/main/java/chess.controller/state/GameState.java)
-- [MenuState](../src/main/java/chess.controller/state/MenuState.java)
+- [Controller](../src/main/java/chess/controller/Controller.java)
+- [ControllerState](../src/main/java/chess/controller/state/ControllerState.java)
+- [GameState](../src/main/java/chess/controller/state/GameState.java)
+- [MenuState](../src/main/java/chess/controller/state/MenuState.java)
+- [GameOver](../src/main/java/chess/controller/state/GameOverState.java)
 
 
 ### Consequences:
@@ -417,7 +423,7 @@ Benefits of applying the above pattern:
 
 ## Known Code Smells And Refactoring Suggestions
 #### **Large Class**
-We consider the [StandardChessGame](../src/main/java/chess.model/game/builder/StandardChessGame.java) class a **Large Class** due to having a builder method for every piece. However, we find justifiable since every piece has an unique starting position in the layout of the game
+We consider the [StandardChessGame](../src/main/java/chess/model/game/builder/StandardChessGame.java) class a **Large Class** due to having a builder method for every piece. However, we find justifiable since every piece has an unique starting position in the layout of the game
 and in this way the code gets cleaner and easier to understand ( we could have combined all the methods into one big one but that is not a good principle)
 
 We also view the [GameModel](../src/main/java/chess/model/game/GameModel.java) as **Large Class** since it stores alot of information related to the game, with setters and getters, and because it implements methods responsible for the filtering of possible moves, selection of pieces and positions, checkmates and game ending situations.
