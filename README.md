@@ -1,5 +1,9 @@
 # LDTS_T13_G1307 - CHESS
 
+[![BCH compliance](https://bettercodehub.com/edge/badge/FEUP-LDTS-2021/ldts-project-assignment-g1307?branch=main&token=2069e510e81e7f336cdcd7437f6fe15351e0c380)](https://bettercodehub.com/)
+
+- TEST IN SPOCK: BetterCodeHub fails to recognize tests in spock.
+
 ## Game Description
 
 This version of Chess is a representation of the classic strategy tabletop game Chess played between 2 players, in alternating turns. Each player has at their disposal 16 chess pieces (8 pawns, 2 rooks, 2 knights, 2 bishops, 1 queen and 1 king). Each type of piece has specific movement rules. When a player moves a piece to the same square as an enemy piece, the enemy piece is taken and the square is occupied by the player piece. The king piece has to stay alive at all points, so when a check is initiated, the player needs to act in order to protect their king. Once the king has no safe squares from a check, it is a check-mate and the player loses.
