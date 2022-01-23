@@ -26,6 +26,7 @@ pitest {
     junit5PluginVersion = '0.15'
     pitestVersion = '1.7.0'
     verbose = true
+    //excludeClasses = ['chess.Application', 'chess.controller']
 }
 
 test {
