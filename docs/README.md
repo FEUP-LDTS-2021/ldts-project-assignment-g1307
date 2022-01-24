@@ -420,6 +420,21 @@ Benefits of applying the above pattern:
 <br>
 <br />
 
+## **Class Diagram**
+
+<br>
+<br />
+
+<p align="center" justify="center">
+  <img src="images/UML/chess_UML.jpg"/>
+</p>
+<p align="center">
+  <b><i>Fig 9. Class UML </i></b>
+</p>  
+
+<br>
+<br />
+
 
 ## Known Code Smells And Refactoring Suggestions
 #### **Large Class**
@@ -427,6 +442,7 @@ We consider the [StandardChessGame](../src/main/java/chess/model/game/builder/St
 and in this way the code gets cleaner and easier to understand ( we could have combined all the methods into one big one but that is not a good principle)
 
 We also view the [GameModel](../src/main/java/chess/model/game/GameModel.java) as **Large Class** since it stores alot of information related to the game, with setters and getters, and because it implements methods responsible for the filtering of possible moves, selection of pieces and positions, checkmates and game ending situations.
+
 #### **Lazy Class**
 We consider the child classes of the Piece class (Ex. Queen, Rook, etc) to be **Lazy Classes**. This is due to the fact 
 that they don't do much outside of attributing the correct moving behaviour group and the character that corresponds with 
@@ -449,7 +465,7 @@ this smell comes <b> from the use of the filter pattern </b>.
   <img src="images/screenshots/coverage.jpg"/>
 </p>
 <p align="center">
-  <b><i>Fig 9. Code coverage screenshot</i></b>
+  <b><i>Fig 10. Code coverage screenshot</i></b>
 </p>
 
 ### Link to mutation testing reports
