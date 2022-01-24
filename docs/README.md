@@ -448,6 +448,24 @@ We consider the child classes of the Piece class (Ex. Queen, Rook, etc) to be **
 that they don't do much outside of attributing the correct moving behaviour group and the character that corresponds with 
 the symbol in the font that's shown on screen.
 
+We also believe the [LStrategy](../src/main/java/chess/model/game/pieces/movingBehaviours/LStrategy.java) and [AdjacentStrategy](../src/main/java/chess/model/game/pieces/movingBehaviours/AdjacentStrategy.java) classes to be lazy classes seeing as they always return the same positions regardless of the situation.
+
+#### **Data Class**
+We consider the [Player](../src/main/java/chess/model/game/player/Player.java) class a Data Class, considering that, besides telling the clock to pause or resume, it serves only to store the data about the clock and the color of the pieces.
+
+We also count [BoardCase](../src/main/java/chess/model/game/board/BoardCase.java) as a Data Class, due to the fact that it is a record.
+
+We find them justifiable as they increase the organization of the code and made development more intuitive.
+
+#### **Switch Case**
+The [GameState](../src/main/java/chess/controller/state/GameState.java) and [MenuState](../src/main/java/chess/controller/state/MenuState.java) classes contain a switch case code smell each.
+
+In GameState, the large switch case serves to process the user input during the game, managing the due Controller State.
+
+The switch case in MenuState works in a simillar fashion to the previous one when it comes to navigating the menu. It also starts the correct GameState based on the chosen game mode.
+
+Considering these use cases, we find the switch cases to be acceptable.
+
 #### **Feature Envy**
 The **Feature Envy** smell is present in the Rule class and in the classes that implement it. These classes decide which 
 of possible moves for a piece are legal, filtering their possible moves. As such, they access the data of the pieces more
