@@ -486,12 +486,15 @@ this smell comes <b> from the use of the filter pattern </b>.
   <b><i>Fig 10. Code coverage screenshot</i></b>
 </p>
 
-### Link to mutation testing reports
-[Controller Mutation tests](../docs/mutation_test/202201082213/index.html)
+### Mutation Testing Report
+<p align="center" justify="center">
+  <img src="images/screenshots/pitest.jpg"/>
+</p>
+<p align="center">
+  <b><i>Fig 11. Pit Test Coverage Report</i></b>
+</p>
 
-[Model Mutation tests](../docs/mutation_test/202201082209/index.html)
-
-[View Mutation tests](../docs/mutation_test/202201082223/index.html)
+[Link to Pit Test Mutation report](../docs/mutation_test/202201242206/index.html)
 
 ## Self-evaluation
 
