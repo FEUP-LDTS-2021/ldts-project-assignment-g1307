@@ -1,8 +1,13 @@
 # LDTS_T13_G1307 - CHESS
 
 [![BCH compliance](https://bettercodehub.com/edge/badge/FEUP-LDTS-2021/ldts-project-assignment-g1307?branch=main&token=2069e510e81e7f336cdcd7437f6fe15351e0c380)](https://bettercodehub.com/)
-
+- 
 - TEST IN SPOCK: BetterCodeHub fails to recognize tests in spock.
+
+- Error-Prone: we have left only 4 warnings that we think are not worth of changing (1 related to the game loop, the others to the use of
+  printstacktrace())
+
+- Pitest : we opt to omit some classes from the analysis which we thought were not susceptible of analysis
 
 ## Game Description
 
