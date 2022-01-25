@@ -249,14 +249,12 @@ ticking. So, the player must <b>observe the board</b> so that it can know <b> wh
 
 
 ### The Pattern:
-We have applied the <b> Observer Pattern </b>. With it, we can notify the player when it is his turn to play. And we can
-easily add new subscribers to the game <b> without having to change the code in the GameModel </b>, which follows
-the <b> Open/Closed Principle </b>.
+We have applied the <b> Observer Pattern </b>. With it, we can notify the player when it is his turn to play.
 
 ### Implementation:
 The notifyPlayers method in GameModel will inform the gamePlayers when a move is made and if it is their turn, the responsibility
 to make the clock ticking/ stopping is of the Player. Every player implements an interface called GameSubscriber that tells the player
-if it is their turn, informing the player that a move was made. <b> Note:</b> Clock is yet to be implemented.
+if it is their turn, informing the player that a move was made. 
 
 <br>
 <br />
@@ -441,9 +439,14 @@ Benefits of applying the above pattern:
 <br />
 
 ## Refactoring list
-- Reduced the number of method calls on rule type classes.
-- Eliminated similar clear methods on the view type classes(pull-up method).
-- Eliminated duplicate methods on the piece type classes(pull-up method).
+- Reduced the number of method calls on rule type classes, separating concerns in modules
+- Eliminated similar clear methods on the view type classes(<b>pull-up method</b>).
+- Eliminated duplicate methods on the piece type classes(<b>pull-up method</b>).
+- <b> Substitute Algorithm </b> on moving behaviours, in fact we <b> did this a lot of times </b>
+- <b> Add Parameter </b> , we did this a few times specially when using dependency injection. We did this in the Rule interface too.
+- <b> Push up Field </b> We had to this because of point 3.
+- ...
+
 
 ## Known Code Smells And Refactoring Suggestions
 #### **Large Class**
