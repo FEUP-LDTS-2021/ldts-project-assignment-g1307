@@ -38,18 +38,8 @@ The following screenshots illustrate the general look of our game, as well as th
 
 ### Game Preview
 
-<p align="center" justify="center">
-  <img src="docs/images/Hnet-image.gif"/>
-</p>
-<p align="center">
-  <b><i>Gif. Game flow example </i></b>
-</p>  
+![](docs/images/Hnet-image.gif)
 
-<br>
-<br />
-
-<br>
-<br />
 
 ### Menu 
 
@@ -57,7 +47,7 @@ The following screenshots illustrate the general look of our game, as well as th
   <img src="docs/images/screenshots/menu1.jpg"/>
 </p>
 <p align="center">
-  <b><i>Fig 1. Main Menu</i></b>
+  <b><i>Fig 0. Main Menu</i></b>
 </p>  
 
 <br>
