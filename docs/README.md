@@ -438,36 +438,50 @@ Benefits of applying the above pattern:
 
 ## Known Code Smells And Refactoring Suggestions
 #### **Large Class**
-We consider the [StandardChessGame](../src/main/java/chess/model/game/builder/StandardChessGame.java) class a **Large Class** due to having a builder method for every piece. However, we find justifiable since every piece has an unique starting position in the layout of the game
+We consider the [StandardChessGame](../src/main/java/chess/model/game/builder/StandardChessGame.java) (128 lines) class a **Large Class** due to having a builder method for every piece. However, we find justifiable since every piece has an unique starting position in the layout of the game
 and in this way the code gets cleaner and easier to understand ( we could have combined all the methods into one big one but that is not a good principle)
 
-We also view the [GameModel](../src/main/java/chess/model/game/GameModel.java) as **Large Class** since it stores alot of information related to the game, with setters and getters, and because it implements methods responsible for the filtering of possible moves, selection of pieces and positions, checkmates and game ending situations.
+We also see the [GameModel](../src/main/java/chess/model/game/GameModel.java) (157 lines) as **Large Class** due to the amount of lines that it has . We could have
+<b> extracted </b> the Flow of the game to a new class or subclass </b>but then GameModel <b> would become a Data class. </b> 
+Also , as said before, rules are responsible for "setting flags" that then the game interprets and sets the GameEvent (a checkmate
+occurs after all moves are made illegal by rules and the king is in check), so there would be no need for GameEventClass that determine
+the game flow.
+
+<b> The Two classes </b> are responsible for one thing, so this is not "a big problem". But, if we were to add more code this classes
+would probably needed to be refactored.
 
 #### **Lazy Class**
-We consider the child classes of the Piece class (Ex. Queen, Rook, etc) to be **Lazy Classes**. This is due to the fact 
+We consider some child classes of the Piece class (Ex. Queen, Rook, etc) to be **Lazy Classes**. This is due to the fact 
 that they don't do much outside of attributing the correct moving behaviour group and the character that corresponds with 
-the symbol in the font that's shown on screen.
+the symbol in the font that's shown on screen. He could have used <b> Collapse Hierarchy </b> and set the pieces as a concrete
+implementation of Piece (maybe even using a factory), but that wouldn't be possible to some special Pieces (Pawns and Kings)
+as they need to be able to overload some operators.
 
-We also believe the [LStrategy](../src/main/java/chess/model/game/pieces/movingBehaviours/LStrategy.java) and [AdjacentStrategy](../src/main/java/chess/model/game/pieces/movingBehaviours/AdjacentStrategy.java) classes to be lazy classes seeing as they always return the same positions regardless of the situation.
+We also believe the [LStrategy](../src/main/java/chess/model/game/pieces/movingBehaviours/LStrategy.java) and [AdjacentStrategy](../src/main/java/chess/model/game/pieces/movingBehaviours/AdjacentStrategy.java) 
+classes to be lazy classes as they are just a Constructor of the abstract method. This was actually a refactor that we did, it allows us 
+to not fall in another code smell, <b> Duplicated code </b>.
 
 #### **Data Class**
 We consider the [Player](../src/main/java/chess/model/game/player/Player.java) class a Data Class, considering that, besides telling the clock to pause or resume, it serves only to store the data about the clock and the color of the pieces.
+It actually operates once in his data, but is not <b>  independently </b>. He could delete it but then the game itself would become
+warder to understand (a game without a player sounds weird).
 
-We also count [BoardCase](../src/main/java/chess/model/game/board/BoardCase.java) as a Data Class, due to the fact that it is a record.
+We also count [BoardCase](../src/main/java/chess/model/game/board/BoardCase.java) as a Data Class, due to the fact that it is a <b> record </b>.
 
 We find them justifiable as they increase the organization of the code and made development more intuitive.
 
 #### **Switch Case**
 The [GameState](../src/main/java/chess/controller/state/GameState.java) and [MenuState](../src/main/java/chess/controller/state/MenuState.java) classes contain a switch case code smell each.
 
+
 In GameState, the large switch case serves to process the user input during the game, managing the due Controller State.
 
 The switch case in MenuState works in a simillar fashion to the previous one when it comes to navigating the menu. It also starts the correct GameState based on the chosen game mode.
 
-Considering these use cases, we find the switch cases to be acceptable.
+Considering these use cases, we find the switch cases to be acceptable as they <b> perform simple actions </b>
 
 #### **Feature Envy**
-The **Feature Envy** smell is present in the Rule class and in the classes that implement it. These classes decide which 
+The **Feature Envy** smell is present in the Rule classes (with the Rule interface). These classes decide which 
 of possible moves for a piece are legal, filtering their possible moves. As such, they access the data of the pieces more
 than their own. Due to our implementation of the pieces and behaviours, we find this code smell justifiable. Note that 
 this smell comes <b> from the use of the filter pattern </b>.
