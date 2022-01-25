@@ -105,7 +105,9 @@ however we could have made funny things like, when you capture a piece you are a
 ### The Pattern:
 
 We have applied the <b> decorator pattern</b>. Using it, we can extend a move behaviour combining it with multiple ones
-that are wrapped inside it.
+that are wrapped inside it. A very good example of this pattern in action is when we capture a piece with a pawn in the 8 th rank,
+when that happens a call to the promoting move is made, followed by a call to the capturing move follow by the simple move
+call.
 
 ### Implementation:
 
@@ -490,7 +492,7 @@ In GameState, the large switch case serves to process the user input during the 
 
 The switch case in MenuState works in a simillar fashion to the previous one when it comes to navigating the menu. It also starts the correct GameState based on the chosen game mode.
 
-Considering these use cases, we find the switch cases to be acceptable as they <b> perform simple actions </b>
+Considering these use cases, we find the switch cases to be acceptable as they <b> perform simple actions </b>.
 
 #### **Feature Envy**
 The **Feature Envy** smell is present in the Rule classes (with the Rule interface). These classes decide which 
