@@ -39,7 +39,7 @@ The following screenshots illustrate the general look of our game, as well as th
 ### Game Preview
 
 <p align="center" justify="center">
-  <img src="https://media.giphy.com/media/xjhUnnk91wX8VFOtL3/giphy.gif"/>
+  <img src="https://media.giphy.com/media/jAQQf3nxn8iBjp1HEd/giphy.gif"/>
 </p>
 <p align="center">
   <b><i>Gif. Game flow example </i></b>
