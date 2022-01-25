@@ -435,6 +435,10 @@ Benefits of applying the above pattern:
 <br>
 <br />
 
+## Refactoring list
+- Reduced the number of method calls on rule type classes.
+- Eliminated similar clear methods on the view type classes(pull-up method).
+- Eliminated duplicate methods on the piece type classes(pull-up method).
 
 ## Known Code Smells And Refactoring Suggestions
 #### **Large Class**
